@@ -1,21 +1,31 @@
 # main.py
 # --------
-# SepSentinel Prototype 2 - Module 2
+# SepSentinel Prototype 2 - Module 3
 #
-# This is the entry point. It gives you a menu with three options:
+# This is the entry point. It gives you a menu with options:
 #   1. Simulate a worsening patient and see the results
 #   2. Manually enter biomarker values to get a risk score
 #   3. Train (or retrain) the ML model on synthetic data
+#   4. Launch the Streamlit dashboard (opens in browser)
+#   5. Exit
 #
 # How to run:
 #   In PyCharm, right-click this file and select "Run 'main'"
 #   Or from the terminal: python main.py
+
+import subprocess
+import sys
 
 from sepsentinel.biomarkers import print_biomarker_info
 from sepsentinel.sensor_simulation import simulate_patient_data
 from sepsentinel.visualization import plot_all_biomarkers, plot_risk_gauge
 from sepsentinel.risk_model import calculate_sepsis_risk, train_model, load_model
 from sepsentinel.data_generator import generate_dataset, save_dataset
+from sepsentinel.alerts import (
+    check_biomarker_alerts,
+    check_risk_alert,
+    format_alerts_for_console,
+)
 
 
 def run_simulation():
@@ -42,6 +52,12 @@ def run_simulation():
     # Calculate risk score
     risk_score = calculate_sepsis_risk(latest_lactate, latest_il6, latest_ph)
     print_risk_result(risk_score)
+
+    # Check alerts
+    alerts = check_biomarker_alerts(latest_lactate, latest_il6, latest_ph)
+    risk_alert = check_risk_alert(risk_score)
+    print()
+    format_alerts_for_console(alerts, risk_alert)
 
     # Plot the biomarker trends
     print("\nGenerating biomarker trend plots...")
@@ -73,6 +89,12 @@ def run_manual_input():
     risk_score = calculate_sepsis_risk(lactate, il6, ph)
     print_risk_result(risk_score)
 
+    # Check alerts
+    alerts = check_biomarker_alerts(lactate, il6, ph)
+    risk_alert = check_risk_alert(risk_score)
+    print()
+    format_alerts_for_console(alerts, risk_alert)
+
     # Show risk gauge
     plot_risk_gauge(risk_score)
 
@@ -100,6 +122,16 @@ def run_training():
     print(f"\n  Classification Report:")
     print(metrics["report"])
     print("  Model saved. It will be used automatically for future risk scoring.")
+
+
+def run_dashboard():
+    """Option 4: Launch the Streamlit dashboard in the browser."""
+    print("\n--- Launching SepSentinel Dashboard ---")
+    print("  Opening in your web browser...")
+    print("  Press Ctrl+C in the terminal to stop the dashboard.\n")
+
+    dashboard_path = "sepsentinel/dashboard.py"
+    subprocess.run([sys.executable, "-m", "streamlit", "run", dashboard_path])
 
 
 def print_risk_result(risk_score):
@@ -130,9 +162,10 @@ def main():
     print("  [1] Simulate a worsening patient (auto-generated data)")
     print("  [2] Enter biomarker values manually")
     print("  [3] Train the ML model")
-    print("  [4] Exit")
+    print("  [4] Launch Dashboard (opens in browser)")
+    print("  [5] Exit")
 
-    choice = input("\n  Enter your choice (1-4): ").strip()
+    choice = input("\n  Enter your choice (1-5): ").strip()
 
     if choice == "1":
         run_simulation()
@@ -141,9 +174,11 @@ def main():
     elif choice == "3":
         run_training()
     elif choice == "4":
+        run_dashboard()
+    elif choice == "5":
         print("\n  Goodbye!")
     else:
-        print("\n  Invalid choice. Please enter 1, 2, 3, or 4.")
+        print("\n  Invalid choice. Please enter 1, 2, 3, 4, or 5.")
 
 
 if __name__ == "__main__":
