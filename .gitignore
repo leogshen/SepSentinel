@@ -20,6 +20,9 @@ ENV/
 .env
 .env.*
 
+# Trained models (binary files, retrain locally)
+models/*.pkl
+
 # OS
 Thumbs.db
 .DS_Store

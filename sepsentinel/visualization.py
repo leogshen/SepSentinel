@@ -6,7 +6,7 @@
 # The normal range for each biomarker is shown as a green shaded region,
 # making it easy to see when values become abnormal.
 #
-# In future modules, this could be expanded into a real-time dashboard.
+# Module 2 addition: a risk score gauge display.
 
 import matplotlib.pyplot as plt
 
@@ -54,4 +54,46 @@ def plot_all_biomarkers(patient_data):
     plot_biomarker(patient_data["time"], patient_data["ph"], "ph")
 
     # Show all plots at once
+    plt.show()
+
+
+def plot_risk_gauge(risk_score):
+    """
+    Display the risk score as a simple horizontal bar gauge.
+
+    Color changes based on severity:
+        Green  (0-30%):  Low risk
+        Orange (30-60%): Moderate risk
+        Red    (60-100%): High risk
+
+    Args:
+        risk_score: A value from 0 to 100.
+    """
+    fig, ax = plt.subplots(figsize=(8, 2))
+
+    # Choose color based on risk level
+    if risk_score < 30:
+        color = "#2ecc71"   # Green
+        label = "LOW RISK"
+    elif risk_score < 60:
+        color = "#f39c12"   # Orange
+        label = "MODERATE RISK"
+    else:
+        color = "#e74c3c"   # Red
+        label = "HIGH RISK"
+
+    # Draw the background bar (gray) and the filled bar (colored)
+    ax.barh(0, 100, height=0.5, color="#ecf0f1", edgecolor="#bdc3c7")
+    ax.barh(0, risk_score, height=0.5, color=color, edgecolor="none")
+
+    # Add the score text in the center
+    ax.text(50, 0, f"{risk_score}% - {label}", ha="center", va="center",
+            fontsize=14, fontweight="bold", color="black")
+
+    # Clean up the axes
+    ax.set_xlim(0, 100)
+    ax.set_yticks([])
+    ax.set_xlabel("Sepsis Risk Score (%)")
+    ax.set_title("SepSentinel - Risk Assessment")
+    plt.tight_layout()
     plt.show()
