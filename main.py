@@ -1,5 +1,5 @@
-# SepSentinel — main entry point.
-# Run: python main.py
+# SepSentinel (Expanded Panel) — main entry point.
+# 7 biomarkers: Presepsin, sTREM-1, IL-6, IL-10, CXCL10, Lactate, pH
 
 import os
 import subprocess
@@ -18,26 +18,18 @@ def run_simulation():
     print("\n--- Simulating patient data over 60 minutes ---\n")
     patient_data = simulate_patient_data(duration_minutes=60, interval_minutes=5)
 
-    print(f"  Time points: {patient_data['time']}")
-    print(f"  Lactate:     {patient_data['lactate']}")
-    print(f"  IL-6:        {patient_data['il6']}")
-    print(f"  pH:          {patient_data['ph']}")
+    for key in ["lactate", "il6", "ph", "presepsin", "strem1", "il10", "cxcl10"]:
+        print(f"  {key:>10}: {patient_data[key]}")
 
-    latest_lactate = patient_data["lactate"][-1]
-    latest_il6 = patient_data["il6"][-1]
-    latest_ph = patient_data["ph"][-1]
-
+    latest = {k: patient_data[k][-1] for k in ["lactate", "il6", "ph", "presepsin", "strem1", "il10", "cxcl10"]}
     print(f"\n  Latest readings (t={patient_data['time'][-1]} min):")
-    print(f"    Lactate: {latest_lactate} mmol/L")
-    print(f"    IL-6:    {latest_il6} pg/mL")
-    print(f"    pH:      {latest_ph}")
+    for k, v in latest.items():
+        print(f"    {k}: {v}")
 
-    risk_score = calculate_sepsis_risk(latest_lactate, latest_il6, latest_ph)
+    risk_score = calculate_sepsis_risk(**latest)
     print_risk_result(risk_score)
     print()
-    format_alerts_for_console(
-        check_biomarker_alerts(latest_lactate, latest_il6, latest_ph),
-        check_risk_alert(risk_score))
+    format_alerts_for_console(check_biomarker_alerts(**latest), check_risk_alert(risk_score))
 
     print("\nGenerating plots...")
     plot_all_biomarkers(patient_data)
@@ -45,26 +37,34 @@ def run_simulation():
 
 
 def run_manual_input():
-    print("\n--- Manual Biomarker Input ---\n")
+    print("\n--- Manual Biomarker Input (7 markers) ---\n")
+    prompts = [
+        ("lactate", "Lactate (mmol/L, normal: 0.5-2.0)"),
+        ("il6", "IL-6 (pg/mL, normal: 0-7)"),
+        ("ph", "pH (normal: 7.35-7.45)"),
+        ("presepsin", "Presepsin (pg/mL, normal: 60-365)"),
+        ("strem1", "sTREM-1 (pg/mL, normal: 0-150)"),
+        ("il10", "IL-10 (pg/mL, normal: 0-10)"),
+        ("cxcl10", "CXCL10 (pg/mL, normal: 0-300)"),
+    ]
+
+    values = {}
     try:
-        lactate = float(input("  Lactate (mmol/L, normal: 0.5-2.0):  "))
-        il6 = float(input("  IL-6 (pg/mL, normal: 0-7):           "))
-        ph = float(input("  pH (normal: 7.35-7.45):               "))
+        for key, prompt in prompts:
+            values[key] = float(input(f"  {prompt}: "))
     except ValueError:
         print("\n  Error: Please enter valid numbers.")
         return
 
-    risk_score = calculate_sepsis_risk(lactate, il6, ph)
+    risk_score = calculate_sepsis_risk(**values)
     print_risk_result(risk_score)
     print()
-    format_alerts_for_console(
-        check_biomarker_alerts(lactate, il6, ph),
-        check_risk_alert(risk_score))
+    format_alerts_for_console(check_biomarker_alerts(**values), check_risk_alert(risk_score))
     plot_risk_gauge(risk_score)
 
 
 def run_training_synthetic():
-    print("\n--- Training ML Model (Synthetic Data) ---\n")
+    print("\n--- Training ML Model (Synthetic Data, 7 markers) ---\n")
     df = generate_dataset(num_patients=500)
     save_dataset(df)
     print(f"    {len(df)} records ({len(df[df['label'] == 0])} healthy, {len(df[df['label'] == 1])} septic)")
@@ -133,8 +133,7 @@ def print_risk_result(risk_score):
         print("  Status: MODERATE RISK - Monitor closely")
     else:
         print("  Status: HIGH RISK - Immediate attention needed")
-    model = load_model()
-    print("  (ML model)" if model else "  (Rule-based fallback)")
+    print("  (ML model)" if load_model() else "  (Rule-based fallback)")
     print("=" * 60)
 
 
@@ -142,7 +141,7 @@ def main():
     print_biomarker_info()
 
     print("\n  [1] Simulate a worsening patient")
-    print("  [2] Enter biomarker values manually")
+    print("  [2] Enter biomarker values manually (7 markers)")
     print("  [3] Train ML model (synthetic data)")
     print("  [4] Train ML model (real dataset)")
     print("  [5] Launch Dashboard")

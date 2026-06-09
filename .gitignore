@@ -21,7 +21,10 @@ ENV/
 .env.*
 
 # Trained models (binary files, retrain locally)
-models/*.pkl
+models/
+
+# Claude Code
+.claude/
 
 # OS
 Thumbs.db

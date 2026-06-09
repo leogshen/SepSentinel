@@ -1,4 +1,4 @@
-# Streamlit dashboard. Run: streamlit run sepsentinel/dashboard.py
+# Streamlit dashboard (7-marker panel). Run: streamlit run sepsentinel/dashboard.py
 
 import sys
 import os
@@ -14,10 +14,9 @@ from sepsentinel.risk_model import calculate_sepsis_risk, load_model
 from sepsentinel.alerts import check_biomarker_alerts, check_risk_alert
 
 st.set_page_config(page_title="SepSentinel Dashboard", page_icon="🩺", layout="wide")
-st.title("SepSentinel - Sepsis Early Detection Dashboard")
-st.caption("Non-invasive wearable biosensor prototype")
+st.title("SepSentinel - Expanded Biomarker Panel")
+st.caption("7-marker sepsis detection prototype")
 
-# Sidebar
 st.sidebar.header("Mode")
 mode = st.sidebar.radio("Select input mode:", ["Manual Input", "Patient Simulation"])
 
@@ -30,8 +29,8 @@ for key, bio in BIOMARKERS.items():
     st.sidebar.markdown(f"**{bio['name']}**: {bio['normal_range'][0]}-{bio['normal_range'][1]} {bio['unit']}")
 
 
-def show_alerts(lactate, il6, ph, risk_score):
-    alerts = check_biomarker_alerts(lactate, il6, ph)
+def show_alerts(values, risk_score):
+    alerts = check_biomarker_alerts(**values)
     risk_alert = check_risk_alert(risk_score)
     if not alerts and risk_alert is None:
         st.success("All biomarkers within normal range.")
@@ -48,10 +47,10 @@ def show_risk_score(risk_score):
         st.success("LOW RISK")
     elif risk_score < 60:
         st.markdown(f"## :orange[{risk_score}%]")
-        st.warning("MODERATE RISK - Monitor closely")
+        st.warning("MODERATE RISK")
     else:
         st.markdown(f"## :red[{risk_score}%]")
-        st.error("HIGH RISK - Immediate attention needed")
+        st.error("HIGH RISK")
 
 
 def show_risk_gauge(risk_score):
@@ -67,31 +66,40 @@ def show_risk_gauge(risk_score):
     plt.close(fig)
 
 
+# Slider configs: (key, label, min, max, default, step)
+SLIDER_CONFIG = [
+    ("lactate", "Lactate (mmol/L)", 0.0, 10.0, 1.0, 0.1),
+    ("il6", "IL-6 (pg/mL)", 0.0, 250.0, 3.0, 1.0),
+    ("ph", "pH", 6.80, 7.60, 7.40, 0.01),
+    ("presepsin", "Presepsin (pg/mL)", 0.0, 1500.0, 200.0, 10.0),
+    ("strem1", "sTREM-1 (pg/mL)", 0.0, 600.0, 80.0, 5.0),
+    ("il10", "IL-10 (pg/mL)", 0.0, 150.0, 3.0, 1.0),
+    ("cxcl10", "CXCL10 (pg/mL)", 0.0, 1200.0, 150.0, 10.0),
+]
+
 # === Manual Input ===
 if mode == "Manual Input":
     st.header("Manual Biomarker Input")
-    col1, col2, col3 = st.columns(3)
 
-    with col1:
-        st.subheader("Lactate")
-        lactate = st.slider("Lactate (mmol/L)", 0.0, 10.0, 1.0, 0.1)
-        lo, hi = BIOMARKERS["lactate"]["normal_range"]
-        st.warning(f"Outside normal ({lo}-{hi})") if lactate < lo or lactate > hi else st.success("Normal")
+    # Row 1: Lactate, IL-6, pH (core markers)
+    cols_row1 = st.columns(3)
+    # Row 2: Presepsin, sTREM-1, IL-10, CXCL10
+    cols_row2 = st.columns(4)
+    all_cols = list(cols_row1) + list(cols_row2)
 
-    with col2:
-        st.subheader("IL-6")
-        il6 = st.slider("IL-6 (pg/mL)", 0.0, 250.0, 3.0, 1.0)
-        lo, hi = BIOMARKERS["il6"]["normal_range"]
-        st.warning(f"Outside normal ({lo}-{hi})") if il6 > hi else st.success("Normal")
-
-    with col3:
-        st.subheader("pH")
-        ph = st.slider("pH (units)", 6.80, 7.60, 7.40, 0.01)
-        lo, hi = BIOMARKERS["ph"]["normal_range"]
-        st.warning(f"Outside normal ({lo}-{hi})") if ph < lo or ph > hi else st.success("Normal")
+    values = {}
+    for col, (key, label, mn, mx, default, step) in zip(all_cols, SLIDER_CONFIG):
+        with col:
+            st.subheader(BIOMARKERS[key]["name"].split(" (")[0])
+            values[key] = st.slider(label, mn, mx, default, step)
+            lo, hi = BIOMARKERS[key]["normal_range"]
+            if key == "ph":
+                st.warning(f"Outside normal") if values[key] < lo or values[key] > hi else st.success("Normal")
+            else:
+                st.warning(f"Outside normal") if values[key] > hi or values[key] < lo else st.success("Normal")
 
     st.markdown("---")
-    risk_score = calculate_sepsis_risk(lactate, il6, ph)
+    risk_score = calculate_sepsis_risk(**values)
 
     score_col, alert_col = st.columns([1, 2])
     with score_col:
@@ -99,7 +107,7 @@ if mode == "Manual Input":
         show_risk_score(risk_score)
     with alert_col:
         st.subheader("Alerts")
-        show_alerts(lactate, il6, ph, risk_score)
+        show_alerts(values, risk_score)
 
     st.markdown("---")
     show_risk_gauge(risk_score)
@@ -121,51 +129,55 @@ elif mode == "Patient Simulation":
 
     patient_data = st.session_state["sim_data"]
 
+    # Biomarker charts — 2 rows
     st.subheader("Biomarker Trends")
-    chart_cols = st.columns(3)
-    for col, key, color in zip(chart_cols, ["lactate", "il6", "ph"], ["#e74c3c", "#e67e22", "#3498db"]):
+    biomarker_keys = ["lactate", "il6", "ph", "presepsin", "strem1", "il10", "cxcl10"]
+    colors = ["#e74c3c", "#e67e22", "#3498db", "#9b59b6", "#1abc9c", "#f1c40f", "#2ecc71"]
+
+    row1_cols = st.columns(4)
+    row2_cols = st.columns(3)
+    all_chart_cols = list(row1_cols) + list(row2_cols)
+
+    for col, key, color in zip(all_chart_cols, biomarker_keys, colors):
         bio = BIOMARKERS[key]
         lo, hi = bio["normal_range"]
-        fig, ax = plt.subplots(figsize=(6, 4))
-        ax.plot(patient_data["time"], patient_data[key], marker="o", color=color, linewidth=2, markersize=4)
+        fig, ax = plt.subplots(figsize=(5, 3.5))
+        ax.plot(patient_data["time"], patient_data[key], marker="o", color=color, linewidth=2, markersize=3)
         ax.axhspan(lo, hi, color="#2ecc71", alpha=0.15, label="Normal")
-        ax.set_xlabel("Time (min)")
-        ax.set_ylabel(f"{bio['name']} ({bio['unit']})")
-        ax.set_title(bio["name"])
-        ax.legend(loc="best", fontsize=8)
+        ax.set_xlabel("Time (min)", fontsize=8)
+        ax.set_ylabel(f"{bio['unit']}", fontsize=8)
+        ax.set_title(bio["name"].split(" (")[0], fontsize=10)
+        ax.legend(loc="best", fontsize=7)
         ax.grid(True, alpha=0.3)
         plt.tight_layout()
         with col:
             st.pyplot(fig)
             plt.close(fig)
 
+    # Latest values
     st.markdown("---")
-    latest_lactate = patient_data["lactate"][-1]
-    latest_il6 = patient_data["il6"][-1]
-    latest_ph = patient_data["ph"][-1]
+    latest = {k: patient_data[k][-1] for k in biomarker_keys}
 
-    val_col1, val_col2, val_col3, risk_col = st.columns(4)
-    val_col1.metric("Lactate", f"{latest_lactate} mmol/L")
-    val_col2.metric("IL-6", f"{latest_il6} pg/mL")
-    val_col3.metric("pH", f"{latest_ph}")
+    metric_cols = st.columns(len(biomarker_keys) + 1)
+    for col, key in zip(metric_cols, biomarker_keys):
+        bio = BIOMARKERS[key]
+        col.metric(bio["name"].split(" (")[0], f"{latest[key]} {bio['unit']}")
 
-    risk_score = calculate_sepsis_risk(latest_lactate, latest_il6, latest_ph)
-    risk_col.metric("Risk Score", f"{risk_score}%")
+    risk_score = calculate_sepsis_risk(**latest)
+    metric_cols[-1].metric("Risk Score", f"{risk_score}%")
     if risk_score < 30:
-        risk_col.success("LOW RISK")
+        metric_cols[-1].success("LOW")
     elif risk_score < 60:
-        risk_col.warning("MODERATE RISK")
+        metric_cols[-1].warning("MODERATE")
     else:
-        risk_col.error("HIGH RISK")
+        metric_cols[-1].error("HIGH")
 
     st.subheader("Alerts")
-    show_alerts(latest_lactate, latest_il6, latest_ph, risk_score)
+    show_alerts(latest, risk_score)
 
     with st.expander("View Raw Data"):
-        df = pd.DataFrame({
-            "Time (min)": patient_data["time"],
-            "Lactate (mmol/L)": patient_data["lactate"],
-            "IL-6 (pg/mL)": patient_data["il6"],
-            "pH": patient_data["ph"],
-        })
-        st.dataframe(df, use_container_width=True)
+        df_data = {"Time (min)": patient_data["time"]}
+        for key in biomarker_keys:
+            bio = BIOMARKERS[key]
+            df_data[f"{bio['name'].split(' (')[0]} ({bio['unit']})"] = patient_data[key]
+        st.dataframe(pd.DataFrame(df_data), use_container_width=True)

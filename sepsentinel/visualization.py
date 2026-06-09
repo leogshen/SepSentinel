@@ -1,4 +1,4 @@
-# Matplotlib plotting for biomarker trends and risk gauge.
+# Matplotlib plotting for biomarker trends and risk gauge (7-marker panel).
 
 import matplotlib.pyplot as plt
 from sepsentinel.biomarkers import BIOMARKERS
@@ -21,10 +21,10 @@ def plot_biomarker(time_points, values, biomarker_key):
 
 
 def plot_all_biomarkers(patient_data):
-    """Plot all three biomarkers as separate charts."""
-    plot_biomarker(patient_data["time"], patient_data["lactate"], "lactate")
-    plot_biomarker(patient_data["time"], patient_data["il6"], "il6")
-    plot_biomarker(patient_data["time"], patient_data["ph"], "ph")
+    """Plot all biomarkers as separate charts."""
+    for key in BIOMARKERS:
+        if key in patient_data:
+            plot_biomarker(patient_data["time"], patient_data[key], key)
     plt.show()
 
 

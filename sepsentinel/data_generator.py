@@ -1,4 +1,4 @@
-# Generates synthetic patient datasets for model training.
+# Generates synthetic patient datasets for the 7-marker panel.
 
 import random
 import os
@@ -17,6 +17,10 @@ def generate_dataset(num_patients=500, seed=42):
             "lactate": round(random.uniform(0.5, 2.5), 2),
             "il6": round(random.uniform(0, 15), 1),
             "ph": round(random.uniform(7.32, 7.48), 3),
+            "presepsin": round(random.uniform(60, 400), 0),
+            "strem1": round(random.uniform(20, 170), 0),
+            "il10": round(random.uniform(0, 12), 1),
+            "cxcl10": round(random.uniform(50, 350), 0),
             "label": 0,
         })
 
@@ -26,6 +30,10 @@ def generate_dataset(num_patients=500, seed=42):
             "lactate": round(random.uniform(2.0, 2.0 + 6.0 * severity), 2),
             "il6": round(random.uniform(7, 7 + 200 * severity), 1),
             "ph": round(random.uniform(7.45 - 0.30 * severity, 7.40), 3),
+            "presepsin": round(random.uniform(365, 365 + 800 * severity), 0),
+            "strem1": round(random.uniform(150, 150 + 400 * severity), 0),
+            "il10": round(random.uniform(10, 10 + 100 * severity), 1),
+            "cxcl10": round(random.uniform(300, 300 + 700 * severity), 0),
             "label": 1,
         })
 

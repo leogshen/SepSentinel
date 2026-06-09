@@ -1,6 +1,4 @@
-# Alert system — checks biomarkers against WARNING/CRITICAL thresholds.
-
-from sepsentinel.biomarkers import BIOMARKERS
+# Alert system — checks 7 biomarkers against WARNING/CRITICAL thresholds.
 
 ALERT_THRESHOLDS = {
     "risk_warning": 30,
@@ -11,33 +9,55 @@ ALERT_THRESHOLDS = {
     "il6_critical": 50,
     "ph_warning": 7.35,
     "ph_critical": 7.25,
+    "presepsin_warning": 365,
+    "presepsin_critical": 600,
+    "strem1_warning": 150,
+    "strem1_critical": 300,
+    "il10_warning": 10,
+    "il10_critical": 50,
+    "cxcl10_warning": 300,
+    "cxcl10_critical": 500,
 }
 
+# Config: (key, display_name, unit, direction)
+# direction: "high" = above threshold is bad, "low" = below threshold is bad
+_BIOMARKER_CHECKS = [
+    ("lactate", "Lactate", "mmol/L", "high"),
+    ("il6", "IL-6", "pg/mL", "high"),
+    ("ph", "pH", "", "low"),
+    ("presepsin", "Presepsin", "pg/mL", "high"),
+    ("strem1", "sTREM-1", "pg/mL", "high"),
+    ("il10", "IL-10", "pg/mL", "high"),
+    ("cxcl10", "CXCL10", "pg/mL", "high"),
+]
 
-def check_biomarker_alerts(lactate, il6, ph):
+
+def check_biomarker_alerts(lactate, il6, ph, presepsin=200, strem1=80, il10=3, cxcl10=150):
     """Return a list of alert dicts for abnormal biomarker values."""
+    values = {"lactate": lactate, "il6": il6, "ph": ph,
+              "presepsin": presepsin, "strem1": strem1, "il10": il10, "cxcl10": cxcl10}
     alerts = []
 
-    if lactate >= ALERT_THRESHOLDS["lactate_critical"]:
-        alerts.append({"biomarker": "Lactate", "level": "CRITICAL",
-                        "message": f"Lactate is {lactate} mmol/L (critical: >={ALERT_THRESHOLDS['lactate_critical']})"})
-    elif lactate >= ALERT_THRESHOLDS["lactate_warning"]:
-        alerts.append({"biomarker": "Lactate", "level": "WARNING",
-                        "message": f"Lactate is {lactate} mmol/L (elevated: >={ALERT_THRESHOLDS['lactate_warning']})"})
+    for key, name, unit, direction in _BIOMARKER_CHECKS:
+        val = values[key]
+        warn = ALERT_THRESHOLDS[f"{key}_warning"]
+        crit = ALERT_THRESHOLDS[f"{key}_critical"]
+        unit_str = f" {unit}" if unit else ""
 
-    if il6 >= ALERT_THRESHOLDS["il6_critical"]:
-        alerts.append({"biomarker": "IL-6", "level": "CRITICAL",
-                        "message": f"IL-6 is {il6} pg/mL (critical: >={ALERT_THRESHOLDS['il6_critical']})"})
-    elif il6 >= ALERT_THRESHOLDS["il6_warning"]:
-        alerts.append({"biomarker": "IL-6", "level": "WARNING",
-                        "message": f"IL-6 is {il6} pg/mL (elevated: >={ALERT_THRESHOLDS['il6_warning']})"})
-
-    if ph <= ALERT_THRESHOLDS["ph_critical"]:
-        alerts.append({"biomarker": "pH", "level": "CRITICAL",
-                        "message": f"pH is {ph} (critical: <={ALERT_THRESHOLDS['ph_critical']})"})
-    elif ph <= ALERT_THRESHOLDS["ph_warning"]:
-        alerts.append({"biomarker": "pH", "level": "WARNING",
-                        "message": f"pH is {ph} (low: <={ALERT_THRESHOLDS['ph_warning']})"})
+        if direction == "high":
+            if val >= crit:
+                alerts.append({"biomarker": name, "level": "CRITICAL",
+                                "message": f"{name} is {val}{unit_str} (critical: >={crit})"})
+            elif val >= warn:
+                alerts.append({"biomarker": name, "level": "WARNING",
+                                "message": f"{name} is {val}{unit_str} (elevated: >={warn})"})
+        else:  # low
+            if val <= crit:
+                alerts.append({"biomarker": name, "level": "CRITICAL",
+                                "message": f"{name} is {val}{unit_str} (critical: <={crit})"})
+            elif val <= warn:
+                alerts.append({"biomarker": name, "level": "WARNING",
+                                "message": f"{name} is {val}{unit_str} (low: <={warn})"})
 
     return alerts
 
