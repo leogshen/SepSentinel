@@ -1,23 +1,7 @@
-# dashboard.py
-# --------------
-# SepSentinel real-time monitoring dashboard built with Streamlit.
-#
-# This provides a browser-based interface where you can:
-#   - View live biomarker trends from a simulated patient
-#   - Manually enter biomarker values using sliders
-#   - See the sepsis risk score update in real time
-#   - Get visual alerts when values become dangerous
-#
-# How to run:
-#   From the terminal: streamlit run sepsentinel/dashboard.py
-#   Or from main.py: select option [4] Launch Dashboard
-#
-# The dashboard opens in your web browser automatically.
+# Streamlit dashboard. Run: streamlit run sepsentinel/dashboard.py
 
 import sys
 import os
-
-# Add the project root to the path so imports work when running with streamlit
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 import streamlit as st
@@ -29,135 +13,50 @@ from sepsentinel.sensor_simulation import simulate_patient_data
 from sepsentinel.risk_model import calculate_sepsis_risk, load_model
 from sepsentinel.alerts import check_biomarker_alerts, check_risk_alert
 
-# --- Page configuration ---
-st.set_page_config(
-    page_title="SepSentinel Dashboard",
-    page_icon="🩺",
-    layout="wide",
-)
-
+st.set_page_config(page_title="SepSentinel Dashboard", page_icon="🩺", layout="wide")
 st.title("SepSentinel - Sepsis Early Detection Dashboard")
 st.caption("Non-invasive wearable biosensor prototype")
 
-# --- Sidebar: Mode selection ---
+# Sidebar
 st.sidebar.header("Mode")
-mode = st.sidebar.radio(
-    "Select input mode:",
-    ["Manual Input", "Patient Simulation"],
-    help="Manual: enter values with sliders. Simulation: auto-generated worsening patient."
-)
+mode = st.sidebar.radio("Select input mode:", ["Manual Input", "Patient Simulation"])
 
-# Check if ML model is available
 model = load_model()
-if model is not None:
-    st.sidebar.success("ML model loaded")
-else:
-    st.sidebar.warning("No ML model found. Using rule-based scoring. Run option [3] in main.py to train.")
+st.sidebar.success("ML model loaded") if model else st.sidebar.warning("No ML model. Rule-based scoring.")
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("**Biomarker Reference**")
 for key, bio in BIOMARKERS.items():
-    st.sidebar.markdown(
-        f"**{bio['name']}**: {bio['normal_range'][0]}-{bio['normal_range'][1]} {bio['unit']}"
-    )
+    st.sidebar.markdown(f"**{bio['name']}**: {bio['normal_range'][0]}-{bio['normal_range'][1]} {bio['unit']}")
 
 
-# =====================================================================
-# MODE 1: Manual Input
-# =====================================================================
-if mode == "Manual Input":
-    st.header("Manual Biomarker Input")
-    st.write("Use the sliders to enter patient biomarker values.")
+def show_alerts(lactate, il6, ph, risk_score):
+    alerts = check_biomarker_alerts(lactate, il6, ph)
+    risk_alert = check_risk_alert(risk_score)
+    if not alerts and risk_alert is None:
+        st.success("All biomarkers within normal range.")
+        return
+    for a in alerts:
+        (st.error if a["level"] == "CRITICAL" else st.warning)(f"{a['level']}: {a['message']}")
+    if risk_alert:
+        (st.error if risk_alert["level"] == "CRITICAL" else st.warning)(f"{risk_alert['level']}: {risk_alert['message']}")
 
-    # Three columns for the three biomarkers
-    col1, col2, col3 = st.columns(3)
 
-    with col1:
-        st.subheader("Lactate")
-        lactate = st.slider(
-            "Lactate (mmol/L)",
-            min_value=0.0, max_value=10.0, value=1.0, step=0.1,
-            help="Normal: 0.5-2.0 mmol/L"
-        )
-        normal_low, normal_high = BIOMARKERS["lactate"]["normal_range"]
-        if lactate < normal_low or lactate > normal_high:
-            st.warning(f"Outside normal range ({normal_low}-{normal_high})")
-        else:
-            st.success("Within normal range")
-
-    with col2:
-        st.subheader("IL-6")
-        il6 = st.slider(
-            "IL-6 (pg/mL)",
-            min_value=0.0, max_value=250.0, value=3.0, step=1.0,
-            help="Normal: 0-7 pg/mL"
-        )
-        normal_low, normal_high = BIOMARKERS["il6"]["normal_range"]
-        if il6 > normal_high:
-            st.warning(f"Outside normal range ({normal_low}-{normal_high})")
-        else:
-            st.success("Within normal range")
-
-    with col3:
-        st.subheader("pH")
-        ph = st.slider(
-            "pH (units)",
-            min_value=6.80, max_value=7.60, value=7.40, step=0.01,
-            help="Normal: 7.35-7.45"
-        )
-        normal_low, normal_high = BIOMARKERS["ph"]["normal_range"]
-        if ph < normal_low or ph > normal_high:
-            st.warning(f"Outside normal range ({normal_low}-{normal_high})")
-        else:
-            st.success("Within normal range")
-
-    # --- Risk Score ---
-    st.markdown("---")
-    risk_score = calculate_sepsis_risk(lactate, il6, ph)
-
-    # Display the risk score with color-coded metric
-    score_col, alert_col = st.columns([1, 2])
-
-    with score_col:
-        st.subheader("Sepsis Risk Score")
-        if risk_score < 30:
-            st.markdown(f"## :green[{risk_score}%]")
-            st.success("LOW RISK")
-        elif risk_score < 60:
-            st.markdown(f"## :orange[{risk_score}%]")
-            st.warning("MODERATE RISK - Monitor closely")
-        else:
-            st.markdown(f"## :red[{risk_score}%]")
-            st.error("HIGH RISK - Immediate attention needed")
-
-    with alert_col:
-        st.subheader("Alerts")
-        alerts = check_biomarker_alerts(lactate, il6, ph)
-        risk_alert = check_risk_alert(risk_score)
-
-        if not alerts and risk_alert is None:
-            st.success("All biomarkers within normal range. No alerts.")
-        else:
-            for alert in alerts:
-                if alert["level"] == "CRITICAL":
-                    st.error(f"CRITICAL: {alert['message']}")
-                else:
-                    st.warning(f"WARNING: {alert['message']}")
-            if risk_alert:
-                if risk_alert["level"] == "CRITICAL":
-                    st.error(f"CRITICAL: {risk_alert['message']}")
-                else:
-                    st.warning(f"WARNING: {risk_alert['message']}")
-
-    # --- Risk gauge bar ---
-    st.markdown("---")
-    fig, ax = plt.subplots(figsize=(10, 1.2))
+def show_risk_score(risk_score):
     if risk_score < 30:
-        color = "#2ecc71"
+        st.markdown(f"## :green[{risk_score}%]")
+        st.success("LOW RISK")
     elif risk_score < 60:
-        color = "#f39c12"
+        st.markdown(f"## :orange[{risk_score}%]")
+        st.warning("MODERATE RISK - Monitor closely")
     else:
-        color = "#e74c3c"
+        st.markdown(f"## :red[{risk_score}%]")
+        st.error("HIGH RISK - Immediate attention needed")
+
+
+def show_risk_gauge(risk_score):
+    fig, ax = plt.subplots(figsize=(10, 1.2))
+    color = "#2ecc71" if risk_score < 30 else "#f39c12" if risk_score < 60 else "#e74c3c"
     ax.barh(0, 100, height=0.5, color="#ecf0f1", edgecolor="#bdc3c7")
     ax.barh(0, risk_score, height=0.5, color=color, edgecolor="none")
     ax.set_xlim(0, 100)
@@ -168,59 +67,78 @@ if mode == "Manual Input":
     plt.close(fig)
 
 
-# =====================================================================
-# MODE 2: Patient Simulation
-# =====================================================================
+# === Manual Input ===
+if mode == "Manual Input":
+    st.header("Manual Biomarker Input")
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.subheader("Lactate")
+        lactate = st.slider("Lactate (mmol/L)", 0.0, 10.0, 1.0, 0.1)
+        lo, hi = BIOMARKERS["lactate"]["normal_range"]
+        st.warning(f"Outside normal ({lo}-{hi})") if lactate < lo or lactate > hi else st.success("Normal")
+
+    with col2:
+        st.subheader("IL-6")
+        il6 = st.slider("IL-6 (pg/mL)", 0.0, 250.0, 3.0, 1.0)
+        lo, hi = BIOMARKERS["il6"]["normal_range"]
+        st.warning(f"Outside normal ({lo}-{hi})") if il6 > hi else st.success("Normal")
+
+    with col3:
+        st.subheader("pH")
+        ph = st.slider("pH (units)", 6.80, 7.60, 7.40, 0.01)
+        lo, hi = BIOMARKERS["ph"]["normal_range"]
+        st.warning(f"Outside normal ({lo}-{hi})") if ph < lo or ph > hi else st.success("Normal")
+
+    st.markdown("---")
+    risk_score = calculate_sepsis_risk(lactate, il6, ph)
+
+    score_col, alert_col = st.columns([1, 2])
+    with score_col:
+        st.subheader("Sepsis Risk Score")
+        show_risk_score(risk_score)
+    with alert_col:
+        st.subheader("Alerts")
+        show_alerts(lactate, il6, ph, risk_score)
+
+    st.markdown("---")
+    show_risk_gauge(risk_score)
+
+# === Patient Simulation ===
 elif mode == "Patient Simulation":
     st.header("Simulated Patient Monitoring")
-    st.write("Simulating a patient whose condition worsens over 60 minutes.")
 
-    # Simulation controls
     sim_col1, sim_col2 = st.columns(2)
     with sim_col1:
         duration = st.slider("Duration (minutes)", 30, 120, 60, step=10)
     with sim_col2:
         interval = st.slider("Reading interval (minutes)", 1, 15, 5)
 
-    # Generate data (use a button to resimulate with new random noise)
     if st.button("Simulate New Patient", type="primary"):
         st.session_state["sim_data"] = simulate_patient_data(duration, interval)
-
-    # Use existing data or generate fresh
     if "sim_data" not in st.session_state:
         st.session_state["sim_data"] = simulate_patient_data(duration, interval)
 
     patient_data = st.session_state["sim_data"]
 
-    # --- Biomarker trend charts ---
     st.subheader("Biomarker Trends")
-
-    chart_col1, chart_col2, chart_col3 = st.columns(3)
-
-    for col, key, color in [
-        (chart_col1, "lactate", "#e74c3c"),
-        (chart_col2, "il6", "#e67e22"),
-        (chart_col3, "ph", "#3498db"),
-    ]:
+    chart_cols = st.columns(3)
+    for col, key, color in zip(chart_cols, ["lactate", "il6", "ph"], ["#e74c3c", "#e67e22", "#3498db"]):
         bio = BIOMARKERS[key]
-        normal_low, normal_high = bio["normal_range"]
-
+        lo, hi = bio["normal_range"]
         fig, ax = plt.subplots(figsize=(6, 4))
-        ax.plot(patient_data["time"], patient_data[key], marker="o",
-                color=color, linewidth=2, markersize=4)
-        ax.axhspan(normal_low, normal_high, color="#2ecc71", alpha=0.15, label="Normal")
+        ax.plot(patient_data["time"], patient_data[key], marker="o", color=color, linewidth=2, markersize=4)
+        ax.axhspan(lo, hi, color="#2ecc71", alpha=0.15, label="Normal")
         ax.set_xlabel("Time (min)")
         ax.set_ylabel(f"{bio['name']} ({bio['unit']})")
         ax.set_title(bio["name"])
         ax.legend(loc="best", fontsize=8)
         ax.grid(True, alpha=0.3)
         plt.tight_layout()
-
         with col:
             st.pyplot(fig)
             plt.close(fig)
 
-    # --- Latest values and risk ---
     st.markdown("---")
     latest_lactate = patient_data["lactate"][-1]
     latest_il6 = patient_data["il6"][-1]
@@ -232,36 +150,17 @@ elif mode == "Patient Simulation":
     val_col3.metric("pH", f"{latest_ph}")
 
     risk_score = calculate_sepsis_risk(latest_lactate, latest_il6, latest_ph)
+    risk_col.metric("Risk Score", f"{risk_score}%")
     if risk_score < 30:
-        risk_col.metric("Risk Score", f"{risk_score}%")
         risk_col.success("LOW RISK")
     elif risk_score < 60:
-        risk_col.metric("Risk Score", f"{risk_score}%")
         risk_col.warning("MODERATE RISK")
     else:
-        risk_col.metric("Risk Score", f"{risk_score}%")
         risk_col.error("HIGH RISK")
 
-    # --- Alerts ---
     st.subheader("Alerts")
-    alerts = check_biomarker_alerts(latest_lactate, latest_il6, latest_ph)
-    risk_alert = check_risk_alert(risk_score)
+    show_alerts(latest_lactate, latest_il6, latest_ph, risk_score)
 
-    if not alerts and risk_alert is None:
-        st.success("All biomarkers within normal range at final reading.")
-    else:
-        for alert in alerts:
-            if alert["level"] == "CRITICAL":
-                st.error(f"CRITICAL: {alert['message']}")
-            else:
-                st.warning(f"WARNING: {alert['message']}")
-        if risk_alert:
-            if risk_alert["level"] == "CRITICAL":
-                st.error(f"CRITICAL: {risk_alert['message']}")
-            else:
-                st.warning(f"WARNING: {risk_alert['message']}")
-
-    # --- Data table ---
     with st.expander("View Raw Data"):
         df = pd.DataFrame({
             "Time (min)": patient_data["time"],
