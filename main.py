@@ -1,18 +1,20 @@
 # main.py
 # --------
-# SepSentinel Prototype 2 - Module 3
+# SepSentinel Prototype 2 - Module 4
 #
 # This is the entry point. It gives you a menu with options:
 #   1. Simulate a worsening patient and see the results
 #   2. Manually enter biomarker values to get a risk score
-#   3. Train (or retrain) the ML model on synthetic data
-#   4. Launch the Streamlit dashboard (opens in browser)
-#   5. Exit
+#   3. Train the ML model (synthetic data)
+#   4. Train the ML model (real dataset from file)
+#   5. Launch the Streamlit dashboard (opens in browser)
+#   6. Exit
 #
 # How to run:
 #   In PyCharm, right-click this file and select "Run 'main'"
 #   Or from the terminal: python main.py
 
+import os
 import subprocess
 import sys
 
@@ -21,6 +23,7 @@ from sepsentinel.sensor_simulation import simulate_patient_data
 from sepsentinel.visualization import plot_all_biomarkers, plot_risk_gauge
 from sepsentinel.risk_model import calculate_sepsis_risk, train_model, load_model
 from sepsentinel.data_generator import generate_dataset, save_dataset
+from sepsentinel.data_loader import load_real_dataset
 from sepsentinel.alerts import (
     check_biomarker_alerts,
     check_risk_alert,
@@ -99,9 +102,9 @@ def run_manual_input():
     plot_risk_gauge(risk_score)
 
 
-def run_training():
+def run_training_synthetic():
     """Option 3: Generate synthetic data and train the ML model."""
-    print("\n--- Training ML Model ---\n")
+    print("\n--- Training ML Model (Synthetic Data) ---\n")
 
     # Step 1: Generate synthetic dataset
     print("  Step 1: Generating synthetic patient dataset...")
@@ -115,17 +118,74 @@ def run_training():
     model, metrics = train_model(df)
 
     # Step 3: Show results
-    print(f"\n  Training complete!")
-    print(f"    - Training set: {metrics['train_size']} patients")
-    print(f"    - Test set:     {metrics['test_size']} patients")
-    print(f"    - Accuracy:     {metrics['accuracy'] * 100:.1f}%")
+    _print_training_results(metrics, data_source="synthetic")
+
+
+def run_training_real():
+    """Option 4: Train the ML model from a real dataset file."""
+    print("\n--- Training ML Model (Real Dataset) ---\n")
+
+    # List available files in data/ folder
+    data_dir = "data"
+    if os.path.exists(data_dir):
+        files = [f for f in os.listdir(data_dir)
+                 if f.endswith((".csv", ".xlsx", ".xls"))]
+        if files:
+            print("  Files found in data/ folder:")
+            for i, f in enumerate(files, 1):
+                print(f"    [{i}] {f}")
+            print()
+
+    filepath = input("  Enter path to dataset file (or filename in data/): ").strip()
+
+    # If just a filename, look in data/ folder
+    if not os.path.sep in filepath and not os.path.exists(filepath):
+        filepath = os.path.join("data", filepath)
+
+    if not os.path.exists(filepath):
+        print(f"\n  Error: File not found: {filepath}")
+        return
+
+    # Load and auto-detect columns
+    try:
+        df, report = load_real_dataset(filepath)
+    except ValueError as e:
+        print(f"\n  Error: {e}")
+        return
+
+    if len(df) < 20:
+        print(f"\n  Error: Dataset too small ({len(df)} rows). Need at least 20 rows.")
+        return
+
+    # Train the model using available biomarkers
+    print(f"\n  Training on features: {report['biomarkers_available']}")
+    model, metrics = train_model(df, feature_columns=report["biomarkers_available"])
+
+    # Show results
+    _print_training_results(metrics, data_source=os.path.basename(filepath))
+
+
+def _print_training_results(metrics, data_source="unknown"):
+    """Print training results in a consistent format."""
+    print(f"\n  Training complete! (data source: {data_source})")
+    print(f"    - Features used: {metrics['feature_columns']}")
+    print(f"    - Training set:  {metrics['train_size']} patients")
+    print(f"    - Test set:      {metrics['test_size']} patients")
+    print(f"    - Accuracy:      {metrics['accuracy'] * 100:.1f}%")
+
+    # Cross-validation results (more honest accuracy estimate)
+    if "cv_accuracy_mean" in metrics:
+        cv_mean = metrics["cv_accuracy_mean"] * 100
+        cv_std = metrics["cv_accuracy_std"] * 100
+        print(f"    - Cross-val:     {cv_mean:.1f}% (+/- {cv_std:.1f}%)")
+
     print(f"\n  Classification Report:")
     print(metrics["report"])
     print("  Model saved. It will be used automatically for future risk scoring.")
 
 
 def run_dashboard():
-    """Option 4: Launch the Streamlit dashboard in the browser."""
+    """Option 5: Launch the Streamlit dashboard in the browser."""
     print("\n--- Launching SepSentinel Dashboard ---")
     print("  Opening in your web browser...")
     print("  Press Ctrl+C in the terminal to stop the dashboard.\n")
@@ -161,24 +221,27 @@ def main():
     print("\n  What would you like to do?\n")
     print("  [1] Simulate a worsening patient (auto-generated data)")
     print("  [2] Enter biomarker values manually")
-    print("  [3] Train the ML model")
-    print("  [4] Launch Dashboard (opens in browser)")
-    print("  [5] Exit")
+    print("  [3] Train the ML model (synthetic data)")
+    print("  [4] Train the ML model (real dataset file)")
+    print("  [5] Launch Dashboard (opens in browser)")
+    print("  [6] Exit")
 
-    choice = input("\n  Enter your choice (1-5): ").strip()
+    choice = input("\n  Enter your choice (1-6): ").strip()
 
     if choice == "1":
         run_simulation()
     elif choice == "2":
         run_manual_input()
     elif choice == "3":
-        run_training()
+        run_training_synthetic()
     elif choice == "4":
-        run_dashboard()
+        run_training_real()
     elif choice == "5":
+        run_dashboard()
+    elif choice == "6":
         print("\n  Goodbye!")
     else:
-        print("\n  Invalid choice. Please enter 1, 2, 3, 4, or 5.")
+        print("\n  Invalid choice. Please enter 1-6.")
 
 
 if __name__ == "__main__":

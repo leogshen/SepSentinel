@@ -6,7 +6,7 @@ A prototype for non-invasive early sepsis detection using simulated wearable bio
 
 SepSentinel is a concept for a wearable patch that monitors biomarkers in real time to detect sepsis early. This repository contains the software prototype that demonstrates how biomarker data flows from sensors to risk scoring.
 
-## Current Status: Module 3
+## Current Status: Module 4
 
 ### Module 1 - Foundation
 - Biomarker definitions for Lactate, IL-6, and pH
@@ -22,12 +22,16 @@ SepSentinel is a concept for a wearable patch that monitors biomarkers in real t
 - Risk score gauge visualization
 
 ### Module 3 - Dashboard and Alerts
-- Streamlit web dashboard with two modes:
-  - **Manual Input**: sliders for Lactate, IL-6, pH with live risk scoring
-  - **Patient Simulation**: auto-generated worsening patient with trend charts
+- Streamlit web dashboard with Manual Input and Patient Simulation modes
 - Alert system with WARNING and CRITICAL levels per biomarker
 - Color-coded risk gauge and status indicators
-- Raw data table viewer in simulation mode
+
+### Module 4 - Real Dataset Integration
+- Flexible data loader for CSV/Excel files with auto-column detection
+- Train on real Kaggle datasets (no CITI training required)
+- Cross-validation for honest accuracy estimates
+- Model config saves which features were used for training
+- See [DATASETS.md](DATASETS.md) for data sources and citations
 
 ## Project Structure
 
@@ -41,9 +45,11 @@ sepsentinel/
     alerts.py              # Alert system with WARNING/CRITICAL thresholds
     dashboard.py           # Streamlit web dashboard
     data_generator.py      # Synthetic training data generator
+    data_loader.py         # Real dataset loader with auto-column detection
 main.py                    # Entry point - run this file
-data/                      # Generated training datasets
+data/                      # Datasets (synthetic and real)
 models/                    # Trained ML model files
+DATASETS.md                # Dataset sources and citations
 README.md                  # This file
 ```
 
@@ -68,9 +74,10 @@ python main.py
 
 1. **Simulate a worsening patient** - auto-generated data with plots
 2. **Enter biomarker values manually** - type in values, get risk score
-3. **Train the ML model** - generate synthetic data and train
-4. **Launch Dashboard** - opens Streamlit dashboard in your browser
-5. **Exit**
+3. **Train the ML model (synthetic)** - generate synthetic data and train
+4. **Train the ML model (real data)** - load a CSV/Excel file and train
+5. **Launch Dashboard** - opens Streamlit dashboard in your browser
+6. **Exit**
 
 ### Running the Dashboard Directly
 
@@ -99,5 +106,6 @@ streamlit run sepsentinel/dashboard.py
 
 - **Module 1** - Foundation (biomarkers, simulation, visualization, dummy scoring)
 - **Module 2** - Machine learning risk model trained on synthetic data
-- **Module 3** - Real-time dashboard with alerts (current)
-- **Module 4** - Multi-patient tracking and database integration
+- **Module 3** - Real-time dashboard with alerts
+- **Module 4** - Real dataset integration and flexible data loader (current)
+- **Module 5** - Multi-patient tracking and database integration
