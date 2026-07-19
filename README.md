@@ -1,56 +1,112 @@
 # SepSentinel
 
-A prototype for non-invasive early sepsis detection using simulated wearable biosensor data.
+A wearable multimodal platform for early sepsis detection using continuous biosensor data and machine learning.
 
 ## What is SepSentinel?
 
-SepSentinel is a concept for a wearable patch that monitors biomarkers in real time to detect sepsis early. This repository contains the software prototype that demonstrates how biomarker data flows from sensors to risk scoring.
+SepSentinel is a wearable patch system that monitors physiological signals and measures interstitial fluid biomarkers in situ via microneedle-integrated electrochemical sensors. No fluid is extracted or transported — the sensors contact ISF directly within the skin. This repository contains the software prototype: data pipeline, ML models, and monitoring dashboard.
 
-## Current Status: Module 4
+### Hardware Concept
 
-### Module 1 - Foundation
-- Biomarker definitions for Lactate, IL-6, and pH
-- Simulated sensor data showing a worsening patient over 60 minutes
-- Visualization of biomarker trends using matplotlib
-- Rule-based risk scoring function (0-100%)
+```
+Microneedle Patch (inserted in skin)        Physiological Sensors
+         |                                         |
+Electrochemical sensors measure               HR, RR, Temp, SpO2
+analytes in ISF (no fluid extraction)              |
+         |                                         |
+  pH     (potentiometric — TBD)                    |
+  Lactate (amperometric — TBD)                     |
+  IL-6   (E-AB, three-electrode, SWV)              |
+         |                                         |
+         +---------- Potentiostat -----------------+
+                         |
+                  Analog Front End / ADC
+                         |
+                   Microcontroller
+                (signal processing + calibration)
+                         |
+                      Bluetooth
+                         |
+                       Phone
+                         |
+                   ML Inference
+                         |
+                 Sepsis Risk Score
+```
 
-### Module 2 - Machine Learning
-- Synthetic dataset generator (500 labeled patient records)
-- Logistic regression ML model (99% accuracy on synthetic data)
-- Model persistence (save/load trained models)
-- Terminal menu with manual biomarker input
-- Risk score gauge visualization
+The IL-6 sensor uses electrochemical aptamer-based (E-AB) sensing with a three-electrode system (WE/RE/CE) in direct ISF contact. Lactate and pH sensor hardware remains modular; likely electrochemical but final implementations may differ. The software pipeline receives processed biomarker values regardless of sensing modality.
 
-### Module 3 - Dashboard and Alerts
-- Streamlit web dashboard with Manual Input and Patient Simulation modes
-- Alert system with WARNING and CRITICAL levels per biomarker
-- Color-coded risk gauge and status indicators
+## Input Signals
 
-### Module 4 - Real Dataset Integration
-- Flexible data loader for CSV/Excel files with auto-column detection
-- Train on real Kaggle datasets (no CITI training required)
-- Cross-validation for honest accuracy estimates
-- Model config saves which features were used for training
-- See [DATASETS.md](DATASETS.md) for data sources and citations
+7 features measured approximately every 5 minutes:
+
+| Signal | Unit | Normal Range | Source |
+|--------|------|-------------|--------|
+| Heart Rate | bpm | 60-100 | PPG sensor |
+| Respiratory Rate | breaths/min | 12-20 | Impedance/accelerometer |
+| Temperature | C | 36.1-37.2 | Thermistor |
+| SpO2 | % | 95-100 | Pulse oximetry |
+| pH | pH units | 7.35-7.45 | ISF, potentiometric (TBD) |
+| Lactate | mmol/L | 0.5-2.0 | ISF, amperometric (TBD) |
+| IL-6 | pg/mL | 0-7 | ISF, E-AB sensor (SWV) |
+
+## Model Architecture
+
+The system supports multiple interchangeable model architectures through a shared `SepsisModel` interface:
+
+| Model | Type | Input | Status |
+|-------|------|-------|--------|
+| Random Forest | Flat baseline | Flattened feature vector | Implemented |
+| XGBoost | Flat baseline | Flattened feature vector | Module 7 |
+| TCN | Sequential | (batch, timesteps, 7) | Module 7 |
+| Transformer | Sequential | (batch, timesteps, 7) | Module 7 |
+
+Sequential models use a rolling history window (configurable: 30min to 4hrs at 5-min intervals) to capture temporal patterns in the signals.
+
+The encoder is separated from the prediction head, enabling future dual-branch architectures:
+- Physiological branch (HR, RR, Temp, SpO2) with its own encoder
+- Biomarker branch (pH, Lactate, IL-6) with its own encoder
+- Feature fusion before the final prediction
+
+### Output
+
+- Probability of sepsis: 0.0 to 1.0
+- Risk score: 0-100%
+- Risk category: Low / Medium / High
 
 ## Project Structure
 
 ```
 sepsentinel/
-    __init__.py            # Makes this a Python package
-    biomarkers.py          # Biomarker definitions and metadata
-    sensor_simulation.py   # Simulated patient data generation
-    risk_model.py          # ML-based sepsis risk score (with rule-based fallback)
-    visualization.py       # Matplotlib plotting functions and risk gauge
-    alerts.py              # Alert system with WARNING/CRITICAL thresholds
-    dashboard.py           # Streamlit web dashboard
-    data_generator.py      # Synthetic training data generator
-    data_loader.py         # Real dataset loader with auto-column detection
-main.py                    # Entry point - run this file
-data/                      # Datasets (synthetic and real)
-models/                    # Trained ML model files
-DATASETS.md                # Dataset sources and citations
-README.md                  # This file
+    config/
+        signals.py            # 7 signal definitions (physiological + electrochemical)
+        thresholds.py         # Alert thresholds (WARNING / CRITICAL)
+    data/
+        synthetic.py          # Synthetic data generator
+        sequences.py          # Sliding window / tensor construction (Module 6)
+        preprocessing.py      # Normalization, imputation (Module 6)
+        mimic.py              # MIMIC-IV loader (Module 9)
+    models/
+        base.py               # SepsisModel ABC + SequenceEncoder ABC
+        registry.py           # Model factory
+        random_forest.py      # RF baseline
+        xgboost_model.py      # XGBoost baseline (Module 7)
+        tcn.py                # Temporal Convolutional Network (Module 7)
+        transformer.py        # Transformer encoder (Module 7)
+        evaluation.py         # Metrics and comparison (Module 7)
+    dashboard/
+        app.py                # Streamlit web dashboard
+        components.py         # Reusable UI components
+    hardware/
+        bluetooth.py          # BLE data reception (Module 10)
+    alerts.py                 # Alert checking logic
+    visualization.py          # Matplotlib plots
+    simulation.py             # 7-signal patient simulation
+main.py                       # CLI entry point
+app.py                        # Streamlit Cloud entry point
+data/                         # Datasets
+models/                       # Saved model artifacts
+results/                      # Evaluation plots
 ```
 
 ## How to Run
@@ -58,54 +114,64 @@ README.md                  # This file
 ### Requirements
 
 - Python 3.10+
-- matplotlib (`pip install matplotlib`)
-- scikit-learn (`pip install scikit-learn`)
-- pandas (`pip install pandas`)
-- streamlit (`pip install streamlit`)
+- `pip install -r requirements.txt`
 
 ### Quick Start
 
 ```bash
-pip install matplotlib scikit-learn pandas streamlit
+pip install -r requirements.txt
 python main.py
 ```
 
 ### Menu Options
 
-1. **Simulate a worsening patient** - auto-generated data with plots
-2. **Enter biomarker values manually** - type in values, get risk score
-3. **Train the ML model (synthetic)** - generate synthetic data and train
-4. **Train the ML model (real data)** - load a CSV/Excel file and train
-5. **Launch Dashboard** - opens Streamlit dashboard in your browser
-6. **Exit**
+1. **Simulate a worsening patient** - 7-signal simulation with plots
+2. **Enter signal values manually** - type values, get risk score
+3. **Train Random Forest** - train on synthetic 7-feature data
+4. **Launch Dashboard** - opens Streamlit dashboard
+5. **Exit**
 
 ### Running the Dashboard Directly
 
 ```bash
-streamlit run sepsentinel/dashboard.py
+streamlit run sepsentinel/dashboard/app.py
 ```
-
-## Biomarkers
-
-| Biomarker | Unit    | Normal Range  | Role in Sepsis                  |
-|-----------|---------|---------------|---------------------------------|
-| Lactate   | mmol/L  | 0.5 - 2.0    | Tissue oxygen / perfusion       |
-| IL-6      | pg/mL   | 0 - 7         | Immune response / inflammation  |
-| pH        | pH units| 7.35 - 7.45   | Acid-base balance               |
 
 ## Alert Thresholds
 
-| Biomarker | Warning       | Critical      |
-|-----------|---------------|---------------|
-| Lactate   | >= 2.0 mmol/L | >= 4.0 mmol/L |
-| IL-6      | >= 7 pg/mL    | >= 50 pg/mL   |
-| pH        | <= 7.35       | <= 7.25       |
-| Risk Score| >= 30%        | >= 60%        |
+| Signal | Warning | Critical |
+|--------|---------|----------|
+| Heart Rate | >100 or <50 bpm | >120 or <40 bpm |
+| Respiratory Rate | >22 or <10 br/min | >30 or <8 br/min |
+| Temperature | >38.0 or <35.5 C | >39.0 or <35.0 C |
+| SpO2 | <94% | <90% |
+| pH | <=7.35 | <=7.25 |
+| Lactate | >=2.0 mmol/L | >=4.0 mmol/L |
+| IL-6 | >=7 pg/mL | >=50 pg/mL |
+| Risk Score | >=30% | >=60% |
+
+## Data Strategy
+
+**Current**: Synthetic data for pipeline development and architecture testing. Not for clinical validation.
+
+**Target**: MIMIC-IV Clinical Database and MIMIC-IV Waveform Database (pending PhysioNet credentialed access). The pipeline is designed so synthetic data can be swapped for MIMIC data with minimal code changes.
+
+See [DATASETS.md](DATASETS.md) for details.
 
 ## Roadmap
 
-- **Module 1** - Foundation (biomarkers, simulation, visualization, dummy scoring)
-- **Module 2** - Machine learning risk model trained on synthetic data
-- **Module 3** - Real-time dashboard with alerts
-- **Module 4** - Real dataset integration and flexible data loader (current)
-- **Module 5** - Multi-patient tracking and database integration
+### Completed
+- **v1.0-v1.1** - Proof of concept (3 biomarkers, RF, Streamlit dashboard)
+- **Module 5** - Architecture refactor (7 signals, model interfaces, new package structure)
+
+### Planned
+- **Module 6** - Time-series data pipeline (episode generator, sliding windows, preprocessing)
+- **Module 7** - Model implementation (XGBoost, TCN, Transformer) and comparison
+- **Module 8** - Dashboard v2 (live temporal plots, model selector, alert history)
+- **Module 9** - MIMIC-IV integration
+- **Module 10** - Hardware integration (Bluetooth, real-time inference, multi-patient)
+
+## References
+
+- SepAI: "SepAl: Sepsis Alerts on Low Power Wearables With Digital Biomarkers and On-Device Tiny Machine Learning" - temporal learning and feature fusion architecture
+- MIMIC-IV: Johnson et al., PhysioNet

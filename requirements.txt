@@ -2,3 +2,6 @@ matplotlib
 scikit-learn
 pandas
 streamlit
+numpy
+torch
+xgboost

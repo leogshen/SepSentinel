@@ -1,36 +1,65 @@
-# Matplotlib plotting for biomarker trends and risk gauge.
+# Matplotlib plotting for signal trends and risk gauge.
 
 import matplotlib.pyplot as plt
-from sepsentinel.biomarkers import BIOMARKERS
+
+from sepsentinel.config.signals import ALL_SIGNALS, PHYSIOLOGICAL_FEATURES, BIOMARKER_FEATURES
+
+SIGNAL_COLORS = {
+    "heart_rate": "#e74c3c",
+    "respiratory_rate": "#e67e22",
+    "temperature": "#f1c40f",
+    "spo2": "#3498db",
+    "ph": "#2ecc71",
+    "lactate": "#9b59b6",
+    "il6": "#1abc9c",
+}
 
 
-def plot_biomarker(time_points, values, biomarker_key):
-    """Plot a single biomarker over time with normal range shading."""
-    bio = BIOMARKERS[biomarker_key]
-    normal_low, normal_high = bio["normal_range"]
+def plot_signal(time_points, values, signal_key, ax=None):
+    """Plot a single signal over time with normal range shading."""
+    sig = ALL_SIGNALS[signal_key]
+    lo, hi = sig["normal_range"]
+    color = SIGNAL_COLORS.get(signal_key, "#333333")
 
-    plt.figure(figsize=(8, 4))
-    plt.plot(time_points, values, marker="o", color="#e74c3c", linewidth=2, label=bio["name"])
-    plt.axhspan(normal_low, normal_high, color="#2ecc71", alpha=0.15, label="Normal Range")
-    plt.xlabel("Time (minutes)")
-    plt.ylabel(f"{bio['name']} ({bio['unit']})")
-    plt.title(f"SepSentinel - {bio['name']} Over Time")
-    plt.legend(loc="best")
-    plt.grid(True, alpha=0.3)
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(8, 4))
+
+    ax.plot(time_points, values, marker="o", color=color, linewidth=2,
+            markersize=3, label=sig["name"])
+    ax.axhspan(lo, hi, color="#2ecc71", alpha=0.12, label="Normal")
+    ax.set_xlabel("Time (min)")
+    ax.set_ylabel(f"{sig['name']} ({sig['unit']})")
+    ax.set_title(sig["name"])
+    ax.legend(loc="best", fontsize=8)
+    ax.grid(True, alpha=0.3)
+    return ax
+
+
+def plot_all_signals(patient_data, show=True):
+    """Plot all 7 signals in a 2-row grid."""
+    keys = PHYSIOLOGICAL_FEATURES + BIOMARKER_FEATURES
+    fig, axes = plt.subplots(2, 4, figsize=(20, 8))
+    axes = axes.flatten()
+
+    for i, key in enumerate(keys):
+        plot_signal(patient_data["time"], patient_data[key], key, ax=axes[i])
+
+    # Hide the 8th subplot (2x4 grid, 7 signals)
+    axes[7].set_visible(False)
+
+    fig.suptitle("SepSentinel - Patient Signals", fontsize=14, fontweight="bold")
     plt.tight_layout()
+    if show:
+        plt.show()
+    return fig
 
 
-def plot_all_biomarkers(patient_data):
-    """Plot all three biomarkers as separate charts."""
-    plot_biomarker(patient_data["time"], patient_data["lactate"], "lactate")
-    plot_biomarker(patient_data["time"], patient_data["il6"], "il6")
-    plot_biomarker(patient_data["time"], patient_data["ph"], "ph")
-    plt.show()
-
-
-def plot_risk_gauge(risk_score):
+def plot_risk_gauge(risk_score, ax=None, show=True):
     """Display risk score as a color-coded horizontal bar."""
-    fig, ax = plt.subplots(figsize=(8, 2))
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(8, 2))
+    else:
+        fig = ax.figure
 
     if risk_score < 30:
         color, label = "#2ecc71", "LOW RISK"
@@ -48,4 +77,6 @@ def plot_risk_gauge(risk_score):
     ax.set_xlabel("Sepsis Risk Score (%)")
     ax.set_title("SepSentinel - Risk Assessment")
     plt.tight_layout()
-    plt.show()
+    if show:
+        plt.show()
+    return fig
