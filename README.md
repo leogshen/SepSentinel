@@ -70,9 +70,10 @@ Predicts continuous sepsis probability from biomarker concentrations + physiolog
 | Model | Type | Input | Status |
 |-------|------|-------|--------|
 | Random Forest | Flat baseline | Flattened feature vector | Implemented |
-| XGBoost | Flat baseline | Flattened feature vector | Module 7 |
-| TCN | Sequential | (batch, timesteps, n_features) | Module 7 |
-| Transformer | Sequential | (batch, timesteps, n_features) | Module 7 |
+| XGBoost | Flat baseline | Flattened feature vector | Implemented |
+| GRU | Sequential | (batch, timesteps, n_features) | Implemented |
+| TCN | Sequential | (batch, timesteps, n_features) | Implemented |
+| Transformer | Sequential | (batch, timesteps, n_features) | Implemented |
 
 Input feature count is dynamic (staged development):
 - **Stage 1**: HR, SpO2, Temp, RR (4 features - PhysioNet Challenge)
@@ -107,10 +108,12 @@ sepsentinel/
         base.py               # SepsisModel ABC + SequenceEncoder ABC
         registry.py           # Model factory
         random_forest.py      # RF baseline
-        xgboost_model.py      # XGBoost baseline (Module 7)
-        tcn.py                # TCN (Module 7)
-        transformer.py        # Transformer encoder (Module 7)
-        evaluation.py         # Metrics and comparison (Module 7)
+        xgboost_model.py      # XGBoost baseline
+        gru.py                # GRU sequential model
+        tcn.py                # TCN (causal dilated convolutions)
+        transformer.py        # Transformer (causal self-attention)
+        training.py           # Training loop (early stopping, checkpointing)
+        evaluation.py         # Test-set metrics and comparison
     dashboard/
         app.py                # Streamlit web dashboard
         components.py         # Reusable UI components
@@ -119,6 +122,7 @@ sepsentinel/
     alerts.py                 # Alert checking logic
     visualization.py          # Matplotlib plots
     simulation.py             # 7-signal patient simulation
+train_stage1.py               # Train & compare all Stage 1 models
 main.py                       # CLI entry point
 app.py                        # Streamlit Cloud entry point
 data/                         # Datasets
@@ -183,12 +187,9 @@ See [DATASETS.md](DATASETS.md) for full dataset strategy.
 - **v1.0-v1.1** - Proof of concept (3 biomarkers, RF, Streamlit dashboard)
 - **Module 5** - Architecture refactor (7 signals, model interfaces, new package structure)
 - **Module 6** - Time-series data pipeline (episode generator, sliding windows, preprocessing)
-
-### In Progress
-- **PhysioNet integration** - Load Challenge dataset, train Model B Stage 1
+- **Stage 1 Model B** - 5 models (RF, XGBoost, GRU, TCN, Transformer) trained and compared on PhysioNet Challenge data. Transformer best at AUROC 0.793. See [RESULTS.md](RESULTS.md).
 
 ### Planned
-- **Module 7** - Model implementation (XGBoost, TCN, Transformer) and comparison
 - **Module 8** - Dashboard v2 (live temporal plots, model selector, alert history)
 - **Module 9** - MIMIC-IV integration
 - **Module 10** - Hardware integration (Bluetooth, real-time inference, multi-patient)

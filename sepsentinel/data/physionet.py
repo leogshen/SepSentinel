@@ -31,11 +31,12 @@ def load_physionet(filepath=None, stage=1, min_length=6):
         min_length: Minimum episode length in hours. Shorter episodes are dropped.
 
     Returns:
-        List of episode dicts matching generate_episodes() format:
+        List of episode dicts:
             patient_id: str
             time: np.ndarray (n_steps,) in hours
             signals: np.ndarray (n_steps, n_features)
-            label: 0 or 1 (1 if sepsis occurs at any point)
+            labels: np.ndarray (n_steps,) per-timestep SepsisLabel (0 or 1)
+            label: int, patient-level label (1 if any timestep is septic)
             onset_step: int index of first SepsisLabel=1, or None
             features: list of feature names used
     """
@@ -72,11 +73,11 @@ def load_physionet(filepath=None, stage=1, min_length=6):
             if col and col in group.columns:
                 signal_data[:, j] = group[col].values
 
-        # Determine label and onset
-        sepsis_labels = group["SepsisLabel"].values
-        if sepsis_labels.max() > 0:
+        # Per-timestep and patient-level labels
+        per_step_labels = group["SepsisLabel"].values.astype(np.float32)
+        if per_step_labels.max() > 0:
             label = 1
-            onset_step = int(np.argmax(sepsis_labels > 0))
+            onset_step = int(np.argmax(per_step_labels > 0))
         else:
             label = 0
             onset_step = None
@@ -85,6 +86,7 @@ def load_physionet(filepath=None, stage=1, min_length=6):
             "patient_id": f"PN-{int(pid):05d}",
             "time": time_hours,
             "signals": signal_data,
+            "labels": per_step_labels,
             "label": label,
             "onset_step": onset_step,
             "features": features,

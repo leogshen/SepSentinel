@@ -1,155 +1,157 @@
-# Preprocessing utilities for signal data.
+# Preprocessing for variable-length patient sequences.
 #
-# Designed to work identically on synthetic and MIMIC data.
-# Fit scalers on training data, then transform val/test.
+# - Forward-fill missing values within each patient, then fill remaining NaNs
+#   with training-set feature means.
+# - Z-score normalization fitted on training data only.
+# - Outlier clipping to physiologically plausible ranges.
+# - Extensible: adding features requires only updating the feature list and
+#   clip ranges — the pipeline handles arbitrary feature counts.
 
 import numpy as np
+import torch
+from torch.nn.utils.rnn import pad_sequence
+
+# Physiological clip ranges (min, max) to remove sensor artifacts.
+CLIP_RANGES = {
+    "heart_rate": (20, 250),
+    "spo2": (50, 100),
+    "temperature": (30, 43),
+    "respiratory_rate": (2, 60),
+    "lactate": (0, 30),
+    "ph": (6.5, 7.8),
+    "il6": (0, 1000),
+}
 
 
-class StandardScaler:
-    """Z-score normalization. Fits per-feature mean/std from training data."""
+class SequencePreprocessor:
+    """Fits normalization on training episodes, transforms all splits.
 
-    def __init__(self):
+    Handles variable-length sequences. Each episode's signals array
+    is (seq_len, n_features).
+    """
+
+    def __init__(self, features, clip=True):
+        """
+        Args:
+            features: List of feature names (e.g. ["heart_rate", "spo2", ...]).
+            clip: Whether to clip values to physiological ranges.
+        """
+        self.features = features
+        self.clip = clip
         self.mean = None
         self.std = None
+        self.fill_values = None
 
-    def fit(self, X):
-        """Compute mean and std from X. X shape: (n_samples, timesteps, features) or (n_samples, features)."""
-        if X.ndim == 3:
-            # Flatten samples and timesteps for per-feature stats
-            flat = X.reshape(-1, X.shape[-1])
-        else:
-            flat = X
-        self.mean = flat.mean(axis=0)
-        self.std = flat.std(axis=0)
-        self.std[self.std == 0] = 1.0  # avoid division by zero
+    def fit(self, episodes):
+        """Compute normalization stats from training episodes."""
+        all_values = np.concatenate([e["signals"] for e in episodes], axis=0)
+
+        # Compute fill values (per-feature mean of non-NaN values)
+        self.fill_values = np.nanmean(all_values, axis=0)
+
+        # Impute for stats computation
+        filled = self._impute_array(all_values)
+        if self.clip:
+            filled = self._clip_array(filled)
+
+        self.mean = filled.mean(axis=0)
+        self.std = filled.std(axis=0)
+        self.std[self.std == 0] = 1.0
         return self
 
-    def transform(self, X):
-        """Apply normalization."""
-        return (X - self.mean) / self.std
+    def transform(self, episodes):
+        """Apply preprocessing to a list of episodes.
 
-    def fit_transform(self, X):
-        return self.fit(X).transform(X)
+        Returns list of dicts with:
+            signals: np.ndarray (seq_len, n_features) — preprocessed
+            labels: np.ndarray (seq_len,) — per-timestep SepsisLabel
+            length: int — original sequence length
+            patient_id: str
+            label: int — patient-level label
+        """
+        results = []
+        for ep in episodes:
+            signals = ep["signals"].copy()
 
-    def inverse_transform(self, X):
-        return X * self.std + self.mean
+            # Forward-fill within patient
+            signals = self._forward_fill(signals)
+            # Fill any remaining NaNs with training means
+            signals = self._impute_array(signals)
+            # Clip
+            if self.clip:
+                signals = self._clip_array(signals)
+            # Normalize
+            signals = (signals - self.mean) / self.std
 
+            results.append({
+                "signals": signals.astype(np.float32),
+                "labels": ep["labels"].astype(np.float32),
+                "length": len(signals),
+                "patient_id": ep["patient_id"],
+                "label": ep["label"],
+            })
+        return results
 
-class MinMaxScaler:
-    """Scale features to [0, 1] range."""
+    def fit_transform(self, episodes):
+        return self.fit(episodes).transform(episodes)
 
-    def __init__(self):
-        self.min = None
-        self.range = None
-
-    def fit(self, X):
-        if X.ndim == 3:
-            flat = X.reshape(-1, X.shape[-1])
-        else:
-            flat = X
-        self.min = flat.min(axis=0)
-        max_val = flat.max(axis=0)
-        self.range = max_val - self.min
-        self.range[self.range == 0] = 1.0
-        return self
-
-    def transform(self, X):
-        return (X - self.min) / self.range
-
-    def fit_transform(self, X):
-        return self.fit(X).transform(X)
-
-    def inverse_transform(self, X):
-        return X * self.range + self.min
-
-
-def get_scaler(method="zscore"):
-    """Factory for scalers."""
-    if method == "zscore":
-        return StandardScaler()
-    if method == "minmax":
-        return MinMaxScaler()
-    raise ValueError(f"Unknown scaling method: {method}. Use 'zscore' or 'minmax'.")
-
-
-def impute_missing(X, method="forward_fill"):
-    """Fill NaN values in signal data.
-
-    Args:
-        X: np.ndarray, shape (n_samples, timesteps, features) or (timesteps, features)
-        method: "forward_fill" or "mean"
-
-    Returns:
-        X with NaNs replaced.
-    """
-    X = X.copy()
-
-    if method == "forward_fill":
-        if X.ndim == 3:
-            for i in range(X.shape[0]):
-                _forward_fill_2d(X[i])
-        else:
-            _forward_fill_2d(X)
-
-    elif method == "mean":
-        if X.ndim == 3:
-            flat = X.reshape(-1, X.shape[-1])
-            col_means = np.nanmean(flat, axis=0)
-            for j in range(X.shape[-1]):
-                mask = np.isnan(X[:, :, j])
-                X[:, :, j][mask] = col_means[j]
-        else:
-            col_means = np.nanmean(X, axis=0)
-            for j in range(X.shape[-1]):
-                mask = np.isnan(X[:, j])
-                X[:, j][mask] = col_means[j]
-    else:
-        raise ValueError(f"Unknown imputation method: {method}")
-
-    return X
-
-
-def _forward_fill_2d(arr):
-    """Forward-fill NaNs along axis 0 of a 2D array in place."""
-    for j in range(arr.shape[1]):
-        for i in range(1, arr.shape[0]):
-            if np.isnan(arr[i, j]):
-                arr[i, j] = arr[i - 1, j]
-    # If the first value is NaN, back-fill from the next valid value
-    for j in range(arr.shape[1]):
-        if np.isnan(arr[0, j]):
+    def _forward_fill(self, arr):
+        """Forward-fill NaNs along axis 0."""
+        arr = arr.copy()
+        for j in range(arr.shape[1]):
             for i in range(1, arr.shape[0]):
-                if not np.isnan(arr[i, j]):
-                    arr[0:i, j] = arr[i, j]
-                    break
+                if np.isnan(arr[i, j]):
+                    arr[i, j] = arr[i - 1, j]
+            # Back-fill if first value is NaN
+            if np.isnan(arr[0, j]):
+                for i in range(1, arr.shape[0]):
+                    if not np.isnan(arr[i, j]):
+                        arr[:i, j] = arr[i, j]
+                        break
+        return arr
+
+    def _impute_array(self, arr):
+        """Replace remaining NaNs with training-set feature means."""
+        arr = arr.copy()
+        if self.fill_values is not None:
+            for j in range(arr.shape[1]):
+                mask = np.isnan(arr[:, j])
+                arr[mask, j] = self.fill_values[j]
+        return arr
+
+    def _clip_array(self, arr):
+        """Clip values to physiological ranges."""
+        arr = arr.copy()
+        for j, feat in enumerate(self.features):
+            if feat in CLIP_RANGES:
+                lo, hi = CLIP_RANGES[feat]
+                arr[:, j] = np.clip(arr[:, j], lo, hi)
+        return arr
 
 
-def preprocess_splits(splits, scaler_method="zscore", impute_method="forward_fill"):
-    """Convenience: impute and normalize train/val/test splits.
-
-    Fits scaler on training data only, then transforms all splits.
+def collate_fn(batch):
+    """Collate variable-length sequences into padded tensors.
 
     Args:
-        splits: dict from sequences.split_data()
-        scaler_method: "zscore" or "minmax"
-        impute_method: "forward_fill" or "mean"
+        batch: List of dicts from SequencePreprocessor.transform().
 
     Returns:
-        Preprocessed splits dict (same keys), plus "scaler" key.
+        signals: (batch, max_len, n_features) padded tensor
+        labels: (batch, max_len) padded tensor
+        lengths: (batch,) tensor of original lengths
+        mask: (batch, max_len) boolean mask (True = valid, False = padding)
     """
-    result = {}
+    # Sort by length descending (required for pack_padded_sequence)
+    batch = sorted(batch, key=lambda x: x["length"], reverse=True)
 
-    for key in ["X_train", "X_val", "X_test"]:
-        result[key] = impute_missing(splits[key], method=impute_method)
+    signals = [torch.from_numpy(b["signals"]) for b in batch]
+    labels = [torch.from_numpy(b["labels"]) for b in batch]
+    lengths = torch.tensor([b["length"] for b in batch], dtype=torch.long)
 
-    scaler = get_scaler(scaler_method)
-    result["X_train"] = scaler.fit_transform(result["X_train"])
-    result["X_val"] = scaler.transform(result["X_val"])
-    result["X_test"] = scaler.transform(result["X_test"])
+    signals_padded = pad_sequence(signals, batch_first=True, padding_value=0.0)
+    labels_padded = pad_sequence(labels, batch_first=True, padding_value=-1.0)
 
-    for key in ["y_train", "y_val", "y_test"]:
-        result[key] = splits[key]
+    max_len = signals_padded.shape[1]
+    mask = torch.arange(max_len).unsqueeze(0) < lengths.unsqueeze(1)
 
-    result["scaler"] = scaler
-    return result
+    return signals_padded, labels_padded, lengths, mask

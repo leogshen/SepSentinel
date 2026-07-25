@@ -24,3 +24,4 @@ def list_models() -> list[str]:
 
 # Import model modules to trigger registration.
 import sepsentinel.model_b.random_forest  # noqa: E402, F401
+import sepsentinel.model_b.xgboost_model  # noqa: E402, F401

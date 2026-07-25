@@ -23,6 +23,8 @@ ENV/
 
 # Trained models (binary files, retrain locally)
 models/*.pkl
+models/*.json
+models/checkpoints/
 
 # OS
 Thumbs.db
