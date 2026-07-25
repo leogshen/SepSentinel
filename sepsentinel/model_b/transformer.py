@@ -1,7 +1,7 @@
 # Transformer encoder — Module 7 implementation.
 #
 # Architecture (v1 single-branch):
-#   Input: (batch, timesteps, 7)
+#   Input: (batch, timesteps, n_features)  — n_features is dynamic per stage
 #   -> Positional encoding
 #   -> Transformer encoder layers
 #   -> Pooling -> (batch, encoding_dim)
@@ -9,8 +9,8 @@
 #
 # The encoder implements SequenceEncoder, same swap/compose pattern as TCN.
 
-# from sepsentinel.models.base import SepsisModel, SequenceEncoder
-# from sepsentinel.models.registry import register
+# from sepsentinel.model_b.base import SepsisModel, SequenceEncoder
+# from sepsentinel.model_b.registry import register
 #
 # class TransformerEncoder(SequenceEncoder, nn.Module):
 #     ...

@@ -8,7 +8,7 @@ from sepsentinel.config.signals import (
     ALL_SIGNALS, PHYSIOLOGICAL_FEATURES, BIOMARKER_FEATURES, FEATURE_ORDER,
 )
 from sepsentinel.simulation import simulate_patient
-from sepsentinel.models.base import rule_based_risk
+from sepsentinel.model_b.base import rule_based_risk
 from sepsentinel.dashboard.components import (
     render_risk_score, render_risk_gauge, render_alerts, render_signal_card,
 )

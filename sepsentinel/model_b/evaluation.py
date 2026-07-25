@@ -1,4 +1,4 @@
-# Model evaluation and comparison utilities — Module 7 implementation.
+# Model B evaluation and comparison utilities — Module 7 implementation.
 #
 # Planned:
 #   evaluate_model(model, X_test, y_test) -> metrics dict

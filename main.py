@@ -10,7 +10,7 @@ import numpy as np
 from sepsentinel.config.signals import print_signal_info, FEATURE_ORDER
 from sepsentinel.simulation import simulate_patient
 from sepsentinel.visualization import plot_all_signals, plot_risk_gauge
-from sepsentinel.models.base import rule_based_risk
+from sepsentinel.model_b.base import rule_based_risk
 from sepsentinel.alerts import check_signal_alerts, check_risk_alert, format_alerts_for_console
 from sepsentinel.data.synthetic import generate_flat_dataset, save_dataset
 
@@ -67,7 +67,7 @@ def run_manual_input():
 
 def run_training():
     print("\n--- Training Random Forest (Synthetic 7-Feature Data) ---\n")
-    from sepsentinel.models import get_model
+    from sepsentinel.model_b import get_model
 
     df = generate_flat_dataset(num_patients=500)
     save_dataset(df)

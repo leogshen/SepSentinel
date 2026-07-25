@@ -86,6 +86,29 @@ PHYSIOLOGICAL_FEATURES = FEATURE_ORDER[:4]
 BIOMARKER_FEATURES = FEATURE_ORDER[4:]
 NUM_FEATURES = len(FEATURE_ORDER)
 
+# Staged feature sets for Model B development.
+# Stage 1: Physiological signals only (available in PhysioNet Challenge data)
+# Stage 2: + Lactate, pH (sparse in Challenge data, full in MIMIC-IV)
+# Stage 3: + IL-6 (requires Model A or future dataset)
+STAGES = {
+    1: ["heart_rate", "spo2", "temperature", "respiratory_rate"],
+    2: ["heart_rate", "spo2", "temperature", "respiratory_rate", "lactate", "ph"],
+    3: FEATURE_ORDER,  # all 7
+}
+
+# Column mapping: PhysioNet/CinC 2019 Sepsis Challenge → our signal names
+PHYSIONET_COLUMN_MAP = {
+    "HR": "heart_rate",
+    "O2Sat": "spo2",
+    "Temp": "temperature",
+    "Resp": "respiratory_rate",
+    "pH": "ph",
+    "Lactate": "lactate",
+    "SepsisLabel": "label",
+    "Patient_ID": "patient_id",
+    "ICULOS": "hour",
+}
+
 # Default pipeline settings
 DEFAULT_SAMPLING_INTERVAL_MIN = 5
 DEFAULT_HISTORY_WINDOW_MIN = 60

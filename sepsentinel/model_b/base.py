@@ -1,7 +1,7 @@
-# Abstract base classes for all sepsis prediction models.
+# Abstract base classes for Model B (sepsis prediction).
 #
 # Design: encoder and prediction head are separated so that:
-#   v1: single encoder processes all 7 features
+#   v1: single encoder processes all available features
 #   v2: two encoders (physiological + biomarker) with fusion before the head
 #
 # Flat models (RF, XGBoost) ignore the encoder abstraction and work directly
@@ -32,11 +32,13 @@ class SequenceEncoder(ABC):
 
 
 class SepsisModel(ABC):
-    """Base class for all sepsis prediction models.
+    """Base class for all Model B architectures.
 
     All models — flat (RF, XGBoost) and sequential (TCN, Transformer) —
     implement this interface so they can be trained, evaluated, and swapped
     through a single API.
+
+    The number of input features is dynamic (4, 6, or 7 depending on stage).
     """
 
     name: str = "base"
@@ -76,8 +78,7 @@ def rule_based_risk(values: dict) -> float:
     """Rule-based fallback when no ML model is available.
 
     Accepts a dict with any subset of signal keys. Returns 0-100 risk score.
-    Weights: lactate 25%, il6 25%, ph 15%, heart_rate 10%, respiratory_rate 10%,
-             temperature 10%, spo2 5%.
+    Works regardless of which stage/features are available.
     """
     score = 0.0
 

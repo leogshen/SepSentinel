@@ -50,23 +50,36 @@ The IL-6 sensor uses electrochemical aptamer-based (E-AB) sensing with a three-e
 | Lactate | mmol/L | 0.5-2.0 | ISF, amperometric (TBD) |
 | IL-6 | pg/mL | 0-7 | ISF, E-AB sensor (SWV) |
 
-## Model Architecture
+## Two-Model Architecture
 
-The system supports multiple interchangeable model architectures through a shared `SepsisModel` interface:
+The system uses two ML models in series:
+
+### Model A: Electrochemical Signal Calibration
+
+Converts raw sensor outputs into biomarker concentrations. Each analyte has a distinct sensing mode:
+- **IL-6**: SWV waveform -> concentration (E-AB sensor)
+- **Lactate**: Amperometric current -> concentration (TBD)
+- **pH**: Potentiometric voltage -> pH value (TBD)
+
+Status: Awaiting experimental calibration data. Synthetic data will be generated for pipeline development.
+
+### Model B: Sepsis Risk Prediction
+
+Predicts continuous sepsis probability from biomarker concentrations + physiological signals.
 
 | Model | Type | Input | Status |
 |-------|------|-------|--------|
 | Random Forest | Flat baseline | Flattened feature vector | Implemented |
 | XGBoost | Flat baseline | Flattened feature vector | Module 7 |
-| TCN | Sequential | (batch, timesteps, 7) | Module 7 |
-| Transformer | Sequential | (batch, timesteps, 7) | Module 7 |
+| TCN | Sequential | (batch, timesteps, n_features) | Module 7 |
+| Transformer | Sequential | (batch, timesteps, n_features) | Module 7 |
 
-Sequential models use a rolling history window (configurable: 30min to 4hrs at 5-min intervals) to capture temporal patterns in the signals.
+Input feature count is dynamic (staged development):
+- **Stage 1**: HR, SpO2, Temp, RR (4 features - PhysioNet Challenge)
+- **Stage 2**: + Lactate, pH (6 features)
+- **Stage 3**: + IL-6 (7 features - requires Model A)
 
-The encoder is separated from the prediction head, enabling future dual-branch architectures:
-- Physiological branch (HR, RR, Temp, SpO2) with its own encoder
-- Biomarker branch (pH, Lactate, IL-6) with its own encoder
-- Feature fusion before the final prediction
+The encoder is separated from the prediction head, enabling future dual-branch architectures.
 
 ### Output
 
@@ -79,19 +92,23 @@ The encoder is separated from the prediction head, enabling future dual-branch a
 ```
 sepsentinel/
     config/
-        signals.py            # 7 signal definitions (physiological + electrochemical)
+        signals.py            # Signal definitions, stages, column mappings
         thresholds.py         # Alert thresholds (WARNING / CRITICAL)
     data/
-        synthetic.py          # Synthetic data generator
-        sequences.py          # Sliding window / tensor construction (Module 6)
-        preprocessing.py      # Normalization, imputation (Module 6)
+        synthetic.py          # Synthetic data generator (flat + episodes)
+        physionet.py          # PhysioNet/CinC 2019 Challenge loader
+        sequences.py          # Sliding window / tensor construction
+        preprocessing.py      # Normalization, imputation
         mimic.py              # MIMIC-IV loader (Module 9)
-    models/
+    model_a/                  # Electrochemical signal -> concentration
+        base.py               # CalibrationModel ABC
+        synthetic_data.py     # Synthetic calibration data (future)
+    model_b/                  # Sepsis risk prediction
         base.py               # SepsisModel ABC + SequenceEncoder ABC
         registry.py           # Model factory
         random_forest.py      # RF baseline
         xgboost_model.py      # XGBoost baseline (Module 7)
-        tcn.py                # Temporal Convolutional Network (Module 7)
+        tcn.py                # TCN (Module 7)
         transformer.py        # Transformer encoder (Module 7)
         evaluation.py         # Metrics and comparison (Module 7)
     dashboard/
@@ -152,26 +169,33 @@ streamlit run sepsentinel/dashboard/app.py
 
 ## Data Strategy
 
-**Current**: Synthetic data for pipeline development and architecture testing. Not for clinical validation.
+**Phase 1**: PhysioNet/CinC 2019 Sepsis Challenge dataset for Model B prototyping (Stage 1-2 features).
 
-**Target**: MIMIC-IV Clinical Database and MIMIC-IV Waveform Database (pending PhysioNet credentialed access). The pipeline is designed so synthetic data can be swapped for MIMIC data with minimal code changes.
+**Phase 2**: MIMIC-IV Clinical Database for larger-scale validation and custom cohort construction.
 
-See [DATASETS.md](DATASETS.md) for details.
+**Phase 3**: Integrate Model A outputs once experimental calibration data are available.
+
+See [DATASETS.md](DATASETS.md) for full dataset strategy.
 
 ## Roadmap
 
 ### Completed
 - **v1.0-v1.1** - Proof of concept (3 biomarkers, RF, Streamlit dashboard)
 - **Module 5** - Architecture refactor (7 signals, model interfaces, new package structure)
+- **Module 6** - Time-series data pipeline (episode generator, sliding windows, preprocessing)
+
+### In Progress
+- **PhysioNet integration** - Load Challenge dataset, train Model B Stage 1
 
 ### Planned
-- **Module 6** - Time-series data pipeline (episode generator, sliding windows, preprocessing)
 - **Module 7** - Model implementation (XGBoost, TCN, Transformer) and comparison
 - **Module 8** - Dashboard v2 (live temporal plots, model selector, alert history)
 - **Module 9** - MIMIC-IV integration
 - **Module 10** - Hardware integration (Bluetooth, real-time inference, multi-patient)
+- **Model A** - Electrochemical signal calibration (awaiting experimental data)
 
 ## References
 
 - SepAI: "SepAl: Sepsis Alerts on Low Power Wearables With Digital Biomarkers and On-Device Tiny Machine Learning" - temporal learning and feature fusion architecture
+- PhysioNet/CinC 2019 Sepsis Challenge: Reyna et al.
 - MIMIC-IV: Johnson et al., PhysioNet

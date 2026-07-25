@@ -1,7 +1,7 @@
 # Temporal Convolutional Network — Module 7 implementation.
 #
 # Architecture (v1 single-branch):
-#   Input: (batch, timesteps, 7)
+#   Input: (batch, timesteps, n_features)  — n_features is dynamic per stage
 #   -> TCN encoder -> (batch, encoding_dim)
 #   -> Dense head -> (batch, 1) sigmoid
 #
@@ -12,8 +12,8 @@
 #   fused = cat(physio_encoder(x_physio), bio_encoder(x_bio))
 #   output = head(fused)
 
-# from sepsentinel.models.base import SepsisModel, SequenceEncoder
-# from sepsentinel.models.registry import register
+# from sepsentinel.model_b.base import SepsisModel, SequenceEncoder
+# from sepsentinel.model_b.registry import register
 #
 # class TCNEncoder(SequenceEncoder, nn.Module):
 #     ...

@@ -1,4 +1,4 @@
-# Model registry — factory for creating and discovering models.
+# Model B registry — factory for creating and discovering sepsis prediction models.
 
 _REGISTRY: dict[str, type] = {}
 
@@ -23,5 +23,4 @@ def list_models() -> list[str]:
 
 
 # Import model modules to trigger registration.
-# Each module uses @register on its model class.
-import sepsentinel.models.random_forest  # noqa: E402, F401
+import sepsentinel.model_b.random_forest  # noqa: E402, F401

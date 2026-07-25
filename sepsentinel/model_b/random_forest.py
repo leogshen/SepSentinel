@@ -9,8 +9,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import accuracy_score, classification_report
 
-from sepsentinel.models.base import SepsisModel
-from sepsentinel.models.registry import register
+from sepsentinel.model_b.base import SepsisModel
+from sepsentinel.model_b.registry import register
 
 
 @register
