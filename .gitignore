@@ -25,6 +25,8 @@ ENV/
 models/*.pkl
 models/*.json
 models/checkpoints/
+results/**/checkpoints*/
+results/**/*.pt
 
 # OS
 Thumbs.db

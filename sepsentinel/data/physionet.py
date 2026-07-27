@@ -22,13 +22,14 @@ _DEFAULT_CACHE = os.path.join(
 )
 
 
-def load_physionet(filepath=None, stage=1, min_length=6):
+def load_physionet(filepath=None, stage=1, min_length=6, features=None):
     """Load PhysioNet Sepsis Challenge data as episodes.
 
     Args:
         filepath: Path to Dataset.csv. If None, uses kagglehub cache location.
         stage: Which feature set to use (1, 2, or 3). See config.signals.STAGES.
         min_length: Minimum episode length in hours. Shorter episodes are dropped.
+        features: Optional list of feature names. Overrides stage if provided.
 
     Returns:
         List of episode dicts:
@@ -48,7 +49,8 @@ def load_physionet(filepath=None, stage=1, min_length=6):
             "Download with: kagglehub.dataset_download('tea340yashjoshi/sepsis-prediction-dataset')"
         )
 
-    features = STAGES[stage]
+    if features is None:
+        features = STAGES[stage]
 
     # Map our feature names back to PhysioNet column names
     reverse_map = {v: k for k, v in PHYSIONET_COLUMN_MAP.items()}

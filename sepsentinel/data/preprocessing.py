@@ -20,6 +20,10 @@ CLIP_RANGES = {
     "lactate": (0, 30),
     "ph": (6.5, 7.8),
     "il6": (0, 1000),
+    "creatinine": (0, 25),
+    "wbc": (0, 100),
+    "platelets": (0, 1200),
+    "bilirubin": (0, 60),
 }
 
 
