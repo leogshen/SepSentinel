@@ -1,0 +1,85 @@
+{
+  "experiment_id": "K",
+  "experiment_name": "vitals_platelets",
+  "experiment_type": "add-one-in",
+  "raw_features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "platelets"
+  ],
+  "channel_names": [
+    "val_heart_rate",
+    "val_spo2",
+    "val_respiratory_rate",
+    "val_temperature",
+    "val_platelets",
+    "mask_platelets",
+    "delta_platelets"
+  ],
+  "n_channels": 7,
+  "n_params": 67521,
+  "seed": 42,
+  "best_epoch": 8,
+  "train_time_sec": 580.9,
+  "split_stats": {
+    "train": {
+      "n_patients": 9839,
+      "n_septic": 867,
+      "n_timesteps": 382661,
+      "n_positive_steps": 8293,
+      "prevalence": 0.02167192371315603
+    },
+    "val": {
+      "n_patients": 2109,
+      "n_septic": 186,
+      "n_timesteps": 82478,
+      "n_positive_steps": 1783,
+      "prevalence": 0.021617885981716337
+    },
+    "test": {
+      "n_patients": 2109,
+      "n_septic": 186,
+      "n_timesteps": 80983,
+      "n_positive_steps": 1774,
+      "prevalence": 0.021905832088216046
+    }
+  },
+  "val": {
+    "auroc": 0.7885088346865461,
+    "auprc": 0.09530616890764315,
+    "auprc_lift": 4.408672074725433,
+    "precision": 0.13045234248788368,
+    "recall": 0.36231071228266964,
+    "specificity": 0.946638577359192,
+    "f1": 0.19183370452858203,
+    "fp_per_1000": 52.20786149033681,
+    "pred_pos_rate": 0.060040253158418,
+    "brier": 0.11455566436052322,
+    "threshold": 0.8499999999999999,
+    "prevalence": 0.021617885679006577,
+    "tp": 646,
+    "fp": 4306,
+    "tn": 76389,
+    "fn": 1137
+  },
+  "test": {
+    "auroc": 0.7957779394097357,
+    "auprc": 0.11020078638386967,
+    "auprc_lift": 5.030659708381074,
+    "precision": 0.16066338429644986,
+    "recall": 0.34949267192784667,
+    "specificity": 0.9591081821510182,
+    "f1": 0.2201313687200426,
+    "fp_per_1000": 39.996048553400094,
+    "pred_pos_rate": 0.047651976340713484,
+    "brier": 0.10645943135023117,
+    "threshold": 0.8499999999999999,
+    "prevalence": 0.02190583199262619,
+    "tp": 620,
+    "fp": 3239,
+    "tn": 75970,
+    "fn": 1154
+  }
+}

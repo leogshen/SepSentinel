@@ -1,0 +1,254 @@
+{
+  "run_id": "20260807_091626",
+  "timestamp": "2026-08-07T09:16:29.670453",
+  "seed": 42,
+  "split_seed": 42,
+  "device": "cpu",
+  "n_threads": 10,
+  "epochs": 50,
+  "batch_size": 32,
+  "lr": 0.001,
+  "patience": 7,
+  "min_delta": 0.0001,
+  "scheduler_factor": 0.5,
+  "scheduler_patience": 3,
+  "min_episode_length": 6,
+  "model": "SepsisTransformer",
+  "preprocessing": "Strategy B (causal forward-fill + training median + mask + delta for labs)",
+  "all_features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "lactate",
+    "ph",
+    "creatinine",
+    "wbc",
+    "platelets",
+    "bilirubin"
+  ],
+  "vitals": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature"
+  ],
+  "labs": [
+    "lactate",
+    "ph",
+    "creatinine",
+    "wbc",
+    "platelets",
+    "bilirubin"
+  ],
+  "experiments": {
+    "A": {
+      "name": "vitals_only",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature"
+      ],
+      "type": "baseline"
+    },
+    "B": {
+      "name": "vitals_lactate",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "lactate"
+      ],
+      "type": "add-one-in"
+    },
+    "C": {
+      "name": "vitals_ph",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "ph"
+      ],
+      "type": "add-one-in"
+    },
+    "D": {
+      "name": "vitals_creatinine",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "creatinine"
+      ],
+      "type": "add-one-in"
+    },
+    "E": {
+      "name": "vitals_lactate_ph",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "lactate",
+        "ph"
+      ],
+      "type": "add-two-in"
+    },
+    "F": {
+      "name": "vitals_all_labs",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "lactate",
+        "ph",
+        "creatinine",
+        "wbc",
+        "platelets",
+        "bilirubin"
+      ],
+      "type": "full-baseline"
+    },
+    "G": {
+      "name": "all_minus_lactate",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "ph",
+        "creatinine",
+        "wbc",
+        "platelets",
+        "bilirubin"
+      ],
+      "type": "leave-one-out"
+    },
+    "H": {
+      "name": "all_minus_ph",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "lactate",
+        "creatinine",
+        "wbc",
+        "platelets",
+        "bilirubin"
+      ],
+      "type": "leave-one-out"
+    },
+    "I": {
+      "name": "all_minus_creatinine",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "lactate",
+        "ph",
+        "wbc",
+        "platelets",
+        "bilirubin"
+      ],
+      "type": "leave-one-out"
+    },
+    "J": {
+      "name": "vitals_wbc",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "wbc"
+      ],
+      "type": "add-one-in"
+    },
+    "K": {
+      "name": "vitals_platelets",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "platelets"
+      ],
+      "type": "add-one-in"
+    },
+    "L": {
+      "name": "vitals_bilirubin",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "bilirubin"
+      ],
+      "type": "add-one-in"
+    },
+    "M": {
+      "name": "all_minus_wbc",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "lactate",
+        "ph",
+        "creatinine",
+        "platelets",
+        "bilirubin"
+      ],
+      "type": "leave-one-out"
+    },
+    "N": {
+      "name": "all_minus_platelets",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "lactate",
+        "ph",
+        "creatinine",
+        "wbc",
+        "bilirubin"
+      ],
+      "type": "leave-one-out"
+    },
+    "O": {
+      "name": "all_minus_bilirubin",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "lactate",
+        "ph",
+        "creatinine",
+        "wbc",
+        "platelets"
+      ],
+      "type": "leave-one-out"
+    }
+  },
+  "split_patients": {
+    "train": {
+      "n_patients": 9839,
+      "n_septic": 867
+    },
+    "val": {
+      "n_patients": 2109,
+      "n_septic": 186
+    },
+    "test": {
+      "n_patients": 2109,
+      "n_septic": 186
+    }
+  }
+}

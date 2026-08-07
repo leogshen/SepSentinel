@@ -1,0 +1,101 @@
+{
+  "experiment_id": "M",
+  "experiment_name": "all_minus_wbc",
+  "experiment_type": "leave-one-out",
+  "raw_features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "lactate",
+    "ph",
+    "creatinine",
+    "platelets",
+    "bilirubin"
+  ],
+  "channel_names": [
+    "val_heart_rate",
+    "val_spo2",
+    "val_respiratory_rate",
+    "val_temperature",
+    "val_lactate",
+    "val_ph",
+    "val_creatinine",
+    "val_platelets",
+    "val_bilirubin",
+    "mask_lactate",
+    "mask_ph",
+    "mask_creatinine",
+    "mask_platelets",
+    "mask_bilirubin",
+    "delta_lactate",
+    "delta_ph",
+    "delta_creatinine",
+    "delta_platelets",
+    "delta_bilirubin"
+  ],
+  "n_channels": 19,
+  "n_params": 68289,
+  "seed": 42,
+  "best_epoch": 12,
+  "train_time_sec": 4270.1,
+  "split_stats": {
+    "train": {
+      "n_patients": 9839,
+      "n_septic": 867,
+      "n_timesteps": 382661,
+      "n_positive_steps": 8293,
+      "prevalence": 0.02167192371315603
+    },
+    "val": {
+      "n_patients": 2109,
+      "n_septic": 186,
+      "n_timesteps": 82478,
+      "n_positive_steps": 1783,
+      "prevalence": 0.021617885981716337
+    },
+    "test": {
+      "n_patients": 2109,
+      "n_septic": 186,
+      "n_timesteps": 80983,
+      "n_positive_steps": 1774,
+      "prevalence": 0.021905832088216046
+    }
+  },
+  "val": {
+    "auroc": 0.7978118203824965,
+    "auprc": 0.09982889734614359,
+    "auprc_lift": 4.617884414250964,
+    "precision": 0.14200092208390963,
+    "recall": 0.34548513740886144,
+    "specificity": 0.9538757048144247,
+    "f1": 0.20127430158470838,
+    "fp_per_1000": 45.127185431266525,
+    "pred_pos_rate": 0.05259584374014889,
+    "brier": 0.16426116228103638,
+    "threshold": 0.8849999999999999,
+    "prevalence": 0.021617885679006577,
+    "tp": 616,
+    "fp": 3722,
+    "tn": 76973,
+    "fn": 1167
+  },
+  "test": {
+    "auroc": 0.8024063334904818,
+    "auprc": 0.12708777403815935,
+    "auprc_lift": 5.801549746247432,
+    "precision": 0.15942446043165467,
+    "recall": 0.31228861330326946,
+    "specificity": 0.9631228774507947,
+    "f1": 0.21108782625261954,
+    "fp_per_1000": 36.069298494745816,
+    "pred_pos_rate": 0.04291024042082906,
+    "brier": 0.16019929945468903,
+    "threshold": 0.8849999999999999,
+    "prevalence": 0.02190583199262619,
+    "tp": 554,
+    "fp": 2921,
+    "tn": 76288,
+    "fn": 1220
+  }
+}

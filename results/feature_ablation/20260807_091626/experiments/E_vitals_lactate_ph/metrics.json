@@ -1,0 +1,89 @@
+{
+  "experiment_id": "E",
+  "experiment_name": "vitals_lactate_ph",
+  "experiment_type": "add-two-in",
+  "raw_features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "lactate",
+    "ph"
+  ],
+  "channel_names": [
+    "val_heart_rate",
+    "val_spo2",
+    "val_respiratory_rate",
+    "val_temperature",
+    "val_lactate",
+    "val_ph",
+    "mask_lactate",
+    "mask_ph",
+    "delta_lactate",
+    "delta_ph"
+  ],
+  "n_channels": 10,
+  "n_params": 67713,
+  "seed": 42,
+  "best_epoch": 7,
+  "train_time_sec": 493.6,
+  "split_stats": {
+    "train": {
+      "n_patients": 9839,
+      "n_septic": 867,
+      "n_timesteps": 382661,
+      "n_positive_steps": 8293,
+      "prevalence": 0.02167192371315603
+    },
+    "val": {
+      "n_patients": 2109,
+      "n_septic": 186,
+      "n_timesteps": 82478,
+      "n_positive_steps": 1783,
+      "prevalence": 0.021617885981716337
+    },
+    "test": {
+      "n_patients": 2109,
+      "n_septic": 186,
+      "n_timesteps": 80983,
+      "n_positive_steps": 1774,
+      "prevalence": 0.021905832088216046
+    }
+  },
+  "val": {
+    "auroc": 0.8072943873014015,
+    "auprc": 0.11033831294271995,
+    "auprc_lift": 5.104028885205503,
+    "precision": 0.15917487684729065,
+    "recall": 0.28996074032529445,
+    "specificity": 0.966156515273561,
+    "f1": 0.20552574040946134,
+    "fp_per_1000": 33.111860132398945,
+    "pred_pos_rate": 0.03938019835592522,
+    "brier": 0.10397147387266159,
+    "threshold": 0.8449999999999999,
+    "prevalence": 0.021617885679006577,
+    "tp": 517,
+    "fp": 2731,
+    "tn": 77964,
+    "fn": 1266
+  },
+  "test": {
+    "auroc": 0.8021172505493046,
+    "auprc": 0.10757980198442646,
+    "auprc_lift": 4.911011917768717,
+    "precision": 0.16251005631536605,
+    "recall": 0.2277339346110485,
+    "specificity": 0.9737151081316517,
+    "f1": 0.18967136150234742,
+    "fp_per_1000": 25.70909944062334,
+    "pred_pos_rate": 0.03069780077300174,
+    "brier": 0.1003386527299881,
+    "threshold": 0.8449999999999999,
+    "prevalence": 0.02190583199262619,
+    "tp": 404,
+    "fp": 2082,
+    "tn": 77127,
+    "fn": 1370
+  }
+}

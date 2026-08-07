@@ -1,0 +1,182 @@
+09:16:26  ======================================================================
+09:16:26    EXPERIMENT 3: FEATURE ABLATION STUDY
+09:16:26    Run ID:       20260807_091626
+09:16:26    Device:       cpu
+09:16:26    Threads:      10
+09:16:26    Seed:         42
+09:16:26    Experiments:  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']
+09:16:26    Output:       results\feature_ablation\20260807_091626
+09:16:26  ======================================================================
+09:16:26  
+Loading PhysioNet data (all 10 features)...
+09:16:29    14057 episodes loaded
+09:16:29  
+Splitting (patient-level, seed=42)...
+09:16:29    train: 9839 patients (867 septic), 382,661 timesteps
+09:16:29    val  : 2109 patients (186 septic), 82,478 timesteps
+09:16:29    test : 2109 patients (186 septic), 80,983 timesteps
+09:16:29  ======================================================================
+09:16:29    Experiment A: vitals_only
+09:16:29    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature']
+09:16:29  ======================================================================
+09:16:29    Input channels (4): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature']
+09:16:32    Parameters: 67,329  Pos weight: 45.1
+09:24:15    Val  AUROC=0.7874  AUPRC=0.0991  F1=0.1865
+09:24:15    Test AUROC=0.7916  AUPRC=0.1291  F1=0.2053
+09:24:15    Threshold=0.830  Best epoch=10  Time=461s
+09:24:15  ======================================================================
+09:24:15    Experiment B: vitals_lactate
+09:24:15    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'lactate']
+09:24:15  ======================================================================
+09:24:15    Input channels (7): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_lactate', 'mask_lactate', 'delta_lactate']
+09:24:19    Parameters: 67,521  Pos weight: 45.1
+09:31:30    Val  AUROC=0.7946  AUPRC=0.1083  F1=0.2017
+09:31:30    Test AUROC=0.8010  AUPRC=0.1176  F1=0.2014
+09:31:30    Threshold=0.835  Best epoch=6  Time=429s
+09:31:30  ======================================================================
+09:31:30    Experiment C: vitals_ph
+09:31:30    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'ph']
+09:31:30  ======================================================================
+09:31:30    Input channels (7): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_ph', 'mask_ph', 'delta_ph']
+09:31:34    Parameters: 67,521  Pos weight: 45.1
+09:40:08    Val  AUROC=0.7913  AUPRC=0.1038  F1=0.1974
+09:40:08    Test AUROC=0.8029  AUPRC=0.1350  F1=0.2130
+09:40:08    Threshold=0.865  Best epoch=9  Time=513s
+09:40:09  ======================================================================
+09:40:09    Experiment D: vitals_creatinine
+09:40:09    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'creatinine']
+09:40:09  ======================================================================
+09:40:09    Input channels (7): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_creatinine', 'mask_creatinine', 'delta_creatinine']
+09:40:13    Parameters: 67,521  Pos weight: 45.1
+09:47:13    Val  AUROC=0.7889  AUPRC=0.1003  F1=0.1944
+09:47:13    Test AUROC=0.7901  AUPRC=0.1088  F1=0.2157
+09:47:13    Threshold=0.730  Best epoch=6  Time=419s
+09:47:13  ======================================================================
+09:47:13    Experiment E: vitals_lactate_ph
+09:47:13    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'lactate', 'ph']
+09:47:13  ======================================================================
+09:47:13    Input channels (10): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_lactate', 'val_ph', 'mask_lactate', 'mask_ph', 'delta_lactate', 'delta_ph']
+09:47:19    Parameters: 67,713  Pos weight: 45.1
+09:55:34    Val  AUROC=0.8073  AUPRC=0.1103  F1=0.2055
+09:55:34    Test AUROC=0.8021  AUPRC=0.1076  F1=0.1897
+09:55:34    Threshold=0.845  Best epoch=7  Time=494s
+09:55:34  ======================================================================
+09:55:34    Experiment F: vitals_all_labs
+09:55:34    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'lactate', 'ph', 'creatinine', 'wbc', 'platelets', 'bilirubin']
+09:55:34  ======================================================================
+09:55:34    Input channels (22): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_lactate', 'val_ph', 'val_creatinine', 'val_wbc', 'val_platelets', 'val_bilirubin', 'mask_lactate', 'mask_ph', 'mask_creatinine', 'mask_wbc', 'mask_platelets', 'mask_bilirubin', 'delta_lactate', 'delta_ph', 'delta_creatinine', 'delta_wbc', 'delta_platelets', 'delta_bilirubin']
+09:55:44    Parameters: 68,481  Pos weight: 45.1
+10:03:16    Val  AUROC=0.8012  AUPRC=0.1036  F1=0.1925
+10:03:16    Test AUROC=0.8216  AUPRC=0.1452  F1=0.2127
+10:03:16    Threshold=0.850  Best epoch=6  Time=450s
+10:03:17  ======================================================================
+10:03:17    Experiment G: all_minus_lactate
+10:03:17    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'ph', 'creatinine', 'wbc', 'platelets', 'bilirubin']
+10:03:17  ======================================================================
+10:03:17    Input channels (19): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_ph', 'val_creatinine', 'val_wbc', 'val_platelets', 'val_bilirubin', 'mask_ph', 'mask_creatinine', 'mask_wbc', 'mask_platelets', 'mask_bilirubin', 'delta_ph', 'delta_creatinine', 'delta_wbc', 'delta_platelets', 'delta_bilirubin']
+10:03:25    Parameters: 68,289  Pos weight: 45.1
+10:10:21    Val  AUROC=0.7807  AUPRC=0.0964  F1=0.1924
+10:10:21    Test AUROC=0.7993  AUPRC=0.1457  F1=0.2187
+10:10:21    Threshold=0.820  Best epoch=5  Time=414s
+10:10:22  ======================================================================
+10:10:22    Experiment H: all_minus_ph
+10:10:22    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'lactate', 'creatinine', 'wbc', 'platelets', 'bilirubin']
+10:10:22  ======================================================================
+10:10:22    Input channels (19): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_lactate', 'val_creatinine', 'val_wbc', 'val_platelets', 'val_bilirubin', 'mask_lactate', 'mask_creatinine', 'mask_wbc', 'mask_platelets', 'mask_bilirubin', 'delta_lactate', 'delta_creatinine', 'delta_wbc', 'delta_platelets', 'delta_bilirubin']
+10:10:30    Parameters: 68,289  Pos weight: 45.1
+10:24:18    Val  AUROC=0.7961  AUPRC=0.1072  F1=0.1932
+10:24:18    Test AUROC=0.8023  AUPRC=0.1084  F1=0.2003
+10:24:18    Threshold=0.860  Best epoch=15  Time=825s
+10:24:18  ======================================================================
+10:24:18    Experiment I: all_minus_creatinine
+10:24:18    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'lactate', 'ph', 'wbc', 'platelets', 'bilirubin']
+10:24:18  ======================================================================
+10:24:18    Input channels (19): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_lactate', 'val_ph', 'val_wbc', 'val_platelets', 'val_bilirubin', 'mask_lactate', 'mask_ph', 'mask_wbc', 'mask_platelets', 'mask_bilirubin', 'delta_lactate', 'delta_ph', 'delta_wbc', 'delta_platelets', 'delta_bilirubin']
+10:24:41    Parameters: 68,289  Pos weight: 45.1
+10:33:31    Val  AUROC=0.7890  AUPRC=0.0973  F1=0.1978
+10:33:31    Test AUROC=0.8161  AUPRC=0.1466  F1=0.2134
+10:33:31    Threshold=0.860  Best epoch=5  Time=527s
+10:33:31  ======================================================================
+10:33:31    Experiment J: vitals_wbc
+10:33:31    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'wbc']
+10:33:31  ======================================================================
+10:33:31    Input channels (7): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_wbc', 'mask_wbc', 'delta_wbc']
+10:33:42    Parameters: 67,521  Pos weight: 45.1
+10:45:02    Val  AUROC=0.7833  AUPRC=0.0996  F1=0.1904
+10:45:02    Test AUROC=0.7879  AUPRC=0.1061  F1=0.2121
+10:45:02    Threshold=0.850  Best epoch=9  Time=677s
+10:45:02  ======================================================================
+10:45:02    Experiment K: vitals_platelets
+10:45:02    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'platelets']
+10:45:02  ======================================================================
+10:45:02    Input channels (7): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_platelets', 'mask_platelets', 'delta_platelets']
+10:45:13    Parameters: 67,521  Pos weight: 45.1
+10:54:55    Val  AUROC=0.7885  AUPRC=0.0953  F1=0.1918
+10:54:55    Test AUROC=0.7958  AUPRC=0.1102  F1=0.2201
+10:54:55    Threshold=0.850  Best epoch=8  Time=581s
+10:54:56  ======================================================================
+10:54:56    Experiment L: vitals_bilirubin
+10:54:56    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'bilirubin']
+10:54:56  ======================================================================
+10:54:56    Input channels (7): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_bilirubin', 'mask_bilirubin', 'delta_bilirubin']
+10:55:00    Parameters: 67,521  Pos weight: 45.1
+11:06:53    Val  AUROC=0.7869  AUPRC=0.0897  F1=0.1844
+11:06:53    Test AUROC=0.7943  AUPRC=0.1079  F1=0.2068
+11:06:53    Threshold=0.885  Best epoch=15  Time=712s
+11:06:54  ======================================================================
+11:06:54    Experiment M: all_minus_wbc
+11:06:54    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'lactate', 'ph', 'creatinine', 'platelets', 'bilirubin']
+11:06:54  ======================================================================
+11:06:54    Input channels (19): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_lactate', 'val_ph', 'val_creatinine', 'val_platelets', 'val_bilirubin', 'mask_lactate', 'mask_ph', 'mask_creatinine', 'mask_platelets', 'mask_bilirubin', 'delta_lactate', 'delta_ph', 'delta_creatinine', 'delta_platelets', 'delta_bilirubin']
+11:07:01    Parameters: 68,289  Pos weight: 45.1
+12:18:15    Val  AUROC=0.7978  AUPRC=0.0998  F1=0.2013
+12:18:15    Test AUROC=0.8024  AUPRC=0.1271  F1=0.2111
+12:18:15    Threshold=0.885  Best epoch=12  Time=4270s
+12:18:15  ======================================================================
+12:18:15    Experiment N: all_minus_platelets
+12:18:15    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'lactate', 'ph', 'creatinine', 'wbc', 'bilirubin']
+12:18:15  ======================================================================
+12:18:15    Input channels (19): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_lactate', 'val_ph', 'val_creatinine', 'val_wbc', 'val_bilirubin', 'mask_lactate', 'mask_ph', 'mask_creatinine', 'mask_wbc', 'mask_bilirubin', 'delta_lactate', 'delta_ph', 'delta_creatinine', 'delta_wbc', 'delta_bilirubin']
+12:18:24    Parameters: 68,289  Pos weight: 45.1
+12:28:39    Val  AUROC=0.7933  AUPRC=0.1033  F1=0.1957
+12:28:39    Test AUROC=0.8054  AUPRC=0.1299  F1=0.2024
+12:28:39    Threshold=0.885  Best epoch=12  Time=613s
+12:28:39  ======================================================================
+12:28:39    Experiment O: all_minus_bilirubin
+12:28:39    Raw features: ['heart_rate', 'spo2', 'respiratory_rate', 'temperature', 'lactate', 'ph', 'creatinine', 'wbc', 'platelets']
+12:28:39  ======================================================================
+12:28:39    Input channels (19): ['val_heart_rate', 'val_spo2', 'val_respiratory_rate', 'val_temperature', 'val_lactate', 'val_ph', 'val_creatinine', 'val_wbc', 'val_platelets', 'mask_lactate', 'mask_ph', 'mask_creatinine', 'mask_wbc', 'mask_platelets', 'delta_lactate', 'delta_ph', 'delta_creatinine', 'delta_wbc', 'delta_platelets']
+12:28:47    Parameters: 68,289  Pos weight: 45.1
+12:38:47    Val  AUROC=0.7976  AUPRC=0.1082  F1=0.2009
+12:38:47    Test AUROC=0.8074  AUPRC=0.1186  F1=0.2092
+12:38:47    Threshold=0.860  Best epoch=11  Time=598s
+12:38:48  
+  All experiments completed in 202.3 minutes
+12:38:48  
+==============================================================================================================
+  FEATURE ABLATION RESULTS (sorted by AUPRC)
+==============================================================================================================
+  ID Name                     Type            AUROC dAUROC_v dAUROC_f  AUPRC dAUPRC_v dAUPRC_f Recall   Prec     F1  Ch   Time
+  ----------------------------------------------------------------------------------------------------------
+   I all_minus_creatinine     leave-one-out  0.8161  +0.0246  -0.0054 0.1466  +0.0175  +0.0014 0.2909 0.1685 0.2134  19   8.8m
+   G all_minus_lactate        leave-one-out  0.7993  +0.0077  -0.0223 0.1457  +0.0166  +0.0005 0.3658 0.1559 0.2187  19   6.9m
+   F vitals_all_labs          full-baseline  0.8216  +0.0300  +0.0000 0.1452  +0.0161  +0.0000 0.3439 0.1539 0.2127  22   7.5m
+   C vitals_ph                add-one-in     0.8029  +0.0113  -0.0187 0.1350  +0.0059  -0.0102 0.3331 0.1566 0.2130   7   8.5m
+   N all_minus_platelets      leave-one-out  0.8054  +0.0138  -0.0162 0.1299  +0.0008  -0.0153 0.3044 0.1516 0.2024  19  10.2m
+   A vitals_only              baseline       0.7916  +0.0000  -0.0300 0.1291  +0.0000  -0.0161 0.3619 0.1433 0.2053   4   7.7m
+   M all_minus_wbc            leave-one-out  0.8024  +0.0108  -0.0192 0.1271  -0.0020  -0.0181 0.3123 0.1594 0.2111  19  71.2m
+   O all_minus_bilirubin      leave-one-out  0.8074  +0.0158  -0.0142 0.1186  -0.0105  -0.0266 0.3162 0.1563 0.2092  19  10.0m
+   B vitals_lactate           add-one-in     0.8010  +0.0094  -0.0206 0.1176  -0.0116  -0.0276 0.2418 0.1726 0.2014   7   7.2m
+   K vitals_platelets         add-one-in     0.7958  +0.0042  -0.0258 0.1102  -0.0189  -0.0350 0.3495 0.1607 0.2201   7   9.7m
+   D vitals_creatinine        add-one-in     0.7901  -0.0014  -0.0315 0.1088  -0.0203  -0.0364 0.3546 0.1550 0.2157   7   7.0m
+   H all_minus_ph             leave-one-out  0.8023  +0.0107  -0.0193 0.1084  -0.0208  -0.0368 0.3236 0.1451 0.2003  19  13.8m
+   L vitals_bilirubin         add-one-in     0.7943  +0.0028  -0.0272 0.1079  -0.0212  -0.0373 0.3191 0.1529 0.2068   7  11.9m
+   E vitals_lactate_ph        add-two-in     0.8021  +0.0106  -0.0195 0.1076  -0.0215  -0.0376 0.2277 0.1625 0.1897  10   8.2m
+   J vitals_wbc               add-one-in     0.7879  -0.0036  -0.0336 0.1061  -0.0230  -0.0391 0.3174 0.1592 0.2121   7  11.3m
+==============================================================================================================
+
+  Vitals-only baseline (A): AUROC=0.7916  AUPRC=0.1291
+  Full model baseline  (F): AUROC=0.8216  AUPRC=0.1452
+12:38:48  
+  Results saved to: results\feature_ablation\20260807_091626/
+12:38:48    Done.
