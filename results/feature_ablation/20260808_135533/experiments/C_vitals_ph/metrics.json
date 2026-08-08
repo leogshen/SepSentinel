@@ -1,0 +1,85 @@
+{
+  "experiment_id": "C",
+  "experiment_name": "vitals_ph",
+  "experiment_type": "add-one-in",
+  "raw_features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "ph"
+  ],
+  "channel_names": [
+    "val_heart_rate",
+    "val_spo2",
+    "val_respiratory_rate",
+    "val_temperature",
+    "val_ph",
+    "mask_ph",
+    "delta_ph"
+  ],
+  "n_channels": 7,
+  "n_params": 67521,
+  "seed": 456,
+  "best_epoch": 10,
+  "train_time_sec": 610.3,
+  "split_stats": {
+    "train": {
+      "n_patients": 9839,
+      "n_septic": 867,
+      "n_timesteps": 382661,
+      "n_positive_steps": 8293,
+      "prevalence": 0.02167192371315603
+    },
+    "val": {
+      "n_patients": 2109,
+      "n_septic": 186,
+      "n_timesteps": 82478,
+      "n_positive_steps": 1783,
+      "prevalence": 0.021617885981716337
+    },
+    "test": {
+      "n_patients": 2109,
+      "n_septic": 186,
+      "n_timesteps": 80983,
+      "n_positive_steps": 1774,
+      "prevalence": 0.021905832088216046
+    }
+  },
+  "val": {
+    "auroc": 0.7932110367458644,
+    "auprc": 0.10964729326425307,
+    "auprc_lift": 5.072063701897224,
+    "precision": 0.13805309734513274,
+    "recall": 0.3499719573752103,
+    "specificity": 0.9517194373876944,
+    "f1": 0.1980009519276535,
+    "fp_per_1000": 47.23683891461965,
+    "pred_pos_rate": 0.054802492785955045,
+    "brier": 0.1491713672876358,
+    "threshold": 0.8749999999999999,
+    "prevalence": 0.021617885679006577,
+    "tp": 624,
+    "fp": 3896,
+    "tn": 76799,
+    "fn": 1159
+  },
+  "test": {
+    "auroc": 0.8071422025183814,
+    "auprc": 0.12516083978996198,
+    "auprc_lift": 5.713585306054245,
+    "precision": 0.16320727893090703,
+    "recall": 0.32356257046223225,
+    "specificity": 0.962845131235087,
+    "f1": 0.21697221697221697,
+    "fp_per_1000": 36.34096044848919,
+    "pred_pos_rate": 0.04342886778706642,
+    "brier": 0.14327354729175568,
+    "threshold": 0.8749999999999999,
+    "prevalence": 0.02190583199262619,
+    "tp": 574,
+    "fp": 2943,
+    "tn": 76266,
+    "fn": 1200
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "experiment_id": "A",
+  "experiment_name": "vitals_only",
+  "experiment_type": "baseline",
+  "raw_features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature"
+  ],
+  "channel_names": [
+    "val_heart_rate",
+    "val_spo2",
+    "val_respiratory_rate",
+    "val_temperature"
+  ],
+  "n_channels": 4,
+  "n_params": 67329,
+  "seed": 123,
+  "best_epoch": 7,
+  "train_time_sec": 398.5,
+  "split_stats": {
+    "train": {
+      "n_patients": 9839,
+      "n_septic": 867,
+      "n_timesteps": 382661,
+      "n_positive_steps": 8293,
+      "prevalence": 0.02167192371315603
+    },
+    "val": {
+      "n_patients": 2109,
+      "n_septic": 186,
+      "n_timesteps": 82478,
+      "n_positive_steps": 1783,
+      "prevalence": 0.021617885981716337
+    },
+    "test": {
+      "n_patients": 2109,
+      "n_septic": 186,
+      "n_timesteps": 80983,
+      "n_positive_steps": 1774,
+      "prevalence": 0.021905832088216046
+    }
+  },
+  "val": {
+    "auroc": 0.7906904636692236,
+    "auprc": 0.10134313323147988,
+    "auprc_lift": 4.687929926925998,
+    "precision": 0.12823506518777972,
+    "recall": 0.36960179472798654,
+    "specificity": 0.9444823099324617,
+    "f1": 0.19040739670615428,
+    "fp_per_1000": 54.31751497368995,
+    "pred_pos_rate": 0.062307524430757294,
+    "brier": 0.1340446174144745,
+    "threshold": 0.8399999999999999,
+    "prevalence": 0.021617885679006577,
+    "tp": 659,
+    "fp": 4480,
+    "tn": 76215,
+    "fn": 1124
+  },
+  "test": {
+    "auroc": 0.7957470534156758,
+    "auprc": 0.11426179238532722,
+    "auprc_lift": 5.216044404238531,
+    "precision": 0.15331260464003826,
+    "recall": 0.3613303269447576,
+    "specificity": 0.9553081089270159,
+    "f1": 0.21528127623845508,
+    "fp_per_1000": 43.7128780114345,
+    "pred_pos_rate": 0.05162811948186657,
+    "brier": 0.12812085449695587,
+    "threshold": 0.8399999999999999,
+    "prevalence": 0.02190583199262619,
+    "tp": 641,
+    "fp": 3540,
+    "tn": 75669,
+    "fn": 1133
+  }
+}

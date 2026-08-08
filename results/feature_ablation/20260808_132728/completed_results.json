@@ -1,0 +1,374 @@
+[
+  {
+    "experiment_id": "A",
+    "experiment_name": "vitals_only",
+    "experiment_type": "baseline",
+    "raw_features": [
+      "heart_rate",
+      "spo2",
+      "respiratory_rate",
+      "temperature"
+    ],
+    "channel_names": [
+      "val_heart_rate",
+      "val_spo2",
+      "val_respiratory_rate",
+      "val_temperature"
+    ],
+    "n_channels": 4,
+    "n_params": 67329,
+    "seed": 123,
+    "best_epoch": 7,
+    "train_time_sec": 398.5,
+    "split_stats": {
+      "train": {
+        "n_patients": 9839,
+        "n_septic": 867,
+        "n_timesteps": 382661,
+        "n_positive_steps": 8293,
+        "prevalence": 0.02167192371315603
+      },
+      "val": {
+        "n_patients": 2109,
+        "n_septic": 186,
+        "n_timesteps": 82478,
+        "n_positive_steps": 1783,
+        "prevalence": 0.021617885981716337
+      },
+      "test": {
+        "n_patients": 2109,
+        "n_septic": 186,
+        "n_timesteps": 80983,
+        "n_positive_steps": 1774,
+        "prevalence": 0.021905832088216046
+      }
+    },
+    "val": {
+      "auroc": 0.7906904636692236,
+      "auprc": 0.10134313323147988,
+      "auprc_lift": 4.687929926925998,
+      "precision": 0.12823506518777972,
+      "recall": 0.36960179472798654,
+      "specificity": 0.9444823099324617,
+      "f1": 0.19040739670615428,
+      "fp_per_1000": 54.31751497368995,
+      "pred_pos_rate": 0.062307524430757294,
+      "brier": 0.1340446174144745,
+      "threshold": 0.8399999999999999,
+      "prevalence": 0.021617885679006577,
+      "tp": 659,
+      "fp": 4480,
+      "tn": 76215,
+      "fn": 1124
+    },
+    "test": {
+      "auroc": 0.7957470534156758,
+      "auprc": 0.11426179238532722,
+      "auprc_lift": 5.216044404238531,
+      "precision": 0.15331260464003826,
+      "recall": 0.3613303269447576,
+      "specificity": 0.9553081089270159,
+      "f1": 0.21528127623845508,
+      "fp_per_1000": 43.7128780114345,
+      "pred_pos_rate": 0.05162811948186657,
+      "brier": 0.12812085449695587,
+      "threshold": 0.8399999999999999,
+      "prevalence": 0.02190583199262619,
+      "tp": 641,
+      "fp": 3540,
+      "tn": 75669,
+      "fn": 1133
+    }
+  },
+  {
+    "experiment_id": "C",
+    "experiment_name": "vitals_ph",
+    "experiment_type": "add-one-in",
+    "raw_features": [
+      "heart_rate",
+      "spo2",
+      "respiratory_rate",
+      "temperature",
+      "ph"
+    ],
+    "channel_names": [
+      "val_heart_rate",
+      "val_spo2",
+      "val_respiratory_rate",
+      "val_temperature",
+      "val_ph",
+      "mask_ph",
+      "delta_ph"
+    ],
+    "n_channels": 7,
+    "n_params": 67521,
+    "seed": 123,
+    "best_epoch": 5,
+    "train_time_sec": 484.6,
+    "split_stats": {
+      "train": {
+        "n_patients": 9839,
+        "n_septic": 867,
+        "n_timesteps": 382661,
+        "n_positive_steps": 8293,
+        "prevalence": 0.02167192371315603
+      },
+      "val": {
+        "n_patients": 2109,
+        "n_septic": 186,
+        "n_timesteps": 82478,
+        "n_positive_steps": 1783,
+        "prevalence": 0.021617885981716337
+      },
+      "test": {
+        "n_patients": 2109,
+        "n_septic": 186,
+        "n_timesteps": 80983,
+        "n_positive_steps": 1774,
+        "prevalence": 0.021905832088216046
+      }
+    },
+    "val": {
+      "auroc": 0.7979914224562782,
+      "auprc": 0.10536974313465822,
+      "auprc_lift": 4.8741928188187345,
+      "precision": 0.14097222222222222,
+      "recall": 0.3415591699383062,
+      "specificity": 0.954012020571287,
+      "f1": 0.19957398000983123,
+      "fp_per_1000": 44.99381653289362,
+      "pred_pos_rate": 0.0523776037246296,
+      "brier": 0.15868636965751648,
+      "threshold": 0.8599999999999999,
+      "prevalence": 0.021617885679006577,
+      "tp": 609,
+      "fp": 3711,
+      "tn": 76984,
+      "fn": 1174
+    },
+    "test": {
+      "auroc": 0.8109765776989203,
+      "auprc": 0.13654777373581986,
+      "auprc_lift": 6.233398201071923,
+      "precision": 0.168004757656854,
+      "recall": 0.318489289740699,
+      "specificity": 0.9646757312931611,
+      "f1": 0.21997274673934203,
+      "fp_per_1000": 34.55046120790784,
+      "pred_pos_rate": 0.041527234110862773,
+      "brier": 0.15427111089229584,
+      "threshold": 0.8599999999999999,
+      "prevalence": 0.02190583199262619,
+      "tp": 565,
+      "fp": 2798,
+      "tn": 76411,
+      "fn": 1209
+    }
+  },
+  {
+    "experiment_id": "F",
+    "experiment_name": "vitals_all_labs",
+    "experiment_type": "full-baseline",
+    "raw_features": [
+      "heart_rate",
+      "spo2",
+      "respiratory_rate",
+      "temperature",
+      "lactate",
+      "ph",
+      "creatinine",
+      "wbc",
+      "platelets",
+      "bilirubin"
+    ],
+    "channel_names": [
+      "val_heart_rate",
+      "val_spo2",
+      "val_respiratory_rate",
+      "val_temperature",
+      "val_lactate",
+      "val_ph",
+      "val_creatinine",
+      "val_wbc",
+      "val_platelets",
+      "val_bilirubin",
+      "mask_lactate",
+      "mask_ph",
+      "mask_creatinine",
+      "mask_wbc",
+      "mask_platelets",
+      "mask_bilirubin",
+      "delta_lactate",
+      "delta_ph",
+      "delta_creatinine",
+      "delta_wbc",
+      "delta_platelets",
+      "delta_bilirubin"
+    ],
+    "n_channels": 22,
+    "n_params": 68481,
+    "seed": 123,
+    "best_epoch": 6,
+    "train_time_sec": 416.8,
+    "split_stats": {
+      "train": {
+        "n_patients": 9839,
+        "n_septic": 867,
+        "n_timesteps": 382661,
+        "n_positive_steps": 8293,
+        "prevalence": 0.02167192371315603
+      },
+      "val": {
+        "n_patients": 2109,
+        "n_septic": 186,
+        "n_timesteps": 82478,
+        "n_positive_steps": 1783,
+        "prevalence": 0.021617885981716337
+      },
+      "test": {
+        "n_patients": 2109,
+        "n_septic": 186,
+        "n_timesteps": 80983,
+        "n_positive_steps": 1774,
+        "prevalence": 0.021905832088216046
+      }
+    },
+    "val": {
+      "auroc": 0.7995520651580004,
+      "auprc": 0.10109693322950959,
+      "auprc_lift": 4.67654120900853,
+      "precision": 0.13349038084020415,
+      "recall": 0.38137969713965225,
+      "specificity": 0.9453002044736353,
+      "f1": 0.19776065144685182,
+      "fp_per_1000": 53.51730158345256,
+      "pred_pos_rate": 0.061761924391959065,
+      "brier": 0.12042398005723953,
+      "threshold": 0.8299999999999998,
+      "prevalence": 0.021617885679006577,
+      "tp": 680,
+      "fp": 4414,
+      "tn": 76281,
+      "fn": 1103
+    },
+    "test": {
+      "auroc": 0.8125449990786153,
+      "auprc": 0.1373070872978741,
+      "auprc_lift": 6.2680608225286125,
+      "precision": 0.153219837157661,
+      "recall": 0.3500563697857948,
+      "specificity": 0.9566715903495815,
+      "f1": 0.21314570104685088,
+      "fp_per_1000": 42.379264783967,
+      "pred_pos_rate": 0.05004754084190509,
+      "brier": 0.11623340100049973,
+      "threshold": 0.8299999999999998,
+      "prevalence": 0.02190583199262619,
+      "tp": 621,
+      "fp": 3432,
+      "tn": 75777,
+      "fn": 1153
+    }
+  },
+  {
+    "experiment_id": "I",
+    "experiment_name": "all_minus_creatinine",
+    "experiment_type": "leave-one-out",
+    "raw_features": [
+      "heart_rate",
+      "spo2",
+      "respiratory_rate",
+      "temperature",
+      "lactate",
+      "ph",
+      "wbc",
+      "platelets",
+      "bilirubin"
+    ],
+    "channel_names": [
+      "val_heart_rate",
+      "val_spo2",
+      "val_respiratory_rate",
+      "val_temperature",
+      "val_lactate",
+      "val_ph",
+      "val_wbc",
+      "val_platelets",
+      "val_bilirubin",
+      "mask_lactate",
+      "mask_ph",
+      "mask_wbc",
+      "mask_platelets",
+      "mask_bilirubin",
+      "delta_lactate",
+      "delta_ph",
+      "delta_wbc",
+      "delta_platelets",
+      "delta_bilirubin"
+    ],
+    "n_channels": 19,
+    "n_params": 68289,
+    "seed": 123,
+    "best_epoch": 4,
+    "train_time_sec": 346.5,
+    "split_stats": {
+      "train": {
+        "n_patients": 9839,
+        "n_septic": 867,
+        "n_timesteps": 382661,
+        "n_positive_steps": 8293,
+        "prevalence": 0.02167192371315603
+      },
+      "val": {
+        "n_patients": 2109,
+        "n_septic": 186,
+        "n_timesteps": 82478,
+        "n_positive_steps": 1783,
+        "prevalence": 0.021617885981716337
+      },
+      "test": {
+        "n_patients": 2109,
+        "n_septic": 186,
+        "n_timesteps": 80983,
+        "n_positive_steps": 1774,
+        "prevalence": 0.021905832088216046
+      }
+    },
+    "val": {
+      "auroc": 0.7942331581875446,
+      "auprc": 0.10341314691511162,
+      "auprc_lift": 4.7836846049906505,
+      "precision": 0.14926958831341303,
+      "recall": 0.31519910263600676,
+      "specificity": 0.9603073300700168,
+      "f1": 0.20259552992069213,
+      "fp_per_1000": 38.83459831712699,
+      "pred_pos_rate": 0.04564853657945149,
+      "brier": 0.14108271896839142,
+      "threshold": 0.8499999999999999,
+      "prevalence": 0.021617885679006577,
+      "tp": 562,
+      "fp": 3203,
+      "tn": 77492,
+      "fn": 1221
+    },
+    "test": {
+      "auroc": 0.8089647964144009,
+      "auprc": 0.14055242660609224,
+      "auprc_lift": 6.416210379656165,
+      "precision": 0.1824966078697422,
+      "recall": 0.3032694475760992,
+      "specificity": 0.969574164552008,
+      "f1": 0.22786954680220245,
+      "fp_per_1000": 29.75933220552462,
+      "pred_pos_rate": 0.03640270180161268,
+      "brier": 0.1359288990497589,
+      "threshold": 0.8499999999999999,
+      "prevalence": 0.02190583199262619,
+      "tp": 538,
+      "fp": 2410,
+      "tn": 76799,
+      "fn": 1236
+    }
+  }
+]

@@ -1,0 +1,112 @@
+{
+  "run_id": "20260808_132728",
+  "timestamp": "2026-08-08T13:27:32.046361",
+  "seed": 123,
+  "split_seed": 42,
+  "device": "cpu",
+  "n_threads": 10,
+  "epochs": 50,
+  "batch_size": 32,
+  "lr": 0.001,
+  "patience": 7,
+  "min_delta": 0.0001,
+  "scheduler_factor": 0.5,
+  "scheduler_patience": 3,
+  "min_episode_length": 6,
+  "model": "SepsisTransformer",
+  "preprocessing": "Strategy B (causal forward-fill + training median + mask + delta for labs)",
+  "all_features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "lactate",
+    "ph",
+    "creatinine",
+    "wbc",
+    "platelets",
+    "bilirubin"
+  ],
+  "vitals": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature"
+  ],
+  "labs": [
+    "lactate",
+    "ph",
+    "creatinine",
+    "wbc",
+    "platelets",
+    "bilirubin"
+  ],
+  "experiments": {
+    "A": {
+      "name": "vitals_only",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature"
+      ],
+      "type": "baseline"
+    },
+    "C": {
+      "name": "vitals_ph",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "ph"
+      ],
+      "type": "add-one-in"
+    },
+    "F": {
+      "name": "vitals_all_labs",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "lactate",
+        "ph",
+        "creatinine",
+        "wbc",
+        "platelets",
+        "bilirubin"
+      ],
+      "type": "full-baseline"
+    },
+    "I": {
+      "name": "all_minus_creatinine",
+      "features": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate",
+        "temperature",
+        "lactate",
+        "ph",
+        "wbc",
+        "platelets",
+        "bilirubin"
+      ],
+      "type": "leave-one-out"
+    }
+  },
+  "split_patients": {
+    "train": {
+      "n_patients": 9839,
+      "n_septic": 867
+    },
+    "val": {
+      "n_patients": 2109,
+      "n_septic": 186
+    },
+    "test": {
+      "n_patients": 2109,
+      "n_septic": 186
+    }
+  }
+}
