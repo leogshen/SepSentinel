@@ -28,6 +28,10 @@ models/checkpoints/
 results/**/checkpoints*/
 results/**/*.pt
 
+# External datasets (binary, keep local)
+*.sav
+*.psv
+
 # OS
 Thumbs.db
 .DS_Store
