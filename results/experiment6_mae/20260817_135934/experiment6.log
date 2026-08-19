@@ -1,0 +1,22 @@
+13:59:34 Experiment 6: MAE Pretraining for Recall
+13:59:34   Device: cpu
+13:59:34   Seeds: [42, 123, 456]
+13:59:34   Patient recall target: 0.7
+13:59:34   Run dir: results/experiment6_mae\20260817_135934
+13:59:34 
+  Loading PhysioNet data...
+13:59:37   Loaded 14057 episodes (1239 septic)
+13:59:37     train: 9839 episodes (867 septic)
+13:59:37     val: 2109 episodes (186 septic)
+13:59:37     test: 2109 episodes (186 septic)
+13:59:46   Preprocessing: 19 channels (4 vitals + 5 labs x3)
+13:59:46   pos_weight: 45.1 (374368 neg / 8293 pos)
+13:59:46 
+================================================================================
+13:59:46   PHASE 0: MAE PRETRAINING
+13:59:46 ================================================================================
+13:59:46   MAE model: 79,145 params (encoder: 68,224, decoder: 10,921)
+13:59:48 
+  MAE Pretraining: mask_ratio=0.4, lr=0.0001, epochs=100, patience=10
+13:59:48   Encoder: d_model=64, layers=2, heads=4
+13:59:48   Decoder: d_model=32, layers=1

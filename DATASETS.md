@@ -95,6 +95,35 @@ Not intended for clinical validation. Used to develop the pipeline, test archite
 
 **Not useful for**: Model training (n=37, only 2 timepoints), sepsis prediction (COVID mortality endpoint), time-series modeling (no continuous data).
 
+## Dryad COVID-19 Cytokine Dataset (UCSF, 2024) — Reference Only
+
+**Paper**: Dexamethasone effects on cytokines in severe COVID-19 (Nature Communications)
+**File**: `dex_cytokine.tsv` (kept local, .gitignore'd)
+**DOI**: 10.7272/Q6MS3R18
+
+**Overview**: 38 severe COVID-19 patients (23 dexamethasone, 15 no-dex). 18 analytes via Luminex, single timepoint (enrollment day). Units: pg/mL.
+
+**IL-6 findings**:
+
+| Group | n | IL-6 median (pg/mL) | IL-6 range |
+|-------|---|---------------------|------------|
+| All | 38 | 34.2 | 1.5 - 3,716 |
+| Dexamethasone | 23 | 12.3 | 1.5 - 1,906 |
+| No dexamethasone | 15 | 228.6 | 11.8 - 3,716 |
+
+- Dexamethasone group has ~18x lower median IL-6 (treatment effect)
+- Range 1.5 - 3,716 pg/mL — narrower than Ozger (0.3 - 9,531) but same order of magnitude
+- 18 analytes include IL-6, IL-8, IL-10, IL-18, IFN-gamma, TNF R1, IP-10, TREM-1
+- Near-complete data (only IFN-gamma has 24% missing)
+
+**Useful for SepSentinel**:
+1. Cross-validates IL-6 dynamic range from Ozger with independent cohort
+2. Shows dexamethasone suppresses IL-6 ~18x — relevant if monitored patients receive steroids
+
+**Not useful for**: Model training (single timepoint, n=38), trajectories (no serial measurements), sepsis prediction (COVID endpoint).
+
+**Compared to Ozger**: Ozger is strictly better — more analytes (48 vs 18), has 2 timepoints (trajectory data), and includes standard labs (lactate, CRP, procalcitonin). Dryad adds the steroid-suppression observation but no new trajectory information.
+
 ## Other Candidate Datasets (Evaluated, Pending Access)
 
 - **eICU**: 200K stays, 335 hospitals, good generalization test

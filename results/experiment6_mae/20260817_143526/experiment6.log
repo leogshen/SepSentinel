@@ -1,0 +1,200 @@
+14:35:26 Experiment 6: MAE Pretraining for Recall
+14:35:26   Device: cpu
+14:35:26   Seeds: [42, 123, 456]
+14:35:26   Patient recall target: 0.7
+14:35:26   Run dir: results/experiment6_mae\20260817_143526
+14:35:26 
+  Loading PhysioNet data...
+14:35:29   Loaded 14057 episodes (1239 septic)
+14:35:29     train: 9839 episodes (867 septic)
+14:35:29     val: 2109 episodes (186 septic)
+14:35:29     test: 2109 episodes (186 septic)
+14:35:36   Preprocessing: 19 channels (4 vitals + 5 labs x3)
+14:35:36   pos_weight: 45.1 (374368 neg / 8293 pos)
+14:35:36 
+================================================================================
+14:35:36   PHASE 0: MAE PRETRAINING
+14:35:36 ================================================================================
+14:35:36   MAE model: 79,145 params (encoder: 68,224, decoder: 10,921)
+14:35:37 
+  MAE Pretraining: mask_ratio=0.4, lr=0.0001, epochs=100, patience=10
+14:35:37   Encoder: d_model=64, layers=2, heads=4
+14:35:37   Decoder: d_model=32, layers=1
+14:36:32   MAE Epoch   1/100  train_mse=0.976682  val_mse=0.737594  lr=1.00e-04  (54.9s)
+14:37:35   MAE Epoch   2/100  train_mse=0.771541  val_mse=0.558544  lr=9.99e-05  (63.0s)
+14:38:43   MAE Epoch   3/100  train_mse=0.662594  val_mse=0.484800  lr=9.98e-05  (67.4s)
+14:39:45   MAE Epoch   4/100  train_mse=0.603119  val_mse=0.450092  lr=9.96e-05  (62.2s)
+14:40:45   MAE Epoch   5/100  train_mse=0.565026  val_mse=0.423386  lr=9.94e-05  (60.2s)
+14:41:44   MAE Epoch   6/100  train_mse=0.539703  val_mse=0.401549  lr=9.91e-05  (58.7s)
+14:42:45   MAE Epoch   7/100  train_mse=0.517868  val_mse=0.390040  lr=9.88e-05  (61.3s)
+14:43:47   MAE Epoch   8/100  train_mse=0.501261  val_mse=0.376040  lr=9.84e-05  (62.1s)
+14:44:51   MAE Epoch   9/100  train_mse=0.488293  val_mse=0.357155  lr=9.80e-05  (64.3s)
+14:45:52   MAE Epoch  10/100  train_mse=0.477795  val_mse=0.347751  lr=9.76e-05  (61.0s)
+14:46:53   MAE Epoch  11/100  train_mse=0.461813  val_mse=0.349725  lr=9.71e-05  (60.7s)
+14:47:55   MAE Epoch  12/100  train_mse=0.452474  val_mse=0.345647  lr=9.65e-05  (62.3s)
+14:48:58   MAE Epoch  13/100  train_mse=0.450948  val_mse=0.340843  lr=9.59e-05  (62.5s)
+14:49:59   MAE Epoch  14/100  train_mse=0.440388  val_mse=0.334596  lr=9.53e-05  (61.3s)
+14:51:03   MAE Epoch  15/100  train_mse=0.439529  val_mse=0.332865  lr=9.46e-05  (63.9s)
+14:52:06   MAE Epoch  16/100  train_mse=0.429016  val_mse=0.329200  lr=9.39e-05  (62.5s)
+14:53:06   MAE Epoch  17/100  train_mse=0.421360  val_mse=0.318175  lr=9.31e-05  (60.5s)
+14:54:09   MAE Epoch  18/100  train_mse=0.420294  val_mse=0.322751  lr=9.23e-05  (63.0s)
+14:55:11   MAE Epoch  19/100  train_mse=0.414917  val_mse=0.318862  lr=9.14e-05  (62.0s)
+14:56:11   MAE Epoch  20/100  train_mse=0.408828  val_mse=0.305388  lr=9.05e-05  (59.9s)
+14:57:15   MAE Epoch  21/100  train_mse=0.406207  val_mse=0.323484  lr=8.96e-05  (63.7s)
+14:58:18   MAE Epoch  22/100  train_mse=0.399223  val_mse=0.312428  lr=8.86e-05  (63.1s)
+14:59:19   MAE Epoch  23/100  train_mse=0.399470  val_mse=0.316154  lr=8.76e-05  (61.7s)
+15:00:20   MAE Epoch  24/100  train_mse=0.392907  val_mse=0.309351  lr=8.66e-05  (61.0s)
+15:01:22   MAE Epoch  25/100  train_mse=0.386273  val_mse=0.305144  lr=8.55e-05  (61.9s)
+15:02:25   MAE Epoch  26/100  train_mse=0.386883  val_mse=0.315018  lr=8.44e-05  (62.9s)
+15:03:29   MAE Epoch  27/100  train_mse=0.386220  val_mse=0.293397  lr=8.32e-05  (63.5s)
+15:04:30   MAE Epoch  28/100  train_mse=0.385525  val_mse=0.294121  lr=8.21e-05  (61.4s)
+15:05:33   MAE Epoch  29/100  train_mse=0.381169  val_mse=0.296206  lr=8.08e-05  (62.8s)
+15:06:34   MAE Epoch  30/100  train_mse=0.376313  val_mse=0.290587  lr=7.96e-05  (61.0s)
+15:07:34   MAE Epoch  31/100  train_mse=0.373054  val_mse=0.300636  lr=7.83e-05  (60.0s)
+15:08:36   MAE Epoch  32/100  train_mse=0.370766  val_mse=0.297136  lr=7.70e-05  (61.9s)
+15:09:38   MAE Epoch  33/100  train_mse=0.365448  val_mse=0.287294  lr=7.57e-05  (61.6s)
+15:10:39   MAE Epoch  34/100  train_mse=0.366105  val_mse=0.298584  lr=7.43e-05  (61.3s)
+15:11:39   MAE Epoch  35/100  train_mse=0.361238  val_mse=0.288622  lr=7.30e-05  (59.8s)
+15:12:39   MAE Epoch  36/100  train_mse=0.363491  val_mse=0.285086  lr=7.16e-05  (60.4s)
+15:13:41   MAE Epoch  37/100  train_mse=0.364938  val_mse=0.282374  lr=7.02e-05  (62.4s)
+15:14:41   MAE Epoch  38/100  train_mse=0.367093  val_mse=0.293243  lr=6.87e-05  (59.4s)
+15:15:35   MAE Epoch  39/100  train_mse=0.364952  val_mse=0.283001  lr=6.73e-05  (53.8s)
+15:16:17   MAE Epoch  40/100  train_mse=0.361633  val_mse=0.287028  lr=6.58e-05  (42.8s)
+15:17:00   MAE Epoch  41/100  train_mse=0.359222  val_mse=0.291279  lr=6.43e-05  (42.9s)
+15:17:44   MAE Epoch  42/100  train_mse=0.359511  val_mse=0.285516  lr=6.28e-05  (43.9s)
+15:18:43   MAE Epoch  43/100  train_mse=0.351924  val_mse=0.278690  lr=6.13e-05  (59.2s)
+15:19:44   MAE Epoch  44/100  train_mse=0.350920  val_mse=0.278936  lr=5.98e-05  (60.9s)
+15:20:42   MAE Epoch  45/100  train_mse=0.352623  val_mse=0.277957  lr=5.82e-05  (57.9s)
+15:21:44   MAE Epoch  46/100  train_mse=0.349464  val_mse=0.278389  lr=5.67e-05  (62.0s)
+15:22:44   MAE Epoch  47/100  train_mse=0.352850  val_mse=0.276399  lr=5.52e-05  (59.2s)
+15:23:43   MAE Epoch  48/100  train_mse=0.352584  val_mse=0.284061  lr=5.36e-05  (59.4s)
+15:24:44   MAE Epoch  49/100  train_mse=0.353301  val_mse=0.273705  lr=5.21e-05  (61.0s)
+15:25:43   MAE Epoch  50/100  train_mse=0.349900  val_mse=0.274433  lr=5.05e-05  (58.8s)
+15:26:42   MAE Epoch  51/100  train_mse=0.348235  val_mse=0.274683  lr=4.89e-05  (58.9s)
+15:27:39   MAE Epoch  52/100  train_mse=0.349863  val_mse=0.281533  lr=4.74e-05  (57.4s)
+15:28:38   MAE Epoch  53/100  train_mse=0.348053  val_mse=0.279274  lr=4.58e-05  (59.0s)
+15:29:38   MAE Epoch  54/100  train_mse=0.351676  val_mse=0.280099  lr=4.43e-05  (59.8s)
+15:30:37   MAE Epoch  55/100  train_mse=0.347525  val_mse=0.275098  lr=4.28e-05  (59.1s)
+15:31:35   MAE Epoch  56/100  train_mse=0.346256  val_mse=0.274837  lr=4.12e-05  (58.0s)
+15:32:34   MAE Epoch  57/100  train_mse=0.344154  val_mse=0.281270  lr=3.97e-05  (59.4s)
+15:33:34   MAE Epoch  58/100  train_mse=0.339171  val_mse=0.270863  lr=3.82e-05  (59.5s)
+15:34:34   MAE Epoch  59/100  train_mse=0.344750  val_mse=0.273975  lr=3.67e-05  (60.1s)
+15:35:35   MAE Epoch  60/100  train_mse=0.348192  val_mse=0.268856  lr=3.52e-05  (60.7s)
+15:36:25   MAE Epoch  61/100  train_mse=0.341769  val_mse=0.277362  lr=3.37e-05  (50.6s)
+15:37:17   MAE Epoch  62/100  train_mse=0.345751  val_mse=0.283800  lr=3.23e-05  (52.2s)
+15:38:14   MAE Epoch  63/100  train_mse=0.343566  val_mse=0.274020  lr=3.08e-05  (56.9s)
+15:39:14   MAE Epoch  64/100  train_mse=0.342616  val_mse=0.271801  lr=2.94e-05  (59.6s)
+15:40:14   MAE Epoch  65/100  train_mse=0.342454  val_mse=0.269562  lr=2.80e-05  (60.2s)
+15:41:15   MAE Epoch  66/100  train_mse=0.339192  val_mse=0.279190  lr=2.67e-05  (60.7s)
+15:42:16   MAE Epoch  67/100  train_mse=0.339814  val_mse=0.278497  lr=2.53e-05  (60.7s)
+15:43:17   MAE Epoch  68/100  train_mse=0.343681  val_mse=0.272497  lr=2.40e-05  (61.8s)
+15:44:17   MAE Epoch  69/100  train_mse=0.339295  val_mse=0.273143  lr=2.27e-05  (59.4s)
+15:45:18   MAE Epoch  70/100  train_mse=0.337846  val_mse=0.270120  lr=2.14e-05  (61.1s)
+15:45:18   MAE early stopping at epoch 70 (no improvement for 10 epochs)
+15:45:18   MAE pretraining complete. Best val MSE: 0.268856
+15:45:18   MAE checkpoint saved: results/experiment6_mae\20260817_143526\mae_pretrain\mae_best.pt
+15:45:18 
+================================================================================
+15:45:18   PHASE 1: FINE-TUNING COMPARISON
+15:45:18 ================================================================================
+15:45:18 
+  --- Seed 42 ---
+15:45:19 
+  Config A_scratch: From-scratch SepsisTransformer (baseline)
+15:53:32 
+  A_scratch Results:
+15:53:32     AUROC=0.8162  AUPRC=0.1494
+15:53:32     Best-F1 threshold=0.870: TS_recall=0.251, precision=0.191, patient_recall=0.048
+15:53:32     Target threshold=0.480 (patient_recall>=0.70): patient_recall=0.720, precision=0.0546, alerts/day=7.5, median_lead=27.5h
+15:53:32 
+  Config B_mae_finetune: MAE-pretrained encoder, full fine-tuning
+15:53:32     Loaded MAE encoder weights (27 params)
+16:01:53 
+  B_mae_finetune Results:
+16:01:53     AUROC=0.8150  AUPRC=0.1497
+16:01:53     Best-F1 threshold=0.865: TS_recall=0.231, precision=0.214, patient_recall=0.043
+16:01:53     Target threshold=0.330 (patient_recall>=0.70): patient_recall=0.710, precision=0.0507, alerts/day=8.3, median_lead=26.5h
+16:01:53 
+  Config C_mae_frozen: MAE-pretrained encoder (frozen), train head only
+16:01:53     Loaded MAE encoder weights (27 params)
+16:01:53     Encoder frozen. Trainable params: 65
+16:10:50 
+  C_mae_frozen Results:
+16:10:50     AUROC=0.7771  AUPRC=0.1175
+16:10:50     Best-F1 threshold=0.730: TS_recall=0.273, precision=0.150, patient_recall=0.075
+16:10:50     Target threshold=0.360 (patient_recall>=0.70): patient_recall=0.704, precision=0.0496, alerts/day=7.7, median_lead=25.0h
+16:10:50 
+  --- Seed 123 ---
+16:10:50 
+  Config A_scratch: From-scratch SepsisTransformer (baseline)
+16:18:28 
+  A_scratch Results:
+16:18:28     AUROC=0.8090  AUPRC=0.1410
+16:18:28     Best-F1 threshold=0.870: TS_recall=0.255, precision=0.227, patient_recall=0.038
+16:18:28     Target threshold=0.345 (patient_recall>=0.70): patient_recall=0.720, precision=0.0542, alerts/day=7.6, median_lead=26.0h
+16:18:28 
+  Config B_mae_finetune: MAE-pretrained encoder, full fine-tuning
+16:18:28     Loaded MAE encoder weights (27 params)
+16:25:23 
+  B_mae_finetune Results:
+16:25:23     AUROC=0.8164  AUPRC=0.1285
+16:25:23     Best-F1 threshold=0.835: TS_recall=0.290, precision=0.186, patient_recall=0.048
+16:25:23     Target threshold=0.435 (patient_recall>=0.70): patient_recall=0.710, precision=0.0532, alerts/day=7.7, median_lead=25.5h
+16:25:23 
+  Config C_mae_frozen: MAE-pretrained encoder (frozen), train head only
+16:25:23     Loaded MAE encoder weights (27 params)
+16:25:23     Encoder frozen. Trainable params: 65
+16:33:15 
+  C_mae_frozen Results:
+16:33:15     AUROC=0.7751  AUPRC=0.1165
+16:33:15     Best-F1 threshold=0.685: TS_recall=0.335, precision=0.142, patient_recall=0.108
+16:33:15     Target threshold=0.375 (patient_recall>=0.70): patient_recall=0.704, precision=0.0511, alerts/day=7.1, median_lead=25.0h
+16:33:15 
+  --- Seed 456 ---
+16:33:15 
+  Config A_scratch: From-scratch SepsisTransformer (baseline)
+16:44:57 
+  A_scratch Results:
+16:44:57     AUROC=0.8168  AUPRC=0.1407
+16:44:57     Best-F1 threshold=0.895: TS_recall=0.258, precision=0.210, patient_recall=0.048
+16:44:57     Target threshold=0.320 (patient_recall>=0.70): patient_recall=0.720, precision=0.0540, alerts/day=7.5, median_lead=27.0h
+16:44:57 
+  Config B_mae_finetune: MAE-pretrained encoder, full fine-tuning
+16:44:57     Loaded MAE encoder weights (27 params)
+16:51:44 
+  B_mae_finetune Results:
+16:51:44     AUROC=0.8158  AUPRC=0.1338
+16:51:44     Best-F1 threshold=0.895: TS_recall=0.281, precision=0.184, patient_recall=0.048
+16:51:44     Target threshold=0.220 (patient_recall>=0.70): patient_recall=0.710, precision=0.0505, alerts/day=8.2, median_lead=27.5h
+16:51:44 
+  Config C_mae_frozen: MAE-pretrained encoder (frozen), train head only
+16:51:44     Loaded MAE encoder weights (27 params)
+16:51:44     Encoder frozen. Trainable params: 65
+17:01:11 
+  C_mae_frozen Results:
+17:01:11     AUROC=0.7763  AUPRC=0.1185
+17:01:11     Best-F1 threshold=0.735: TS_recall=0.277, precision=0.150, patient_recall=0.081
+17:01:11     Target threshold=0.380 (patient_recall>=0.70): patient_recall=0.704, precision=0.0498, alerts/day=7.6, median_lead=26.0h
+17:01:11 
+================================================================================
+17:01:11   SUMMARY: All Configs @ 0.70 Patient Recall Target
+17:01:11 ================================================================================
+17:01:11   Config               |        AUROC |        AUPRC |    Pt Recall |    Precision |   Alerts/Day |     Med Lead |   Cap 6h
+17:01:11   ------------------------------------------------------------------------------------------------------------------------
+17:01:11   A_scratch            | 0.8140+/-0.0036 | 0.1437+/-0.0041 | 0.720         | 0.0542+/-0.0002 |      7.5     |     26.8     | 0.590
+17:01:11   B_mae_finetune       | 0.8157+/-0.0006 | 0.1373+/-0.0090 | 0.710         | 0.0515+/-0.0012 |      8.0     |     26.5     | 0.582
+17:01:11   C_mae_frozen         | 0.7761+/-0.0008 | 0.1175+/-0.0008 | 0.704         | 0.0502+/-0.0007 |      7.4     |     25.3     | 0.561
+17:01:11 
+  EXPERIMENT 5 BASELINE (from-scratch, threshold=0.30):
+17:01:11     Patient recall=0.731, Precision=0.053, Alerts/day=7.9, Median lead=27h
+17:01:11 
+  SUCCESS CRITERIA:
+17:01:11     At 0.70 patient recall: precision > 0.053, alerts/day < 8, lead >= 24h
+17:01:11 
+  MAE vs BASELINE DELTA:
+17:01:11     AUROC:      +0.0018 (0.8140 -> 0.8157)
+17:01:11     Precision:  -0.0028 (0.0542 -> 0.0515)
+17:01:11     Alerts/day: +0.5 (7.5 -> 8.0)
+17:01:11     --> MAE pretraining shows no significant improvement
+17:01:11 
+  Results saved to: results/experiment6_mae\20260817_143526

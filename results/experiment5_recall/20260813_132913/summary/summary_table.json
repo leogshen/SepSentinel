@@ -1,0 +1,72 @@
+[
+  {
+    "loss_config": "baseline",
+    "auroc_mean": 0.8148827675600409,
+    "auroc_std": 0.003967918581615257,
+    "auprc_mean": 0.1392719178406835,
+    "auprc_std": 0.004751531522360685,
+    "f1_mean": 0.2190028629288613,
+    "ts_recall_mean": 0.2801578354002255,
+    "pt_recall_mean": 0.06451612903225808,
+    "precision_mean": 0.1827126621808549,
+    "alerts_per_day_mean": 0.8080172495626585,
+    "median_lead_mean": -22.0,
+    "n_seeds": 3
+  },
+  {
+    "loss_config": "wbce_2",
+    "auroc_mean": 0.8165941374806002,
+    "auroc_std": 0.0005759793730872367,
+    "auprc_mean": 0.14363183584003833,
+    "auprc_std": 0.005913365158726704,
+    "f1_mean": 0.22256284717059335,
+    "ts_recall_mean": 0.27639984968057124,
+    "pt_recall_mean": 0.07168458781362008,
+    "precision_mean": 0.19130210498396452,
+    "alerts_per_day_mean": 0.7818716860362621,
+    "median_lead_mean": -31.5,
+    "n_seeds": 3
+  },
+  {
+    "loss_config": "wbce_5",
+    "auroc_mean": 0.8130068549969333,
+    "auroc_std": 0.001363078273336643,
+    "auprc_mean": 0.1391345993005003,
+    "auprc_std": 0.009094483669047502,
+    "f1_mean": 0.2200113274195384,
+    "ts_recall_mean": 0.2619316046599023,
+    "pt_recall_mean": 0.05555555555555556,
+    "precision_mean": 0.18978466232533073,
+    "alerts_per_day_mean": 0.7105951912775796,
+    "median_lead_mean": -31.333333333333332,
+    "n_seeds": 3
+  },
+  {
+    "loss_config": "wbce_10",
+    "auroc_mean": 0.8153103144052339,
+    "auroc_std": 0.004189373681830639,
+    "auprc_mean": 0.14364221087849094,
+    "auprc_std": 0.011075569667281541,
+    "f1_mean": 0.23135366459136794,
+    "ts_recall_mean": 0.27095077038707255,
+    "pt_recall_mean": 0.057347670250896064,
+    "precision_mean": 0.2028721114379407,
+    "alerts_per_day_mean": 0.6917183113871523,
+    "median_lead_mean": -29.0,
+    "n_seeds": 3
+  },
+  {
+    "loss_config": "focal_g2",
+    "auroc_mean": 0.8175572325179568,
+    "auroc_std": 0.004934267042992596,
+    "auprc_mean": 0.14041013052371942,
+    "auprc_std": 0.00870391120512041,
+    "f1_mean": 0.22482856525969153,
+    "ts_recall_mean": 0.2718902668169861,
+    "pt_recall_mean": 0.05555555555555555,
+    "precision_mean": 0.1962468030428494,
+    "alerts_per_day_mean": 0.7317503152927136,
+    "median_lead_mean": -34.0,
+    "n_seeds": 3
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "config": "A_scratch",
+    "description": "From-scratch SepsisTransformer (baseline)",
+    "n_seeds": 3,
+    "auroc_mean": 0.8139757559844022,
+    "auroc_std": 0.0035571973271452443,
+    "auprc_mean": 0.1437102904394355,
+    "auprc_std": 0.004056200723962863,
+    "target_patient_recall_mean": 0.7204301075268816,
+    "target_precision_mean": 0.05423269567755371,
+    "target_precision_std": 0.0002494005013024739,
+    "target_alerts_per_day_mean": 7.53306844225058,
+    "target_median_lead_h_mean": 26.833333333333332,
+    "target_capture_6h_mean": 0.5896057347670252
+  },
+  {
+    "config": "B_mae_finetune",
+    "description": "MAE-pretrained encoder, full fine-tuning",
+    "n_seeds": 3,
+    "auroc_mean": 0.8157384448106831,
+    "auroc_std": 0.0005826868646768819,
+    "auprc_mean": 0.137292681989466,
+    "auprc_std": 0.009015267941205676,
+    "target_patient_recall_mean": 0.7096774193548386,
+    "target_precision_mean": 0.05146709282649616,
+    "target_precision_std": 0.0012438569191036994,
+    "target_alerts_per_day_mean": 8.043286638369429,
+    "target_median_lead_h_mean": 26.5,
+    "target_capture_6h_mean": 0.5824372759856632
+  },
+  {
+    "config": "C_mae_frozen",
+    "description": "MAE-pretrained encoder (frozen), train head only",
+    "n_seeds": 3,
+    "auroc_mean": 0.7761466082512412,
+    "auroc_std": 0.000832526145057274,
+    "auprc_mean": 0.1174759730754658,
+    "auprc_std": 0.0008037358056249812,
+    "target_patient_recall_mean": 0.7043010752688174,
+    "target_precision_mean": 0.05017097984645367,
+    "target_precision_std": 0.0006867481359291726,
+    "target_alerts_per_day_mean": 7.436188823042812,
+    "target_median_lead_h_mean": 25.333333333333332,
+    "target_capture_6h_mean": 0.560931899641577
+  }
+]

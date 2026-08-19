@@ -1,0 +1,812 @@
+{
+  "exp6_A_scratch_seed42": {
+    "checkpoint": "results/experiment6_mae/20260817_143526\\finetune\\A_scratch_seed42\\checkpoints\\best_model.pt",
+    "best_f1": {
+      "timestep": {
+        "threshold": 0.8699999999999999,
+        "recall": 0.25140924464487036,
+        "precision": 0.19051687313114055,
+        "specificity": 0.9760759509651681,
+        "f1": 0.216767922235723,
+        "fpr": 0.0239240490348319,
+        "accuracy": 0.9602015237765951,
+        "tp": 446,
+        "fp": 1895,
+        "tn": 77314,
+        "fn": 1328
+      },
+      "early_warning": {
+        "threshold": 0.8699999999999999,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.34408602150537637,
+        "caught_any": 64,
+        "median_lead_time_h": 23.0,
+        "mean_lead_time_h": 44.671875,
+        "std_lead_time_h": 50.918763329291245,
+        "min_lead_time_h": -2.0,
+        "max_lead_time_h": 269.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.3010752688172043,
+          "6": 0.26344086021505375,
+          "12": 0.24193548387096775
+        },
+        "healthy_patients_with_alerts": 11,
+        "healthy_false_alert_rate": 0.005720228809152366,
+        "mean_alerts_per_healthy_patient": 0.07956318252730109,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 0.05204745503252965,
+        "total_healthy_alerts": 153,
+        "total_healthy_hours": 70551
+      }
+    },
+    "recall70": {
+      "timestep": {
+        "threshold": 0.5949999999999996,
+        "recall": 0.5405862457722661,
+        "precision": 0.08598583340805165,
+        "specificity": 0.8713025035033898,
+        "f1": 0.1483716252804208,
+        "fpr": 0.12869749649661025,
+        "accuracy": 0.8640578886926886,
+        "tp": 959,
+        "fp": 10194,
+        "tn": 69015,
+        "fn": 815
+      },
+      "early_warning": {
+        "threshold": 0.5949999999999996,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.7096774193548387,
+        "caught_any": 132,
+        "median_lead_time_h": 24.0,
+        "mean_lead_time_h": 45.34848484848485,
+        "std_lead_time_h": 53.25353663721296,
+        "min_lead_time_h": -1.0,
+        "max_lead_time_h": 280.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.6290322580645161,
+          "6": 0.5752688172043011,
+          "12": 0.46774193548387094
+        },
+        "healthy_patients_with_alerts": 602,
+        "healthy_false_alert_rate": 0.313052522100884,
+        "mean_alerts_per_healthy_patient": 3.0504420176807074,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 1.9954926223582943,
+        "total_healthy_alerts": 5866,
+        "total_healthy_hours": 70551
+      }
+    }
+  },
+  "exp6_A_scratch_seed123": {
+    "checkpoint": "results/experiment6_mae/20260817_143526\\finetune\\A_scratch_seed123\\checkpoints\\best_model.pt",
+    "best_f1": {
+      "timestep": {
+        "threshold": 0.8699999999999999,
+        "recall": 0.2547914317925592,
+        "precision": 0.22656641604010025,
+        "specificity": 0.9805198904164931,
+        "f1": 0.2398514194746617,
+        "fpr": 0.019480109583506926,
+        "accuracy": 0.9646222046602373,
+        "tp": 452,
+        "fp": 1543,
+        "tn": 77666,
+        "fn": 1322
+      },
+      "early_warning": {
+        "threshold": 0.8699999999999999,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.3333333333333333,
+        "caught_any": 62,
+        "median_lead_time_h": 23.0,
+        "mean_lead_time_h": 44.54838709677419,
+        "std_lead_time_h": 50.63266745419972,
+        "min_lead_time_h": -2.0,
+        "max_lead_time_h": 269.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.2903225806451613,
+          "6": 0.26344086021505375,
+          "12": 0.22043010752688172
+        },
+        "healthy_patients_with_alerts": 5,
+        "healthy_false_alert_rate": 0.0026001040041601664,
+        "mean_alerts_per_healthy_patient": 0.0483619344773791,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 0.03163668835310626,
+        "total_healthy_alerts": 93,
+        "total_healthy_hours": 70551
+      }
+    },
+    "recall70": {
+      "timestep": {
+        "threshold": 0.6199999999999997,
+        "recall": 0.5248027057497181,
+        "precision": 0.09050257606688053,
+        "specificity": 0.88188210935626,
+        "f1": 0.1543818920487522,
+        "fpr": 0.11811789064373998,
+        "accuracy": 0.8740599878986948,
+        "tp": 931,
+        "fp": 9356,
+        "tn": 69853,
+        "fn": 843
+      },
+      "early_warning": {
+        "threshold": 0.6199999999999997,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.7096774193548387,
+        "caught_any": 132,
+        "median_lead_time_h": 24.5,
+        "mean_lead_time_h": 46.265151515151516,
+        "std_lead_time_h": 52.67235199201743,
+        "min_lead_time_h": -3.0,
+        "max_lead_time_h": 278.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.6290322580645161,
+          "6": 0.5698924731182796,
+          "12": 0.489247311827957
+        },
+        "healthy_patients_with_alerts": 554,
+        "healthy_false_alert_rate": 0.2880915236609464,
+        "mean_alerts_per_healthy_patient": 2.708788351534061,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 1.7719947272186078,
+        "total_healthy_alerts": 5209,
+        "total_healthy_hours": 70551
+      }
+    }
+  },
+  "exp6_A_scratch_seed456": {
+    "checkpoint": "results/experiment6_mae/20260817_143526\\finetune\\A_scratch_seed456\\checkpoints\\best_model.pt",
+    "best_f1": {
+      "timestep": {
+        "threshold": 0.8949999999999999,
+        "recall": 0.25817361894024804,
+        "precision": 0.21009174311926607,
+        "specificity": 0.9782600462068705,
+        "f1": 0.23166413758219526,
+        "fpr": 0.02173995379312957,
+        "accuracy": 0.9624859538421644,
+        "tp": 458,
+        "fp": 1722,
+        "tn": 77487,
+        "fn": 1316
+      },
+      "early_warning": {
+        "threshold": 0.8949999999999999,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.3118279569892473,
+        "caught_any": 58,
+        "median_lead_time_h": 23.0,
+        "mean_lead_time_h": 39.724137931034484,
+        "std_lead_time_h": 44.771755683862324,
+        "min_lead_time_h": -2.0,
+        "max_lead_time_h": 235.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.27956989247311825,
+          "6": 0.25268817204301075,
+          "12": 0.20967741935483872
+        },
+        "healthy_patients_with_alerts": 24,
+        "healthy_false_alert_rate": 0.0124804992199688,
+        "mean_alerts_per_healthy_patient": 0.0499219968798752,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 0.032657226687077434,
+        "total_healthy_alerts": 96,
+        "total_healthy_hours": 70551
+      }
+    },
+    "recall70": {
+      "timestep": {
+        "threshold": 0.6499999999999997,
+        "recall": 0.4813979706877114,
+        "precision": 0.10292876943473545,
+        "specificity": 0.9060334052948529,
+        "f1": 0.16959586932777285,
+        "fpr": 0.09396659470514714,
+        "accuracy": 0.8967314127656422,
+        "tp": 854,
+        "fp": 7443,
+        "tn": 71766,
+        "fn": 920
+      },
+      "early_warning": {
+        "threshold": 0.6499999999999997,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.7043010752688172,
+        "caught_any": 131,
+        "median_lead_time_h": 22.0,
+        "mean_lead_time_h": 42.213740458015266,
+        "std_lead_time_h": 52.47944092305824,
+        "min_lead_time_h": -2.0,
+        "max_lead_time_h": 278.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.5860215053763441,
+          "6": 0.5376344086021505,
+          "12": 0.44086021505376344
+        },
+        "healthy_patients_with_alerts": 455,
+        "healthy_false_alert_rate": 0.23660946437857514,
+        "mean_alerts_per_healthy_patient": 1.9594383775351014,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 1.2817961474677892,
+        "total_healthy_alerts": 3768,
+        "total_healthy_hours": 70551
+      }
+    }
+  },
+  "exp6_B_mae_finetune_seed42": {
+    "checkpoint": "results/experiment6_mae/20260817_143526\\finetune\\B_mae_finetune_seed42\\checkpoints\\best_model.pt",
+    "best_f1": {
+      "timestep": {
+        "threshold": 0.8649999999999999,
+        "recall": 0.23055242390078917,
+        "precision": 0.21391213389121339,
+        "specificity": 0.9810248835359618,
+        "f1": 0.22192078133478024,
+        "fpr": 0.018975116464038176,
+        "accuracy": 0.9645851598483632,
+        "tp": 409,
+        "fp": 1503,
+        "tn": 77706,
+        "fn": 1365
+      },
+      "early_warning": {
+        "threshold": 0.8649999999999999,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.2956989247311828,
+        "caught_any": 55,
+        "median_lead_time_h": 24.0,
+        "mean_lead_time_h": 43.72727272727273,
+        "std_lead_time_h": 48.7634194287087,
+        "min_lead_time_h": -2.0,
+        "max_lead_time_h": 254.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.26344086021505375,
+          "6": 0.24193548387096775,
+          "12": 0.1989247311827957
+        },
+        "healthy_patients_with_alerts": 15,
+        "healthy_false_alert_rate": 0.0078003120124804995,
+        "mean_alerts_per_healthy_patient": 0.0374414976599064,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 0.024492920015308076,
+        "total_healthy_alerts": 72,
+        "total_healthy_hours": 70551
+      }
+    },
+    "recall70": {
+      "timestep": {
+        "threshold": 0.6299999999999997,
+        "recall": 0.5231116121758738,
+        "precision": 0.09139255465826275,
+        "specificity": 0.8835233369945334,
+        "f1": 0.15560026827632462,
+        "fpr": 0.11647666300546655,
+        "accuracy": 0.8756282182680316,
+        "tp": 928,
+        "fp": 9226,
+        "tn": 69983,
+        "fn": 846
+      },
+      "early_warning": {
+        "threshold": 0.6299999999999997,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.7150537634408602,
+        "caught_any": 133,
+        "median_lead_time_h": 22.0,
+        "mean_lead_time_h": 44.42857142857143,
+        "std_lead_time_h": 52.433457394588814,
+        "min_lead_time_h": -2.0,
+        "max_lead_time_h": 273.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.6451612903225806,
+          "6": 0.5806451612903226,
+          "12": 0.4731182795698925
+        },
+        "healthy_patients_with_alerts": 499,
+        "healthy_false_alert_rate": 0.2594903796151846,
+        "mean_alerts_per_healthy_patient": 2.7243889755590223,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 1.7822001105583194,
+        "total_healthy_alerts": 5239,
+        "total_healthy_hours": 70551
+      }
+    }
+  },
+  "exp6_B_mae_finetune_seed123": {
+    "checkpoint": "results/experiment6_mae/20260817_143526\\finetune\\B_mae_finetune_seed123\\checkpoints\\best_model.pt",
+    "best_f1": {
+      "timestep": {
+        "threshold": 0.8349999999999999,
+        "recall": 0.290304396843292,
+        "precision": 0.1859877211989888,
+        "specificity": 0.9715436377179361,
+        "f1": 0.22672243011226065,
+        "fpr": 0.028456362282063906,
+        "accuracy": 0.9566205252954324,
+        "tp": 515,
+        "fp": 2254,
+        "tn": 76955,
+        "fn": 1259
+      },
+      "early_warning": {
+        "threshold": 0.8349999999999999,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.34408602150537637,
+        "caught_any": 64,
+        "median_lead_time_h": 24.0,
+        "mean_lead_time_h": 44.203125,
+        "std_lead_time_h": 48.16319253573599,
+        "min_lead_time_h": -3.0,
+        "max_lead_time_h": 228.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.3064516129032258,
+          "6": 0.2903225806451613,
+          "12": 0.23118279569892472
+        },
+        "healthy_patients_with_alerts": 11,
+        "healthy_false_alert_rate": 0.005720228809152366,
+        "mean_alerts_per_healthy_patient": 0.0873634945397816,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 0.05715014670238551,
+        "total_healthy_alerts": 168,
+        "total_healthy_hours": 70551
+      }
+    },
+    "recall70": {
+      "timestep": {
+        "threshold": 0.6449999999999997,
+        "recall": 0.4983089064261556,
+        "precision": 0.10583024063210822,
+        "specificity": 0.9057051597671981,
+        "f1": 0.17458279845956357,
+        "fpr": 0.09429484023280182,
+        "accuracy": 0.896780805848141,
+        "tp": 884,
+        "fp": 7469,
+        "tn": 71740,
+        "fn": 890
+      },
+      "early_warning": {
+        "threshold": 0.6449999999999997,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.7043010752688172,
+        "caught_any": 131,
+        "median_lead_time_h": 22.0,
+        "mean_lead_time_h": 43.282442748091604,
+        "std_lead_time_h": 52.62270644624465,
+        "min_lead_time_h": -2.0,
+        "max_lead_time_h": 276.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.5806451612903226,
+          "6": 0.553763440860215,
+          "12": 0.44086021505376344
+        },
+        "healthy_patients_with_alerts": 403,
+        "healthy_false_alert_rate": 0.20956838273530942,
+        "mean_alerts_per_healthy_patient": 1.8991159646385856,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 1.2423353318875707,
+        "total_healthy_alerts": 3652,
+        "total_healthy_hours": 70551
+      }
+    }
+  },
+  "exp6_B_mae_finetune_seed456": {
+    "checkpoint": "results/experiment6_mae/20260817_143526\\finetune\\B_mae_finetune_seed456\\checkpoints\\best_model.pt",
+    "best_f1": {
+      "timestep": {
+        "threshold": 0.8949999999999999,
+        "recall": 0.2807215332581736,
+        "precision": 0.1843761569788967,
+        "specificity": 0.9721875039452588,
+        "f1": 0.22256983240223463,
+        "fpr": 0.027812496054741256,
+        "accuracy": 0.9570403664966721,
+        "tp": 498,
+        "fp": 2203,
+        "tn": 77006,
+        "fn": 1276
+      },
+      "early_warning": {
+        "threshold": 0.8949999999999999,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.34408602150537637,
+        "caught_any": 64,
+        "median_lead_time_h": 22.0,
+        "mean_lead_time_h": 43.28125,
+        "std_lead_time_h": 50.80091926764219,
+        "min_lead_time_h": -2.0,
+        "max_lead_time_h": 274.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.2849462365591398,
+          "6": 0.26881720430107525,
+          "12": 0.22580645161290322
+        },
+        "healthy_patients_with_alerts": 24,
+        "healthy_false_alert_rate": 0.0124804992199688,
+        "mean_alerts_per_healthy_patient": 0.06500260010400416,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 0.04252243058213208,
+        "total_healthy_alerts": 125,
+        "total_healthy_hours": 70551
+      }
+    },
+    "recall70": {
+      "timestep": {
+        "threshold": 0.5499999999999996,
+        "recall": 0.5180383314543405,
+        "precision": 0.09416948457833794,
+        "specificity": 0.8883965205974068,
+        "f1": 0.15936876788346485,
+        "fpr": 0.11160347940259314,
+        "accuracy": 0.8802835162935431,
+        "tp": 919,
+        "fp": 8840,
+        "tn": 70369,
+        "fn": 855
+      },
+      "early_warning": {
+        "threshold": 0.5499999999999996,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.7096774193548387,
+        "caught_any": 132,
+        "median_lead_time_h": 25.5,
+        "mean_lead_time_h": 44.79545454545455,
+        "std_lead_time_h": 51.85903659256061,
+        "min_lead_time_h": -2.0,
+        "max_lead_time_h": 282.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.6451612903225806,
+          "6": 0.5698924731182796,
+          "12": 0.45698924731182794
+        },
+        "healthy_patients_with_alerts": 489,
+        "healthy_false_alert_rate": 0.2542901716068643,
+        "mean_alerts_per_healthy_patient": 2.424336973478939,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 1.5859165709911978,
+        "total_healthy_alerts": 4662,
+        "total_healthy_hours": 70551
+      }
+    }
+  },
+  "exp6_C_mae_frozen_seed42": {
+    "checkpoint": "results/experiment6_mae/20260817_143526\\finetune\\C_mae_frozen_seed42\\checkpoints\\best_model.pt",
+    "best_f1": {
+      "timestep": {
+        "threshold": 0.7299999999999999,
+        "recall": 0.2733934611048478,
+        "precision": 0.15029439107530213,
+        "specificity": 0.9653827216604174,
+        "f1": 0.1939612077584483,
+        "fpr": 0.03461727833958262,
+        "accuracy": 0.9502241211118383,
+        "tp": 485,
+        "fp": 2742,
+        "tn": 76467,
+        "fn": 1289
+      },
+      "early_warning": {
+        "threshold": 0.7299999999999999,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.3709677419354839,
+        "caught_any": 69,
+        "median_lead_time_h": 27.0,
+        "mean_lead_time_h": 44.44927536231884,
+        "std_lead_time_h": 46.1203643385574,
+        "min_lead_time_h": -3.0,
+        "max_lead_time_h": 231.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.3225806451612903,
+          "6": 0.3010752688172043,
+          "12": 0.25806451612903225
+        },
+        "healthy_patients_with_alerts": 76,
+        "healthy_false_alert_rate": 0.039521580863234526,
+        "mean_alerts_per_healthy_patient": 0.29797191887675506,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 0.19492282178849343,
+        "total_healthy_alerts": 573,
+        "total_healthy_hours": 70551
+      }
+    },
+    "recall70": {
+      "timestep": {
+        "threshold": 0.5399999999999996,
+        "recall": 0.4977452085682074,
+        "precision": 0.09283010933557612,
+        "specificity": 0.8910603593026045,
+        "f1": 0.1564770512138933,
+        "fpr": 0.10893964069739549,
+        "accuracy": 0.8824444636528654,
+        "tp": 883,
+        "fp": 8629,
+        "tn": 70580,
+        "fn": 891
+      },
+      "early_warning": {
+        "threshold": 0.5399999999999996,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.7043010752688172,
+        "caught_any": 131,
+        "median_lead_time_h": 24.0,
+        "mean_lead_time_h": 43.76335877862596,
+        "std_lead_time_h": 48.585461347685694,
+        "min_lead_time_h": -3.0,
+        "max_lead_time_h": 285.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.6236559139784946,
+          "6": 0.5860215053763441,
+          "12": 0.5053763440860215
+        },
+        "healthy_patients_with_alerts": 505,
+        "healthy_false_alert_rate": 0.2626105044201768,
+        "mean_alerts_per_healthy_patient": 2.4778991159646386,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 1.6209550537908748,
+        "total_healthy_alerts": 4765,
+        "total_healthy_hours": 70551
+      }
+    }
+  },
+  "exp6_C_mae_frozen_seed123": {
+    "checkpoint": "results/experiment6_mae/20260817_143526\\finetune\\C_mae_frozen_seed123\\checkpoints\\best_model.pt",
+    "best_f1": {
+      "timestep": {
+        "threshold": 0.6849999999999999,
+        "recall": 0.33540022547914317,
+        "precision": 0.1423104520449653,
+        "specificity": 0.9547273668396268,
+        "f1": 0.1998320738874895,
+        "fpr": 0.04527263316037319,
+        "accuracy": 0.9411604904733092,
+        "tp": 595,
+        "fp": 3586,
+        "tn": 75623,
+        "fn": 1179
+      },
+      "early_warning": {
+        "threshold": 0.6849999999999999,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.45161290322580644,
+        "caught_any": 84,
+        "median_lead_time_h": 22.0,
+        "mean_lead_time_h": 43.226190476190474,
+        "std_lead_time_h": 48.697646171353966,
+        "min_lead_time_h": -3.0,
+        "max_lead_time_h": 269.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.3924731182795699,
+          "6": 0.3763440860215054,
+          "12": 0.2849462365591398
+        },
+        "healthy_patients_with_alerts": 139,
+        "healthy_false_alert_rate": 0.07228289131565263,
+        "mean_alerts_per_healthy_patient": 0.4966198647945918,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 0.32487136964748903,
+        "total_healthy_alerts": 955,
+        "total_healthy_hours": 70551
+      }
+    },
+    "recall70": {
+      "timestep": {
+        "threshold": 0.5149999999999996,
+        "recall": 0.5101465614430665,
+        "precision": 0.08396734087956949,
+        "specificity": 0.8753550732871265,
+        "f1": 0.14420012746972594,
+        "fpr": 0.12464492671287354,
+        "accuracy": 0.8673548769494832,
+        "tp": 905,
+        "fp": 9873,
+        "tn": 69336,
+        "fn": 869
+      },
+      "early_warning": {
+        "threshold": 0.5149999999999996,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.7043010752688172,
+        "caught_any": 131,
+        "median_lead_time_h": 26.0,
+        "mean_lead_time_h": 44.94656488549618,
+        "std_lead_time_h": 49.14293111974176,
+        "min_lead_time_h": -3.0,
+        "max_lead_time_h": 288.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.6344086021505376,
+          "6": 0.5860215053763441,
+          "12": 0.5053763440860215
+        },
+        "healthy_patients_with_alerts": 588,
+        "healthy_false_alert_rate": 0.30577223088923555,
+        "mean_alerts_per_healthy_patient": 3.017680707228289,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 1.9740613173448993,
+        "total_healthy_alerts": 5803,
+        "total_healthy_hours": 70551
+      }
+    }
+  },
+  "exp6_C_mae_frozen_seed456": {
+    "checkpoint": "results/experiment6_mae/20260817_143526\\finetune\\C_mae_frozen_seed456\\checkpoints\\best_model.pt",
+    "best_f1": {
+      "timestep": {
+        "threshold": 0.7349999999999999,
+        "recall": 0.27677564825253664,
+        "precision": 0.15042892156862744,
+        "specificity": 0.9649913519928291,
+        "f1": 0.19491861849940453,
+        "fpr": 0.0350086480071709,
+        "accuracy": 0.9499154143462208,
+        "tp": 491,
+        "fp": 2773,
+        "tn": 76436,
+        "fn": 1283
+      },
+      "early_warning": {
+        "threshold": 0.7349999999999999,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.3655913978494624,
+        "caught_any": 68,
+        "median_lead_time_h": 29.0,
+        "mean_lead_time_h": 46.05882352941177,
+        "std_lead_time_h": 46.07917813328973,
+        "min_lead_time_h": -3.0,
+        "max_lead_time_h": 230.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.3279569892473118,
+          "6": 0.3064516129032258,
+          "12": 0.26881720430107525
+        },
+        "healthy_patients_with_alerts": 70,
+        "healthy_false_alert_rate": 0.036401456058242326,
+        "mean_alerts_per_healthy_patient": 0.2823712948517941,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 0.18471743844878175,
+        "total_healthy_alerts": 543,
+        "total_healthy_hours": 70551
+      }
+    },
+    "recall70": {
+      "timestep": {
+        "threshold": 0.5399999999999996,
+        "recall": 0.5045095828635852,
+        "precision": 0.08736821554080437,
+        "specificity": 0.8819704831521671,
+        "f1": 0.1489432517889832,
+        "fpr": 0.11802951684783294,
+        "accuracy": 0.8737018880505785,
+        "tp": 895,
+        "fp": 9349,
+        "tn": 69860,
+        "fn": 879
+      },
+      "early_warning": {
+        "threshold": 0.5399999999999996,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.7043010752688172,
+        "caught_any": 131,
+        "median_lead_time_h": 24.0,
+        "mean_lead_time_h": 43.961832061068705,
+        "std_lead_time_h": 49.01120055507373,
+        "min_lead_time_h": -3.0,
+        "max_lead_time_h": 285.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.6236559139784946,
+          "6": 0.5860215053763441,
+          "12": 0.5
+        },
+        "healthy_patients_with_alerts": 556,
+        "healthy_false_alert_rate": 0.2891315652626105,
+        "mean_alerts_per_healthy_patient": 2.783671346853874,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 1.820980567249224,
+        "total_healthy_alerts": 5353,
+        "total_healthy_hours": 70551
+      }
+    }
+  },
+  "exp5_phase0_configI": {
+    "checkpoint": "results/feature_ablation/20260808_135533/experiments/I_all_minus_creatinine/checkpoints/best_model.pt",
+    "best_f1": {
+      "timestep": {
+        "threshold": 0.8899999999999999,
+        "recall": 0.2711386696730552,
+        "precision": 0.1995850622406639,
+        "specificity": 0.9756467068136196,
+        "f1": 0.22992351816443596,
+        "fpr": 0.024353293186380336,
+        "accuracy": 0.9602138720472198,
+        "tp": 481,
+        "fp": 1929,
+        "tn": 77280,
+        "fn": 1293
+      },
+      "early_warning": {
+        "threshold": 0.8899999999999999,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.3225806451612903,
+        "caught_any": 60,
+        "median_lead_time_h": 24.0,
+        "mean_lead_time_h": 40.35,
+        "std_lead_time_h": 46.62003324752139,
+        "min_lead_time_h": -3.0,
+        "max_lead_time_h": 251.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.2903225806451613,
+          "6": 0.26344086021505375,
+          "12": 0.20967741935483872
+        },
+        "healthy_patients_with_alerts": 27,
+        "healthy_false_alert_rate": 0.014040561622464899,
+        "mean_alerts_per_healthy_patient": 0.07904316172646905,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 0.05170727558787261,
+        "total_healthy_alerts": 152,
+        "total_healthy_hours": 70551
+      }
+    },
+    "recall70": {
+      "timestep": {
+        "threshold": 0.6399999999999997,
+        "recall": 0.4904171364148816,
+        "precision": 0.10346057795219407,
+        "specificity": 0.9048214218081279,
+        "f1": 0.17087302366689577,
+        "fpr": 0.09517857819187213,
+        "accuracy": 0.8957435511156663,
+        "tp": 870,
+        "fp": 7539,
+        "tn": 71670,
+        "fn": 904
+      },
+      "early_warning": {
+        "threshold": 0.6399999999999997,
+        "n_septic": 186,
+        "n_healthy": 1923,
+        "patient_recall": 0.7096774193548387,
+        "caught_any": 132,
+        "median_lead_time_h": 21.0,
+        "mean_lead_time_h": 43.0,
+        "std_lead_time_h": 52.60832979325958,
+        "min_lead_time_h": -2.0,
+        "max_lead_time_h": 278.0,
+        "capture_rate_by_lead_hour": {
+          "3": 0.5967741935483871,
+          "6": 0.5376344086021505,
+          "12": 0.44086021505376344
+        },
+        "healthy_patients_with_alerts": 463,
+        "healthy_false_alert_rate": 0.24076963078523142,
+        "mean_alerts_per_healthy_patient": 2.0239209568382734,
+        "median_alerts_per_healthy_patient": 0.0,
+        "alerts_per_patient_day": 1.3239783986052642,
+        "total_healthy_alerts": 3892,
+        "total_healthy_hours": 70551
+      }
+    }
+  }
+}
