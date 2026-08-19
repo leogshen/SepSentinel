@@ -42,13 +42,22 @@ The loader (`sepsentinel/data/physionet.py`) looks in
 by default, which is exactly where kagglehub puts it.
 
 ### Cytokine reference datasets (not needed for training)
-Gitignored (`*.sav`). On the old machine they live in `C:\Users\openq\Downloads`:
-- `journal.pone.0260623.s001.sav` (Ozger et al., PLOS ONE) — re-download from
-  https://doi.org/10.1371/journal.pone.0260623 supplement S1
-- `doi_10_7272_Q6MS3R18__v20240509.zip` (Dryad) — re-download from
-  https://datadryad.org/dataset/doi:10.7272/Q6MS3R18
-Findings from both are already summarized in DATASETS.md; the raw files are
-only needed to redo that analysis.
+No download needed — both files live in git history (verified byte-identical
+to the originals). From any clone:
+
+```
+git show 54619e2:journal.pone.0260623.s001.sav > journal.pone.0260623.s001.sav
+git show 966ed34:doi_10_7272_Q6MS3R18__v20240509.zip > dryad_cytokine.zip
+```
+
+- `journal.pone.0260623.s001.sav` (Ozger et al., PLOS ONE COVID cytokines,
+  n=37, day 0 + day 3) — source: https://doi.org/10.1371/journal.pone.0260623
+- Dryad zip (UCSF COVID dexamethasone cytokines, n=38, single timepoint) —
+  source: https://datadryad.org/dataset/doi:10.7272/Q6MS3R18
+  (NOTE: Dryad 403-blocks scripted downloads; browser-only if re-downloading)
+
+Reading .sav requires `pip install pyreadstat`. Findings from both are
+summarized in DATASETS.md; the raw files are only needed to redo that analysis.
 
 ## 3. Trained checkpoints
 
