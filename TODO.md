@@ -3,21 +3,22 @@
 Code fixes required before MIMIC-IV/SICdb data arrives, ordered by priority.
 Details and rationale: DATA_ACCESS_SPEC.md §9 and §13.
 
-- [ ] **1. Subject-level grouped splitting** — replace episode-level
-  `patient_split()` (sepsentinel/data/splitting.py) with a grouped split by
-  `subject_id`, stratified by subject-level sepsis. Blocks ALL multi-stay
-  datasets; current code would leak the same person across train/test.
+- [x] **1. Subject-level grouped splitting** — DONE 2026-09-03:
+  `grouped_patient_split()` added to splitting.py; leak-tested (300 synthetic
+  subjects, multi-stay) + PhysioNet fallback verified.
 
-- [ ] **2. Parameterize the +6 label shift** — `compute_early_warning_metrics`
-  (experiment5_recall_study.py) hard-codes `t_sepsis = onset_step + 6`. Read
-  shift from episode `t_sepsis_hour` / a SHIFT param instead. Blocks any
-  3h/12h label-shift experiment; silently wrong lead times otherwise.
+- [x] **2. Parameterize the +6 label shift** — DONE 2026-09-03:
+  `compute_early_warning_metrics(..., label_shift_hours=6)`; episode
+  `t_sepsis_hour` takes precedence when present; regression-tested at
+  shifts 3/6 and with explicit t_sepsis.
 
-- [ ] **3. Event-to-grid loader skeleton** — new `sepsentinel/data/gridding.py`
-  producing the §0 episode schema (hourly bins [t,t+1), vitals=median,
-  labs=last, mask=any-in-bin) from a generic (time, variable, value) event
-  table. Unit-test on synthetic events now; MIMIC/SICdb loaders become thin
-  wrappers later.
+- [x] **3. Event-to-grid loader** — DONE 2026-09-03:
+  `sepsentinel/data/gridding.py` (unit-tested) + `scripts/extract_mimic.py`
+  (DuckDB, works on demo AND full 3.1; itemids verified against real
+  dictionaries; IL-6 census: ZERO interleukin items in MIMIC-IV).
+  End-to-end verified: demo -> grid -> grouped split -> Strategy B ->
+  Transformer forward. REMAINING: Challenge-rule sepsis3 label SQL
+  (t_suspicion/t_SOFA) — episodes are all-control until then.
 
 - [ ] **4. Alarm-episode/cooldown evaluator** — merge consecutive alarms into
   episodes with refractory period R ∈ {2,6,12}h; report alert episodes per
@@ -30,9 +31,8 @@ Details and rationale: DATA_ACCESS_SPEC.md §9 and §13.
   imports from an experiment script are fragile). Pure refactor, no behavior
   change.
 
-- [ ] **6. Move `lengths` to device in Trainer** — latent crash on CUDA
-  (training.py builds the padding mask on `x.device` against CPU `lengths`).
-  One-line fix; must land before first GPU-machine run.
+- [x] **6. Move `lengths` to device** — DONE 2026-09-03: fixed centrally in
+  TransformerEncoder.forward (covers plain/gated/MAE models).
 
 Optional while waiting: run Experiment 4 (trajectory + gating, built but
 never run) on PhysioNet — its features are part of the MIMIC plan (§6) and

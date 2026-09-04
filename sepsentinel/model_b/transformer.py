@@ -86,6 +86,7 @@ class TransformerEncoder(SequenceEncoder, nn.Module):
         # Padding mask: True = ignore
         pad_mask = None
         if lengths is not None:
+            lengths = lengths.to(x.device)  # collate yields CPU lengths; align for CUDA
             pad_mask = torch.arange(seq_len, device=x.device).unsqueeze(0) >= lengths.unsqueeze(1)
 
         out = self.transformer(x, mask=causal_mask, src_key_padding_mask=pad_mask)

@@ -193,6 +193,7 @@ def collect_patient_predictions(model, preprocessed_data, raw_episodes_map, devi
                     "patient_id": pid,
                     "label": raw_ep["label"],
                     "onset_step": raw_ep["onset_step"],
+                    "t_sepsis_hour": raw_ep.get("t_sepsis_hour"),
                     "probs": probs[i, :sl].cpu().numpy(),
                     "labels": labels[i, :sl].numpy(),
                     "length": sl,
@@ -236,11 +237,16 @@ def compute_timestep_metrics(y_true, y_prob, threshold):
 # Patient-Level Early Warning Metrics
 # ============================================================
 
-def compute_early_warning_metrics(patient_results, threshold):
+def compute_early_warning_metrics(patient_results, threshold, label_shift_hours=6):
     """Patient-level early warning analysis.
 
     Lead time = t_sepsis - t_first_alarm (hours before clinical onset).
-    Since data is hourly and t_sepsis = onset_step + 6, lead = onset_step + 6 - first_alarm.
+
+    t_sepsis resolution order:
+      1. patient dict's "t_sepsis_hour" if present (MIMIC/SICdb loaders
+         store the raw unshifted onset there), else
+      2. onset_step + label_shift_hours (PhysioNet 2019: labels are
+         pre-shifted 6h, so the default reproduces t_sepsis = onset + 6).
     """
     septic = [p for p in patient_results if p["label"] == 1]
     healthy = [p for p in patient_results if p["label"] == 0]
@@ -254,7 +260,10 @@ def compute_early_warning_metrics(patient_results, threshold):
     for pat in septic:
         preds = (pat["probs"] >= threshold).astype(int)
         onset = pat["onset_step"]
-        t_sepsis = onset + 6
+        if pat.get("t_sepsis_hour") is not None:
+            t_sepsis = pat["t_sepsis_hour"]
+        else:
+            t_sepsis = onset + label_shift_hours
 
         pos_indices = np.where(preds == 1)[0]
         if len(pos_indices) > 0:
