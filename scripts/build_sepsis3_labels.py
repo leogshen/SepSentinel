@@ -111,6 +111,9 @@ def main():
     ap.add_argument("--memory-limit", default=None,
                     help="DuckDB memory limit, e.g. 24GB")
     ap.add_argument("--threads", type=int, default=None)
+    ap.add_argument("--temp-dir", default=None,
+                    help="DuckDB spill directory (keep it off the system "
+                         "disk for full-database runs)")
     args = ap.parse_args()
 
     con = duckdb.connect()
@@ -118,6 +121,9 @@ def main():
         con.execute("SET memory_limit='%s'" % args.memory_limit)
     if args.threads:
         con.execute("SET threads=%d" % args.threads)
+    if args.temp_dir:
+        os.makedirs(args.temp_dir, exist_ok=True)
+        con.execute("SET temp_directory='%s'" % args.temp_dir.replace("\\", "/"))
 
     t0 = time.time()
     print("Building Sepsis-3 labels from %s" % args.data_root)

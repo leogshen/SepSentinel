@@ -79,6 +79,9 @@ def main():
                          "(sensitivity analysis)" % EARLY_ONSET_EXCLUSION_H)
     ap.add_argument("--memory-limit", default=None)
     ap.add_argument("--threads", type=int, default=None)
+    ap.add_argument("--temp-dir", default=None,
+                    help="DuckDB spill directory (keep it off the system "
+                         "disk for full-database runs)")
     args = ap.parse_args()
 
     root = args.data_root.rstrip("/\\").replace("\\", "/")
@@ -87,6 +90,9 @@ def main():
         con.execute("SET memory_limit='%s'" % args.memory_limit)
     if args.threads:
         con.execute("SET threads=%d" % args.threads)
+    if args.temp_dir:
+        os.makedirs(args.temp_dir, exist_ok=True)
+        con.execute("SET temp_directory='%s'" % args.temp_dir.replace("\\", "/"))
     t0 = time.time()
 
     stay_sql = """
