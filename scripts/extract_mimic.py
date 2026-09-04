@@ -27,6 +27,7 @@ import duckdb
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from sepsentinel.data import gridding
 from sepsentinel.data.gridding import build_episode
 from sepsentinel.data import sepsis3
 
@@ -67,13 +68,24 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data-root", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--limit-stays", type=int, default=None)
+    ap.add_argument("--limit-stays", type=int, default=None,
+                    help="take the first N stays by stay_id (deterministic)")
+    ap.add_argument("--sample-stays", type=int, default=None,
+                    help="take a reproducible RANDOM draw of N stays "
+                         "(spec section 11 wants the MVE cohort random, not "
+                         "the head of the stay_id ordering)")
+    ap.add_argument("--sample-seed", type=int, default=42)
     ap.add_argument("--sepsis3-labels", default=None,
                     help="labels CSV from scripts/build_sepsis3_labels.py; "
                          "default is to compute them inline")
     ap.add_argument("--no-sepsis3", action="store_true",
                     help="skip labelling entirely (every stay a control)")
     ap.add_argument("--label-shift-hours", type=float, default=6.0)
+    ap.add_argument("--post-onset-truncate-h", type=float,
+                    default=gridding.POST_ONSET_TRUNCATE_H,
+                    help="drop septic-episode hours beyond t_sepsis + this "
+                         "(spec section 2 wants both variants recorded); "
+                         "pass -1 to keep the whole stay")
     ap.add_argument("--keep-early-onset", action="store_true",
                     help="keep stays with onset at/before hour %d "
                          "(sensitivity analysis)" % EARLY_ONSET_EXCLUSION_H)
@@ -95,6 +107,16 @@ def main():
         con.execute("SET temp_directory='%s'" % args.temp_dir.replace("\\", "/"))
     t0 = time.time()
 
+    if args.sample_stays:
+        # hash-ordered draw: reproducible for a given seed, and independent of
+        # any correlation between stay_id and admission time.
+        order_limit = ("ORDER BY hash(i.stay_id + %d) LIMIT %d"
+                       % (args.sample_seed, args.sample_stays))
+    elif args.limit_stays:
+        order_limit = "ORDER BY i.stay_id LIMIT %d" % args.limit_stays
+    else:
+        order_limit = "ORDER BY i.stay_id"
+
     stay_sql = """
         SELECT i.stay_id, i.subject_id, i.intime,
                DATEDIFF('second', i.intime, i.outtime) / 3600.0 AS los_hours,
@@ -103,10 +125,8 @@ def main():
         JOIN read_csv_auto('%s/hosp/patients.csv.gz') p USING (subject_id)
         WHERE p.anchor_age >= %d
           AND DATEDIFF('second', i.intime, i.outtime) / 3600.0 >= %d
-        ORDER BY i.stay_id
         %s
-    """ % (root, root, MIN_AGE, MIN_LENGTH,
-           ("LIMIT %d" % args.limit_stays) if args.limit_stays else "")
+    """ % (root, root, MIN_AGE, MIN_LENGTH, order_limit)
     stays = con.execute(stay_sql).fetchall()
     print("[%6.1fs] %d qualifying stays" % (time.time() - t0, len(stays)))
     stay_ids = ",".join(str(s[0]) for s in stays)
@@ -130,7 +150,11 @@ def main():
             lab_con.execute("SET memory_limit='%s'" % args.memory_limit)
         if args.threads:
             lab_con.execute("SET threads=%d" % args.threads)
-        df = sepsis3.run(lab_con, root, limit_stays=args.limit_stays)
+        # Pass the cohort explicitly when it is a subset, so the labeller
+        # cannot drift from the extraction cohort.
+        subset = ([int(s[0]) for s in stays]
+                  if (args.sample_stays or args.limit_stays) else None)
+        df = sepsis3.run(lab_con, root, stay_ids=subset)
         for stay_id, t_sepsis in zip(df["stay_id"], df["t_sepsis_hour"]):
             if t_sepsis is not None and np.isfinite(t_sepsis):
                 labels[int(stay_id)] = float(t_sepsis)
@@ -197,6 +221,8 @@ def main():
             stay_id, subject_id, events, los_hours, FEATURES, VITALS,
             t_sepsis_hour=t_sepsis, dataset="mimic4",
             label_shift_hours=args.label_shift_hours, min_length=MIN_LENGTH,
+            post_onset_truncate_h=(None if args.post_onset_truncate_h < 0
+                                   else args.post_onset_truncate_h),
         )
         if ep is None:
             attrition["empty_or_too_short"] += 1
@@ -243,6 +269,9 @@ def main():
     manifest = {
         "data_root": root,
         "limit_stays": args.limit_stays,
+        "sample_stays": args.sample_stays,
+        "sample_seed": args.sample_seed if args.sample_stays else None,
+        "post_onset_truncate_h": args.post_onset_truncate_h,
         "label_shift_hours": args.label_shift_hours,
         "label_source": ("none" if args.no_sepsis3
                          else args.sepsis3_labels or "inline sepsis3.run"),
