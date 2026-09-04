@@ -1,0 +1,44 @@
+{
+  "data_root": "F:/Claude/Sepsentinel/data_local/mimic-iv-clinical-database-demo-2.2",
+  "limit_stays": null,
+  "label_shift_hours": 6.0,
+  "label_source": "results/sepsis3_labels_demo.csv",
+  "features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "lactate",
+    "ph",
+    "creatinine",
+    "wbc",
+    "platelets",
+    "bilirubin"
+  ],
+  "attrition": {
+    "qualifying_stays": 137,
+    "early_onset": 53,
+    "no_hr_in_first_6h": 0,
+    "too_sparse": 1,
+    "empty_or_too_short": 0,
+    "kept": 83
+  },
+  "episodes": 83,
+  "septic_episodes": 11,
+  "patient_prevalence_pct": 13.25,
+  "timestep_prevalence_pct": 7.727,
+  "patient_hours": 4180,
+  "nan_density_pct": {
+    "heart_rate": 5.45,
+    "spo2": 7.75,
+    "respiratory_rate": 5.33,
+    "temperature": 73.8,
+    "lactate": 96.96,
+    "ph": 95.96,
+    "creatinine": 92.75,
+    "wbc": 93.8,
+    "platelets": 93.83,
+    "bilirubin": 98.11
+  },
+  "built_seconds": 1.7
+}

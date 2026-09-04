@@ -17,8 +17,16 @@ Details and rationale: DATA_ACCESS_SPEC.md §9 and §13.
   (DuckDB, works on demo AND full 3.1; itemids verified against real
   dictionaries; IL-6 census: ZERO interleukin items in MIMIC-IV).
   End-to-end verified: demo -> grid -> grouped split -> Strategy B ->
-  Transformer forward. REMAINING: Challenge-rule sepsis3 label SQL
-  (t_suspicion/t_SOFA) — episodes are all-control until then.
+  Transformer forward.
+
+- [x] **3b. Challenge-rule Sepsis-3 labels** — DONE 2026-09-03:
+  `sepsentinel/data/sepsis3.py` (DuckDB port of mimic-code
+  suspicion_of_infection + hourly SOFA + sepsis3, with the Challenge timing
+  rules), `scripts/build_sepsis3_labels.py` (labels CSV + deviation report),
+  wired into `scripts/extract_mimic.py` as `t_sepsis_hour` together with the
+  §2 cohort exclusions and a CONSORT attrition log. Rules regression-tested
+  on a synthetic mini-MIMIC (`scripts/test_sepsis3_rules.py`, 6/6) and run on
+  the open demo. Still to check on real 3.1: onset-time spread (see HANDOFF).
 
 - [ ] **4. Alarm-episode/cooldown evaluator** — merge consecutive alarms into
   episodes with refractory period R ∈ {2,6,12}h; report alert episodes per
@@ -28,8 +36,11 @@ Details and rationale: DATA_ACCESS_SPEC.md §9 and §13.
 
 - [ ] **5. Promote AblationPreprocessor into the package** — move from
   experiment3_feature_ablation.py to `sepsentinel/data/` (cross-experiment
-  imports from an experiment script are fragile). Pure refactor, no behavior
-  change.
+  imports from an experiment script are fragile). Not a pure refactor any
+  more: its `transform()` drops every key except signals/labels/length/
+  patient_id/label, so `subject_id` and `t_sepsis_hour` do not survive
+  preprocessing — the MIMIC patient-level metrics need both. Carry them
+  through.
 
 - [x] **6. Move `lengths` to device** — DONE 2026-09-03: fixed centrally in
   TransformerEncoder.forward (covers plain/gated/MAE models).

@@ -28,6 +28,10 @@ models/checkpoints/
 results/**/checkpoints*/
 results/**/*.pt
 
+# Extracted episodes and per-stay label tables (derived from MIMIC/SICdb)
+results/*.pkl
+results/sepsis3_labels_*.csv
+
 # External datasets (binary, keep local)
 *.sav
 *.psv

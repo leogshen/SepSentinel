@@ -428,11 +428,14 @@ MIMIC-IV:
 - [ ] 1. Confirm accessible version (2.2 vs 3.1); record it in every artifact.
 - [ ] 2. Verify every itemid in §5 against d_items / d_labitems; fix table.
 - [ ] 3. Run IL-6 census (§5); record counts.
-- [ ] 4. Pull mimic-code concepts: suspicion_of_infection, hourly SOFA,
+- [x] 4. Pull mimic-code concepts: suspicion_of_infection, hourly SOFA,
         sepsis3; adapt timing windows to Challenge rules (§3); diff and
-        document deviations.
-- [ ] 5. Build stay-level cohort table (inclusion/exclusion §2) with counts at
-        each filter step (CONSORT-style attrition log).
+        document deviations. DONE 2026-09-03 as `sepsentinel/data/sepsis3.py`
+        (deviations in `sepsis3.DEVIATIONS`, diff vs the mimic-code rule in
+        every build report). Executed on the open demo only — re-run on 3.1.
+- [x] 5. Build stay-level cohort table (inclusion/exclusion §2) with counts at
+        each filter step (CONSORT-style attrition log). DONE 2026-09-03 in
+        `scripts/extract_mimic.py` (printed + written to `*_manifest.json`).
 - [ ] 6. MVE extraction (§11): 1,000 stays, P0 variables, hourly grid ->
         parquet/CSV in the §0 episode schema + t_sepsis_hour.
 - [ ] 7. Run pipeline on MVE; check acceptance criteria; fix before scaling.

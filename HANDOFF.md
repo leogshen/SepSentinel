@@ -48,6 +48,39 @@ DONE on 2026-09-03 against MIMIC-IV 3.1 + the open 100-patient demo:
   and d_items both). The IL-6 bridge comes from ImmPort SDY1662 (open,
   downloadable) — see outreach/DATA_REQUESTS.md.
 
+ALSO DONE on 2026-09-03 (the former blocker, work item 1):
+- `sepsentinel/data/sepsis3.py` — Challenge-rule Sepsis-3 labels in DuckDB,
+  ported from mimic-code (suspicion_of_infection + hourly SOFA + sepsis3):
+  antibiotics from prescriptions+emar paired with microbiologyevents cultures
+  (culture <=24h after ABX, or ABX <=72h after culture), 6-component hourly
+  SOFA over 24h rolling windows, t_SOFA = first >=2-point rise vs the prior
+  24h minimum, t_sepsis = min(t_susp, t_SOFA) inside [t_susp-24h, t_susp+12h].
+  Every mimic-code deviation is listed in `sepsis3.DEVIATIONS` and printed in
+  the build report. Column types are pinned in read_csv_auto (a sniffed
+  VARCHAR column otherwise breaks binding).
+- `scripts/build_sepsis3_labels.py` — labels CSV + markdown report (attrition,
+  onset distribution, Challenge-vs-mimic-code diff, deviations).
+- `scripts/test_sepsis3_rules.py` — 6 hand-placed cases on a synthetic
+  mini-MIMIC pinning each timing rule (both suspicion windows, both sepsis
+  window edges, no-ABX, no-SOFA-rise). All pass; run it after any edit.
+- `scripts/extract_mimic.py` — labels wired in as `t_sepsis_hour` (inline by
+  default, or `--sepsis3-labels <csv>`), plus the spec section-2 cohort rules
+  (early-onset exclusion, HR-in-first-6h, >50%-empty) with a CONSORT
+  attrition log and a `*_manifest.json` next to every extraction.
+- Its FEATURES list is now the canonical 10 from experiment2_imputation.py
+  (creatinine restored at index 6): AblationPreprocessor indexes into that
+  list POSITIONALLY, so a 9-feature MIMIC pickle crashed it.
+
+Demo run (137 stays): 65% have a suspicion pair, 64 septic by the Challenge
+rule, 53 of those with onset at/before ICU hour 4 (excluded by spec section
+2), leaving 83 episodes at 13.3% patient / 7.7% timestep prevalence. Patient
+prevalence is inside the section-11 acceptance band (PhysioNet 8.8%);
+timestep prevalence is not (PhysioNet 2.2%) — the surviving demo onsets sit
+just above hour 4, so nearly every hour of those episodes is positive.
+WATCH THIS ON REAL 3.1: if onsets still cluster at ICU hour 0 there, the
+early-onset exclusion is doing far too much work and the cohort rule needs
+revisiting (spec section 2 already flags this).
+
 ## Machine setup (do first)
 
 1. Clone: `git clone https://github.com/leogshen/SepSentinel` (this file is in it).
@@ -65,7 +98,11 @@ DONE on 2026-09-03 against MIMIC-IV 3.1 + the open 100-patient demo:
 
 ## Work queue, in order
 
-1. **Sepsis-3 Challenge-rule labels — THE blocker.** Everything extracts as
+1. ~~**Sepsis-3 Challenge-rule labels**~~ — DONE, see above. What remains is
+   only to re-run it on real 3.1 and check the onset distribution. Original
+   description kept below for the rule details.
+
+   **Sepsis-3 Challenge-rule labels.** Everything extracts as
    controls until this exists. Build t_suspicion (antibiotics from
    prescriptions/emar paired with cultures from microbiologyevents:
    culture <=24h after ABX, or ABX <=72h after culture), hourly SOFA
@@ -73,9 +110,7 @@ DONE on 2026-09-03 against MIMIC-IV 3.1 + the open 100-patient demo:
    MAP/FiO2+PaO2), t_SOFA (>=2-pt rise vs min of prior 24h), then
    t_sepsis = min(t_suspicion, t_SOFA) if t_SOFA in [t_susp-24h, t_susp+12h].
    Spec section 3 has the exact rules + leakage constraints (no SOFA/ABX as
-   model features!). Port from MIT-LCP mimic-code repo (Postgres/BigQuery
-   SQL) to DuckDB rather than writing from scratch; document any timing-rule
-   deltas. Wire the result into scripts/extract_mimic.py as t_sepsis_hour.
+   model features!).
 2. **MVE (spec section 11)**: 1,000-stay extraction with labels, run the
    existing pipeline, check acceptance criteria (prevalence within 2x of
    PhysioNet's 2.2%/8.8%, NaN densities logged, AUROC 0.70-0.85 sanity).
@@ -90,6 +125,16 @@ DONE on 2026-09-03 against MIMIC-IV 3.1 + the open 100-patient demo:
    ImmPort SDY1662 analysis when Leo downloads it.
 
 ## Gotchas that cost us time once already
+
+- Do NOT score SOFA in hours with no data. Scoring the empty pre-ICU hours
+  gave SOFA 0 there, so ICU admission itself read as a >=2-point rise and 58%
+  of demo stays came out septic with onset at hour 0. SOFA now starts at hour
+  0 with pre-ICU labs clamped into it.
+- DuckDB `read_csv_auto` sniffs types per file: a table with no usable rows
+  (or a lab value like '___') comes back VARCHAR and every comparison fails at
+  bind time. `sepsis3.register_sources` pins the types it needs.
+- MIMIC episodes must carry the canonical 10-feature layout (creatinine
+  included); AblationPreprocessor indexes into it positionally.
 
 - collate_fn SORTS batches by length: any per-patient pairing must replicate
   that sort (see fixed collect_patient_predictions in experiment5). Never
