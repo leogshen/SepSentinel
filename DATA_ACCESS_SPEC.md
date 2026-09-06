@@ -394,6 +394,22 @@ this spec is solid (standard mimic-code mappings, verify itemids on access).
 SICdb knowledge is thin — table/field names below are from documentation
 memory and must ALL be verified against the SICdb data dictionary on access.
 
+**UPDATE 2026-09-06 — see SICDB_RECON.md.** SICdb publishes its full schema
+openly even though the data is restricted, so most of this table has now been
+verified WITHOUT access. Two entries below are wrong, and the single biggest
+risk is confirmed:
+- **Cultures: CONFIRMED ABSENT.** No microbiology/culture/specimen table
+  exists. Challenge-rule t_suspicion is unreconstructable in SICdb; this
+  selects rung 1 (antibiotic-only, relabelled) or rung 3 (control-only) of
+  the fallback ladder below.
+- **Units: NOT SI.** Creatinine is mg/dl, Hb g/dl, PO2 mmHg — US-style, so
+  the "likely SI (umol/L)" row below is incorrect. Read
+  d_references.ReferenceUnit per analyte.
+- Also: GCS exists from v1.0.7 but the maintainer states it is not reliably
+  charted; the cohort is perioperative/cardiac-surgery weighted with low
+  mortality; access requires per-project contributor review on top of
+  credentialing, and there is no demo tier.
+
 | Aspect | MIMIC-IV | SICdb (verify everything) | Harmonizable? |
 |---|---|---|---|
 | Scale | ~70–90K ICU stays | ~27K admissions (Salzburg, 2013–2021) | yes |

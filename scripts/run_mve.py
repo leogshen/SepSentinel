@@ -98,6 +98,9 @@ def main():
     ap.add_argument("--episodes", required=True)
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--seeds", default="42,123,456")
+    ap.add_argument("--run-name", default="MVE run",
+                    help="title for the report (the same runner is used for "
+                         "the MVE and the full-cohort run)")
     ap.add_argument("--epochs", type=int, default=EPOCHS)
     ap.add_argument("--device",
                     default="cuda" if torch.cuda.is_available() else "cpu")
@@ -198,7 +201,7 @@ def main():
         ("pipeline runs end to end", True, "yes"),
     ]
 
-    lines = ["# MVE run report (DATA_ACCESS_SPEC section 11)", "",
+    lines = ["# %s report (DATA_ACCESS_SPEC sections 10-11)" % args.run_name, "",
              "Episodes: `%s`" % args.episodes,
              "Seeds %s, device %s, %.1f min."
              % (args.seeds, args.device, (time.time() - t0) / 60.0), "",
