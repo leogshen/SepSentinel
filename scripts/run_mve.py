@@ -9,9 +9,9 @@ section-11 acceptance criteria and writes a markdown report.
 Frozen conventions (experiment2_imputation.py): split seed 42, training seeds
 {42,123,456}, epochs 50, batch 32, lr 1e-3, patience 7.
 
-The operating point reported is the section-10 primary one: the threshold set
-for 70% PATIENT recall (not timestep recall), which is what the PhysioNet
-baseline numbers are quoted at.
+No recall target is imposed. Results are reported threshold-free (AUROC,
+AUPRC) and at equal ALERT BURDEN -- the constraint a unit actually imposes.
+scripts/operating_curves.py emits the full curves.
 
 Usage:
     python scripts/run_mve.py --episodes results/mimic_mve_episodes.pkl \
@@ -38,12 +38,11 @@ from experiment2_imputation import (
 )
 from experiment3_feature_ablation import AblationPreprocessor, EXPERIMENTS
 from experiment5_recall_study import (
-    collect_patient_predictions, compute_timestep_metrics,
-    compute_early_warning_metrics, build_raw_map,
+    collect_patient_predictions, build_raw_map,
 )
+from scripts.operating_curves import curve_for, at_burden, BURDEN_POINTS
 
 CONFIG_I_FEATURES = EXPERIMENTS["I"]["features"]
-PRIMARY_RECALL = 0.70          # the deployable operating point (section 10)
 
 # Section 11 acceptance criteria.
 PHYSIONET_PATIENT_PREV = 8.8   # %
@@ -59,18 +58,6 @@ def set_seed(seed):
     np.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
-
-
-def threshold_at_patient_recall(patient_results, target_recall):
-    """Strictest threshold whose PATIENT recall still reaches target_recall."""
-    best = None
-    for t in np.arange(0.005, 0.995, 0.005):
-        ew = compute_early_warning_metrics(patient_results, float(t))
-        if ew["patient_recall"] >= target_recall:
-            best = (float(t), ew)          # keep going: higher t is stricter
-    if best is None:                       # unreachable at any threshold
-        best = (0.005, compute_early_warning_metrics(patient_results, 0.005))
-    return best
 
 
 def mean_sd(values):
@@ -161,31 +148,27 @@ def main():
         y_prob = np.concatenate([p["probs"] for p in results])
         auroc = float(roc_auc_score(y_true, y_prob))
         auprc = float(average_precision_score(y_true, y_prob))
-        thr, ew = threshold_at_patient_recall(results, PRIMARY_RECALL)
-        ts = compute_timestep_metrics(y_true, y_prob, thr)
+        curve = curve_for(results)
         per_seed.append({"seed": seed, "auroc": auroc, "auprc": auprc,
-                         "threshold": thr, "timestep": jsonable(ts),
-                         "early_warning": jsonable(ew)})
-        print("  seed %d: AUROC %.3f AUPRC %.3f | at %.0f%% patient recall: "
-              "precision %.3f, %.2f alerts/patient-day, median lead %s h"
-              % (seed, auroc, auprc, 100 * ew["patient_recall"],
-                 ts.get("precision", float("nan")),
-                 ew["alerts_per_patient_day"], fmt(ew["median_lead_time_h"])))
+                         "curve": curve})
+        print("  seed %d: AUROC %.3f AUPRC %.3f" % (seed, auroc, auprc))
+        for b in BURDEN_POINTS:
+            c = at_burden(curve, b)
+            if c is not None:
+                print("      at <=%.1f alerts/pt-day: recall %.2f, "
+                      "median lead %s h, capture>=6h %.2f"
+                      % (b, c["patient_recall"], fmt(c["median_lead_time_h"]),
+                         c["capture_6h"]))
 
     auroc_m, auroc_s = mean_sd(r["auroc"] for r in per_seed)
     auprc_m, auprc_s = mean_sd(r["auprc"] for r in per_seed)
-    prec_m, prec_s = mean_sd(r["timestep"].get("precision", float("nan"))
-                             for r in per_seed)
-    alerts_m, alerts_s = mean_sd(r["early_warning"]["alerts_per_patient_day"]
-                                 for r in per_seed)
-    leads = [r["early_warning"]["median_lead_time_h"] for r in per_seed
-             if r["early_warning"]["median_lead_time_h"] is not None]
-    lead_m, lead_s = mean_sd(leads) if leads else (float("nan"), float("nan"))
-    recall_m = mean_sd(r["early_warning"]["patient_recall"] for r in per_seed)[0]
-    capture = {h: mean_sd(r["early_warning"]["capture_rate_by_lead_hour"][str(h)]
-                          for r in per_seed)[0] for h in (3, 6, 12)}
     print("\nTest AUROC %.3f +/- %.3f | AUPRC %.3f +/- %.3f"
           % (auroc_m, auroc_s, auprc_m, auprc_s))
+
+    def at_budget(budget, key):
+        vals = [at_burden(r["curve"], budget) for r in per_seed]
+        vals = [v[key] for v in vals if v is not None and v[key] is not None]
+        return mean_sd(vals) if vals else (float("nan"), float("nan"))
 
     checks = [
         ("patient prevalence within 2x of PhysioNet %.1f%%" % PHYSIONET_PATIENT_PREV,
@@ -211,23 +194,23 @@ def main():
         lines.append("| %s | %s | %s |" % (name, val, "PASS" if ok else "FAIL"))
 
     lines += ["", "## Metrics (%d seeds, mean +/- sd)" % len(seeds), "",
-              "| Metric | MIMIC-IV MVE | PhysioNet Config I |", "|---|---|---|",
+              "| Metric | This run | PhysioNet Config I |", "|---|---|---|",
               "| Test AUROC | %.3f +/- %.3f | %s |"
               % (auroc_m, auroc_s, REF["auroc"]),
               "| Test AUPRC | %.3f +/- %.3f | %s |"
               % (auprc_m, auprc_s, REF["auprc"]), "",
-              "At the primary operating point (threshold set for %.0f%% patient "
-              "recall; achieved %.0f%%):" % (100 * PRIMARY_RECALL, 100 * recall_m),
-              "",
-              "| Metric | MIMIC-IV MVE | PhysioNet Config I |", "|---|---|---|",
-              "| Timestep precision | %.3f +/- %.3f | %s |"
-              % (prec_m, prec_s, REF["precision"]),
-              "| False alerts / patient-day | %.2f +/- %.2f | %s |"
-              % (alerts_m, alerts_s, REF["alerts"]),
-              "| Median lead time (h) | %.1f +/- %.1f | %s |"
-              % (lead_m, lead_s, REF["lead"])]
-    for h in (3, 6, 12):
-        lines.append("| Capture >=%dh before onset | %.2f | - |" % (h, capture[h]))
+              "No recall target is imposed. Each row below is the best patient "
+              "recall reachable inside the stated false-alert budget.", "",
+              "| Alerts/patient-day budget | Patient recall | Median lead (h) | "
+              "Capture >=6h | Capture >=12h |", "|---|---|---|---|---|"]
+    for b in BURDEN_POINTS:
+        lines.append("| <= %.1f | %.2f +/- %.2f | %.1f +/- %.1f | %.2f | %.2f |"
+                     % (b, at_budget(b, "patient_recall")[0],
+                        at_budget(b, "patient_recall")[1],
+                        at_budget(b, "median_lead_time_h")[0],
+                        at_budget(b, "median_lead_time_h")[1],
+                        at_budget(b, "capture_6h")[0],
+                        at_budget(b, "capture_12h")[0]))
 
     lines += ["", "## Split", "",
               "| Split | Episodes | Subjects | Septic |", "|---|---|---|---|"]

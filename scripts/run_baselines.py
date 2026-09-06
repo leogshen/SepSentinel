@@ -12,6 +12,10 @@ metrics are the same corrected patient-level ones.
 Read the results as a floor: whatever the Transformer scores above these
 numbers is what the sequence model is buying.
 
+No recall target is imposed. Results are reported threshold-free (AUROC,
+AUPRC) and at equal ALERT BURDEN, which is the constraint a unit actually
+imposes; see scripts/operating_curves.py for the full curves.
+
 Usage:
     python scripts/run_baselines.py --episodes results/mimic31_full_trunc3.pkl \
         --out-dir results/baselines_full_trunc3
@@ -29,49 +33,20 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score, average_precision_score
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from sepsentinel.data.splitting import grouped_patient_split
 from experiment2_imputation import FEATURES as ALL_FEATURES, SPLIT_SEED
 from experiment3_feature_ablation import AblationPreprocessor, EXPERIMENTS
-from experiment5_recall_study import (
-    compute_timestep_metrics, compute_early_warning_metrics,
+from sepsentinel.data.splitting import grouped_patient_split
+from scripts.operating_curves import (
+    patient_results_from_probs, curve_for, at_burden, BURDEN_POINTS,
 )
-from scripts.run_mve import threshold_at_patient_recall  # noqa: E402
 
 CONFIG_I_FEATURES = EXPERIMENTS["I"]["features"]
-PRIMARY_RECALL = 0.70
-REF = {"auroc": "0.814 +/- 0.004", "auprc": "0.144", "precision": "0.093",
-       "alerts": "1.7", "lead": "23.5"}
 
 
 def flatten(data):
     X = np.concatenate([d["signals"] for d in data], axis=0)
     y = np.concatenate([d["labels"] for d in data], axis=0)
     return X, y
-
-
-def patient_results_from_probs(data, raw_map, probs):
-    """Rebuild the per-patient structure the early-warning metrics expect.
-
-    Flat models predict row by row, so probabilities are sliced back out in
-    episode order -- no collate_fn sort to replicate here (that hazard is
-    specific to the batched sequence path).
-    """
-    out, start = [], 0
-    for d in data:
-        n = len(d["labels"])
-        raw = raw_map[d["patient_id"]]
-        out.append({
-            "patient_id": d["patient_id"],
-            "label": raw["label"],
-            "onset_step": raw["onset_step"],
-            "t_sepsis_hour": raw.get("t_sepsis_hour"),
-            "probs": probs[start:start + n],
-            "labels": np.asarray(d["labels"]),
-            "length": n,
-        })
-        start += n
-    assert start == len(probs), "probability vector length mismatch"
-    return out
 
 
 def main():
@@ -102,8 +77,7 @@ def main():
           % (X_tr.shape, X_te.shape, y_tr.mean()))
 
     scale_pos = float((1 - y_tr.mean()) / max(y_tr.mean(), 1e-9))
-    rows = []
-    metrics = {}
+    rows, metrics = [], {}
     for name in args.models.split(","):
         name = name.strip()
         t1 = time.time()
@@ -125,25 +99,21 @@ def main():
 
         auroc = float(roc_auc_score(y_te, prob))
         auprc = float(average_precision_score(y_te, prob))
-        pr = patient_results_from_probs(data["test"], raw_map, prob)
-        thr, ew = threshold_at_patient_recall(pr, PRIMARY_RECALL)
-        ts = compute_timestep_metrics(y_te, prob, thr)
-        print("  %-8s AUROC %.3f AUPRC %.3f | at %.0f%% patient recall: "
-              "precision %.3f, %.2f alerts/patient-day, median lead %s h  (%.1f min)"
-              % (name, auroc, auprc, 100 * ew["patient_recall"],
-                 ts.get("precision", float("nan")),
-                 ew["alerts_per_patient_day"],
-                 ew["median_lead_time_h"], (time.time() - t1) / 60.0))
-        rows.append((name, auroc, auprc, ts.get("precision", float("nan")),
-                     ew["alerts_per_patient_day"], ew["median_lead_time_h"],
-                     ew["capture_rate_by_lead_hour"]))
-        metrics[name] = {"auroc": auroc, "auprc": auprc, "threshold": thr,
-                         "timestep_precision": ts.get("precision"),
-                         "alerts_per_patient_day": ew["alerts_per_patient_day"],
-                         "median_lead_time_h": ew["median_lead_time_h"],
-                         "patient_recall": ew["patient_recall"],
-                         "capture_rate_by_lead_hour":
-                             ew["capture_rate_by_lead_hour"]}
+        curve = curve_for(patient_results_from_probs(data["test"], raw_map, prob))
+        print("  %-8s AUROC %.3f AUPRC %.3f  (%.1f min)"
+              % (name, auroc, auprc, (time.time() - t1) / 60.0))
+        for b in BURDEN_POINTS:
+            c = at_burden(curve, b)
+            if c is None:
+                continue
+            print("      at <=%.1f alerts/pt-day: recall %.2f, median lead %s h,"
+                  " capture>=6h %.2f"
+                  % (b, c["patient_recall"],
+                     "%.1f" % c["median_lead_time_h"]
+                     if c["median_lead_time_h"] is not None else "n/a",
+                     c["capture_6h"]))
+        rows.append((name, auroc, auprc, curve))
+        metrics[name] = {"auroc": auroc, "auprc": auprc, "curve": curve}
 
     lines = ["# Flat baselines (no sequence model)", "",
              "Episodes: `%s`" % args.episodes,
@@ -151,21 +121,29 @@ def main():
              "metrics as the Transformer runs. Every timestep is an "
              "independent sample." % SPLIT_SEED,
              "Built in %.1f min." % ((time.time() - t0) / 60.0), "",
-             "| Model | AUROC | AUPRC | Precision @70% pt recall | "
-             "Alerts/patient-day | Median lead (h) |", "|---|---|---|---|---|---|"]
-    for name, auroc, auprc, prec, alerts, lead, _ in rows:
-        lines.append("| %s | %.3f | %.3f | %.3f | %.2f | %s |"
-                     % (name, auroc, auprc, prec, alerts,
-                        "%.1f" % lead if lead is not None else "n/a"))
-    lines.append("| PhysioNet Transformer (Config I) | %s | %s | %s | %s | %s |"
-                 % (REF["auroc"], REF["auprc"], REF["precision"], REF["alerts"],
-                    REF["lead"]))
-    lines += ["", "Capture rates:", "",
-              "| Model | >=3h | >=6h | >=12h |", "|---|---|---|---|"]
-    for name, _, _, _, _, _, cap in rows:
-        lines.append("| %s | %.2f | %.2f | %.2f |"
-                     % (name, cap["3"], cap["6"], cap["12"]))
-    lines.append("")
+             "## Threshold-free discrimination", "",
+             "| Model | AUROC | AUPRC |", "|---|---|---|"]
+    for name, auroc, auprc, _ in rows:
+        lines.append("| %s | %.3f | %.3f |" % (name, auroc, auprc))
+
+    lines += ["", "## At equal alert burden", "",
+              "No recall target is imposed: each row is the best patient "
+              "recall reachable inside the stated false-alert budget.", ""]
+    for b in BURDEN_POINTS:
+        lines += ["**Budget: %.1f false alerts per nonseptic patient-day**" % b,
+                  "", "| Model | Patient recall | Median lead (h) | "
+                  "Capture >=6h | Capture >=12h |", "|---|---|---|---|---|"]
+        for name, _, _, curve in rows:
+            c = at_burden(curve, b)
+            if c is None:
+                lines.append("| %s | (unreachable) | | | |" % name)
+                continue
+            lines.append("| %s | %.2f | %s | %.2f | %.2f |"
+                         % (name, c["patient_recall"],
+                            "%.1f" % c["median_lead_time_h"]
+                            if c["median_lead_time_h"] is not None else "n/a",
+                            c["capture_6h"], c["capture_12h"]))
+        lines.append("")
 
     report = "\n".join(lines)
     with open(os.path.join(args.out_dir, "BASELINES.md"), "w",
