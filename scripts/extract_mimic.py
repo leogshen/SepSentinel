@@ -89,6 +89,9 @@ def main():
     ap.add_argument("--keep-early-onset", action="store_true",
                     help="keep stays with onset at/before hour %d "
                          "(sensitivity analysis)" % EARLY_ONSET_EXCLUSION_H)
+    ap.add_argument("--chunk-stays", type=int, default=5000,
+                    help="build episodes in blocks of this many stays; caps "
+                         "how many event rows are in Python at once")
     ap.add_argument("--memory-limit", default=None)
     ap.add_argument("--threads", type=int, default=None)
     ap.add_argument("--temp-dir", default=None,
@@ -118,7 +121,7 @@ def main():
         order_limit = "ORDER BY i.stay_id"
 
     stay_sql = """
-        SELECT i.stay_id, i.subject_id, i.intime,
+        SELECT i.stay_id, i.subject_id, i.intime, i.outtime,
                DATEDIFF('second', i.intime, i.outtime) / 3600.0 AS los_hours,
                p.anchor_age
         FROM read_csv_auto('%s/icu/icustays.csv.gz') i
@@ -127,9 +130,11 @@ def main():
           AND DATEDIFF('second', i.intime, i.outtime) / 3600.0 >= %d
         %s
     """ % (root, root, MIN_AGE, MIN_LENGTH, order_limit)
-    stays = con.execute(stay_sql).fetchall()
+    con.execute("CREATE OR REPLACE TEMP TABLE cohort AS %s" % stay_sql)
+    stays = con.execute(
+        "SELECT stay_id, subject_id, intime, los_hours, anchor_age "
+        "FROM cohort ORDER BY stay_id").fetchall()
     print("[%6.1fs] %d qualifying stays" % (time.time() - t0, len(stays)))
-    stay_ids = ",".join(str(s[0]) for s in stays)
     stay_meta = {s[0]: s for s in stays}
 
     # --- labels ------------------------------------------------------------
@@ -161,80 +166,102 @@ def main():
         lab_con.close()
 
     # --- events ------------------------------------------------------------
-    chart_sql = """
+    # Materialise both event streams once (one pass over each source table),
+    # then pull them back per stay-chunk. At full-database scale the cohort
+    # has ~30M chart rows, which must not all be in Python at once.
+    con.execute("""
+        CREATE OR REPLACE TEMP TABLE ev_chart AS
         SELECT c.stay_id, c.itemid,
                DATEDIFF('second', i.intime, c.charttime) / 3600.0 AS hours,
                c.valuenum
         FROM read_csv_auto('%s/icu/chartevents.csv.gz') c
-        JOIN read_csv_auto('%s/icu/icustays.csv.gz') i USING (stay_id)
-        WHERE c.itemid IN (%s)
-          AND c.valuenum IS NOT NULL
-          AND c.stay_id IN (%s)
-    """ % (root, root, ",".join(map(str, CHART_ITEMS)), stay_ids)
-    chart = con.execute(chart_sql).fetchall()
-    print("[%6.1fs] %d chart events" % (time.time() - t0, len(chart)))
+        JOIN cohort i USING (stay_id)
+        WHERE c.itemid IN (%s) AND c.valuenum IS NOT NULL
+    """ % (root, ",".join(map(str, CHART_ITEMS))))
+    n_chart = con.execute("SELECT COUNT(*) FROM ev_chart").fetchone()[0]
+    print("[%6.1fs] %d chart events" % (time.time() - t0, n_chart))
 
     # labevents has no stay_id: join by subject + charttime within stay window
-    lab_sql = """
+    con.execute("""
+        CREATE OR REPLACE TEMP TABLE ev_lab AS
         SELECT i.stay_id, l.itemid,
                DATEDIFF('second', i.intime, l.charttime) / 3600.0 AS hours,
                l.valuenum
         FROM read_csv_auto('%s/hosp/labevents.csv.gz') l
-        JOIN read_csv_auto('%s/icu/icustays.csv.gz') i
+        JOIN cohort i
           ON l.subject_id = i.subject_id
          AND l.charttime >= i.intime AND l.charttime <= i.outtime
-        WHERE l.itemid IN (%s)
-          AND l.valuenum IS NOT NULL
-          AND i.stay_id IN (%s)
-    """ % (root, root, ",".join(map(str, LAB_ITEMS)), stay_ids)
-    labs = con.execute(lab_sql).fetchall()
-    print("[%6.1fs] %d lab events" % (time.time() - t0, len(labs)))
+        WHERE l.itemid IN (%s) AND l.valuenum IS NOT NULL
+    """ % (root, ",".join(map(str, LAB_ITEMS))))
+    n_lab = con.execute("SELECT COUNT(*) FROM ev_lab").fetchone()[0]
+    print("[%6.1fs] %d lab events" % (time.time() - t0, n_lab))
 
-    per_stay = {}
-    for sid, itemid, hours, val in chart:
-        feat = CHART_ITEMS[itemid]
-        if feat == "temperature_f":
-            feat, val = "temperature", (val - 32.0) * 5.0 / 9.0
-        per_stay.setdefault(sid, []).append((feat, hours, val))
-    for sid, itemid, hours, val in labs:
-        per_stay.setdefault(sid, []).append((LAB_ITEMS[itemid], hours, val))
+    def load_chunk(lo, hi):
+        """Events for stay_ids in [lo, hi], as {stay_id: [(feat, h, val)]}.
+
+        Both tables are already restricted to the cohort, so a stay_id range
+        filter is exact even for a sampled cohort.
+        """
+        per_stay = {}
+        for sid, itemid, hours, val in con.execute(
+                "SELECT stay_id, itemid, hours, valuenum FROM ev_chart "
+                "WHERE stay_id BETWEEN %d AND %d" % (lo, hi)).fetchall():
+            feat = CHART_ITEMS[itemid]
+            if feat == "temperature_f":
+                feat, val = "temperature", (val - 32.0) * 5.0 / 9.0
+            per_stay.setdefault(sid, []).append((feat, hours, val))
+        for sid, itemid, hours, val in con.execute(
+                "SELECT stay_id, itemid, hours, valuenum FROM ev_lab "
+                "WHERE stay_id BETWEEN %d AND %d" % (lo, hi)).fetchall():
+            per_stay.setdefault(sid, []).append((LAB_ITEMS[itemid], hours, val))
+        return per_stay
 
     # --- episodes + section-2 exclusions -----------------------------------
     attrition = {"qualifying_stays": len(stays), "early_onset": 0,
                  "no_hr_in_first_%dh" % HR_REQUIRED_WITHIN_H: 0,
                  "too_sparse": 0, "empty_or_too_short": 0, "kept": 0}
     episodes = []
-    for sid, (stay_id, subject_id, intime, los_hours, age) in stay_meta.items():
-        t_sepsis = labels.get(int(sid))
-        if (t_sepsis is not None and not args.keep_early_onset
-                and t_sepsis <= EARLY_ONSET_EXCLUSION_H):
-            attrition["early_onset"] += 1
-            continue
+    ordered = [s[0] for s in stays]
+    for start in range(0, len(ordered), args.chunk_stays):
+        block = ordered[start:start + args.chunk_stays]
+        per_stay = load_chunk(block[0], block[-1])
+        for sid in block:
+            stay_id, subject_id, intime, los_hours, age = stay_meta[sid]
+            t_sepsis = labels.get(int(sid))
+            if (t_sepsis is not None and not args.keep_early_onset
+                    and t_sepsis <= EARLY_ONSET_EXCLUSION_H):
+                attrition["early_onset"] += 1
+                continue
 
-        events = per_stay.get(sid, [])
-        if not any(f == "heart_rate" and 0 <= h < HR_REQUIRED_WITHIN_H
-                   for f, h, _ in events):
-            attrition["no_hr_in_first_%dh" % HR_REQUIRED_WITHIN_H] += 1
-            continue
+            events = per_stay.get(sid, [])
+            if not any(f == "heart_rate" and 0 <= h < HR_REQUIRED_WITHIN_H
+                       for f, h, _ in events):
+                attrition["no_hr_in_first_%dh" % HR_REQUIRED_WITHIN_H] += 1
+                continue
 
-        ep = build_episode(
-            stay_id, subject_id, events, los_hours, FEATURES, VITALS,
-            t_sepsis_hour=t_sepsis, dataset="mimic4",
-            label_shift_hours=args.label_shift_hours, min_length=MIN_LENGTH,
-            post_onset_truncate_h=(None if args.post_onset_truncate_h < 0
-                                   else args.post_onset_truncate_h),
-        )
-        if ep is None:
-            attrition["empty_or_too_short"] += 1
-            continue
+            ep = build_episode(
+                stay_id, subject_id, events, los_hours, FEATURES, VITALS,
+                t_sepsis_hour=t_sepsis, dataset="mimic4",
+                label_shift_hours=args.label_shift_hours, min_length=MIN_LENGTH,
+                post_onset_truncate_h=(None if args.post_onset_truncate_h < 0
+                                       else args.post_onset_truncate_h),
+            )
+            if ep is None:
+                attrition["empty_or_too_short"] += 1
+                continue
 
-        empty_frac = float(np.isnan(ep["signals"]).all(axis=1).mean())
-        if empty_frac > MAX_EMPTY_HOUR_FRACTION:
-            attrition["too_sparse"] += 1
-            continue
+            empty_frac = float(np.isnan(ep["signals"]).all(axis=1).mean())
+            if empty_frac > MAX_EMPTY_HOUR_FRACTION:
+                attrition["too_sparse"] += 1
+                continue
 
-        episodes.append(ep)
-        attrition["kept"] += 1
+            episodes.append(ep)
+            attrition["kept"] += 1
+        if len(ordered) > args.chunk_stays:
+            print("[%6.1fs]   %d/%d stays -> %d episodes"
+                  % (time.time() - t0, min(start + args.chunk_stays,
+                                           len(ordered)),
+                     len(ordered), len(episodes)))
 
     print("[%6.1fs] %d episodes built" % (time.time() - t0, len(episodes)))
     print("\nCohort attrition (spec section 2):")
