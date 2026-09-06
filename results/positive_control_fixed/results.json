@@ -1,0 +1,97 @@
+{
+  "window_h": 12.0,
+  "sds": {
+    "heart_rate": 17.86316680908203,
+    "lactate": 2.214243173599243
+  },
+  "results": {
+    "heart_rate": [
+      {
+        "auroc": 0.7224199607124109,
+        "recall_at_budget": 0.6433389544688027,
+        "lead_at_budget": 13.5,
+        "capture_6h": 0.4317032040472175,
+        "effect_sd": 0.0
+      },
+      {
+        "auroc": 0.9716221476993552,
+        "recall_at_budget": 0.9932546374367622,
+        "lead_at_budget": 11.12638888888889,
+        "capture_6h": 0.8532883642495784,
+        "effect_sd": 0.25
+      },
+      {
+        "auroc": 0.9718089323754946,
+        "recall_at_budget": 0.9932546374367622,
+        "lead_at_budget": 11.0,
+        "capture_6h": 0.8381112984822934,
+        "effect_sd": 0.5
+      },
+      {
+        "auroc": 0.969179078538031,
+        "recall_at_budget": 0.9873524451939292,
+        "lead_at_budget": 11.0,
+        "capture_6h": 0.7892074198988196,
+        "effect_sd": 1.0
+      },
+      {
+        "auroc": 0.9728387261899132,
+        "recall_at_budget": 0.9907251264755481,
+        "lead_at_budget": 9.0,
+        "capture_6h": 0.7360876897133221,
+        "effect_sd": 2.0
+      },
+      {
+        "auroc": 0.989977964567415,
+        "recall_at_budget": 0.9991568296795953,
+        "lead_at_budget": 8.908333333333335,
+        "capture_6h": 0.7900505902192243,
+        "effect_sd": 4.0
+      }
+    ],
+    "lactate": [
+      {
+        "auroc": 0.7224199607124109,
+        "recall_at_budget": 0.6433389544688027,
+        "lead_at_budget": 13.5,
+        "capture_6h": 0.4317032040472175,
+        "effect_sd": 0.0
+      },
+      {
+        "auroc": 0.7970979020701887,
+        "recall_at_budget": 0.7200674536256324,
+        "lead_at_budget": 9.0,
+        "capture_6h": 0.4620573355817875,
+        "effect_sd": 0.25
+      },
+      {
+        "auroc": 0.7991298520559307,
+        "recall_at_budget": 0.7023608768971332,
+        "lead_at_budget": 9.0,
+        "capture_6h": 0.43929173693086004,
+        "effect_sd": 0.5
+      },
+      {
+        "auroc": 0.7938513541880823,
+        "recall_at_budget": 0.7040472175379426,
+        "lead_at_budget": 8.25,
+        "capture_6h": 0.4308600337268128,
+        "effect_sd": 1.0
+      },
+      {
+        "auroc": 0.8008898485768047,
+        "recall_at_budget": 0.730185497470489,
+        "lead_at_budget": 6.947916666666667,
+        "capture_6h": 0.4131534569983137,
+        "effect_sd": 2.0
+      },
+      {
+        "auroc": 0.812666833865748,
+        "recall_at_budget": 0.7681281618887015,
+        "lead_at_budget": 6.720277777777778,
+        "capture_6h": 0.43676222596964587,
+        "effect_sd": 4.0
+      }
+    ]
+  }
+}

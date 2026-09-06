@@ -54,6 +54,18 @@ def load_physionet(filepath=None, stage=1, min_length=6, features=None):
 
     # Map our feature names back to PhysioNet column names
     reverse_map = {v: k for k, v in PHYSIONET_COLUMN_MAP.items()}
+    # A feature with no PhysioNet column used to fall through to the
+    # np.zeros() initialisation below and arrive as a channel that is 0.0%
+    # missing -- a phantom "perfectly measured" variable. STAGES[3] contains
+    # il6, which PhysioNet does not measure, so stage=3 silently produced an
+    # all-zero IL-6 channel. Fail loudly instead.
+    unmapped = [f for f in features if f not in reverse_map]
+    if unmapped:
+        raise ValueError(
+            "PhysioNet 2019 has no column for: %s. It measures none of these; "
+            "requesting them would silently yield all-zero channels. "
+            "(STAGES[3] includes il6 for this reason -- pass an explicit "
+            "`features` list instead.)" % ", ".join(unmapped))
     source_cols = [reverse_map[f] for f in features if f in reverse_map]
     needed_cols = source_cols + ["Patient_ID", "ICULOS", "SepsisLabel"]
 
