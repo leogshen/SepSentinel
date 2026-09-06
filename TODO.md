@@ -28,6 +28,12 @@ Details and rationale: DATA_ACCESS_SPEC.md §9 and §13.
   on a synthetic mini-MIMIC (`scripts/test_sepsis3_rules.py`, 6/6) and run on
   the open demo. Still to check on real 3.1: onset-time spread (see HANDOFF).
 
+- [x] **3c. Pre-onset target + extended features** — DONE 2026-09-06:
+  `gridding.make_labels(prodrome_window_h=...)` confines positives to
+  [t_sepsis-W, t_sepsis); `extract_mimic.py --feature-set extended` adds MAP,
+  SBP, GCS, FiO2, urine output, PaO2, BUN, glucose. Together: +7h median lead
+  and capture>=6h 0.43 -> 0.53 at equal alert burden. See RESULTS.md part 2.
+
 - [ ] **4. Alarm-episode/cooldown evaluator** — merge consecutive alarms into
   episodes with refractory period R ∈ {2,6,12}h; report alert episodes per
   nonseptic patient-day + capture/lead under episode semantics. Doesn't exist

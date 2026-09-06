@@ -1,153 +1,121 @@
-# HANDOFF — Continue SepSentinel on this machine
+# HANDOFF — Continue SepSentinel
 
-You are picking up an in-progress project. This file is your complete context;
-the previous machine's session memory does not transfer. Read this fully, then
-skim: DATA_ACCESS_SPEC.md, TODO.md, MIGRATION.md, DATASETS.md,
-outreach/DATA_REQUESTS.md.
+You are picking up an in-progress project. This file is your complete
+context; previous session memory does not transfer. Read this fully, then
+skim RESULTS.md (part 2 first), DATA_ACCESS_SPEC.md, TODO.md, SICDB_RECON.md.
+
+Last updated 2026-09-06.
 
 ## Project in one paragraph
 
-SepSentinel: wearable multimodal sepsis early-warning platform. Model A (future):
-electrochemical sensor signals -> biomarker concentrations (IL-6/lactate/pH).
-Model B (active work): physiological + lab time series -> per-hour sepsis risk.
-Trained so far on PhysioNet/CinC 2019; now upgrading to MIMIC-IV with SICdb as
-external validation. The researcher (Leo) is a high-school student — gated data
-applications need a sponsoring PI; open-tier data is fine.
+SepSentinel: wearable multimodal sepsis early-warning platform. Model A
+(future): electrochemical sensor signals -> biomarker concentrations
+(IL-6/lactate/pH). Model B (active work): physiological + lab time series ->
+per-hour sepsis risk. Trained on PhysioNet/CinC 2019, now running on MIMIC-IV
+3.1. The researcher (Leo) is a high-school student — gated data applications
+need a sponsoring PI; open-tier data is fine.
 
-## Current production model and the numbers to beat
+## Where things actually stand
 
-- Config I: 9 features (HR, SpO2, Resp, Temp, Lactate, pH, WBC, Platelets,
-  Bilirubin — creatinine excluded, it hurts), Strategy B preprocessing
-  (causal ffill + train-median + lab masks + lab deltas = 19 channels),
-  causal Transformer (d_model=64, 2 layers, 4 heads).
-- Test AUROC 0.814 +/- 0.004, AUPRC 0.144 (PhysioNet, 3 seeds).
-- CORRECTED patient-level baseline (a pairing bug was found+fixed 2026-08-19;
-  distrust any patient-level numbers from before that date): at 70% patient
-  recall -> precision 9.3%, 1.7 false alerts/patient-day, median lead 23.5h.
-- Key negative results: loss reweighting doesn't move AUROC (exp5); MAE
-  pretraining doesn't improve discrimination at this scale (exp6) — the
-  PhysioNet ceiling is a DATA limitation. Hence the MIMIC upgrade.
-- Frozen conventions: split seed 42, training seeds {42,123,456}, epochs 50,
-  batch 32, lr 1e-3, patience 7 (defined in experiment2_imputation.py).
+**The MIMIC-IV pipeline is complete and running end to end.** Labels,
+extraction, cohort rules, baselines, Transformer, evaluation, diagnostics.
+Full numbers in RESULTS.md part 2. Current best operating point (full cohort,
+at <=1.0 false alerts per nonseptic patient-day): flat XGBoost, 18 features,
+pre-onset target — recall 0.64, median lead 20.6 h, capture >=6h 0.53,
+AUROC 0.736.
 
-## State of the MIMIC-IV pipeline (all committed, all tested)
+**The three findings that matter, if you read nothing else:**
 
-DONE on 2026-09-03 against MIMIC-IV 3.1 + the open 100-patient demo:
-- `sepsentinel/data/gridding.py` — event->hourly-grid episode builder
-  (vitals=median-in-bin, labs=last-in-bin, 336h cap, post-onset truncation,
-  labels generated from unshifted t_sepsis_hour with label_shift_hours param).
-- `sepsentinel/data/splitting.py::grouped_patient_split` — person-level split
-  (subject_id), leak-tested. ALWAYS use this for MIMIC, never patient_split.
-- `scripts/extract_mimic.py` — DuckDB extraction (works on demo + full 3.1).
-  All itemids verified against real 3.1 dictionaries. Temp F->C handled.
-- `compute_early_warning_metrics(..., label_shift_hours=6)` — episode
-  t_sepsis_hour takes precedence; PhysioNet default unchanged.
-- End-to-end verified: demo -> grid -> grouped split -> Strategy B ->
-  Transformer forward. Gridded-MIMIC NaN profile matches PhysioNet closely.
-- IL-6 census: MIMIC-IV has ZERO interleukin items (definitive; d_labitems
-  and d_items both). The IL-6 bridge comes from ImmPort SDY1662 (open,
-  downloadable) — see outreach/DATA_REQUESTS.md.
+1. **AUROC is anti-correlated with early warning on this task.** Five
+   independent observations, including a synthetic control where a 16x
+   stronger injected signal gave higher AUROC and shorter warning. Never
+   select a model or a setting on AUROC here. Report threshold-free metrics
+   plus equal-ALERT-BURDEN tables (`scripts/operating_curves.py`). The old
+   70%-patient-recall operating point has been removed from the codebase.
 
-ALSO DONE on 2026-09-03 (the former blocker, work item 1):
-- `sepsentinel/data/sepsis3.py` — Challenge-rule Sepsis-3 labels in DuckDB,
-  ported from mimic-code (suspicion_of_infection + hourly SOFA + sepsis3):
-  antibiotics from prescriptions+emar paired with microbiologyevents cultures
-  (culture <=24h after ABX, or ABX <=72h after culture), 6-component hourly
-  SOFA over 24h rolling windows, t_SOFA = first >=2-point rise vs the prior
-  24h minimum, t_sepsis = min(t_susp, t_SOFA) inside [t_susp-24h, t_susp+12h].
-  Every mimic-code deviation is listed in `sepsis3.DEVIATIONS` and printed in
-  the build report. Column types are pinned in read_csv_auto (a sniffed
-  VARCHAR column otherwise breaks binding).
-- `scripts/build_sepsis3_labels.py` — labels CSV + markdown report (attrition,
-  onset distribution, Challenge-vs-mimic-code diff, deviations).
-- `scripts/test_sepsis3_rules.py` — 6 hand-placed cases on a synthetic
-  mini-MIMIC pinning each timing rule (both suspicion windows, both sepsis
-  window edges, no-ABX, no-SOFA-rise). All pass; run it after any edit.
-- `scripts/extract_mimic.py` — labels wired in as `t_sepsis_hour` (inline by
-  default, or `--sepsis3-labels <csv>`), plus the spec section-2 cohort rules
-  (early-onset exclusion, HR-in-first-6h, >50%-empty) with a CONSORT
-  attrition log and a `*_manifest.json` next to every extraction.
-- Its FEATURES list is now the canonical 10 from experiment2_imputation.py
-  (creatinine restored at index 6): AblationPreprocessor indexes into that
-  list POSITIONALLY, so a 9-feature MIMIC pickle crashed it.
+2. **The sequence model is not earning its complexity.** Flat XGBoost matches
+   or beats the causal Transformer on every deployment metric. The temporal
+   information that matters is already in the Strategy B channels (last
+   value, was it measured, how long ago); attention over the trajectory adds
+   ~0.014 AUROC and costs lead time. Do not spend effort on architecture.
 
-Demo run (137 stays): 65% have a suspicion pair, 64 septic by the Challenge
-rule, 53 of those with onset at/before ICU hour 4 (excluded by spec section
-2), leaving 83 episodes at 13.3% patient / 7.7% timestep prevalence. Patient
-prevalence is inside the section-11 acceptance band (PhysioNet 8.8%);
-timestep prevalence is not (PhysioNet 2.2%) — the surviving demo onsets sit
-just above hour 4, so nearly every hour of those episodes is positive.
-WATCH THIS ON REAL 3.1: if onsets still cluster at ICU hour 0 there, the
-early-onset exclusion is doing far too much work and the cohort rule needs
-revisiting (spec section 2 already flags this).
+3. **The ceiling is measurement sparsity, not model capacity.** In the
+   pre-onset window the model effectively sees three signals (HR, SpO2,
+   respiratory rate at ~95% of hours); every lab is 2-8%. A synthetic 0.25 SD
+   drift in a dense channel beats a 4 SD shift in a sparse one. This is the
+   quantitative case for Model A, and it is the most publishable thing here.
 
-## Machine setup (do first)
+## Machine setup
 
-1. Clone: `git clone https://github.com/leogshen/SepSentinel` (this file is in it).
-2. venv + `pip install -r requirements.txt`, then CUDA torch:
+1. `git clone https://github.com/leogshen/SepSentinel`
+2. venv + `pip install -r requirements.txt` (duckdb and xgboost are in it),
+   then CUDA torch:
    `pip uninstall torch && pip install torch --index-url https://download.pytorch.org/whl/cu124`
-   Verify: `python -c "import torch; print(torch.cuda.is_available())"` -> True.
-   Also: `pip install duckdb`.
-3. PhysioNet 2019 (for regression baselines):
-   `python -c "import kagglehub; print(kagglehub.dataset_download('tea340yashjoshi/sepsis-prediction-dataset'))"`
-4. MIMIC-IV 3.1: Leo downloads it (credentialed) — likely to Downloads.
-   DO NOT unzip fully. Selective extract (13 tables, ~7.6GB, stays .csv.gz):
-   `cd C:/data && unzip -o -q <zip> mimic-iv-3.1/hosp/patients.csv.gz mimic-iv-3.1/hosp/admissions.csv.gz mimic-iv-3.1/hosp/labevents.csv.gz mimic-iv-3.1/hosp/d_labitems.csv.gz mimic-iv-3.1/hosp/prescriptions.csv.gz mimic-iv-3.1/hosp/microbiologyevents.csv.gz mimic-iv-3.1/hosp/emar.csv.gz mimic-iv-3.1/icu/icustays.csv.gz mimic-iv-3.1/icu/chartevents.csv.gz mimic-iv-3.1/icu/d_items.csv.gz mimic-iv-3.1/icu/inputevents.csv.gz mimic-iv-3.1/icu/outputevents.csv.gz mimic-iv-3.1/icu/procedureevents.csv.gz -d .`
-   DUA hygiene: keep outside any cloud-synced folder (OneDrive!), on Leo's
-   account only, encrypted disk preferred. Never in the git repo.
+   Verify `python -c "import torch; print(torch.cuda.is_available())"` -> True.
+3. PhysioNet 2019: `python -c "import kagglehub; print(kagglehub.dataset_download('tea340yashjoshi/sepsis-prediction-dataset'))"`
+4. MIMIC-IV 3.1: Leo downloads the zip (credentialed). Selective extract of
+   13 tables, staying `.csv.gz`, ~7.6 GB:
+   `cd <datadir> && unzip -o -q <zip> mimic-iv-3.1/hosp/{patients,admissions,labevents,d_labitems,prescriptions,microbiologyevents,emar}.csv.gz mimic-iv-3.1/icu/{icustays,chartevents,d_items,inputevents,outputevents,procedureevents}.csv.gz -d .`
+   DUA hygiene: outside any cloud-synced folder, never in the git repo.
+   On the current machine it lives at
+   `F:/Claude/Sepsentinel/data_local/mimic-iv-3.1`.
+
+Runtimes on a 2080 Ti / 32 GB box: labels 4.7 min, full extraction ~10 min,
+flat baselines <1 min, Transformer 3 seeds ~42 min.
 
 ## Work queue, in order
 
-1. ~~**Sepsis-3 Challenge-rule labels**~~ — DONE, see above. What remains is
-   only to re-run it on real 3.1 and check the onset distribution. Original
-   description kept below for the rule details.
+1. **Sweep the prodrome window.** It is fixed at 12 h and was never tuned;
+   3/6/12/24 h are one flag each (`--prodrome-window-h`). This is the
+   cheapest remaining win and directly sets the clinical claim.
+2. **Grouped bootstrap CIs on the operating-burden metrics.** Everything is
+   currently a point estimate from one split. The headline claim (+7 h lead)
+   needs an interval before it goes in a paper.
+3. **Alarm-episode/cooldown evaluator** (spec section 10, TODO item 4) —
+   merge consecutive alarm hours into episodes with a refractory period
+   R in {2,6,12} h. Still not built; the alert-burden numbers currently count
+   raw per-hour alarms, which overstates burden.
+4. **Promote AblationPreprocessor into the package** (TODO item 5). Note it
+   drops every key except signals/labels/length/patient_id/label, so
+   `subject_id` and `t_sepsis_hour` do not survive preprocessing.
+5. **Feature ablation on the extended set.** 18 features went in as a block;
+   nobody has checked which ones earn their place. MAP and urine output are
+   the dense ones and the likely winners.
+6. Later: SICdb (read SICDB_RECON.md first — cultures are confirmed ABSENT,
+   so Challenge-rule labels are impossible there), experiment 4
+   (trajectory+gating, built but never run), ImmPort SDY1662.
 
-   **Sepsis-3 Challenge-rule labels.** Everything extracts as
-   controls until this exists. Build t_suspicion (antibiotics from
-   prescriptions/emar paired with cultures from microbiologyevents:
-   culture <=24h after ABX, or ABX <=72h after culture), hourly SOFA
-   (inputevents vasopressors, outputevents urine, labevents, chartevents GCS/
-   MAP/FiO2+PaO2), t_SOFA (>=2-pt rise vs min of prior 24h), then
-   t_sepsis = min(t_suspicion, t_SOFA) if t_SOFA in [t_susp-24h, t_susp+12h].
-   Spec section 3 has the exact rules + leakage constraints (no SOFA/ABX as
-   model features!).
-2. **MVE (spec section 11)**: 1,000-stay extraction with labels, run the
-   existing pipeline, check acceptance criteria (prevalence within 2x of
-   PhysioNet's 2.2%/8.8%, NaN densities logged, AUROC 0.70-0.85 sanity).
-3. **TODO items 4-5**: alarm-episode/cooldown evaluator (spec section 10);
-   promote AblationPreprocessor from experiment3_feature_ablation.py into
-   sepsentinel/data/.
-4. **Full training runs** on all qualifying stays, 3 seeds, evaluated with
-   the corrected patient-level metrics at the 0.70-patient-recall operating
-   point. Compare against the PhysioNet baseline above.
-5. Later: SICdb (spec section 12 — verify schema first, culture data may not
-   exist there), experiment 4 (trajectory+gating, built but never run),
-   ImmPort SDY1662 analysis when Leo downloads it.
+## Gotchas that cost time once already
 
-## Gotchas that cost us time once already
-
-- Do NOT score SOFA in hours with no data. Scoring the empty pre-ICU hours
+- **Do not score SOFA in hours with no data.** Scoring empty pre-ICU hours
   gave SOFA 0 there, so ICU admission itself read as a >=2-point rise and 58%
-  of demo stays came out septic with onset at hour 0. SOFA now starts at hour
-  0 with pre-ICU labs clamped into it.
-- DuckDB `read_csv_auto` sniffs types per file: a table with no usable rows
-  (or a lab value like '___') comes back VARCHAR and every comparison fails at
-  bind time. `sepsis3.register_sources` pins the types it needs.
-- MIMIC episodes must carry the canonical 10-feature layout (creatinine
-  included); AblationPreprocessor indexes into it positionally.
+  of demo stays came out septic at hour 0. SOFA now starts at hour 0 with
+  pre-ICU labs clamped into it.
+- **MIMIC contains impossible values** — 11,337 bpm heart rates, 7,000,400
+  breaths/min. Extraction filters them now; `CLIP_RANGES` is the second line
+  of defence, not the first.
+- **DuckDB `read_csv_auto` sniffs types per file**: a table with no usable
+  rows comes back VARCHAR and every comparison fails at bind time.
+  `sepsis3.register_sources` pins the types it needs.
+- **`load_physionet` used to zero-fill unmappable features**, so `stage=3`
+  produced an all-zero IL-6 channel reading 0.0% missing. It raises now.
+  Always pass an explicit `features` list.
+- **collate_fn SORTS batches by length**: any per-patient pairing must
+  replicate that sort (see `collect_patient_predictions`). Never pair by
+  dataset order.
+- **labevents has no stay_id** — join subject_id + charttime within the stay
+  window, and use charttime, never storetime (leakage).
+- **AblationPreprocessor indexes into the feature list positionally** and had
+  the four PhysioNet vitals hardcoded; it now takes an explicit `vitals`.
+- **PhysioNet <-> MIMIC share a hospital (BIDMC)**: MIMIC is NOT clean
+  external validation for PhysioNet-trained models.
+- Windows console is cp1252: no unicode in logger/print output.
+- Checkpoints (`*.pt`) and episode pickles are gitignored; regenerate them.
 
-- collate_fn SORTS batches by length: any per-patient pairing must replicate
-  that sort (see fixed collect_patient_predictions in experiment5). Never
-  pair by dataset order.
-- labevents has no stay_id — join subject_id + charttime within stay window.
-  Use charttime, never storetime (leakage).
-- PhysioNet 2019 labels are PRE-SHIFTED 6h; MIMIC labels are generated in the
-  loader from unshifted t_sepsis_hour. Don't double-shift.
-- PhysioNet <-> MIMIC share a hospital (BIDMC): MIMIC is NOT clean external
-  validation for PhysioNet-trained models. SICdb is.
-- Windows console is cp1252: no unicode symbols in logger/print output.
-- Checkpoints (*.pt) are gitignored; retrain (minutes on GPU) rather than
-  hunting for them.
+## Open questions worth an email, not an experiment
 
-Start by confirming the environment (step-by-step above), then begin work
-item 1. Ask Leo before anything gated, outward-facing, or destructive.
+- **SICdb IL-6/procalcitonin census.** `d_references` ships only inside the
+  restricted download, so this cannot be settled from outside. One GitHub
+  issue on `nrodemund/sicdb` answers it, no DUA needed. Worth doing before
+  any SICdb access effort, since IL-6 presence is the only thing that would
+  make SICdb strategically important to Model A. See outreach/DATA_REQUESTS.md.

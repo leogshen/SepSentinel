@@ -1,0 +1,2711 @@
+{
+  "seeds": [
+    {
+      "seed": 42,
+      "auroc": 0.7501743164470749,
+      "auprc": 0.08458938462534693,
+      "curve": [
+        {
+          "threshold": 0.01,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 24.0,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.02,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 24.0,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.03,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 23.585718970437405,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.04,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 22.337182448036952,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.05,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 21.562987099069932,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.060000000000000005,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 20.827138700697027,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.06999999999999999,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 20.11194295402692,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.08,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 19.39847756466164,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.09,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 18.742895418041766,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.09999999999999999,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 18.130237296177164,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.11,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 17.562345192327818,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.12,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 17.0166128255758,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.13,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 16.510734494812418,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.14,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 16.049064002288535,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.15000000000000002,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 15.616139768215849,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.16,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 15.207440536410765,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7833333333333333
+        },
+        {
+          "threshold": 0.17,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 14.819728864173928,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7833333333333333
+        },
+        {
+          "threshold": 0.18000000000000002,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 14.463833439154916,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.19,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 14.114468717512192,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.2,
+          "patient_recall": 0.9990740740740741,
+          "alerts_per_patient_day": 13.786091555437718,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9972222222222222,
+          "capture_6h": 0.9675925925925926,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.21000000000000002,
+          "patient_recall": 0.9981481481481481,
+          "alerts_per_patient_day": 13.474292332703055,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9675925925925926,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.22,
+          "patient_recall": 0.9953703703703703,
+          "alerts_per_patient_day": 13.18292248976089,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9944444444444445,
+          "capture_6h": 0.9648148148148148,
+          "capture_12h": 0.7796296296296297
+        },
+        {
+          "threshold": 0.23,
+          "patient_recall": 0.9944444444444445,
+          "alerts_per_patient_day": 12.907460770427637,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9935185185185185,
+          "capture_6h": 0.9638888888888889,
+          "capture_12h": 0.7787037037037037
+        },
+        {
+          "threshold": 0.24000000000000002,
+          "patient_recall": 0.9935185185185185,
+          "alerts_per_patient_day": 12.634008498287088,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9925925925925926,
+          "capture_6h": 0.9629629629629629,
+          "capture_12h": 0.7777777777777778
+        },
+        {
+          "threshold": 0.25,
+          "patient_recall": 0.9925925925925926,
+          "alerts_per_patient_day": 12.376296895822723,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9907407407407407,
+          "capture_6h": 0.962037037037037,
+          "capture_12h": 0.7768518518518519
+        },
+        {
+          "threshold": 0.26,
+          "patient_recall": 0.9925925925925926,
+          "alerts_per_patient_day": 12.107533333798482,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9907407407407407,
+          "capture_6h": 0.962037037037037,
+          "capture_12h": 0.7768518518518519
+        },
+        {
+          "threshold": 0.27,
+          "patient_recall": 0.9898148148148148,
+          "alerts_per_patient_day": 11.85931078752189,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9879629629629629,
+          "capture_6h": 0.9592592592592593,
+          "capture_12h": 0.774074074074074
+        },
+        {
+          "threshold": 0.28,
+          "patient_recall": 0.9898148148148148,
+          "alerts_per_patient_day": 11.615386225518584,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9879629629629629,
+          "capture_6h": 0.9592592592592593,
+          "capture_12h": 0.7731481481481481
+        },
+        {
+          "threshold": 0.29000000000000004,
+          "patient_recall": 0.9879629629629629,
+          "alerts_per_patient_day": 11.37760164104854,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9861111111111112,
+          "capture_6h": 0.9574074074074074,
+          "capture_12h": 0.7712962962962963
+        },
+        {
+          "threshold": 0.3,
+          "patient_recall": 0.9861111111111112,
+          "alerts_per_patient_day": 11.137472701520341,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9842592592592593,
+          "capture_6h": 0.9555555555555556,
+          "capture_12h": 0.7703703703703704
+        },
+        {
+          "threshold": 0.31,
+          "patient_recall": 0.9851851851851852,
+          "alerts_per_patient_day": 10.899074119296973,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9833333333333333,
+          "capture_6h": 0.9527777777777777,
+          "capture_12h": 0.7685185185185185
+        },
+        {
+          "threshold": 0.32,
+          "patient_recall": 0.9824074074074074,
+          "alerts_per_patient_day": 10.665475883145064,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9805555555555555,
+          "capture_6h": 0.950925925925926,
+          "capture_12h": 0.7666666666666667
+        },
+        {
+          "threshold": 0.33,
+          "patient_recall": 0.9805555555555555,
+          "alerts_per_patient_day": 10.43137528519498,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9787037037037037,
+          "capture_6h": 0.9472222222222222,
+          "capture_12h": 0.762962962962963
+        },
+        {
+          "threshold": 0.34,
+          "patient_recall": 0.9787037037037037,
+          "alerts_per_patient_day": 10.20235412320423,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9768518518518519,
+          "capture_6h": 0.9435185185185185,
+          "capture_12h": 0.7611111111111111
+        },
+        {
+          "threshold": 0.35000000000000003,
+          "patient_recall": 0.975925925925926,
+          "alerts_per_patient_day": 9.969648974693524,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9731481481481481,
+          "capture_6h": 0.937037037037037,
+          "capture_12h": 0.7574074074074074
+        },
+        {
+          "threshold": 0.36000000000000004,
+          "patient_recall": 0.9740740740740741,
+          "alerts_per_patient_day": 9.74425598124516,
+          "median_lead_time_h": 23.9,
+          "capture_3h": 0.9712962962962963,
+          "capture_6h": 0.9333333333333333,
+          "capture_12h": 0.7555555555555555
+        },
+        {
+          "threshold": 0.37,
+          "patient_recall": 0.9731481481481481,
+          "alerts_per_patient_day": 9.515513909142287,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9703703703703703,
+          "capture_6h": 0.9324074074074075,
+          "capture_12h": 0.7546296296296297
+        },
+        {
+          "threshold": 0.38,
+          "patient_recall": 0.9712962962962963,
+          "alerts_per_patient_day": 9.282194762878254,
+          "median_lead_time_h": 23.8,
+          "capture_3h": 0.9685185185185186,
+          "capture_6h": 0.9287037037037037,
+          "capture_12h": 0.75
+        },
+        {
+          "threshold": 0.39,
+          "patient_recall": 0.9703703703703703,
+          "alerts_per_patient_day": 9.05311778290993,
+          "median_lead_time_h": 23.573194444444443,
+          "capture_3h": 0.9675925925925926,
+          "capture_6h": 0.9259259259259259,
+          "capture_12h": 0.7481481481481481
+        },
+        {
+          "threshold": 0.4,
+          "patient_recall": 0.9685185185185186,
+          "alerts_per_patient_day": 8.822087173726478,
+          "median_lead_time_h": 23.573194444444443,
+          "capture_3h": 0.9666666666666667,
+          "capture_6h": 0.9222222222222223,
+          "capture_12h": 0.7462962962962963
+        },
+        {
+          "threshold": 0.41000000000000003,
+          "patient_recall": 0.9601851851851851,
+          "alerts_per_patient_day": 8.531722054380666,
+          "median_lead_time_h": 23.268333333333334,
+          "capture_3h": 0.9583333333333334,
+          "capture_6h": 0.9083333333333333,
+          "capture_12h": 0.7351851851851852
+        },
+        {
+          "threshold": 0.42000000000000004,
+          "patient_recall": 0.9564814814814815,
+          "alerts_per_patient_day": 8.302868346322642,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9546296296296296,
+          "capture_6h": 0.9046296296296297,
+          "capture_12h": 0.7296296296296296
+        },
+        {
+          "threshold": 0.43,
+          "patient_recall": 0.9546296296296296,
+          "alerts_per_patient_day": 8.055873795552703,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9527777777777777,
+          "capture_6h": 0.9018518518518519,
+          "capture_12h": 0.725
+        },
+        {
+          "threshold": 0.44,
+          "patient_recall": 0.9490740740740741,
+          "alerts_per_patient_day": 7.822945375131695,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9472222222222222,
+          "capture_6h": 0.8916666666666667,
+          "capture_12h": 0.7203703703703703
+        },
+        {
+          "threshold": 0.45,
+          "patient_recall": 0.9435185185185185,
+          "alerts_per_patient_day": 7.601962001911766,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9416666666666667,
+          "capture_6h": 0.8833333333333333,
+          "capture_12h": 0.7157407407407408
+        },
+        {
+          "threshold": 0.46,
+          "patient_recall": 0.9407407407407408,
+          "alerts_per_patient_day": 7.380420448916084,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.937962962962963,
+          "capture_6h": 0.8777777777777778,
+          "capture_12h": 0.7083333333333334
+        },
+        {
+          "threshold": 0.47000000000000003,
+          "patient_recall": 0.937037037037037,
+          "alerts_per_patient_day": 7.156869448727699,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9333333333333333,
+          "capture_6h": 0.8731481481481481,
+          "capture_12h": 0.7027777777777777
+        },
+        {
+          "threshold": 0.48000000000000004,
+          "patient_recall": 0.9333333333333333,
+          "alerts_per_patient_day": 6.941858599108308,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9259259259259259,
+          "capture_6h": 0.8657407407407407,
+          "capture_12h": 0.6925925925925925
+        },
+        {
+          "threshold": 0.49,
+          "patient_recall": 0.9305555555555556,
+          "alerts_per_patient_day": 6.724112668587736,
+          "median_lead_time_h": 22.77166666666667,
+          "capture_3h": 0.9222222222222223,
+          "capture_6h": 0.8592592592592593,
+          "capture_12h": 0.6861111111111111
+        },
+        {
+          "threshold": 0.5,
+          "patient_recall": 0.924074074074074,
+          "alerts_per_patient_day": 6.505808558291411,
+          "median_lead_time_h": 22.535,
+          "capture_3h": 0.9138888888888889,
+          "capture_6h": 0.850925925925926,
+          "capture_12h": 0.6777777777777778
+        },
+        {
+          "threshold": 0.51,
+          "patient_recall": 0.9175925925925926,
+          "alerts_per_patient_day": 6.2999518569943405,
+          "median_lead_time_h": 22.023888888888887,
+          "capture_3h": 0.9055555555555556,
+          "capture_6h": 0.8398148148148148,
+          "capture_12h": 0.6703703703703704
+        },
+        {
+          "threshold": 0.52,
+          "patient_recall": 0.9111111111111111,
+          "alerts_per_patient_day": 6.090522805132462,
+          "median_lead_time_h": 22.011944444444445,
+          "capture_3h": 0.899074074074074,
+          "capture_6h": 0.8342592592592593,
+          "capture_12h": 0.6648148148148149
+        },
+        {
+          "threshold": 0.53,
+          "patient_recall": 0.9046296296296297,
+          "alerts_per_patient_day": 5.888461726310501,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8907407407407407,
+          "capture_6h": 0.825,
+          "capture_12h": 0.6574074074074074
+        },
+        {
+          "threshold": 0.54,
+          "patient_recall": 0.8972222222222223,
+          "alerts_per_patient_day": 5.689749726143047,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8787037037037037,
+          "capture_6h": 0.8138888888888889,
+          "capture_12h": 0.6472222222222223
+        },
+        {
+          "threshold": 0.55,
+          "patient_recall": 0.8898148148148148,
+          "alerts_per_patient_day": 5.486907195635034,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8731481481481481,
+          "capture_6h": 0.8083333333333333,
+          "capture_12h": 0.6388888888888888
+        },
+        {
+          "threshold": 0.56,
+          "patient_recall": 0.8805555555555555,
+          "alerts_per_patient_day": 5.293888629180243,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8601851851851852,
+          "capture_6h": 0.799074074074074,
+          "capture_12h": 0.6324074074074074
+        },
+        {
+          "threshold": 0.5700000000000001,
+          "patient_recall": 0.8712962962962963,
+          "alerts_per_patient_day": 5.103493507671484,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8518518518518519,
+          "capture_6h": 0.787962962962963,
+          "capture_12h": 0.6240740740740741
+        },
+        {
+          "threshold": 0.5800000000000001,
+          "patient_recall": 0.8611111111111112,
+          "alerts_per_patient_day": 4.921750172686868,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.837037037037037,
+          "capture_6h": 0.7768518518518519,
+          "capture_12h": 0.6194444444444445
+        },
+        {
+          "threshold": 0.59,
+          "patient_recall": 0.85,
+          "alerts_per_patient_day": 4.739448657926502,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8268518518518518,
+          "capture_6h": 0.762962962962963,
+          "capture_12h": 0.6083333333333333
+        },
+        {
+          "threshold": 0.6,
+          "patient_recall": 0.8462962962962963,
+          "alerts_per_patient_day": 4.556700599345534,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8203703703703704,
+          "capture_6h": 0.7564814814814815,
+          "capture_12h": 0.6055555555555555
+        },
+        {
+          "threshold": 0.61,
+          "patient_recall": 0.8333333333333334,
+          "alerts_per_patient_day": 4.3777481632396755,
+          "median_lead_time_h": 21.876805555555556,
+          "capture_3h": 0.8074074074074075,
+          "capture_6h": 0.7444444444444445,
+          "capture_12h": 0.5944444444444444
+        },
+        {
+          "threshold": 0.62,
+          "patient_recall": 0.8222222222222222,
+          "alerts_per_patient_day": 4.199018999044117,
+          "median_lead_time_h": 21.943055555555553,
+          "capture_3h": 0.7962962962962963,
+          "capture_6h": 0.7314814814814815,
+          "capture_12h": 0.5851851851851851
+        },
+        {
+          "threshold": 0.63,
+          "patient_recall": 0.812962962962963,
+          "alerts_per_patient_day": 4.021182922489761,
+          "median_lead_time_h": 21.765555555555554,
+          "capture_3h": 0.7861111111111111,
+          "capture_6h": 0.7175925925925926,
+          "capture_12h": 0.5768518518518518
+        },
+        {
+          "threshold": 0.64,
+          "patient_recall": 0.8046296296296296,
+          "alerts_per_patient_day": 3.8391604976172697,
+          "median_lead_time_h": 21.731388888888887,
+          "capture_3h": 0.7787037037037037,
+          "capture_6h": 0.7101851851851851,
+          "capture_12h": 0.5731481481481482
+        },
+        {
+          "threshold": 0.65,
+          "patient_recall": 0.8009259259259259,
+          "alerts_per_patient_day": 3.6603196974665617,
+          "median_lead_time_h": 21.333333333333332,
+          "capture_3h": 0.7731481481481481,
+          "capture_6h": 0.7018518518518518,
+          "capture_12h": 0.5657407407407408
+        },
+        {
+          "threshold": 0.66,
+          "patient_recall": 0.787962962962963,
+          "alerts_per_patient_day": 3.4756180096704643,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7574074074074074,
+          "capture_6h": 0.6851851851851852,
+          "capture_12h": 0.5537037037037037
+        },
+        {
+          "threshold": 0.67,
+          "patient_recall": 0.7777777777777778,
+          "alerts_per_patient_day": 3.2924234072688963,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7472222222222222,
+          "capture_6h": 0.675,
+          "capture_12h": 0.537962962962963
+        },
+        {
+          "threshold": 0.68,
+          "patient_recall": 0.7694444444444445,
+          "alerts_per_patient_day": 3.1063262700334207,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7361111111111112,
+          "capture_6h": 0.6583333333333333,
+          "capture_12h": 0.524074074074074
+        },
+        {
+          "threshold": 0.6900000000000001,
+          "patient_recall": 0.7583333333333333,
+          "alerts_per_patient_day": 2.91983840695492,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7185185185185186,
+          "capture_6h": 0.6472222222222223,
+          "capture_12h": 0.5166666666666667
+        },
+        {
+          "threshold": 0.7000000000000001,
+          "patient_recall": 0.7416666666666667,
+          "alerts_per_patient_day": 2.7374810742169786,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7037037037037037,
+          "capture_6h": 0.6370370370370371,
+          "capture_12h": 0.5064814814814815
+        },
+        {
+          "threshold": 0.7100000000000001,
+          "patient_recall": 0.725925925925926,
+          "alerts_per_patient_day": 2.552611932488156,
+          "median_lead_time_h": 20.975,
+          "capture_3h": 0.6898148148148148,
+          "capture_6h": 0.6231481481481481,
+          "capture_12h": 0.4888888888888889
+        },
+        {
+          "threshold": 0.72,
+          "patient_recall": 0.7175925925925926,
+          "alerts_per_patient_day": 2.37053368963809,
+          "median_lead_time_h": 20.0,
+          "capture_3h": 0.6777777777777778,
+          "capture_6h": 0.6037037037037037,
+          "capture_12h": 0.4787037037037037
+        },
+        {
+          "threshold": 0.73,
+          "patient_recall": 0.6981481481481482,
+          "alerts_per_patient_day": 2.1865576355504697,
+          "median_lead_time_h": 20.30763888888889,
+          "capture_3h": 0.6574074074074074,
+          "capture_6h": 0.5861111111111111,
+          "capture_12h": 0.46574074074074073
+        },
+        {
+          "threshold": 0.74,
+          "patient_recall": 0.6712962962962963,
+          "alerts_per_patient_day": 2.0098937365251914,
+          "median_lead_time_h": 20.031666666666666,
+          "capture_3h": 0.6296296296296297,
+          "capture_6h": 0.5638888888888889,
+          "capture_12h": 0.44907407407407407
+        },
+        {
+          "threshold": 0.75,
+          "patient_recall": 0.6481481481481481,
+          "alerts_per_patient_day": 1.8355183745804933,
+          "median_lead_time_h": 20.62236111111111,
+          "capture_3h": 0.6074074074074074,
+          "capture_6h": 0.5453703703703704,
+          "capture_12h": 0.4324074074074074
+        },
+        {
+          "threshold": 0.76,
+          "patient_recall": 0.6314814814814815,
+          "alerts_per_patient_day": 1.6657200867969553,
+          "median_lead_time_h": 20.0,
+          "capture_3h": 0.587037037037037,
+          "capture_6h": 0.5277777777777778,
+          "capture_12h": 0.41759259259259257
+        },
+        {
+          "threshold": 0.77,
+          "patient_recall": 0.6055555555555555,
+          "alerts_per_patient_day": 1.5043503136272613,
+          "median_lead_time_h": 20.0,
+          "capture_3h": 0.562962962962963,
+          "capture_6h": 0.5083333333333333,
+          "capture_12h": 0.3990740740740741
+        },
+        {
+          "threshold": 0.78,
+          "patient_recall": 0.5740740740740741,
+          "alerts_per_patient_day": 1.3498461516993085,
+          "median_lead_time_h": 20.0,
+          "capture_3h": 0.5342592592592592,
+          "capture_6h": 0.48148148148148145,
+          "capture_12h": 0.38425925925925924
+        },
+        {
+          "threshold": 0.79,
+          "patient_recall": 0.5509259259259259,
+          "alerts_per_patient_day": 1.2013703313494695,
+          "median_lead_time_h": 19.908333333333335,
+          "capture_3h": 0.5111111111111111,
+          "capture_6h": 0.46111111111111114,
+          "capture_12h": 0.36574074074074076
+        },
+        {
+          "threshold": 0.8,
+          "patient_recall": 0.5203703703703704,
+          "alerts_per_patient_day": 1.0682444548327903,
+          "median_lead_time_h": 19.310000000000002,
+          "capture_3h": 0.4824074074074074,
+          "capture_6h": 0.4324074074074074,
+          "capture_12h": 0.3435185185185185
+        },
+        {
+          "threshold": 0.81,
+          "patient_recall": 0.487962962962963,
+          "alerts_per_patient_day": 0.9317136816840283,
+          "median_lead_time_h": 19.304444444444446,
+          "capture_3h": 0.4537037037037037,
+          "capture_6h": 0.4083333333333333,
+          "capture_12h": 0.32222222222222224
+        },
+        {
+          "threshold": 0.8200000000000001,
+          "patient_recall": 0.4537037037037037,
+          "alerts_per_patient_day": 0.7992576208982509,
+          "median_lead_time_h": 19.0,
+          "capture_3h": 0.4203703703703704,
+          "capture_6h": 0.3731481481481482,
+          "capture_12h": 0.2962962962962963
+        },
+        {
+          "threshold": 0.8300000000000001,
+          "patient_recall": 0.41944444444444445,
+          "alerts_per_patient_day": 0.6770720679862967,
+          "median_lead_time_h": 19.0,
+          "capture_3h": 0.38796296296296295,
+          "capture_6h": 0.34074074074074073,
+          "capture_12h": 0.27037037037037037
+        },
+        {
+          "threshold": 0.8400000000000001,
+          "patient_recall": 0.38055555555555554,
+          "alerts_per_patient_day": 0.5613614004730574,
+          "median_lead_time_h": 18.95,
+          "capture_3h": 0.3527777777777778,
+          "capture_6h": 0.3101851851851852,
+          "capture_12h": 0.24351851851851852
+        },
+        {
+          "threshold": 0.85,
+          "patient_recall": 0.33055555555555555,
+          "alerts_per_patient_day": 0.44816254195069877,
+          "median_lead_time_h": 18.315555555555555,
+          "capture_3h": 0.30833333333333335,
+          "capture_6h": 0.2675925925925926,
+          "capture_12h": 0.21296296296296297
+        },
+        {
+          "threshold": 0.86,
+          "patient_recall": 0.2916666666666667,
+          "alerts_per_patient_day": 0.3386476699482986,
+          "median_lead_time_h": 18.0,
+          "capture_3h": 0.27037037037037037,
+          "capture_6h": 0.2351851851851852,
+          "capture_12h": 0.18703703703703703
+        },
+        {
+          "threshold": 0.87,
+          "patient_recall": 0.24722222222222223,
+          "alerts_per_patient_day": 0.23264933053313147,
+          "median_lead_time_h": 17.0,
+          "capture_3h": 0.225,
+          "capture_6h": 0.18981481481481483,
+          "capture_12h": 0.1574074074074074
+        },
+        {
+          "threshold": 0.88,
+          "patient_recall": 0.18703703703703703,
+          "alerts_per_patient_day": 0.14300565854747668,
+          "median_lead_time_h": 16.88388888888889,
+          "capture_3h": 0.17037037037037037,
+          "capture_6h": 0.14166666666666666,
+          "capture_12h": 0.1175925925925926
+        },
+        {
+          "threshold": 0.89,
+          "patient_recall": 0.1259259259259259,
+          "alerts_per_patient_day": 0.0681537506192307,
+          "median_lead_time_h": 16.0,
+          "capture_3h": 0.11296296296296296,
+          "capture_6h": 0.0962962962962963,
+          "capture_12h": 0.07592592592592592
+        },
+        {
+          "threshold": 0.9,
+          "patient_recall": 0.062037037037037036,
+          "alerts_per_patient_day": 0.01970374608402001,
+          "median_lead_time_h": 12.266666666666666,
+          "capture_3h": 0.05740740740740741,
+          "capture_6h": 0.04351851851851852,
+          "capture_12h": 0.032407407407407406
+        },
+        {
+          "threshold": 0.91,
+          "patient_recall": 0.017592592592592594,
+          "alerts_per_patient_day": 0.0035723505648081605,
+          "median_lead_time_h": 4.273055555555555,
+          "capture_3h": 0.01574074074074074,
+          "capture_6h": 0.008333333333333333,
+          "capture_12h": 0.003703703703703704
+        },
+        {
+          "threshold": 0.92,
+          "patient_recall": 0.003703703703703704,
+          "alerts_per_patient_day": 0.0005023617981761476,
+          "median_lead_time_h": 2.0730555555555554,
+          "capture_3h": 0.001851851851851852,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.93,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.9400000000000001,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.9500000000000001,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.9600000000000001,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.97,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.98,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.99,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        }
+      ]
+    },
+    {
+      "seed": 123,
+      "auroc": 0.752717230133737,
+      "auprc": 0.08545775823889158,
+      "curve": [
+        {
+          "threshold": 0.01,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 24.0,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.02,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 24.0,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.03,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 24.0,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.04,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 22.638208801099616,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.05,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 21.732171389100145,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.060000000000000005,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 21.026073972774782,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.06999999999999999,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 20.38037160818571,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.08,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 19.796180654884424,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.09,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 19.258430258925642,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.09999999999999999,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 18.745630498942948,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.11,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 18.239752168179567,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.12,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 17.754247399231108,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.13,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 17.29095818535755,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.14,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 16.862555207468446,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.15000000000000002,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 16.453018705999735,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.16,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 16.066981573090153,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.17,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 15.704946170537877,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.18000000000000002,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 15.353962727545476,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9981481481481481,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7833333333333333
+        },
+        {
+          "threshold": 0.19,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 15.025641383448574,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9981481481481481,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7833333333333333
+        },
+        {
+          "threshold": 0.2,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 14.700278392163156,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9981481481481481,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.21000000000000002,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 14.391884066060577,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9981481481481481,
+          "capture_6h": 0.9675925925925926,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.22,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 14.0958255130021,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9981481481481481,
+          "capture_6h": 0.9675925925925926,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.23,
+          "patient_recall": 0.9981481481481481,
+          "alerts_per_patient_day": 13.805069667813262,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9972222222222222,
+          "capture_6h": 0.9675925925925926,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.24000000000000002,
+          "patient_recall": 0.9972222222222222,
+          "alerts_per_patient_day": 13.525254146229145,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9675925925925926,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.25,
+          "patient_recall": 0.9972222222222222,
+          "alerts_per_patient_day": 13.258834939263064,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9675925925925926,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.26,
+          "patient_recall": 0.9972222222222222,
+          "alerts_per_patient_day": 12.99068537499215,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9675925925925926,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.27,
+          "patient_recall": 0.9962962962962963,
+          "alerts_per_patient_day": 12.736211215227144,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9953703703703703,
+          "capture_6h": 0.9657407407407408,
+          "capture_12h": 0.7796296296296297
+        },
+        {
+          "threshold": 0.28,
+          "patient_recall": 0.9953703703703703,
+          "alerts_per_patient_day": 12.486983945354199,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9944444444444445,
+          "capture_6h": 0.9648148148148148,
+          "capture_12h": 0.7796296296296297
+        },
+        {
+          "threshold": 0.29000000000000004,
+          "patient_recall": 0.9925925925925926,
+          "alerts_per_patient_day": 12.236417044019452,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9916666666666667,
+          "capture_6h": 0.962037037037037,
+          "capture_12h": 0.7768518518518519
+        },
+        {
+          "threshold": 0.3,
+          "patient_recall": 0.9916666666666667,
+          "alerts_per_patient_day": 11.996120650558527,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9907407407407407,
+          "capture_6h": 0.9611111111111111,
+          "capture_12h": 0.7759259259259259
+        },
+        {
+          "threshold": 0.31,
+          "patient_recall": 0.9907407407407407,
+          "alerts_per_patient_day": 11.753144994173999,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9898148148148148,
+          "capture_6h": 0.9601851851851851,
+          "capture_12h": 0.775
+        },
+        {
+          "threshold": 0.32,
+          "patient_recall": 0.9907407407407407,
+          "alerts_per_patient_day": 11.512513692847623,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9898148148148148,
+          "capture_6h": 0.9592592592592593,
+          "capture_12h": 0.774074074074074
+        },
+        {
+          "threshold": 0.33,
+          "patient_recall": 0.9898148148148148,
+          "alerts_per_patient_day": 11.285557796027156,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9879629629629629,
+          "capture_6h": 0.9555555555555556,
+          "capture_12h": 0.7722222222222223
+        },
+        {
+          "threshold": 0.34,
+          "patient_recall": 0.9898148148148148,
+          "alerts_per_patient_day": 11.056536634036409,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9879629629629629,
+          "capture_6h": 0.9555555555555556,
+          "capture_12h": 0.7712962962962963
+        },
+        {
+          "threshold": 0.35000000000000003,
+          "patient_recall": 0.9888888888888889,
+          "alerts_per_patient_day": 10.827682925978383,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.987037037037037,
+          "capture_6h": 0.9546296296296296,
+          "capture_12h": 0.7694444444444445
+        },
+        {
+          "threshold": 0.36000000000000004,
+          "patient_recall": 0.9861111111111112,
+          "alerts_per_patient_day": 10.593973053871325,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9842592592592593,
+          "capture_6h": 0.9518518518518518,
+          "capture_12h": 0.7675925925925926
+        },
+        {
+          "threshold": 0.37,
+          "patient_recall": 0.9851851851851852,
+          "alerts_per_patient_day": 10.355072109849779,
+          "median_lead_time_h": 23.9,
+          "capture_3h": 0.9833333333333333,
+          "capture_6h": 0.950925925925926,
+          "capture_12h": 0.7666666666666667
+        },
+        {
+          "threshold": 0.38,
+          "patient_recall": 0.9833333333333333,
+          "alerts_per_patient_day": 10.10980791638467,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9814814814814815,
+          "capture_6h": 0.9462962962962963,
+          "capture_12h": 0.7638888888888888
+        },
+        {
+          "threshold": 0.39,
+          "patient_recall": 0.9796296296296296,
+          "alerts_per_patient_day": 9.864264633031684,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9777777777777777,
+          "capture_6h": 0.9416666666666667,
+          "capture_12h": 0.762962962962963
+        },
+        {
+          "threshold": 0.4,
+          "patient_recall": 0.9740740740740741,
+          "alerts_per_patient_day": 9.618274805858096,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9712962962962963,
+          "capture_6h": 0.9342592592592592,
+          "capture_12h": 0.7555555555555555
+        },
+        {
+          "threshold": 0.41000000000000003,
+          "patient_recall": 0.9722222222222222,
+          "alerts_per_patient_day": 9.374517697787514,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9685185185185186,
+          "capture_6h": 0.9333333333333333,
+          "capture_12h": 0.7546296296296297
+        },
+        {
+          "threshold": 0.42000000000000004,
+          "patient_recall": 0.9703703703703703,
+          "alerts_per_patient_day": 9.121941349260062,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9675925925925926,
+          "capture_6h": 0.9296296296296296,
+          "capture_12h": 0.7509259259259259
+        },
+        {
+          "threshold": 0.43,
+          "patient_recall": 0.9675925925925926,
+          "alerts_per_patient_day": 8.878128423211907,
+          "median_lead_time_h": 23.666666666666668,
+          "capture_3h": 0.9638888888888889,
+          "capture_6h": 0.9231481481481482,
+          "capture_12h": 0.7481481481481481
+        },
+        {
+          "threshold": 0.44,
+          "patient_recall": 0.9657407407407408,
+          "alerts_per_patient_day": 8.635543492670402,
+          "median_lead_time_h": 23.666666666666668,
+          "capture_3h": 0.962037037037037,
+          "capture_6h": 0.9212962962962963,
+          "capture_12h": 0.7472222222222222
+        },
+        {
+          "threshold": 0.45,
+          "patient_recall": 0.9638888888888889,
+          "alerts_per_patient_day": 8.393907467747674,
+          "median_lead_time_h": 23.546666666666667,
+          "capture_3h": 0.9611111111111111,
+          "capture_6h": 0.9175925925925926,
+          "capture_12h": 0.7444444444444445
+        },
+        {
+          "threshold": 0.46,
+          "patient_recall": 0.9629629629629629,
+          "alerts_per_patient_day": 8.14858745630499,
+          "median_lead_time_h": 23.525,
+          "capture_3h": 0.9574074074074074,
+          "capture_6h": 0.9111111111111111,
+          "capture_12h": 0.7425925925925926
+        },
+        {
+          "threshold": 0.47000000000000003,
+          "patient_recall": 0.9592592592592593,
+          "alerts_per_patient_day": 7.904718712279257,
+          "median_lead_time_h": 23.54,
+          "capture_3h": 0.9537037037037037,
+          "capture_6h": 0.9064814814814814,
+          "capture_12h": 0.737037037037037
+        },
+        {
+          "threshold": 0.48000000000000004,
+          "patient_recall": 0.9527777777777777,
+          "alerts_per_patient_day": 7.618763213161879,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9472222222222222,
+          "capture_6h": 0.8953703703703704,
+          "capture_12h": 0.7268518518518519
+        },
+        {
+          "threshold": 0.49,
+          "patient_recall": 0.9481481481481482,
+          "alerts_per_patient_day": 7.374447925315546,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9425925925925925,
+          "capture_6h": 0.887962962962963,
+          "capture_12h": 0.7231481481481481
+        },
+        {
+          "threshold": 0.5,
+          "patient_recall": 0.9425925925925925,
+          "alerts_per_patient_day": 7.1445894936611705,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9333333333333333,
+          "capture_6h": 0.8796296296296297,
+          "capture_12h": 0.7175925925925926
+        },
+        {
+          "threshold": 0.51,
+          "patient_recall": 0.9305555555555556,
+          "alerts_per_patient_day": 6.914731062006796,
+          "median_lead_time_h": 22.77166666666667,
+          "capture_3h": 0.9203703703703704,
+          "capture_6h": 0.8601851851851852,
+          "capture_12h": 0.7046296296296296
+        },
+        {
+          "threshold": 0.52,
+          "patient_recall": 0.9259259259259259,
+          "alerts_per_patient_day": 6.693301144966265,
+          "median_lead_time_h": 22.66583333333333,
+          "capture_3h": 0.9157407407407407,
+          "capture_6h": 0.8537037037037037,
+          "capture_12h": 0.6981481481481482
+        },
+        {
+          "threshold": 0.53,
+          "patient_recall": 0.9166666666666666,
+          "alerts_per_patient_day": 6.4778995695038475,
+          "median_lead_time_h": 22.535,
+          "capture_3h": 0.9064814814814814,
+          "capture_6h": 0.8407407407407408,
+          "capture_12h": 0.6833333333333333
+        },
+        {
+          "threshold": 0.54,
+          "patient_recall": 0.9092592592592592,
+          "alerts_per_patient_day": 6.258925643476623,
+          "median_lead_time_h": 22.676250000000003,
+          "capture_3h": 0.899074074074074,
+          "capture_6h": 0.8324074074074074,
+          "capture_12h": 0.6722222222222223
+        },
+        {
+          "threshold": 0.55,
+          "patient_recall": 0.9055555555555556,
+          "alerts_per_patient_day": 6.052566580381376,
+          "median_lead_time_h": 22.140972222222224,
+          "capture_3h": 0.8944444444444445,
+          "capture_6h": 0.825,
+          "capture_12h": 0.6657407407407407
+        },
+        {
+          "threshold": 0.56,
+          "patient_recall": 0.8925925925925926,
+          "alerts_per_patient_day": 5.84631915324128,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8824074074074074,
+          "capture_6h": 0.812037037037037,
+          "capture_12h": 0.6527777777777778
+        },
+        {
+          "threshold": 0.5700000000000001,
+          "patient_recall": 0.8851851851851852,
+          "alerts_per_patient_day": 5.649002602513204,
+          "median_lead_time_h": 22.045277777777777,
+          "capture_3h": 0.8731481481481481,
+          "capture_6h": 0.8018518518518518,
+          "capture_12h": 0.6444444444444445
+        },
+        {
+          "threshold": 0.5800000000000001,
+          "patient_recall": 0.875,
+          "alerts_per_patient_day": 5.448448609085771,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8611111111111112,
+          "capture_6h": 0.7907407407407407,
+          "capture_12h": 0.6333333333333333
+        },
+        {
+          "threshold": 0.59,
+          "patient_recall": 0.8722222222222222,
+          "alerts_per_patient_day": 5.25716039993581,
+          "median_lead_time_h": 21.975,
+          "capture_3h": 0.8555555555555555,
+          "capture_6h": 0.7851851851851852,
+          "capture_12h": 0.6287037037037037
+        },
+        {
+          "threshold": 0.6,
+          "patient_recall": 0.8629629629629629,
+          "alerts_per_patient_day": 5.0617974784228625,
+          "median_lead_time_h": 21.598750000000003,
+          "capture_3h": 0.8425925925925926,
+          "capture_6h": 0.7731481481481481,
+          "capture_12h": 0.6194444444444445
+        },
+        {
+          "threshold": 0.61,
+          "patient_recall": 0.8537037037037037,
+          "alerts_per_patient_day": 4.875923613097688,
+          "median_lead_time_h": 21.476527777777775,
+          "capture_3h": 0.8305555555555556,
+          "capture_6h": 0.7611111111111111,
+          "capture_12h": 0.6092592592592593
+        },
+        {
+          "threshold": 0.62,
+          "patient_recall": 0.8481481481481481,
+          "alerts_per_patient_day": 4.6889892061985865,
+          "median_lead_time_h": 21.255138888888887,
+          "capture_3h": 0.8185185185185185,
+          "capture_6h": 0.7518518518518519,
+          "capture_12h": 0.600925925925926
+        },
+        {
+          "threshold": 0.63,
+          "patient_recall": 0.8379629629629629,
+          "alerts_per_patient_day": 4.504957334133391,
+          "median_lead_time_h": 21.516666666666666,
+          "capture_3h": 0.8046296296296296,
+          "capture_6h": 0.7407407407407407,
+          "capture_12h": 0.5916666666666667
+        },
+        {
+          "threshold": 0.64,
+          "patient_recall": 0.8268518518518518,
+          "alerts_per_patient_day": 4.315790208131284,
+          "median_lead_time_h": 21.616666666666667,
+          "capture_3h": 0.7935185185185185,
+          "capture_6h": 0.7333333333333333,
+          "capture_12h": 0.5824074074074074
+        },
+        {
+          "threshold": 0.65,
+          "patient_recall": 0.8138888888888889,
+          "alerts_per_patient_day": 4.132149061909114,
+          "median_lead_time_h": 21.72972222222222,
+          "capture_3h": 0.7833333333333333,
+          "capture_6h": 0.7212962962962963,
+          "capture_12h": 0.575925925925926
+        },
+        {
+          "threshold": 0.66,
+          "patient_recall": 0.8018518518518518,
+          "alerts_per_patient_day": 3.947000830292416,
+          "median_lead_time_h": 21.38486111111111,
+          "capture_3h": 0.7675925925925926,
+          "capture_6h": 0.7074074074074074,
+          "capture_12h": 0.5648148148148148
+        },
+        {
+          "threshold": 0.67,
+          "patient_recall": 0.7935185185185185,
+          "alerts_per_patient_day": 3.7613502368775427,
+          "median_lead_time_h": 21.037222222222223,
+          "capture_3h": 0.7601851851851852,
+          "capture_6h": 0.6962962962962963,
+          "capture_12h": 0.5583333333333333
+        },
+        {
+          "threshold": 0.68,
+          "patient_recall": 0.7833333333333333,
+          "alerts_per_patient_day": 3.580388353578979,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7527777777777778,
+          "capture_6h": 0.6861111111111111,
+          "capture_12h": 0.5453703703703704
+        },
+        {
+          "threshold": 0.6900000000000001,
+          "patient_recall": 0.7712962962962963,
+          "alerts_per_patient_day": 3.3989241084822392,
+          "median_lead_time_h": 21.43638888888889,
+          "capture_3h": 0.7407407407407407,
+          "capture_6h": 0.6759259259259259,
+          "capture_12h": 0.537962962962963
+        },
+        {
+          "threshold": 0.7000000000000001,
+          "patient_recall": 0.7620370370370371,
+          "alerts_per_patient_day": 3.2082498970856035,
+          "median_lead_time_h": 21.43638888888889,
+          "capture_3h": 0.7324074074074074,
+          "capture_6h": 0.6648148148148149,
+          "capture_12h": 0.5268518518518519
+        },
+        {
+          "threshold": 0.7100000000000001,
+          "patient_recall": 0.75,
+          "alerts_per_patient_day": 3.017296595801093,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7166666666666667,
+          "capture_6h": 0.6518518518518519,
+          "capture_12h": 0.5185185185185185
+        },
+        {
+          "threshold": 0.72,
+          "patient_recall": 0.7407407407407407,
+          "alerts_per_patient_day": 2.8313110945207676,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7055555555555556,
+          "capture_6h": 0.6407407407407407,
+          "capture_12h": 0.5074074074074074
+        },
+        {
+          "threshold": 0.73,
+          "patient_recall": 0.7268518518518519,
+          "alerts_per_patient_day": 2.6372878044696244,
+          "median_lead_time_h": 20.578055555555554,
+          "capture_3h": 0.6935185185185185,
+          "capture_6h": 0.6268518518518519,
+          "capture_12h": 0.5009259259259259
+        },
+        {
+          "threshold": 0.74,
+          "patient_recall": 0.7185185185185186,
+          "alerts_per_patient_day": 2.439580527898523,
+          "median_lead_time_h": 20.034444444444446,
+          "capture_3h": 0.6805555555555556,
+          "capture_6h": 0.6148148148148148,
+          "capture_12h": 0.4888888888888889
+        },
+        {
+          "threshold": 0.75,
+          "patient_recall": 0.6898148148148148,
+          "alerts_per_patient_day": 2.2453339659370792,
+          "median_lead_time_h": 20.326944444444443,
+          "capture_3h": 0.6537037037037037,
+          "capture_6h": 0.5824074074074074,
+          "capture_12h": 0.47129629629629627
+        },
+        {
+          "threshold": 0.76,
+          "patient_recall": 0.6722222222222223,
+          "alerts_per_patient_day": 2.0542132107198428,
+          "median_lead_time_h": 20.231527777777778,
+          "capture_3h": 0.6324074074074074,
+          "capture_6h": 0.5703703703703704,
+          "capture_12h": 0.45925925925925926
+        },
+        {
+          "threshold": 0.77,
+          "patient_recall": 0.6527777777777778,
+          "alerts_per_patient_day": 1.8500868667276011,
+          "median_lead_time_h": 20.0,
+          "capture_3h": 0.6101851851851852,
+          "capture_6h": 0.5527777777777778,
+          "capture_12h": 0.4425925925925926
+        },
+        {
+          "threshold": 0.78,
+          "patient_recall": 0.6287037037037037,
+          "alerts_per_patient_day": 1.6474117901523133,
+          "median_lead_time_h": 19.0,
+          "capture_3h": 0.5814814814814815,
+          "capture_6h": 0.5185185185185185,
+          "capture_12h": 0.4148148148148148
+        },
+        {
+          "threshold": 0.79,
+          "patient_recall": 0.5925925925925926,
+          "alerts_per_patient_day": 1.4512674169533153,
+          "median_lead_time_h": 19.0,
+          "capture_3h": 0.5472222222222223,
+          "capture_6h": 0.4888888888888889,
+          "capture_12h": 0.39166666666666666
+        },
+        {
+          "threshold": 0.8,
+          "patient_recall": 0.562037037037037,
+          "alerts_per_patient_day": 1.253783412292514,
+          "median_lead_time_h": 19.0,
+          "capture_3h": 0.512962962962963,
+          "capture_6h": 0.46111111111111114,
+          "capture_12h": 0.37222222222222223
+        },
+        {
+          "threshold": 0.81,
+          "patient_recall": 0.5203703703703704,
+          "alerts_per_patient_day": 1.0583646728019929,
+          "median_lead_time_h": 18.89986111111111,
+          "capture_3h": 0.475,
+          "capture_6h": 0.4287037037037037,
+          "capture_12h": 0.34074074074074073
+        },
+        {
+          "threshold": 0.8200000000000001,
+          "patient_recall": 0.4925925925925926,
+          "alerts_per_patient_day": 0.8692533647774607,
+          "median_lead_time_h": 18.65013888888889,
+          "capture_3h": 0.44722222222222224,
+          "capture_6h": 0.4046296296296296,
+          "capture_12h": 0.3194444444444444
+        },
+        {
+          "threshold": 0.8300000000000001,
+          "patient_recall": 0.44074074074074077,
+          "alerts_per_patient_day": 0.6917521960885553,
+          "median_lead_time_h": 18.258333333333333,
+          "capture_3h": 0.3972222222222222,
+          "capture_6h": 0.35555555555555557,
+          "capture_12h": 0.2824074074074074
+        },
+        {
+          "threshold": 0.8400000000000001,
+          "patient_recall": 0.3861111111111111,
+          "alerts_per_patient_day": 0.5294893352776595,
+          "median_lead_time_h": 18.0,
+          "capture_3h": 0.3537037037037037,
+          "capture_6h": 0.31574074074074077,
+          "capture_12h": 0.2490740740740741
+        },
+        {
+          "threshold": 0.85,
+          "patient_recall": 0.32407407407407407,
+          "alerts_per_patient_day": 0.3748735373945563,
+          "median_lead_time_h": 17.9525,
+          "capture_3h": 0.3037037037037037,
+          "capture_6h": 0.26666666666666666,
+          "capture_12h": 0.20833333333333334
+        },
+        {
+          "threshold": 0.86,
+          "patient_recall": 0.26944444444444443,
+          "alerts_per_patient_day": 0.23672404289611576,
+          "median_lead_time_h": 17.0,
+          "capture_3h": 0.24259259259259258,
+          "capture_6h": 0.2101851851851852,
+          "capture_12h": 0.1638888888888889
+        },
+        {
+          "threshold": 0.87,
+          "patient_recall": 0.19814814814814816,
+          "alerts_per_patient_day": 0.1284371664003684,
+          "median_lead_time_h": 16.0,
+          "capture_3h": 0.1814814814814815,
+          "capture_6h": 0.1537037037037037,
+          "capture_12h": 0.11944444444444445
+        },
+        {
+          "threshold": 0.88,
+          "patient_recall": 0.10925925925925926,
+          "alerts_per_patient_day": 0.049566364086713235,
+          "median_lead_time_h": 12.0,
+          "capture_3h": 0.1,
+          "capture_6h": 0.07592592592592592,
+          "capture_12h": 0.05555555555555555
+        },
+        {
+          "threshold": 0.89,
+          "patient_recall": 0.05,
+          "alerts_per_patient_day": 0.01629884945193723,
+          "median_lead_time_h": 5.505972222222222,
+          "capture_3h": 0.040740740740740744,
+          "capture_6h": 0.025,
+          "capture_12h": 0.019444444444444445
+        },
+        {
+          "threshold": 0.9,
+          "patient_recall": 0.023148148148148147,
+          "alerts_per_patient_day": 0.008484332591419381,
+          "median_lead_time_h": 4.0,
+          "capture_3h": 0.021296296296296296,
+          "capture_6h": 0.008333333333333333,
+          "capture_12h": 0.003703703703703704
+        },
+        {
+          "threshold": 0.91,
+          "patient_recall": 0.022222222222222223,
+          "alerts_per_patient_day": 0.005693433712663006,
+          "median_lead_time_h": 4.0,
+          "capture_3h": 0.018518518518518517,
+          "capture_6h": 0.006481481481481481,
+          "capture_12h": 0.002777777777777778
+        },
+        {
+          "threshold": 0.92,
+          "patient_recall": 0.011111111111111112,
+          "alerts_per_patient_day": 0.0022327191030051003,
+          "median_lead_time_h": 4.0,
+          "capture_3h": 0.009259259259259259,
+          "capture_6h": 0.002777777777777778,
+          "capture_12h": 0.000925925925925926
+        },
+        {
+          "threshold": 0.93,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 5.581797757512751e-05,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.9400000000000001,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.9500000000000001,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.9600000000000001,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.97,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.98,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.99,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        }
+      ]
+    },
+    {
+      "seed": 456,
+      "auroc": 0.7513970196928839,
+      "auprc": 0.08434203206161929,
+      "curve": [
+        {
+          "threshold": 0.01,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 24.0,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.02,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 24.0,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.03,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 24.0,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.04,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 23.85632452572162,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.05,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 22.384683546953386,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.060000000000000005,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 21.59368698673625,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.06999999999999999,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 20.968302365984528,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.08,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 20.42971470036212,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.09,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 19.925957452746594,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.09999999999999999,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 19.43888978042603,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.11,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 18.94400759124495,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9703703703703703,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.12,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 18.500254669522686,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.13,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 18.06040900623068,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.14,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 17.658073023869164,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.15000000000000002,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 17.27443606399531,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 1.0,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.16,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 16.908939946833375,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.17,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 16.563426665643334,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7842592592592592
+        },
+        {
+          "threshold": 0.18000000000000002,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 16.220592647376904,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7833333333333333
+        },
+        {
+          "threshold": 0.19,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 15.890931671818201,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7833333333333333
+        },
+        {
+          "threshold": 0.2,
+          "patient_recall": 1.0,
+          "alerts_per_patient_day": 15.575281008630855,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9990740740740741,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7833333333333333
+        },
+        {
+          "threshold": 0.21000000000000002,
+          "patient_recall": 0.9990740740740741,
+          "alerts_per_patient_day": 15.261918882524089,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9981481481481481,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.22,
+          "patient_recall": 0.9990740740740741,
+          "alerts_per_patient_day": 14.961841435080204,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9981481481481481,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.23,
+          "patient_recall": 0.9990740740740741,
+          "alerts_per_patient_day": 14.674825394388897,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9981481481481481,
+          "capture_6h": 0.9694444444444444,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.24000000000000002,
+          "patient_recall": 0.9990740740740741,
+          "alerts_per_patient_day": 14.391102614374525,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9981481481481481,
+          "capture_6h": 0.9685185185185186,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.25,
+          "patient_recall": 0.9990740740740741,
+          "alerts_per_patient_day": 14.109668371440733,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9972222222222222,
+          "capture_6h": 0.9675925925925926,
+          "capture_12h": 0.7824074074074074
+        },
+        {
+          "threshold": 0.26,
+          "patient_recall": 0.9981481481481481,
+          "alerts_per_patient_day": 13.844756249869178,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9666666666666667,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.27,
+          "patient_recall": 0.9981481481481481,
+          "alerts_per_patient_day": 13.57850449683582,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9666666666666667,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.28,
+          "patient_recall": 0.9981481481481481,
+          "alerts_per_patient_day": 13.328105049433798,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9666666666666667,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.29000000000000004,
+          "patient_recall": 0.9981481481481481,
+          "alerts_per_patient_day": 13.079994139112355,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9666666666666667,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.3,
+          "patient_recall": 0.9981481481481481,
+          "alerts_per_patient_day": 12.841595556888986,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9666666666666667,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.31,
+          "patient_recall": 0.9972222222222222,
+          "alerts_per_patient_day": 12.607662412871626,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9666666666666667,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.32,
+          "patient_recall": 0.9972222222222222,
+          "alerts_per_patient_day": 12.373617632899116,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9962962962962963,
+          "capture_6h": 0.9657407407407408,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.33,
+          "patient_recall": 0.9962962962962963,
+          "alerts_per_patient_day": 12.146829190011374,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9953703703703703,
+          "capture_6h": 0.9657407407407408,
+          "capture_12h": 0.7814814814814814
+        },
+        {
+          "threshold": 0.34,
+          "patient_recall": 0.9935185185185185,
+          "alerts_per_patient_day": 11.928078535894448,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9925925925925926,
+          "capture_6h": 0.9638888888888889,
+          "capture_12h": 0.7787037037037037
+        },
+        {
+          "threshold": 0.35000000000000003,
+          "patient_recall": 0.9935185185185185,
+          "alerts_per_patient_day": 11.705029897504238,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9925925925925926,
+          "capture_6h": 0.9638888888888889,
+          "capture_12h": 0.7787037037037037
+        },
+        {
+          "threshold": 0.36000000000000004,
+          "patient_recall": 0.9935185185185185,
+          "alerts_per_patient_day": 11.484827975970362,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9925925925925926,
+          "capture_6h": 0.9629629629629629,
+          "capture_12h": 0.7768518518518519
+        },
+        {
+          "threshold": 0.37,
+          "patient_recall": 0.9907407407407407,
+          "alerts_per_patient_day": 11.2722172993867,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9888888888888889,
+          "capture_6h": 0.9601851851851851,
+          "capture_12h": 0.775
+        },
+        {
+          "threshold": 0.38,
+          "patient_recall": 0.9888888888888889,
+          "alerts_per_patient_day": 11.05938335089274,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.987037037037037,
+          "capture_6h": 0.9574074074074074,
+          "capture_12h": 0.7722222222222223
+        },
+        {
+          "threshold": 0.39,
+          "patient_recall": 0.987037037037037,
+          "alerts_per_patient_day": 10.848726303524208,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9851851851851852,
+          "capture_6h": 0.9546296296296296,
+          "capture_12h": 0.7703703703703704
+        },
+        {
+          "threshold": 0.4,
+          "patient_recall": 0.987037037037037,
+          "alerts_per_patient_day": 10.636841260649025,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9851851851851852,
+          "capture_6h": 0.9537037037037037,
+          "capture_12h": 0.7694444444444445
+        },
+        {
+          "threshold": 0.41000000000000003,
+          "patient_recall": 0.987037037037037,
+          "alerts_per_patient_day": 10.425123671706565,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9851851851851852,
+          "capture_6h": 0.9537037037037037,
+          "capture_12h": 0.7685185185185185
+        },
+        {
+          "threshold": 0.42000000000000004,
+          "patient_recall": 0.9842592592592593,
+          "alerts_per_patient_day": 10.213294446808955,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9824074074074074,
+          "capture_6h": 0.950925925925926,
+          "capture_12h": 0.7657407407407407
+        },
+        {
+          "threshold": 0.43,
+          "patient_recall": 0.9833333333333333,
+          "alerts_per_patient_day": 9.998618505055015,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9805555555555555,
+          "capture_6h": 0.9490740740740741,
+          "capture_12h": 0.7657407407407407
+        },
+        {
+          "threshold": 0.44,
+          "patient_recall": 0.9814814814814815,
+          "alerts_per_patient_day": 9.787514913865882,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9787037037037037,
+          "capture_6h": 0.9462962962962963,
+          "capture_12h": 0.7638888888888888
+        },
+        {
+          "threshold": 0.45,
+          "patient_recall": 0.9796296296296296,
+          "alerts_per_patient_day": 9.573285515932543,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9768518518518519,
+          "capture_6h": 0.9435185185185185,
+          "capture_12h": 0.762962962962963
+        },
+        {
+          "threshold": 0.46,
+          "patient_recall": 0.9777777777777777,
+          "alerts_per_patient_day": 9.353083594398665,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.975,
+          "capture_6h": 0.9407407407407408,
+          "capture_12h": 0.7601851851851852
+        },
+        {
+          "threshold": 0.47000000000000003,
+          "patient_recall": 0.9731481481481481,
+          "alerts_per_patient_day": 9.131262951515108,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9703703703703703,
+          "capture_6h": 0.9333333333333333,
+          "capture_12h": 0.7583333333333333
+        },
+        {
+          "threshold": 0.48000000000000004,
+          "patient_recall": 0.9722222222222222,
+          "alerts_per_patient_day": 8.911061029981232,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9694444444444444,
+          "capture_6h": 0.9324074074074075,
+          "capture_12h": 0.7564814814814815
+        },
+        {
+          "threshold": 0.49,
+          "patient_recall": 0.9694444444444444,
+          "alerts_per_patient_day": 8.677797701694773,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9666666666666667,
+          "capture_6h": 0.9287037037037037,
+          "capture_12h": 0.7518518518518519
+        },
+        {
+          "threshold": 0.5,
+          "patient_recall": 0.9666666666666667,
+          "alerts_per_patient_day": 8.44436691947559,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9657407407407408,
+          "capture_6h": 0.925,
+          "capture_12h": 0.75
+        },
+        {
+          "threshold": 0.51,
+          "patient_recall": 0.9648148148148148,
+          "alerts_per_patient_day": 8.21434103388849,
+          "median_lead_time_h": 24.0,
+          "capture_3h": 0.9638888888888889,
+          "capture_6h": 0.9222222222222223,
+          "capture_12h": 0.7453703703703703
+        },
+        {
+          "threshold": 0.52,
+          "patient_recall": 0.9592592592592593,
+          "alerts_per_patient_day": 7.916217215659733,
+          "median_lead_time_h": 23.3925,
+          "capture_3h": 0.9583333333333334,
+          "capture_6h": 0.9138888888888889,
+          "capture_12h": 0.7361111111111112
+        },
+        {
+          "threshold": 0.53,
+          "patient_recall": 0.9555555555555556,
+          "alerts_per_patient_day": 7.671343748037649,
+          "median_lead_time_h": 23.20916666666667,
+          "capture_3h": 0.9546296296296296,
+          "capture_6h": 0.9092592592592592,
+          "capture_12h": 0.7333333333333333
+        },
+        {
+          "threshold": 0.54,
+          "patient_recall": 0.9537037037037037,
+          "alerts_per_patient_day": 7.417148678160519,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.95,
+          "capture_6h": 0.9,
+          "capture_12h": 0.7268518518518519
+        },
+        {
+          "threshold": 0.55,
+          "patient_recall": 0.95,
+          "alerts_per_patient_day": 7.174452111663864,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9453703703703704,
+          "capture_6h": 0.8925925925925926,
+          "capture_12h": 0.725925925925926
+        },
+        {
+          "threshold": 0.56,
+          "patient_recall": 0.9425925925925925,
+          "alerts_per_patient_day": 6.923159576620639,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.937962962962963,
+          "capture_6h": 0.8796296296296297,
+          "capture_12h": 0.7194444444444444
+        },
+        {
+          "threshold": 0.5700000000000001,
+          "patient_recall": 0.937037037037037,
+          "alerts_per_patient_day": 6.679402468550059,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9296296296296296,
+          "capture_6h": 0.8712962962962963,
+          "capture_12h": 0.7129629629629629
+        },
+        {
+          "threshold": 0.5800000000000001,
+          "patient_recall": 0.9314814814814815,
+          "alerts_per_patient_day": 6.437933897560057,
+          "median_lead_time_h": 23.041666666666664,
+          "capture_3h": 0.9222222222222223,
+          "capture_6h": 0.8657407407407407,
+          "capture_12h": 0.7046296296296296
+        },
+        {
+          "threshold": 0.59,
+          "patient_recall": 0.9259259259259259,
+          "alerts_per_patient_day": 6.197804958031858,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9175925925925926,
+          "capture_6h": 0.8574074074074074,
+          "capture_12h": 0.6981481481481482
+        },
+        {
+          "threshold": 0.6,
+          "patient_recall": 0.9194444444444444,
+          "alerts_per_patient_day": 5.9589040140103124,
+          "median_lead_time_h": 23.0,
+          "capture_3h": 0.9120370370370371,
+          "capture_6h": 0.85,
+          "capture_12h": 0.6888888888888889
+        },
+        {
+          "threshold": 0.61,
+          "patient_recall": 0.9092592592592592,
+          "alerts_per_patient_day": 5.714421272231254,
+          "median_lead_time_h": 22.975,
+          "capture_3h": 0.8981481481481481,
+          "capture_6h": 0.8361111111111111,
+          "capture_12h": 0.6759259259259259
+        },
+        {
+          "threshold": 0.62,
+          "patient_recall": 0.9027777777777778,
+          "alerts_per_patient_day": 5.476692505738786,
+          "median_lead_time_h": 22.580833333333334,
+          "capture_3h": 0.8888888888888888,
+          "capture_6h": 0.825925925925926,
+          "capture_12h": 0.6685185185185185
+        },
+        {
+          "threshold": 0.63,
+          "patient_recall": 0.8972222222222223,
+          "alerts_per_patient_day": 5.248341159478939,
+          "median_lead_time_h": 22.21527777777778,
+          "capture_3h": 0.8787037037037037,
+          "capture_6h": 0.8185185185185185,
+          "capture_12h": 0.6601851851851852
+        },
+        {
+          "threshold": 0.64,
+          "patient_recall": 0.8861111111111111,
+          "alerts_per_patient_day": 5.015133649170056,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8638888888888889,
+          "capture_6h": 0.8027777777777778,
+          "capture_12h": 0.6472222222222223
+        },
+        {
+          "threshold": 0.65,
+          "patient_recall": 0.8787037037037037,
+          "alerts_per_patient_day": 4.7807539613320955,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8527777777777777,
+          "capture_6h": 0.7944444444444444,
+          "capture_12h": 0.6361111111111111
+        },
+        {
+          "threshold": 0.66,
+          "patient_recall": 0.8657407407407407,
+          "alerts_per_patient_day": 4.548048812821389,
+          "median_lead_time_h": 22.0,
+          "capture_3h": 0.8388888888888889,
+          "capture_6h": 0.7777777777777778,
+          "capture_12h": 0.6287037037037037
+        },
+        {
+          "threshold": 0.67,
+          "patient_recall": 0.8574074074074074,
+          "alerts_per_patient_day": 4.315790208131284,
+          "median_lead_time_h": 21.908749999999998,
+          "capture_3h": 0.8324074074074074,
+          "capture_6h": 0.7694444444444445,
+          "capture_12h": 0.6222222222222222
+        },
+        {
+          "threshold": 0.68,
+          "patient_recall": 0.8453703703703703,
+          "alerts_per_patient_day": 4.091067030413821,
+          "median_lead_time_h": 21.72972222222222,
+          "capture_3h": 0.8194444444444444,
+          "capture_6h": 0.7555555555555555,
+          "capture_12h": 0.6083333333333333
+        },
+        {
+          "threshold": 0.6900000000000001,
+          "patient_recall": 0.8351851851851851,
+          "alerts_per_patient_day": 3.859701513364917,
+          "median_lead_time_h": 21.33013888888889,
+          "capture_3h": 0.8064814814814815,
+          "capture_6h": 0.7444444444444445,
+          "capture_12h": 0.5962962962962963
+        },
+        {
+          "threshold": 0.7000000000000001,
+          "patient_recall": 0.8231481481481482,
+          "alerts_per_patient_day": 3.623926376087579,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7935185185185185,
+          "capture_6h": 0.7305555555555555,
+          "capture_12h": 0.5824074074074074
+        },
+        {
+          "threshold": 0.7100000000000001,
+          "patient_recall": 0.8064814814814815,
+          "alerts_per_patient_day": 3.3828485309406027,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7768518518518519,
+          "capture_6h": 0.7138888888888889,
+          "capture_12h": 0.5685185185185185
+        },
+        {
+          "threshold": 0.72,
+          "patient_recall": 0.787962962962963,
+          "alerts_per_patient_day": 3.1492502947886942,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7592592592592593,
+          "capture_6h": 0.6990740740740741,
+          "capture_12h": 0.5564814814814815
+        },
+        {
+          "threshold": 0.73,
+          "patient_recall": 0.775,
+          "alerts_per_patient_day": 2.916321874367687,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7472222222222222,
+          "capture_6h": 0.6833333333333333,
+          "capture_12h": 0.5472222222222223
+        },
+        {
+          "threshold": 0.74,
+          "patient_recall": 0.7574074074074074,
+          "alerts_per_patient_day": 2.6812165528212497,
+          "median_lead_time_h": 21.0,
+          "capture_3h": 0.7268518518518519,
+          "capture_6h": 0.6657407407407407,
+          "capture_12h": 0.5305555555555556
+        },
+        {
+          "threshold": 0.75,
+          "patient_recall": 0.7398148148148148,
+          "alerts_per_patient_day": 2.445664687454212,
+          "median_lead_time_h": 20.0,
+          "capture_3h": 0.7074074074074074,
+          "capture_6h": 0.6416666666666667,
+          "capture_12h": 0.5111111111111111
+        },
+        {
+          "threshold": 0.76,
+          "patient_recall": 0.7148148148148148,
+          "alerts_per_patient_day": 2.2094988243338474,
+          "median_lead_time_h": 20.0,
+          "capture_3h": 0.6796296296296296,
+          "capture_6h": 0.612037037037037,
+          "capture_12h": 0.4898148148148148
+        },
+        {
+          "threshold": 0.77,
+          "patient_recall": 0.687962962962963,
+          "alerts_per_patient_day": 1.9712676960432032,
+          "median_lead_time_h": 19.8175,
+          "capture_3h": 0.65,
+          "capture_6h": 0.5879629629629629,
+          "capture_12h": 0.4703703703703704
+        },
+        {
+          "threshold": 0.78,
+          "patient_recall": 0.6638888888888889,
+          "alerts_per_patient_day": 1.7429721677609313,
+          "median_lead_time_h": 19.15,
+          "capture_3h": 0.6259259259259259,
+          "capture_6h": 0.5638888888888889,
+          "capture_12h": 0.44537037037037036
+        },
+        {
+          "threshold": 0.79,
+          "patient_recall": 0.6231481481481481,
+          "alerts_per_patient_day": 1.5248913293749085,
+          "median_lead_time_h": 19.29861111111111,
+          "capture_3h": 0.5879629629629629,
+          "capture_6h": 0.5314814814814814,
+          "capture_12h": 0.42407407407407405
+        },
+        {
+          "threshold": 0.8,
+          "patient_recall": 0.5944444444444444,
+          "alerts_per_patient_day": 1.3203184415620661,
+          "median_lead_time_h": 19.0,
+          "capture_3h": 0.5592592592592592,
+          "capture_6h": 0.5074074074074074,
+          "capture_12h": 0.3962962962962963
+        },
+        {
+          "threshold": 0.81,
+          "patient_recall": 0.5592592592592592,
+          "alerts_per_patient_day": 1.1261835155557725,
+          "median_lead_time_h": 18.0,
+          "capture_3h": 0.525,
+          "capture_6h": 0.4740740740740741,
+          "capture_12h": 0.37037037037037035
+        },
+        {
+          "threshold": 0.8200000000000001,
+          "patient_recall": 0.5027777777777778,
+          "alerts_per_patient_day": 0.9375745693294169,
+          "median_lead_time_h": 18.0,
+          "capture_3h": 0.4703703703703704,
+          "capture_6h": 0.4203703703703704,
+          "capture_12h": 0.32592592592592595
+        },
+        {
+          "threshold": 0.8300000000000001,
+          "patient_recall": 0.4537037037037037,
+          "alerts_per_patient_day": 0.768669369187081,
+          "median_lead_time_h": 18.0,
+          "capture_3h": 0.4222222222222222,
+          "capture_6h": 0.37962962962962965,
+          "capture_12h": 0.29074074074074074
+        },
+        {
+          "threshold": 0.8400000000000001,
+          "patient_recall": 0.4083333333333333,
+          "alerts_per_patient_day": 0.6075228679276878,
+          "median_lead_time_h": 18.0,
+          "capture_3h": 0.3787037037037037,
+          "capture_6h": 0.33796296296296297,
+          "capture_12h": 0.26296296296296295
+        },
+        {
+          "threshold": 0.85,
+          "patient_recall": 0.34814814814814815,
+          "alerts_per_patient_day": 0.4475485441973724,
+          "median_lead_time_h": 17.0,
+          "capture_3h": 0.325,
+          "capture_6h": 0.28703703703703703,
+          "capture_12h": 0.21851851851851853
+        },
+        {
+          "threshold": 0.86,
+          "patient_recall": 0.2935185185185185,
+          "alerts_per_patient_day": 0.2880765822652331,
+          "median_lead_time_h": 18.0,
+          "capture_3h": 0.2722222222222222,
+          "capture_6h": 0.2324074074074074,
+          "capture_12h": 0.18333333333333332
+        },
+        {
+          "threshold": 0.87,
+          "patient_recall": 0.2111111111111111,
+          "alerts_per_patient_day": 0.15818814844791138,
+          "median_lead_time_h": 18.36736111111111,
+          "capture_3h": 0.19907407407407407,
+          "capture_6h": 0.1648148148148148,
+          "capture_12h": 0.13148148148148148
+        },
+        {
+          "threshold": 0.88,
+          "patient_recall": 0.13240740740740742,
+          "alerts_per_patient_day": 0.07033065174466066,
+          "median_lead_time_h": 13.0,
+          "capture_3h": 0.12129629629629629,
+          "capture_6h": 0.09444444444444444,
+          "capture_12h": 0.06944444444444445
+        },
+        {
+          "threshold": 0.89,
+          "patient_recall": 0.06296296296296296,
+          "alerts_per_patient_day": 0.01680121125011338,
+          "median_lead_time_h": 8.005972222222223,
+          "capture_3h": 0.05462962962962963,
+          "capture_6h": 0.03611111111111111,
+          "capture_12h": 0.025925925925925925
+        },
+        {
+          "threshold": 0.9,
+          "patient_recall": 0.019444444444444445,
+          "alerts_per_patient_day": 0.004856164049036093,
+          "median_lead_time_h": 4.0,
+          "capture_3h": 0.01574074074074074,
+          "capture_6h": 0.005555555555555556,
+          "capture_12h": 0.002777777777777778
+        },
+        {
+          "threshold": 0.91,
+          "patient_recall": 0.009259259259259259,
+          "alerts_per_patient_day": 0.0015070853945284427,
+          "median_lead_time_h": 3.0,
+          "capture_3h": 0.006481481481481481,
+          "capture_6h": 0.001851851851851852,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.92,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.93,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.9400000000000001,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.9500000000000001,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.9600000000000001,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.97,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.98,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        },
+        {
+          "threshold": 0.99,
+          "patient_recall": 0.0,
+          "alerts_per_patient_day": 0.0,
+          "median_lead_time_h": null,
+          "capture_3h": 0.0,
+          "capture_6h": 0.0,
+          "capture_12h": 0.0
+        }
+      ]
+    }
+  ],
+  "auroc_mean": 0.7514295220912319,
+  "auroc_sd": 0.0010383945328814753,
+  "auprc_mean": 0.08479639164195259,
+  "auprc_sd": 0.0004784350560982792,
+  "patient_prevalence_pct": 11.535682874733007,
+  "timestep_prevalence_pct": 2.5819137692451477,
+  "acceptance": {
+    "patient prevalence within 2x of PhysioNet 8.8%": true,
+    "timestep prevalence within 2x of PhysioNet 2.2%": true,
+    "mean test AUROC in [0.70, 0.85]": true,
+    "no subject leakage across splits": true,
+    "pipeline runs end to end": true
+  }
+}
