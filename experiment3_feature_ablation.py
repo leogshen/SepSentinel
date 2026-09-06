@@ -128,9 +128,13 @@ class AblationPreprocessor:
     Total channels: n_vitals + n_labs * 3
     """
 
-    def __init__(self, all_features, selected_features):
+    def __init__(self, all_features, selected_features, vitals=None):
         self.all_features = all_features
-        vitals_set = set(VITALS)
+        # `vitals` defaults to the four PhysioNet vitals; pass an explicit
+        # list for feature sets with more densely-charted channels (MAP, GCS,
+        # urine output...), which get value-only treatment rather than the
+        # mask + time-since-last delta that sparse labs need.
+        vitals_set = set(VITALS if vitals is None else vitals)
 
         # Enforce vitals-first, labs-second ordering
         self.sel_vitals = [f for f in selected_features if f in vitals_set]

@@ -40,7 +40,9 @@ from experiment3_feature_ablation import AblationPreprocessor, EXPERIMENTS
 from experiment5_recall_study import (
     collect_patient_predictions, build_raw_map,
 )
-from scripts.operating_curves import curve_for, at_burden, BURDEN_POINTS
+from scripts.operating_curves import (
+    build_preprocessor, curve_for, at_burden, BURDEN_POINTS,
+)
 
 CONFIG_I_FEATURES = EXPERIMENTS["I"]["features"]
 
@@ -85,6 +87,8 @@ def main():
     ap.add_argument("--episodes", required=True)
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--seeds", default="42,123,456")
+    ap.add_argument("--features", default="all", choices=["all", "config_i"],
+                    help="which extracted features to feed the model")
     ap.add_argument("--run-name", default="MVE run",
                     help="title for the report (the same runner is used for "
                          "the MVE and the full-cohort run)")
@@ -98,10 +102,6 @@ def main():
 
     with open(args.episodes, "rb") as fh:
         episodes = pickle.load(fh)
-    assert episodes[0]["features"] == ALL_FEATURES, (
-        "episode feature layout does not match the canonical list; "
-        "AblationPreprocessor indexes into it positionally")
-
     n_pos = sum(e["label"] for e in episodes)
     all_labels = np.concatenate([e["labels"] for e in episodes])
     patient_prev = 100.0 * n_pos / len(episodes)
@@ -119,7 +119,7 @@ def main():
     assert not (groups["train"] & groups["test"]), "subject leak train/test"
     assert not (groups["val"] & groups["test"]), "subject leak val/test"
 
-    pre = AblationPreprocessor(ALL_FEATURES, CONFIG_I_FEATURES)
+    pre = build_preprocessor(episodes, args.features)
     data = {"train": pre.fit_transform(splits["train"])}
     data["val"] = pre.transform(splits["val"])
     data["test"] = pre.transform(splits["test"])

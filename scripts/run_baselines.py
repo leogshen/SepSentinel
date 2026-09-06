@@ -37,7 +37,8 @@ from experiment2_imputation import FEATURES as ALL_FEATURES, SPLIT_SEED
 from experiment3_feature_ablation import AblationPreprocessor, EXPERIMENTS
 from sepsentinel.data.splitting import grouped_patient_split
 from scripts.operating_curves import (
-    patient_results_from_probs, curve_for, at_burden, BURDEN_POINTS,
+    patient_results_from_probs, build_preprocessor, curve_for, at_burden,
+    BURDEN_POINTS,
 )
 
 CONFIG_I_FEATURES = EXPERIMENTS["I"]["features"]
@@ -55,6 +56,8 @@ def main():
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--models", default="logreg,xgboost")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--features", default="all", choices=["all", "config_i"],
+                    help="which extracted features to feed the model")
     args = ap.parse_args()
 
     os.makedirs(args.out_dir, exist_ok=True)
@@ -68,7 +71,7 @@ def main():
     splits = grouped_patient_split(episodes, random_state=SPLIT_SEED)
     raw_map = {ep["patient_id"]: ep for s in splits.values() for ep in s}
 
-    pre = AblationPreprocessor(ALL_FEATURES, CONFIG_I_FEATURES)
+    pre = build_preprocessor(episodes, args.features)
     data = {"train": pre.fit_transform(splits["train"])}
     data["test"] = pre.transform(splits["test"])
     X_tr, y_tr = flatten(data["train"])

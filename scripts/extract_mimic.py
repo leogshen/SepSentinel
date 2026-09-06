@@ -32,7 +32,7 @@ from sepsentinel.data.gridding import build_episode
 from sepsentinel.data import sepsis3
 
 # P0 variables (DATA_ACCESS_SPEC section 5), itemids verified vs 3.1
-# dictionaries on 2026-09-03.
+# dictionaries on 2026-09-03 (scripts/verify_mimic_itemids.py).
 CHART_ITEMS = {
     220045: "heart_rate",
     220210: "respiratory_rate",
@@ -48,13 +48,63 @@ LAB_ITEMS = {
     51265: "platelets",
     50885: "bilirubin",
 }
+# P1 additions (spec section 5). These are the variables MIMIC charts densely
+# and PhysioNet 2019 never had: the 9-feature Config I list leaves the model
+# running on three continuously-charted signals (HR, SpO2, respiratory rate),
+# because temperature is charted in ~30% of hours and every lab in 2-8%.
+# Raw hourly values of SOFA components are legitimate features -- spec section
+# 3 bans only the aggregated SOFA SCORE, which encodes the label definition.
+CHART_ITEMS_EXT = {
+    220052: "map", 220181: "map", 225312: "map",
+    220050: "sbp", 220179: "sbp",
+    223835: "fio2",
+}
+LAB_ITEMS_EXT = {
+    50821: "pao2",
+    51006: "bun",
+    50931: "glucose",
+}
+GCS_ITEMS = (220739, 223900, 223901)          # eye + verbal + motor
+URINE_ITEMS = sepsis3.URINE_ITEMS
+
 # The canonical 10-feature list from experiment2_imputation.py, in that exact
 # order: AblationPreprocessor indexes into it POSITIONALLY, so a MIMIC episode
 # must carry the same layout (Config I then selects the 9 non-creatinine
 # features downstream, as it does for PhysioNet).
-FEATURES = ["heart_rate", "spo2", "respiratory_rate", "temperature",
-            "lactate", "ph", "creatinine", "wbc", "platelets", "bilirubin"]
-VITALS = FEATURES[:4]
+FEATURES_CONFIG_I = ["heart_rate", "spo2", "respiratory_rate", "temperature",
+                     "lactate", "ph", "creatinine", "wbc", "platelets",
+                     "bilirubin"]
+VITALS_CONFIG_I = FEATURES_CONFIG_I[:4]
+
+# Extended set: dense channels first (median-in-bin), then the accumulated
+# volume, then labs (last-in-bin). Config I's 10 keep their relative order so
+# comparisons stay interpretable.
+FEATURES_EXTENDED = (
+    ["heart_rate", "spo2", "respiratory_rate", "temperature",
+     "map", "sbp", "gcs", "fio2", "urine_output"]
+    + ["lactate", "ph", "creatinine", "wbc", "platelets", "bilirubin",
+       "pao2", "bun", "glucose"]
+)
+VITALS_EXTENDED = FEATURES_EXTENDED[:8]
+SUMS_EXTENDED = ["urine_output"]
+
+FEATURE_SETS = {
+    "config_i": (FEATURES_CONFIG_I, VITALS_CONFIG_I, []),
+    "extended": (FEATURES_EXTENDED, VITALS_EXTENDED, SUMS_EXTENDED),
+}
+
+# Extraction-time plausibility filters (spec section 5). The pipeline also
+# clips to CLIP_RANGES later, but by then a wild value has already corrupted
+# the median-in-bin aggregation. MIMIC really does contain e.g. 11,337 bpm.
+PLAUSIBLE = {
+    "heart_rate": (20, 250), "respiratory_rate": (2, 60), "spo2": (50, 100),
+    "temperature": (30, 43), "map": (20, 200), "sbp": (30, 300),
+    "gcs": (3, 15), "fio2": (21, 100), "urine_output": (0, 2500),
+    "lactate": (0, 30), "ph": (6.5, 7.8), "creatinine": (0, 25),
+    "wbc": (0, 100), "platelets": (0, 1200), "bilirubin": (0, 60),
+    "pao2": (30, 700), "bun": (0, 200), "glucose": (20, 1000),
+}
+
 MIN_AGE = sepsis3.MIN_AGE
 MIN_LENGTH = sepsis3.MIN_LOS_HOURS
 
@@ -89,6 +139,18 @@ def main():
     ap.add_argument("--keep-early-onset", action="store_true",
                     help="keep stays with onset at/before hour %d "
                          "(sensitivity analysis)" % EARLY_ONSET_EXCLUSION_H)
+    ap.add_argument("--prodrome-window-h", type=float, default=None,
+                    help="confine positives to the pre-onset window "
+                         "[t_sepsis - W, t_sepsis). Combine with "
+                         "--post-onset-truncate-h 0 so established-sepsis "
+                         "hours leave the dataset entirely and early "
+                         "detection is the only way to score")
+    ap.add_argument("--feature-set", default="config_i",
+                    choices=sorted(FEATURE_SETS),
+                    help="config_i = the 10 PhysioNet-comparable variables; "
+                         "extended adds the densely charted P1 channels "
+                         "(MAP, SBP, GCS, FiO2, urine output) plus PaO2, BUN "
+                         "and glucose")
     ap.add_argument("--chunk-stays", type=int, default=5000,
                     help="build episodes in blocks of this many stays; caps "
                          "how many event rows are in Python at once")
@@ -98,6 +160,9 @@ def main():
                     help="DuckDB spill directory (keep it off the system "
                          "disk for full-database runs)")
     args = ap.parse_args()
+
+    FEATURES, VITALS, SUMS = FEATURE_SETS[args.feature_set]
+    extended = args.feature_set == "extended"
 
     root = args.data_root.rstrip("/\\").replace("\\", "/")
     con = duckdb.connect()
@@ -166,9 +231,15 @@ def main():
         lab_con.close()
 
     # --- events ------------------------------------------------------------
-    # Materialise both event streams once (one pass over each source table),
+    # Materialise the event streams once (one pass over each source table),
     # then pull them back per stay-chunk. At full-database scale the cohort
     # has ~30M chart rows, which must not all be in Python at once.
+    chart_map = dict(CHART_ITEMS)
+    lab_map = dict(LAB_ITEMS)
+    if extended:
+        chart_map.update(CHART_ITEMS_EXT)
+        lab_map.update(LAB_ITEMS_EXT)
+
     con.execute("""
         CREATE OR REPLACE TEMP TABLE ev_chart AS
         SELECT c.stay_id, c.itemid,
@@ -177,7 +248,7 @@ def main():
         FROM read_csv_auto('%s/icu/chartevents.csv.gz') c
         JOIN cohort i USING (stay_id)
         WHERE c.itemid IN (%s) AND c.valuenum IS NOT NULL
-    """ % (root, ",".join(map(str, CHART_ITEMS))))
+    """ % (root, ",".join(map(str, chart_map))))
     n_chart = con.execute("SELECT COUNT(*) FROM ev_chart").fetchone()[0]
     print("[%6.1fs] %d chart events" % (time.time() - t0, n_chart))
 
@@ -192,28 +263,82 @@ def main():
           ON l.subject_id = i.subject_id
          AND l.charttime >= i.intime AND l.charttime <= i.outtime
         WHERE l.itemid IN (%s) AND l.valuenum IS NOT NULL
-    """ % (root, ",".join(map(str, LAB_ITEMS))))
+    """ % (root, ",".join(map(str, lab_map))))
     n_lab = con.execute("SELECT COUNT(*) FROM ev_lab").fetchone()[0]
     print("[%6.1fs] %d lab events" % (time.time() - t0, n_lab))
+
+    if extended:
+        # GCS is only meaningful as the sum of its three components, and they
+        # are charted together: require all three at one charttime rather than
+        # carrying components forward (same rule as sepsis3.py, documented
+        # there as a deviation from mimic-code).
+        con.execute("""
+            CREATE OR REPLACE TEMP TABLE ev_gcs AS
+            SELECT stay_id, hours, gcs FROM (
+                SELECT c.stay_id,
+                       DATEDIFF('second', i.intime, c.charttime) / 3600.0 AS hours,
+                       MAX(CASE WHEN c.itemid = %d THEN c.valuenum END)
+                     + MAX(CASE WHEN c.itemid = %d THEN c.valuenum END)
+                     + MAX(CASE WHEN c.itemid = %d THEN c.valuenum END) AS gcs
+                FROM read_csv_auto('%s/icu/chartevents.csv.gz') c
+                JOIN cohort i USING (stay_id)
+                WHERE c.itemid IN (%s) AND c.valuenum IS NOT NULL
+                GROUP BY c.stay_id, c.charttime, i.intime
+            ) WHERE gcs IS NOT NULL
+        """ % (GCS_ITEMS[0], GCS_ITEMS[1], GCS_ITEMS[2], root,
+               ",".join(map(str, GCS_ITEMS))))
+        n_gcs = con.execute("SELECT COUNT(*) FROM ev_gcs").fetchone()[0]
+
+        con.execute("""
+            CREATE OR REPLACE TEMP TABLE ev_urine AS
+            SELECT o.stay_id,
+                   DATEDIFF('second', i.intime, o.charttime) / 3600.0 AS hours,
+                   CAST(o.value AS DOUBLE) AS value
+            FROM read_csv_auto('%s/icu/outputevents.csv.gz') o
+            JOIN cohort i USING (stay_id)
+            WHERE o.itemid IN (%s) AND o.value IS NOT NULL AND o.value >= 0
+        """ % (root, ",".join(map(str, URINE_ITEMS))))
+        n_uo = con.execute("SELECT COUNT(*) FROM ev_urine").fetchone()[0]
+        print("[%6.1fs] %d GCS observations, %d urine-output events"
+              % (time.time() - t0, n_gcs, n_uo))
 
     def load_chunk(lo, hi):
         """Events for stay_ids in [lo, hi], as {stay_id: [(feat, h, val)]}.
 
-        Both tables are already restricted to the cohort, so a stay_id range
+        Every table is already restricted to the cohort, so a stay_id range
         filter is exact even for a sampled cohort.
         """
         per_stay = {}
+
+        def keep(feat, val):
+            lo_hi = PLAUSIBLE.get(feat)
+            return lo_hi is None or (lo_hi[0] <= val <= lo_hi[1])
+
         for sid, itemid, hours, val in con.execute(
                 "SELECT stay_id, itemid, hours, valuenum FROM ev_chart "
                 "WHERE stay_id BETWEEN %d AND %d" % (lo, hi)).fetchall():
-            feat = CHART_ITEMS[itemid]
+            feat = chart_map[itemid]
             if feat == "temperature_f":
                 feat, val = "temperature", (val - 32.0) * 5.0 / 9.0
-            per_stay.setdefault(sid, []).append((feat, hours, val))
+            if keep(feat, val):
+                per_stay.setdefault(sid, []).append((feat, hours, val))
         for sid, itemid, hours, val in con.execute(
                 "SELECT stay_id, itemid, hours, valuenum FROM ev_lab "
                 "WHERE stay_id BETWEEN %d AND %d" % (lo, hi)).fetchall():
-            per_stay.setdefault(sid, []).append((LAB_ITEMS[itemid], hours, val))
+            feat = lab_map[itemid]
+            if keep(feat, val):
+                per_stay.setdefault(sid, []).append((feat, hours, val))
+        if extended:
+            for sid, hours, val in con.execute(
+                    "SELECT stay_id, hours, gcs FROM ev_gcs "
+                    "WHERE stay_id BETWEEN %d AND %d" % (lo, hi)).fetchall():
+                if keep("gcs", val):
+                    per_stay.setdefault(sid, []).append(("gcs", hours, val))
+            for sid, hours, val in con.execute(
+                    "SELECT stay_id, hours, value FROM ev_urine "
+                    "WHERE stay_id BETWEEN %d AND %d" % (lo, hi)).fetchall():
+                if keep("urine_output", val):
+                    per_stay.setdefault(sid, []).append(("urine_output", hours, val))
         return per_stay
 
     # --- episodes + section-2 exclusions -----------------------------------
@@ -241,8 +366,10 @@ def main():
 
             ep = build_episode(
                 stay_id, subject_id, events, los_hours, FEATURES, VITALS,
+                sums=SUMS,
                 t_sepsis_hour=t_sepsis, dataset="mimic4",
                 label_shift_hours=args.label_shift_hours, min_length=MIN_LENGTH,
+                prodrome_window_h=args.prodrome_window_h,
                 post_onset_truncate_h=(None if args.post_onset_truncate_h < 0
                                        else args.post_onset_truncate_h),
             )
@@ -300,9 +427,11 @@ def main():
         "sample_seed": args.sample_seed if args.sample_stays else None,
         "post_onset_truncate_h": args.post_onset_truncate_h,
         "label_shift_hours": args.label_shift_hours,
+        "prodrome_window_h": args.prodrome_window_h,
         "label_source": ("none" if args.no_sepsis3
                          else args.sepsis3_labels or "inline sepsis3.run"),
         "features": FEATURES,
+        "feature_set": args.feature_set,
         "attrition": attrition,
         "episodes": len(episodes),
         "septic_episodes": int(n_pos),

@@ -47,6 +47,26 @@ CONFIG_I_FEATURES = EXPERIMENTS["I"]["features"]
 BURDEN_POINTS = [0.5, 1.0, 2.0, 4.0]
 
 
+def build_preprocessor(episodes, selection="all"):
+    """AblationPreprocessor matched to whatever feature set the episodes carry.
+
+    Episodes record their own `features` and `vitals`, so a Config-I pickle
+    and an extended one both work without the caller knowing which is which.
+    `selection` is "all" (every extracted feature) or "config_i" (the nine
+    PhysioNet-comparable ones, for like-for-like comparisons).
+    """
+    all_features = list(episodes[0]["features"])
+    vitals = list(episodes[0].get("vitals", all_features[:4]))
+    if selection == "config_i":
+        selected = [f for f in CONFIG_I_FEATURES if f in all_features]
+        missing = [f for f in CONFIG_I_FEATURES if f not in all_features]
+        if missing:
+            raise SystemExit("episodes lack Config I features: %s" % missing)
+    else:
+        selected = list(all_features)
+    return AblationPreprocessor(all_features, selected, vitals=vitals)
+
+
 def patient_results_from_probs(data, raw_map, probs):
     """Rebuild the per-patient structure the early-warning metrics expect.
 
