@@ -93,14 +93,40 @@ def patient_results_from_probs(data, raw_map, probs):
 
 
 def curve_for(patient_results):
+    """Operating curve over thresholds.
+
+    Carries both levels of precision, which answer different questions:
+      timestep_precision  of all alarm-hours raised, the fraction that were
+                          labelled positive -- the alarm-level burden a nurse
+                          experiences hour by hour.
+      patient_precision   of all patients ever alarmed, the fraction who were
+                          genuinely septic -- the number a clinician means by
+                          "when it fires, how often is it right".
+    Patient precision is the higher and more favourable of the two; both are
+    reported so neither can be quoted selectively.
+    """
+    y_true = np.concatenate([np.asarray(p["labels"]) for p in patient_results])
+    y_prob = np.concatenate([np.asarray(p["probs"]) for p in patient_results])
+    is_septic = np.array([p["label"] == 1 for p in patient_results])
+
     out = []
     for t in np.arange(0.01, 1.0, 0.01):
         ew = compute_early_warning_metrics(patient_results, float(t))
+        pred = y_prob >= t
+        tp = float((pred & (y_true == 1)).sum())
+        fp = float((pred & (y_true == 0)).sum())
+        alarmed = np.array([bool((np.asarray(p["probs"]) >= t).any())
+                            for p in patient_results])
+        n_alarmed = int(alarmed.sum())
         out.append({
             "threshold": float(t),
             "patient_recall": ew["patient_recall"],
             "alerts_per_patient_day": ew["alerts_per_patient_day"],
             "median_lead_time_h": ew["median_lead_time_h"],
+            "timestep_precision": tp / (tp + fp) if (tp + fp) else float("nan"),
+            "patient_precision": (float((alarmed & is_septic).sum()) / n_alarmed
+                                  if n_alarmed else float("nan")),
+            "patients_alarmed": n_alarmed,
             "capture_3h": ew["capture_rate_by_lead_hour"]["3"],
             "capture_6h": ew["capture_rate_by_lead_hour"]["6"],
             "capture_12h": ew["capture_rate_by_lead_hour"]["12"],
@@ -120,6 +146,9 @@ def main():
     ap.add_argument("--checkpoints", default=None,
                     help="directory holding checkpoints_seed*/best_model.pt")
     ap.add_argument("--out-dir", required=True)
+    ap.add_argument("--features", default="all", choices=["all", "config_i"],
+                    help="which extracted features to feed the models; must "
+                         "match what any supplied checkpoints were trained on")
     ap.add_argument("--device",
                     default="cuda" if torch.cuda.is_available() else "cpu")
     args = ap.parse_args()
@@ -130,7 +159,7 @@ def main():
     splits = grouped_patient_split(episodes, random_state=SPLIT_SEED)
     raw_map = {ep["patient_id"]: ep for s in splits.values() for ep in s}
 
-    pre = AblationPreprocessor(ALL_FEATURES, CONFIG_I_FEATURES)
+    pre = build_preprocessor(episodes, args.features)
     tr = pre.fit_transform(splits["train"])
     te = pre.transform(splits["test"])
     X_tr = np.concatenate([d["signals"] for d in tr])

@@ -98,13 +98,24 @@ discrimination turned out never to be the binding constraint. Two changes to
 the *problem definition*, none to the architecture, bought nearly nine hours
 of additional warning at identical alert burden.
 
-| Full cohort, at <=1.0 false alerts per nonseptic patient-day | AUROC | Patient recall | Median lead | Capture >=6h |
-|---|---|---|---|---|
-| Config I features, standard target, Transformer | 0.736 | 0.59 | 11.9 h | 0.36 |
-| Config I features, standard target, XGBoost | 0.722 | 0.64 | 13.5 h | 0.43 |
-| **Extended features, pre-onset target, XGBoost** | 0.736 | **0.64** | **20.6 h** | **0.53** |
-| Extended features, pre-onset target, Transformer | **0.751** | 0.49 | 19.3 h | 0.41 |
-| *PhysioNet Config I (different dataset, not comparable)* | *0.814* | *0.70* | *23.5 h* | *-* |
+| Full cohort, at <=1.0 false alerts per nonseptic patient-day | AUROC | AUPRC | Patient recall | Timestep precision | Patient precision | Median lead | Capture >=6h |
+|---|---|---|---|---|---|---|---|
+| Config I features, standard target, Transformer | 0.736 | 0.072 | 0.59 | 0.081 | - | 11.9 h | 0.36 |
+| Config I features, standard target, XGBoost | 0.722 | 0.068 | 0.64 | 0.083 | - | 13.5 h | 0.43 |
+| **Extended features, pre-onset target, XGBoost** | 0.736 | 0.072 | **0.64** | 0.097 | 0.225 | **20.6 h** | **0.53** |
+| Extended features, pre-onset target, Transformer (seed-avg) | **0.756** | **0.088** | 0.50 | **0.116** | **0.272** | 19.0 h | 0.41 |
+| Extended features, pre-onset target, logreg | 0.705 | 0.057 | 0.49 | 0.079 | 0.218 | 22.0 h | 0.43 |
+| *PhysioNet Config I (different dataset, not comparable)* | *0.814* | *0.144* | *0.70* | *0.093* | *-* | *23.5 h* | *-* |
+
+**Two precisions are reported and both matter.** *Timestep precision* is the
+fraction of alarm-HOURS that were labelled positive — the hour-by-hour burden.
+*Patient precision* is the fraction of ALARMED PATIENTS who were genuinely
+septic — what a clinician means by "when it fires, how often is it right".
+Patient precision is ~2.5x higher; quoting only one would be misleading, so
+`scripts/operating_curves.py` carries both at every threshold.
+
+Full operating curves with precision at every burden:
+`results/operating_curves_full_ext/`.
 
 ## 1. Cohort and labels
 
@@ -144,6 +155,14 @@ PhysioNet sits at 2.2%, i.e. its septic records end at or just after onset.
 DATA_ACCESS_SPEC section 14.1 lists the exact PhysioNet cohort filters as an
 open uncertainty; this is evidence for one of them. `POST_ONSET_TRUNCATE_H =
 24` was never PhysioNet-comparable.
+
+> **Status:** this table is current (computed over all 8,542 usable septic
+> stays from the label table) but it describes the *intermediate*
+> configuration. The current best configuration supersedes it: truncation at
+> +0h combined with the pre-onset target of section 5, which gives 2.6%
+> timestep prevalence. The +3h row was the best available choice before the
+> pre-onset target existed, and it is what the section 3, 4 and 6 analyses
+> were run on.
 
 ## 3. Why performance plateaued (`scripts/diagnose_ceiling.py`)
 
@@ -228,7 +247,15 @@ depressed by a choice we introduced.**
 `scripts/positive_control.py` injects a synthetic prodrome ramping to *d*
 standard deviations over the 12 h before onset, into septic episodes only,
 applied only where a real measurement exists so a sparse channel stays
-sparse.
+sparse. Effect sizes are in units of the SD of the CLIPPED distribution the
+model sees, not the raw SD (see section 8).
+
+> **Provenance:** run on `mimic31_full_trunc3.pkl` — the full cohort, but the
+> Config I / standard-target configuration, not the current best one. The
+> control arm therefore reproduces 0.722 (that configuration's XGBoost
+> baseline) rather than 0.736. The comparison between the dense and sparse
+> arms is internally valid because both arms share that configuration; it has
+> not been repeated on the extended/pre-onset dataset.
 
 | Injected effect | Heart rate (93% of hours, SD 17.9 bpm) | Lactate (2.6% of hours, SD 2.21) |
 |---|---|---|
@@ -250,14 +277,22 @@ sensing of a modest signal dominates intermittent sampling of a dramatic one.
 
 ## 7. Comparators
 
-Bedside scores on the same cohort, split and metrics
-(`scripts/clinical_scores.py`):
+Bedside scores computed on the **same full cohort, same test split and same
+metrics** as the models above (`scripts/clinical_scores.py`, rule-based so
+nothing is fitted). Recomputed on the full 63,672-episode cohort on
+2026-09-07; an earlier version of this table was computed on a 5,000-stay
+subset and reported slightly different numbers (SIRS 0.551, qSOFA 0.587,
+NEWS2 0.626).
 
-| Score | AUROC |
-|---|---|
-| SIRS | 0.551 |
-| qSOFA | 0.587 |
-| NEWS2 (deployed UK standard) | 0.626 |
+| Score | AUROC | AUPRC | Recall @<=1.0 alerts/pt-day | Median lead | Capture >=6h |
+|---|---|---|---|---|---|
+| SIRS | 0.617 | 0.037 | 0.10 | 18.1 h | 0.08 |
+| qSOFA | 0.617 | 0.036 | 0.25 | 22.9 h | 0.21 |
+| NEWS2 (deployed UK standard) | 0.638 | 0.040 | 0.42 | 21.5 h | 0.35 |
+| *our XGBoost, same cohort* | *0.736* | *0.072* | *0.64* | *20.6 h* | *0.53* |
+
+The bedside scores are coarse-grained (integer point totals), so their curves
+are step functions and several alert budgets map to the same operating point.
 
 **SOFA is deliberately excluded.** Our label is defined as a >=2-point SOFA
 rise, so scoring SOFA against it is near-tautological. Any comparison of a
@@ -279,6 +314,37 @@ retrofits existing pickles. Measured cost of having omitted them initially:
 contained because `CLIP_RANGES` caught the values downstream. It did corrupt
 the effect-size units in a first run of the section-6 positive control, which
 is how it was found.
+
+### Cross-field violations: what a range filter cannot see
+
+A per-channel filter cannot catch a value that is impossible only in context.
+`scripts/crossfield_audit.py` on the full extended cohort (3,185,273
+patient-hours):
+
+| Check | Violations | Evaluable hours | Rate |
+|---|---|---|---|
+| SBP < MAP (impossible ordering) | 1,890 | 2,698,830 | 0.070% |
+| MAP > 0.95 x SBP (implausibly narrow pulse pressure) | 5,993 | 2,698,830 | 0.222% |
+| SpO2 <=90% with PaO2 >=200 mmHg (contradictory pair) | 129 | 86,172 | 0.150% |
+| Urine output >1000 mL in one hour | 5,916 | 1,392,752 | 0.425% |
+| Respiratory rate > heart rate | 25 | 2,902,190 | 0.001% |
+| GCS outside 3-15 | 0 | 930,628 | 0% |
+| FiO2 < 21% (below room air) | 0 | 192,238 | 0% |
+| Heart rate frozen for >=24 consecutive readings (episodes) | 185 | 41,877 | 0.442% |
+
+GCS and FiO2 are clean only because the extraction range filter already
+removes them. **Cross-field violations are roughly 5x more common than
+single-channel ones** (~0.44% of relevant cells against 0.086%), and no range
+filter would find them.
+
+**Does it matter? Measured, not assumed.** Blanking every violating cell
+(both members of an inconsistent pair, since which one is wrong is
+unknowable) and refitting: 26,239 cells removed, logreg AUROC 0.705 -> 0.706,
+XGBoost 0.736 -> 0.738, and the deployment metrics move by less than the
+seed-to-seed noise (XGBoost at <=1.0 alerts/day: recall 0.64 -> 0.63, lead
+20.6 -> 20.0 h, capture>=6h 0.53 -> 0.52). So: real, worth fixing for
+correctness and for anyone reusing the extraction, but not load-bearing for
+any conclusion here. `scripts/crossfield_impact.py` reproduces this.
 
 ## 9. Reproducing part 2
 
