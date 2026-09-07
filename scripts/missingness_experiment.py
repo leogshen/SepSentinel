@@ -63,6 +63,21 @@ from scripts.operating_curves import (
 from experiment5_recall_study import collect_patient_predictions, build_raw_map
 
 
+def split_channels(x, n_raw, n_labs):
+    """[vital_values | lab_values | lab_masks | lab_deltas] -> parts.
+
+    Masks and deltas exist only for LAB channels: dense vitals are charted
+    almost every hour and get value-only treatment. An earlier version of
+    this script assumed a clean [values|masks|deltas] thirds split, which is
+    wrong for this feature set (18 raw -> 38 channels, not 54) and would have
+    fed the decay and embedding arms misaligned tensors.
+    """
+    values = x[..., :n_raw]
+    masks = x[..., n_raw:n_raw + n_labs]
+    deltas = x[..., n_raw + n_labs:]
+    return values, masks, deltas
+
+
 class LearnedDecayInput(nn.Module):
     """GRU-D-style learnable decay applied to the value channels.
 
@@ -79,16 +94,20 @@ class LearnedDecayInput(nn.Module):
     decay rate is the thing we currently hard-code as "carry it forever".
     """
 
-    def __init__(self, n_channels, n_raw):
+    def __init__(self, n_raw, n_labs):
         super().__init__()
-        self.n_raw = n_raw
-        self.decay = nn.Linear(n_raw, n_raw)          # per-channel decay rate
+        self.n_raw, self.n_labs = n_raw, n_labs
+        self.decay = nn.Linear(n_labs, n_labs)        # per-lab decay rate
         nn.init.zeros_(self.decay.bias)
 
-    def forward(self, x, values, masks, deltas, means):
+    def forward(self, values, masks, deltas, means):
+        # Decay applies to the LAB value channels only -- the vitals are not
+        # forward-filled for long enough for staleness to matter.
+        n_v = self.n_raw - self.n_labs
+        vit, lab = values[..., :n_v], values[..., n_v:]
         gamma = torch.exp(-torch.relu(self.decay(deltas)))
-        decayed = gamma * values + (1.0 - gamma) * means
-        return torch.cat([decayed, masks, deltas], dim=-1)
+        lab_decayed = gamma * lab + (1.0 - gamma) * means[..., n_v:]
+        return torch.cat([vit, lab_decayed, masks, deltas], dim=-1)
 
 
 class LearnedMissingEmbedding(nn.Module):
@@ -100,14 +119,14 @@ class LearnedMissingEmbedding(nn.Module):
     the closest thing to the "missing token" idea inside our current stack.
     """
 
-    def __init__(self, n_raw, embed_dim=4):
+    def __init__(self, n_raw, n_labs, embed_dim=4):
         super().__init__()
         self.embed = nn.Sequential(
-            nn.Linear(2 * n_raw, n_raw * embed_dim), nn.ReLU(),
-            nn.Linear(n_raw * embed_dim, n_raw * embed_dim))
-        self.out_dim = n_raw + n_raw * embed_dim
+            nn.Linear(2 * n_labs, n_labs * embed_dim), nn.ReLU(),
+            nn.Linear(n_labs * embed_dim, n_labs * embed_dim))
+        self.out_dim = n_raw + n_labs * embed_dim
 
-    def forward(self, x, values, masks, deltas, means):
+    def forward(self, values, masks, deltas, means):
         e = self.embed(torch.cat([masks, deltas], dim=-1))
         return torch.cat([values, e], dim=-1)
 
@@ -115,21 +134,21 @@ class LearnedMissingEmbedding(nn.Module):
 class MissingnessTransformer(nn.Module):
     """SepsisTransformer with a swappable missingness front-end."""
 
-    def __init__(self, n_raw, mode, d_model=64, **kw):
+    def __init__(self, n_raw, n_labs, n_channels, mode, d_model=64, **kw):
         super().__init__()
         self.mode = mode
-        self.n_raw = n_raw
+        self.n_raw, self.n_labs = n_raw, n_labs
         if mode == "values_only":
             in_dim = n_raw
             self.front = None
         elif mode == "strategy_b":
-            in_dim = 3 * n_raw
+            in_dim = n_channels
             self.front = None
         elif mode == "learned_decay":
-            in_dim = 3 * n_raw
-            self.front = LearnedDecayInput(3 * n_raw, n_raw)
+            in_dim = n_channels
+            self.front = LearnedDecayInput(n_raw, n_labs)
         elif mode == "learned_embedding":
-            self.front = LearnedMissingEmbedding(n_raw)
+            self.front = LearnedMissingEmbedding(n_raw, n_labs)
             in_dim = self.front.out_dim
         else:
             raise ValueError(mode)
@@ -137,15 +156,13 @@ class MissingnessTransformer(nn.Module):
         self.register_buffer("means", torch.zeros(n_raw))
 
     def forward(self, x, lengths=None):
-        n = self.n_raw
-        values, masks, deltas = x[..., :n], x[..., n:2 * n], x[..., 2 * n:]
+        values, masks, deltas = split_channels(x, self.n_raw, self.n_labs)
         if self.mode == "values_only":
             z = values
         elif self.mode == "strategy_b":
             z = x
         else:
-            z = self.front(x, values, masks, deltas,
-                           self.means.expand_as(values))
+            z = self.front(values, masks, deltas, self.means.expand_as(values))
         return self.net(z, lengths)
 
 
@@ -178,15 +195,12 @@ def main():
     data = {k: (pre.fit_transform(splits[k]) if k == "train"
                 else pre.transform(splits[k])) for k in ("train", "val", "test")}
 
-    n_raw = pre.n_raw
-    n_ch = pre.n_channels
-    print("features %d raw -> %d channels" % (n_raw, n_ch))
-    if n_ch != 3 * n_raw:
-        print("NOTE: layout is not a clean [values|masks|deltas] split "
-              "(%d != 3x%d) -- dense vitals contribute value-only channels. "
-              "The decay/embedding arms assume the clean layout, so this "
-              "experiment needs a labs-only feature set to be exact."
-              % (n_ch, n_raw))
+    n_raw, n_labs, n_ch = pre.n_raw, pre.n_labs, pre.n_channels
+    assert n_ch == n_raw + 2 * n_labs, (
+        "unexpected channel layout: %d raw, %d labs, %d channels"
+        % (n_raw, n_labs, n_ch))
+    print("features %d raw (%d vitals + %d labs) -> %d channels"
+          % (n_raw, n_raw - n_labs, n_labs, n_ch))
 
     y_train = np.concatenate([d["labels"] for d in data["train"]])
     pos_weight = float((1 - y_train.mean()) / max(y_train.mean(), 1e-9))
@@ -201,7 +215,7 @@ def main():
         t0 = time.time()
         torch.manual_seed(args.seed)
         np.random.seed(args.seed)
-        model = MissingnessTransformer(n_raw, mode)
+        model = MissingnessTransformer(n_raw, n_labs, n_ch, mode)
         model.means.copy_(means)
         trainer = Trainer(model, device=args.device, pos_weight=pos_weight,
                           checkpoint_dir=os.path.join(args.out_dir, mode))

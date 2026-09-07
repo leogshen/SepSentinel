@@ -38,7 +38,7 @@ supplementary files with per-patient serial IL-6 in pg/mL.
 
 | Dataset | n | IL-6 sampling | Strength | Weakness |
 |---|---|---|---|---|
-| **SDY1662** (Mount Sinai, Del Valle *Nat Med* 2020) | ~1,484 | Repeat draws; **our two recon passes disagree** (~2/patient vs ~1.3 with only n=244 repeating) — downloading settles it | Largest IL-6 set in the open tier, and uniquely it ships **paired clinical depth**: 130,230 chemistry results, 27,328 CBCs, 21,273 vital-sign records. The best cytokine-to-vitals *bridge* available | COVID-19 hyperinflammation, not bacterial sepsis |
+| **SDY1662** (Mount Sinai, Del Valle *Nat Med* 2020) | **2,340 subjects** | **1.31 IL-6 draws/subject — VERIFIED from the downloaded package, not inferred.** 82% (1,924) have exactly ONE draw; 416 have >=2; a tail of 16 subjects has >=13, max 30 | **A bridge, not a trajectory dataset.** 3,075 IL-6 values (+IL-8/TNF-a/IL-1b, 12,300 ELISA rows) keyed to the same biosamples as 159,042 clinical lab results, so every cytokine draw has a paired clinical panel | COVID hyperinflammation, not bacterial sepsis. Values are **log2 pg/mL**. 828/3,075 rows carry `STUDY_TIME_COLLECTED = 999`, a sentinel for unknown — not day 999 |
 | **SDY1655** (Yale IMPACT, Lucas *Nature* 2020) | 248 | **8 planned visits** | The only genuinely longitudinal human IL-6 trajectory in the open tier; 72-analyte panel | COVID; no dense vitals stream |
 
 ## Tier 4 — by request (drafts in `outreach/EMAIL_DRAFTS.md`)
@@ -63,6 +63,25 @@ supplementary files with per-patient serial IL-6 in pg/mL.
 | **GEO / dbGaP sepsis cohorts** | Transcriptomic only — no measured IL-6 protein |
 
 ---
+
+### SDY1662, as actually downloaded (2026-09-07)
+
+Verified by opening `SDY1662_DR58_ALL_DATA.zip` (16.4 MB compressed, 118 MB
+across 723 files — the apparent small size is because most ImmPort tables are
+controlled-vocabulary lookups).
+
+| Table | Rows | Note |
+|---|---|---|
+| `subject` | 2,340 | |
+| `elisa_result` | 12,300 | 3,075 samples x 4 analytes (IL-6, IL-8, TNF-a, IL-1b) |
+| `lab_test` | 159,042 | platelets, albumin, glucose, bilirubin, BUN, sodium, ESR, CBC differential |
+| `assessment_component` | 60,192 | |
+| `intervention` | 67,650 | |
+
+**The `planned_visit = 2` field is a schedule definition, not a draw count.**
+Pass-2 recon read it as "~2 draws/patient"; the true figure is 1.31, which
+matches the earlier August sweep. Recorded here because two recon passes
+disagreed and this settles it.
 
 ## Two findings that should shape the write-up
 
