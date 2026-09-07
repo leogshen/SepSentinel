@@ -1,0 +1,376 @@
+{
+  "trials": [
+    {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.3,
+        "max_depth": 3,
+        "min_child_weight": 10,
+        "n_estimators": 200,
+        "reg_lambda": 1.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.5077910174152154,
+      "val_auroc": 0.7461548337271208,
+      "val_recall": 0.6324472960586618,
+      "val_lead": 18.049722222222222,
+      "minutes": 0.5322014172871907
+    },
+    {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.03,
+        "max_depth": 4,
+        "min_child_weight": 1,
+        "n_estimators": 200,
+        "reg_lambda": 1.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.5041246562786434,
+      "val_auroc": 0.7516227890677633,
+      "val_recall": 0.5985334555453712,
+      "val_lead": 19.0,
+      "minutes": 0.5412103772163391
+    },
+    {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.3,
+        "max_depth": 4,
+        "min_child_weight": 1,
+        "n_estimators": 800,
+        "reg_lambda": 1.0,
+        "subsample": 1.0
+      },
+      "val_capture_6h": 0.5527039413382218,
+      "val_auroc": 0.7025259764816271,
+      "val_recall": 0.6617781851512374,
+      "val_lead": 19.200416666666666,
+      "minutes": 1.108185625076294
+    },
+    {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.1,
+        "max_depth": 8,
+        "min_child_weight": 10,
+        "n_estimators": 800,
+        "reg_lambda": 1.0,
+        "subsample": 1.0
+      },
+      "val_capture_6h": 0.5673693858845096,
+      "val_auroc": 0.6481668022371623,
+      "val_recall": 0.6581118240146654,
+      "val_lead": 20.21611111111111,
+      "minutes": 1.5138466993967692
+    },
+    {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "min_child_weight": 50,
+        "n_estimators": 400,
+        "reg_lambda": 10.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.53987167736022,
+      "val_auroc": 0.7552403051500719,
+      "val_recall": 0.6562786434463794,
+      "val_lead": 18.0,
+      "minutes": 0.9441630283991496
+    },
+    {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "min_child_weight": 50,
+        "n_estimators": 400,
+        "reg_lambda": 10.0,
+        "subsample": 1.0
+      },
+      "val_capture_6h": 0.47296058661778184,
+      "val_auroc": 0.7534195876395449,
+      "val_recall": 0.5765352887259395,
+      "val_lead": 18.0,
+      "minutes": 0.623358428478241
+    },
+    {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "min_child_weight": 50,
+        "n_estimators": 200,
+        "reg_lambda": 1.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.4555453712190651,
+      "val_auroc": 0.7471247109654693,
+      "val_recall": 0.541704857928506,
+      "val_lead": 18.29111111111111,
+      "minutes": 0.572947907447815
+    },
+    {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.03,
+        "max_depth": 4,
+        "min_child_weight": 50,
+        "n_estimators": 800,
+        "reg_lambda": 1.0,
+        "subsample": 1.0
+      },
+      "val_capture_6h": 0.5050412465627865,
+      "val_auroc": 0.7548046836427935,
+      "val_recall": 0.6241979835013749,
+      "val_lead": 17.633333333333333,
+      "minutes": 1.1313704570134482
+    },
+    {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "min_child_weight": 10,
+        "n_estimators": 800,
+        "reg_lambda": 1.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.536205316223648,
+      "val_auroc": 0.7471218306031173,
+      "val_recall": 0.6590284142988084,
+      "val_lead": 18.0,
+      "minutes": 1.5574792146682739
+    },
+    {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.1,
+        "max_depth": 8,
+        "min_child_weight": 1,
+        "n_estimators": 400,
+        "reg_lambda": 1.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.5765352887259395,
+      "val_auroc": 0.6897269098617118,
+      "val_recall": 0.6700274977085243,
+      "val_lead": 21.0,
+      "minutes": 1.0463966290156046
+    },
+    {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.03,
+        "max_depth": 4,
+        "min_child_weight": 1,
+        "n_estimators": 800,
+        "reg_lambda": 1.0,
+        "subsample": 1.0
+      },
+      "val_capture_6h": 0.5004582951420715,
+      "val_auroc": 0.7556344655703524,
+      "val_recall": 0.611365719523373,
+      "val_lead": 18.0,
+      "minutes": 1.0940901120503743
+    },
+    {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "min_child_weight": 50,
+        "n_estimators": 400,
+        "reg_lambda": 1.0,
+        "subsample": 1.0
+      },
+      "val_capture_6h": 0.5407882676443629,
+      "val_auroc": 0.7546152384048526,
+      "val_recall": 0.6691109074243813,
+      "val_lead": 18.0,
+      "minutes": 0.8090802987416585
+    },
+    {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.1,
+        "max_depth": 8,
+        "min_child_weight": 1,
+        "n_estimators": 800,
+        "reg_lambda": 10.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.5838680109990834,
+      "val_auroc": 0.667235540779114,
+      "val_recall": 0.6581118240146654,
+      "val_lead": 20.558333333333334,
+      "minutes": 1.9116715987523396
+    },
+    {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.1,
+        "max_depth": 6,
+        "min_child_weight": 50,
+        "n_estimators": 800,
+        "reg_lambda": 1.0,
+        "subsample": 1.0
+      },
+      "val_capture_6h": 0.5728689275893676,
+      "val_auroc": 0.7037056686653924,
+      "val_recall": 0.6672777268560953,
+      "val_lead": 19.166666666666664,
+      "minutes": 1.1981999317804972
+    },
+    {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.03,
+        "max_depth": 4,
+        "min_child_weight": 50,
+        "n_estimators": 400,
+        "reg_lambda": 1.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.5004582951420715,
+      "val_auroc": 0.7565319259972847,
+      "val_recall": 0.6095325389550871,
+      "val_lead": 18.0,
+      "minutes": 0.813715128103892
+    },
+    {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.03,
+        "max_depth": 4,
+        "min_child_weight": 10,
+        "n_estimators": 400,
+        "reg_lambda": 1.0,
+        "subsample": 1.0
+      },
+      "val_capture_6h": 0.4912923923006416,
+      "val_auroc": 0.7546284910237273,
+      "val_recall": 0.5939505041246563,
+      "val_lead": 18.0,
+      "minutes": 0.7059019327163696
+    },
+    {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.03,
+        "max_depth": 8,
+        "min_child_weight": 50,
+        "n_estimators": 800,
+        "reg_lambda": 1.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.5820348304307974,
+      "val_auroc": 0.7291148919029898,
+      "val_recall": 0.6883593033913841,
+      "val_lead": 19.0,
+      "minutes": 1.824853809674581
+    },
+    {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.03,
+        "max_depth": 8,
+        "min_child_weight": 10,
+        "n_estimators": 800,
+        "reg_lambda": 1.0,
+        "subsample": 1.0
+      },
+      "val_capture_6h": 0.5600366636113657,
+      "val_auroc": 0.7260102265163729,
+      "val_recall": 0.6617781851512374,
+      "val_lead": 19.0,
+      "minutes": 1.560051155090332
+    },
+    {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.3,
+        "max_depth": 8,
+        "min_child_weight": 1,
+        "n_estimators": 800,
+        "reg_lambda": 10.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.6306141154903758,
+      "val_auroc": 0.626713748080033,
+      "val_recall": 0.7085242896425298,
+      "val_lead": 21.0,
+      "minutes": 2.1001374681790668
+    },
+    {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.3,
+        "max_depth": 3,
+        "min_child_weight": 1,
+        "n_estimators": 200,
+        "reg_lambda": 10.0,
+        "subsample": 0.7
+      },
+      "val_capture_6h": 0.5077910174152154,
+      "val_auroc": 0.7477343888933565,
+      "val_recall": 0.615948670944088,
+      "val_lead": 17.698194444444447,
+      "minutes": 0.5148390054702758
+    }
+  ],
+  "final": {
+    "selected_by_capture": {
+      "params": {
+        "colsample_bytree": 0.7,
+        "learning_rate": 0.3,
+        "max_depth": 8,
+        "min_child_weight": 1,
+        "n_estimators": 800,
+        "reg_lambda": 10.0,
+        "subsample": 0.7
+      },
+      "test_auroc": 0.6179299054810118,
+      "test_auprc": 0.040957161679013906,
+      "test_at_1_per_day": {
+        "threshold": 0.36000000000000004,
+        "patient_recall": 0.7212962962962963,
+        "alerts_per_patient_day": 0.9966858075814767,
+        "median_lead_time_h": 22.75138888888889,
+        "timestep_precision": 0.05455390334572491,
+        "patient_precision": 0.13061703554661303,
+        "patients_alarmed": 5964,
+        "capture_3h": 0.6925925925925925,
+        "capture_6h": 0.6416666666666667,
+        "capture_12h": 0.5259259259259259
+      }
+    },
+    "selected_by_auroc": {
+      "params": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.03,
+        "max_depth": 4,
+        "min_child_weight": 50,
+        "n_estimators": 400,
+        "reg_lambda": 1.0,
+        "subsample": 0.7
+      },
+      "test_auroc": 0.7431458633951133,
+      "test_auprc": 0.0788815766797303,
+      "test_at_1_per_day": {
+        "threshold": 0.74,
+        "patient_recall": 0.562037037037037,
+        "alerts_per_patient_day": 0.8618853917375437,
+        "median_lead_time_h": 20.0,
+        "timestep_precision": 0.09999146466370774,
+        "patient_precision": 0.24357945425361155,
+        "patients_alarmed": 2492,
+        "capture_3h": 0.5222222222222223,
+        "capture_6h": 0.47962962962962963,
+        "capture_12h": 0.37777777777777777
+      }
+    }
+  }
+}

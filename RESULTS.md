@@ -8,10 +8,14 @@ PhysioNet baseline is still the continuity reference, but one of its
 conclusions is superseded — see "Reconciling the two parts" at the end.
 
 **Current best operating point** (MIMIC-IV 3.1, full cohort, at <=1.0 false
-alerts per nonseptic patient-day): flat XGBoost on 18 features with a
-pre-onset target — patient recall 0.64, median lead **20.6 h**, capture >=6h
-**0.53**, AUROC 0.736. Against 0.64 / 13.5 h / 0.43 for where this session
-started, at identical burden and recall.
+alerts per nonseptic patient-day): flat XGBoost on 18 features, pre-onset
+target, **hyperparameters selected on capture rather than AUROC** — patient
+recall **0.72**, median lead **22.8 h**, capture >=6h **0.642**. Its AUROC is
+0.618, which is *lower* than the AUROC-selected model's 0.743; see section 4b
+for why that is the point rather than a problem.
+
+For comparison, where this session started: recall 0.59, lead 11.9 h,
+capture >=6h 0.36 at the same alert burden.
 
 ---
 
@@ -236,6 +240,38 @@ injected ramp peaks at onset. AUROC rewards recognising the developed state.
 Results are threshold-free (AUROC, AUPRC) plus equal-ALERT-BURDEN tables —
 the burden is the constraint a unit actually imposes and, unlike recall, it
 forces nothing. `scripts/operating_curves.py` emits full curves.
+
+## 4b. Selecting on AUROC costs a quarter of the early warning
+
+Section 4 observed the inversion five times. This measures it directly:
+20 XGBoost hyperparameter configurations, identical data and split, each
+scored two ways on validation (`scripts/tune_for_lead_time.py`).
+
+**Across configurations the two objectives are strongly, significantly
+anti-correlated: Spearman rho = -0.769 (p = 0.0001), Pearson r = -0.803
+(p < 0.0001).** AUROC spans 0.627-0.757 and capture >=6h spans 0.456-0.631,
+in opposite directions.
+
+Picking the winner by each criterion and touching the test set once:
+
+| Selected on | Test AUROC | Patient recall | **Capture >=6h** | Median lead | Timestep precision |
+|---|---|---|---|---|---|
+| **capture >=6h** | 0.618 | **0.72** | **0.642** | **22.8 h** | 0.055 |
+| AUROC | **0.743** | 0.56 | 0.480 | 20.0 h | 0.100 |
+| *(untuned default)* | *0.736* | *0.64* | *0.53* | *20.6 h* | *0.097* |
+
+**Selecting on AUROC costs 0.162 absolute capture at 6 h — 25% relative — and
+16 points of patient recall, in exchange for +0.125 AUROC.** It does buy
+higher per-hour precision (0.100 vs 0.055), so the AUROC-selected model
+alarms less often and is right more often per alarm, while catching a quarter
+fewer septic patients six hours out. Which is preferable is a clinical
+decision, but it must be made deliberately: the default is to select on
+AUROC and never see the trade.
+
+Tuning on the deployment objective also beats the untuned default we had been
+quoting, by +0.112 capture, +0.08 recall and +2.2 h of lead. **This is the
+best operating point the project has produced**, and it came from changing
+the model-selection criterion, not the model.
 
 ## 5. What fixed it: the pre-onset target
 
