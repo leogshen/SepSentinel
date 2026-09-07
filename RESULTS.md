@@ -288,6 +288,35 @@ detectability curve in section 3 reflects the data, not the machinery. And
 this is a **quantitative design specification for Model A**: continuous
 sensing of a modest signal dominates intermittent sampling of a dramatic one.
 
+## 6b. External anchors from the literature
+
+Directly comparable published numbers on MIMIC-IV (full catalogue and
+verification tags in `Literature.md`). "Comparable" means: MIMIC-IV, sepsis
+ONSET prediction, Sepsis-3-family label, unbalanced test set.
+
+| Study | MIMIC version | Cohort | AUROC | AUPRC | Prevalence |
+|---|---|---|---|---|---|
+| Backes 2026 (GRU + physiological network) | v2.2 | 63,425 stays, 5.2% septic | 0.841 | 0.099 | 5.2% patient |
+| YAIB GRU (van de Water, ICLR 2024) | v2.x | ~73k stays | 0.836 | 0.091 | ~1% hourly |
+| YAIB LGBM | v2.x | ~73k stays | 0.775 | 0.059 | ~1% hourly |
+| Do 2026 (TCN) | v2.0 | 67,056 stays, 5.6% septic | 0.84 internal / **0.67 external** | - | 5.6% |
+| Jin & Lee 2026, centralized XGBoost | **v3.1** | 36,193 stays | **0.659** | 0.144 | 4.65% stay |
+| Jin & Lee 2026, centralized LogReg | **v3.1** | 36,193 stays | 0.669 | 0.117 | 4.65% stay |
+| **This work, XGBoost** | **v3.1** | **63,672 stays** | **0.736** | 0.072 | 11.5% patient |
+| **This work, Transformer (ensemble)** | **v3.1** | **63,672 stays** | **0.756** | 0.088 | 11.5% patient |
+
+Two things follow. Our numbers sit inside the credible published band
+(0.76-0.85 for honest unbalanced evaluation) rather than below it, and we are
+**above the only other MIMIC-IV v3.1 sepsis-onset numbers published**
+(Jin & Lee, 0.659-0.669). Papers reporting 0.92-0.99 use balanced or enriched
+test sets, discharge-diagnosis labels, or unstated post-onset policies —
+see `Literature.md` section 2.
+
+Jin & Lee also independently corroborate our missingness finding: adding
+binary missing-indicators improved their discrimination by **+0.037 AUROC**,
+and they too caution that missingness encodes care process as well as
+physiology.
+
 ## 7. Comparators
 
 Bedside scores computed on the **same full cohort, same test split and same
@@ -401,3 +430,94 @@ information is compressed into per-hour features — last value, whether it was
 measured, how long ago — a sequence model has little left to add. The
 practical lesson is that "sequence model beats GBDT" comparisons are only
 meaningful when both get the same temporal features.
+
+---
+
+# What this document does NOT cover
+
+Written down so nobody has to discover it by being surprised. Ordered by how
+much it would change a conclusion.
+
+## Statistical
+
+1. **No confidence intervals on any number here.** Every result is a point
+   estimate from ONE fixed split (seed 42). The +/- figures are seed-to-seed
+   *training* variance (n=3), which is tiny (0.001 AUROC) and measures the
+   wrong thing — it says nothing about split variance, which is the dominant
+   source of uncertainty. The headline "+8.7h lead" has no interval.
+   Grouped bootstrap over patients is the fix and is queue item 2.
+2. **No cross-validation.** Single 70/15/15 grouped split.
+3. **No statistical test** for any of the model-vs-model comparisons. When
+   XGBoost beats the Transformer by 0.12 capture at a burden, we do not know
+   that is outside noise.
+
+## Design choices never tuned or ablated
+
+4. **The 12 h prodrome window is arbitrary.** It was the first value tried
+   and it produced the headline result. 3/6/12/24 h is one flag each.
+5. **The 18 extended features went in as a block.** No ablation. MAP and
+   urine output are the dense ones and the likely carriers; the sparse
+   additions (PaO2, BUN, glucose at >93% missing) may contribute nothing.
+6. **No hyperparameter search anywhere.** Transformer geometry (d_model 64,
+   2 layers, 4 heads) is inherited from the PhysioNet work; XGBoost is at
+   library defaults with `scale_pos_weight`. A tuned Transformer might close
+   the gap to XGBoost, or widen it.
+7. **Alert burden counts raw per-hour alarms.** No cooldown or episode
+   merging, so the burden numbers OVERSTATE what a clinician experiences and
+   all models are penalised in an unknown, possibly unequal way. Spec
+   section 10 asks for this; it does not exist yet.
+
+## Modelling gaps
+
+8. **Static attributes are extracted but unused.** Age, sex, weight, care
+   unit and admission type are ~100% complete (weight 97.1%) and no model
+   here sees any of them. The architecture has no static pathway.
+9. **No natively irregular-time-series model.** Missingness is hand-encoded
+   as mask + time-since-last channels rather than handled by the model
+   (GRU-D, mTAND, SeFT, Raindrop). Whether a learned missingness
+   representation beats our hand-built one is untested.
+10. **Only two model families were compared** (linear/GBDT flat vs one
+    causal Transformer). No GRU, TCN, or irregular-TS architecture on MIMIC,
+    although the PhysioNet part-1 work covers GRU and TCN.
+
+## Validation and generalisation
+
+11. **No external validation.** Everything is internal to MIMIC-IV. SICdb is
+    confirmed unusable as a label source (SICDB_RECON.md), and eICU has not
+    been attempted.
+12. **No temporal validation.** MIMIC-IV dates are shifted, so a train-past /
+    test-future split is impossible within it. Yang 2022 shows sepsis models
+    can decay 0.729 -> 0.525 over a decade; we cannot measure that here.
+13. **No subgroup analysis.** Nothing by age, sex, race, care unit or
+    admission type — despite all of those being available at ~100%
+    completeness. Fairness is entirely unexamined.
+14. **No calibration assessment.** All operating points come from raw
+    probabilities; no reliability curve, Brier score or calibration slope.
+    Yamamoto 2026 reports calibration slope collapsing 1.007 -> 0.417 across
+    sites, so this is not hypothetical.
+
+## Label and data caveats
+
+15. **The label is partly a treatment-decision timestamp.** `t_sepsis`
+    depends on when a culture was drawn and antibiotics started, so some of
+    what the model predicts is clinician behaviour, not physiology. Dickens
+    (medRxiv 2026, MIMIC-IV v3.1, n=65,241) tested exactly this and concluded
+    models are NOT merely learning care intensity — that paper should be read
+    and answered directly.
+16. **Sepsis-3 by the Challenge rule is one definition among several.** Our
+    38.7% pre-exclusion septic rate is high against the 4-6% typical of
+    papers using narrower definitions; the difference is definitional, not a
+    different disease.
+17. **Cross-field data errors are documented but NOT removed** from the
+    committed extraction — only measured (section 8). The extraction applies
+    per-channel range filters only.
+
+## Reporting
+
+18. **Part 1 (PhysioNet) numbers predate several fixes** and were produced
+    under the old evaluation conventions. They are kept for continuity, not
+    as current results.
+19. **The positive control and the section 3-4 diagnostics were run on the
+    intermediate `+3h` configuration**, not the current best one. Labelled
+    in place, but it means those tables and the headline table are not from
+    the same extraction.
