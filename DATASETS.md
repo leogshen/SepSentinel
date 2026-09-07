@@ -1,160 +1,103 @@
-# Dataset Strategy for SepSentinel
+# Dataset reference for SepSentinel
 
-## Dataset 1: PhysioNet/CinC 2019 Sepsis Challenge (Primary Prototype Dataset)
+Consolidated 2026-09-07. Every dataset considered across the project, what
+each is good for, and what it costs to get. Detailed recon lives in
+`DATASETS_BIOMARKER.md` (pass 1) and `DATASETS_BIOMARKER_2.md` (pass 2);
+this file is the index to reference when writing.
 
-**Purpose**: Initial development of Model B. Rapid prototyping of the sepsis prediction pipeline. Benchmarking against published sepsis prediction work.
+**The central constraint:** no open ICU EHR database contains IL-6. Verified
+by direct query, not inference — MIMIC-IV 3.1 has zero interleukin and zero
+procalcitonin items in both `d_labitems` and `d_items`; PhysioNet hosts no
+cytokine dataset; AmsterdamUMCdb and HiRID carry CRP and procalcitonin but no
+interleukin; eICU-CRD has 147 lab names and none is a cytokine. So Model B's
+substrate and Model A's biomarker data must come from different sources, and
+the bridge between them is the project's core methodological problem.
 
-- **Source**: PhysioNet / Kaggle (tea340yashjoshi)
-- **Access**: Free with Kaggle account
-- **Format**: Hourly ICU time series, 546K rows, 44 columns
-- **Sepsis labels**: Pre-defined per the Challenge specification
+---
 
-**Advantages**:
-- Preprocessed hourly patient time series
-- Sepsis labels already defined
-- Directly supports the prediction task
-- Contains wearable-compatible variables (HR, SpO2, Temperature, Respiratory Rate) and laboratory values (Lactate, pH)
+## Tier 1 — in hand, working
 
-**Limitations**:
-- No IL-6
-- Fewer raw clinical variables than MIMIC-IV
-- Labels follow the Challenge definition rather than allowing complete control over cohort construction
+| Dataset | Access | Size | Strength | Limitation |
+|---|---|---|---|---|
+| **MIMIC-IV 3.1** | Credentialed + DUA (held) | 94,458 ICU stays; our cohort 63,672 episodes / 48,150 patients / 3.19M patient-hours | The Model B workhorse. Dense vitals (HR/RR/SpO2 ~94%, MAP 86%, urine 44% of hours), full labs, medications, cultures — everything needed for Challenge-rule Sepsis-3 labels | **No IL-6, no procalcitonin.** Single-centre (BIDMC). Shifted dates make temporal validation impossible |
+| **PhysioNet/CinC 2019** | Free (Kaggle mirror) | 14,057 patients, 8.8% septic | The continuity baseline; labels pre-defined by the Challenge; two hospital systems allow cross-site checks | No IL-6. Only 4 dense vitals + sparse labs. Records end ~4h after onset (which turned out to be a *feature* — see RESULTS.md section 5) |
 
-**Column mapping**:
+## Tier 2 — downloadable today, no account, no DUA (pass 2)
 
-| PhysioNet Column | SepSentinel Signal | Stage | NaN Density |
-|------------------|--------------------|-------|-------------|
-| HR | heart_rate | 1 | ~8% |
-| O2Sat | spo2 | 1 | ~12% |
-| Temp | temperature | 1 | ~66% |
-| Resp | respiratory_rate | 1 | ~10% |
-| Lactate | lactate | 2 | ~97% |
-| pH | ph | 2 | ~89% |
-| (not available) | il6 | 3 | N/A |
+**This is the discovery that unblocks Model A.** All four are CC-BY
+supplementary files with per-patient serial IL-6 in pg/mL.
 
-**Download**:
-```python
-import kagglehub
-path = kagglehub.dataset_download("tea340yashjoshi/sepsis-prediction-dataset")
-```
+| Dataset | n | IL-6 sampling | Why it matters | Weakness |
+|---|---|---|---|---|
+| **PLOS ONE 0209669** (PermiT trial sub-study) | 72 critically ill adults | **Days 1/3/5/7/14** | Longest serial IL-6 in the open tier; 29-cytokine panel; treatment arm included | Nutrition trial, not a sepsis-onset cohort |
+| **PLOS ONE 0178387** | 86 **severe sepsis / septic shock** | **D1/D3/D5** | True sepsis population, with SOFA on the same grid. Open replacement for the restricted Zenodo cohort | Only 3 timepoints; no high-res vitals |
+| **PLOS Medicine 1002338** | 89 trauma | **<1 h / 4-12 h / 48-72 h** | Ultra-early kinetics — the only dataset covering the first hour, which is where a wearable would live | Trauma, not infection |
+| **PLOS ONE 0211981** | 116 piglets | Median 7, up to 31 obs/animal, hourly | **Best temporal shape found anywhere**, and the driving endotoxin concentration is measured alongside — a true dose-response | Porcine. Species mismatch must be stated |
 
-## Dataset 2: MIMIC-IV (Future Expansion Dataset)
+## Tier 3 — free registration, same-day (ImmPort)
 
-**Purpose**: Larger-scale clinical validation. Flexible cohort construction. Custom sepsis definitions. Eventually reproducing or extending the PhysioNet Challenge pipeline directly from raw EHR tables.
+| Dataset | n | IL-6 sampling | Strength | Weakness |
+|---|---|---|---|---|
+| **SDY1662** (Mount Sinai, Del Valle *Nat Med* 2020) | ~1,484 | Repeat draws; **our two recon passes disagree** (~2/patient vs ~1.3 with only n=244 repeating) — downloading settles it | Largest IL-6 set in the open tier, and uniquely it ships **paired clinical depth**: 130,230 chemistry results, 27,328 CBCs, 21,273 vital-sign records. The best cytokine-to-vitals *bridge* available | COVID-19 hyperinflammation, not bacterial sepsis |
+| **SDY1655** (Yale IMPACT, Lucas *Nature* 2020) | 248 | **8 planned visits** | The only genuinely longitudinal human IL-6 trajectory in the open tier; 72-analyte panel | COVID; no dense vitals stream |
 
-- **Source**: PhysioNet (MIT)
-- **Clinical**: https://physionet.org/content/mimiciv/
-- **Waveform**: https://physionet.org/content/mimic4wdb/
-- **Access**: Requires PhysioNet account + CITI training
+## Tier 4 — by request (drafts in `outreach/EMAIL_DRAFTS.md`)
 
-**Advantages**:
-- Rich longitudinal ICU database
-- Full electronic health record
-- Widely used research dataset
-- Potential for additional clinical variables
+| Target | What it would give | Access cost |
+|---|---|---|
+| **Zenodo 7612571** (Humanitas) | 178 **Sepsis-3** patients, IL-6/IL-8/IL-10/TNF-a/PTX3 at admission + day 5 | One-click request. Now partly superseded by PLOS ONE 0178387, which is open |
+| **PMID 36383295** | Serial **IL-6 + lactate + procalcitonin** — SepSentinel's exact analyte triple | "Available on reasonable request"; needs a PI-signed ask |
+| **PMID 41563442** | Burn-sepsis biomarker trajectories over 21 days | Same |
+| **Zigong Fourth People's Hospital** (PhysioNet) | Possibly the only routine-care serial IL-6 paired with a full ICU time series | Credentialed + CITI + DUA, 1-3 months, and IL-6 presence is unverified — ask first |
 
-**Limitations**:
-- Requires substantially more preprocessing
-- No ready-made sepsis labels comparable to the Challenge dataset
-- More engineering effort before model development
+## Tier 5 — evaluated and rejected, with reasons
 
-## Synthetic Data (Pipeline Development)
+| Dataset | Why not |
+|---|---|
+| **SICdb** (Salzburg) | **No microbiology or culture table at all** — Challenge-rule suspicion-of-infection is unreconstructable. Access is credentialed + CITI + DUA **+ per-project contributor review**, with no demo tier. See `SICDB_RECON.md` |
+| **eICU-CRD** | Verified from the open demo: 147 lab names, **zero interleukin, zero procalcitonin**. Has lactate, pH, CRP, ferritin, full blood gases. Fine for Model B external validation; useless for IL-6 |
+| **AmsterdamUMCdb / HiRID** | CRP and procalcitonin serial, **no interleukin anywhere** in either dictionary. HiRID's 2-minute monitoring resolution is the best available if high-res vitals ever matter |
+| **ImmPort IMPACC (SDY1760/SDY2112)** | 18 planned visits, n=1,185 — scientifically ideal, but controlled access via NIAID with IAL2 identity proofing and federal DAR review. Not realistic for a minor |
+| **PERSEVERE** (pediatric sepsis) | Panel verified: IL-8, HSPA1B, GZMB, MMP-8, CCL3. **No IL-6 in any version.** Dead end |
+| **BioLINCC ARDSNet-SAILS** | Plasma vials exist at D0/3/6/12 but assayed cytokine *values* are not confirmed to be in the data package. You would likely receive specimens, not numbers |
+| **GEO / dbGaP sepsis cohorts** | Transcriptomic only — no measured IL-6 protein |
 
-Generated by `sepsentinel/data/synthetic.py`. Two modes:
+---
 
-- **Flat records**: 7-feature static snapshots for RF/XGBoost baseline development
-- **Time-series episodes**: Multi-hour patient trajectories for sequential model development
+## Two findings that should shape the write-up
 
-Not intended for clinical validation. Used to develop the pipeline, test architectures, verify preprocessing, and debug dashboards.
+**1. CRP is the better-evidenced wearable-trackable marker, not IL-6.** A 2026
+systematic review of wearable HRV against inflammatory markers found
+SDNN-CRP associations consistent (83% inverse, p=0.031) but RMSSD-IL-6
+associations "heterogeneous and largely non-significant". Independently, CRP
+and procalcitonin — not IL-6 — are the inflammatory markers that actually
+appear at scale in every open ICU database. If Model A needs a marker with
+both a supporting evidence base and available data, that marker is CRP.
+IL-6 remains defensible on biology (it rises earlier), but the project should
+stop assuming data will appear for it.
 
-## PLOS ONE Cytokine Dataset (Ozger et al. 2021) — Reference Only
+**2. No paired biosensor-vs-ELISA IL-6 dataset exists in deposited form** —
+checked across 179 PLOS and 52 Europe PMC biosensor papers. Model A's
+calibration data will have to come from the project's own bench work. This is
+worth knowing before promising a sensor-to-concentration model built on
+public data.
 
-**Paper**: "The value of early cytokine profile in predicting the prognosis of COVID-19"
-**File**: `journal.pone.0260623.s001.sav` (SPSS, kept local, .gitignore'd)
-**DOI**: 10.1371/journal.pone.0260623
+## Datasets that would be ideal and do not exist publicly
 
-**Overview**: 37 COVID-19 patients (29 survivors, 8 deaths). 48-plex Luminex cytokine panel at admission (day 0) and day 3. 100% complete. Standard labs included (WBC, lactate, creatinine, CRP, procalcitonin, ferritin, D-dimer, platelets).
+- Continuous wearable signal paired with intermittent biomarker draws. A 2026
+  systematic review names all 11 studies that pair wearable HRV with
+  inflammatory markers; the useful ones are **Deepika 2018** (n=89 TBI,
+  continuous telemetry + serial IL-6/TNF-a/IL-10/IL-1b) and **Hirten 2021**
+  (Mount Sinai, 72h VitalPatch + IL-6/TNF/CRP). Neither has deposited data —
+  both are email targets.
+- A publicly deposited *human* endotoxin-challenge IL-6 time course. The
+  porcine dataset above is the closest substitute.
 
-**IL-6 findings**:
+## Gaps in the search itself
 
-| Group | Day 0 median (pg/mL) | Day 3 median (pg/mL) |
-|-------|---------------------|---------------------|
-| Survivors | 15.9 | 8.9 |
-| Non-survivors | 161.3 | 142.1 |
-
-- Non-survivors show ~10x higher median IL-6 at admission
-- Survivors trend down day 0 to day 3; non-survivors trend up or stay high
-- Full dynamic range: 0.29 - 9,531 pg/mL
-- IL-6 vs mortality: r=0.479 (strongest single predictor in cohort)
-- IL-6 and IL-10 nearly uncorrelated (r=-0.016), carry independent information
-
-**Useful for SepSentinel**:
-1. E-AB sensor spec: needs ~4 orders of magnitude dynamic range (0.3 - 9,500 pg/mL)
-2. Confirms IL-6 discriminative power (10x separation between outcomes)
-3. Validates dynamic sampling concept (several non-survivors had low day-0 IL-6 but spiked by day 3, e.g. Pt 4: 151 -> 8,586 pg/mL)
-
-**Not useful for**: Model training (n=37, only 2 timepoints), sepsis prediction (COVID mortality endpoint), time-series modeling (no continuous data).
-
-## Dryad COVID-19 Cytokine Dataset (UCSF, 2024) — Reference Only
-
-**Paper**: Dexamethasone effects on cytokines in severe COVID-19 (Nature Communications)
-**File**: `dex_cytokine.tsv` (kept local, .gitignore'd)
-**DOI**: 10.7272/Q6MS3R18
-
-**Overview**: 38 severe COVID-19 patients (23 dexamethasone, 15 no-dex). 18 analytes via Luminex, single timepoint (enrollment day). Units: pg/mL.
-
-**IL-6 findings**:
-
-| Group | n | IL-6 median (pg/mL) | IL-6 range |
-|-------|---|---------------------|------------|
-| All | 38 | 34.2 | 1.5 - 3,716 |
-| Dexamethasone | 23 | 12.3 | 1.5 - 1,906 |
-| No dexamethasone | 15 | 228.6 | 11.8 - 3,716 |
-
-- Dexamethasone group has ~18x lower median IL-6 (treatment effect)
-- Range 1.5 - 3,716 pg/mL — narrower than Ozger (0.3 - 9,531) but same order of magnitude
-- 18 analytes include IL-6, IL-8, IL-10, IL-18, IFN-gamma, TNF R1, IP-10, TREM-1
-- Near-complete data (only IFN-gamma has 24% missing)
-
-**Useful for SepSentinel**:
-1. Cross-validates IL-6 dynamic range from Ozger with independent cohort
-2. Shows dexamethasone suppresses IL-6 ~18x — relevant if monitored patients receive steroids
-
-**Not useful for**: Model training (single timepoint, n=38), trajectories (no serial measurements), sepsis prediction (COVID endpoint).
-
-**Compared to Ozger**: Ozger is strictly better — more analytes (48 vs 18), has 2 timepoints (trajectory data), and includes standard labs (lactate, CRP, procalcitonin). Dryad adds the steroid-suppression observation but no new trajectory information.
-
-## Other Candidate Datasets (Evaluated, Pending Access)
-
-- **eICU**: 200K stays, 335 hospitals, good generalization test
-- **HiRID**: 34K stays, 2-min resolution, Swiss ICU
-- **SICdb**: 27K German ICU, high-res vitals
-- **AmsterdamUMCdb**: 23K Dutch ICU, freely available
-- **OneICU**: Multi-center harmonized, 12 countries
-
-All require PhysioNet credentialing (pending).
-
-## Development Roadmap
-
-**Phase 1**: Use PhysioNet Sepsis Challenge to develop and benchmark Model B.
-- Stage 1: HR, SpO2, Temperature, Respiratory Rate (4 features)
-- Stage 2: + Lactate, pH (6 features, sparse)
-
-**Phase 2**: Validate and extend Model B on MIMIC-IV.
-
-**Phase 3**: Integrate Model A outputs (IL-6, Lactate, pH from electrochemical sensors) with Model B once experimental calibration data are available.
-
-## Pipeline Design
-
-All data sources produce the same episode format:
-
-```
-Data source (synthetic / PhysioNet / MIMIC)
-    -> Episode extraction (patient time series)
-    -> Sliding window (configurable length and stride)
-    -> Tensor: (batch_size, timesteps, n_features)
-    -> Preprocessing (imputation, normalization)
-    -> Model B input
-```
-
-Swapping data sources requires changing only the loader, not the pipeline.
+- **YODA and CSDR trial catalogues were never examined** — they are portal
+  sites without DataCite DOIs, so the repository sweep was blind to them.
+- Roughly a third to half of the matched paper corpus went unopened; the
+  supplement scanner skips PDF/DOCX supplements and non-PMC publisher CDNs.
+- Both recon passes hit an exhausted web-search budget and worked via direct
+  API retrieval, so search-discoverable-only sources are under-covered.
