@@ -103,7 +103,7 @@ of additional warning at identical alert burden.
 | Config I features, standard target, Transformer | 0.736 | 0.072 | 0.59 | 0.081 | - | 11.9 h | 0.36 |
 | Config I features, standard target, XGBoost | 0.722 | 0.068 | 0.64 | 0.083 | - | 13.5 h | 0.43 |
 | **Extended features, pre-onset target, XGBoost** | 0.736 | 0.072 | **0.64** | 0.097 | 0.225 | **20.6 h** | **0.53** |
-| Extended features, pre-onset target, Transformer (seed-avg) | **0.756** | **0.088** | 0.50 | **0.116** | **0.272** | 19.0 h | 0.41 |
+| Extended features, pre-onset target, Transformer (3-seed ensemble) | **0.756** | **0.088** | 0.50 | **0.116** | **0.272** | 19.0 h | 0.41 |
 | Extended features, pre-onset target, logreg | 0.705 | 0.057 | 0.49 | 0.079 | 0.218 | 22.0 h | 0.43 |
 | *PhysioNet Config I (different dataset, not comparable)* | *0.814* | *0.144* | *0.70* | *0.093* | *-* | *23.5 h* | *-* |
 
@@ -113,6 +113,13 @@ fraction of alarm-HOURS that were labelled positive — the hour-by-hour burden.
 septic — what a clinician means by "when it fires, how often is it right".
 Patient precision is ~2.5x higher; quoting only one would be misleading, so
 `scripts/operating_curves.py` carries both at every threshold.
+
+**Two Transformer AUROCs appear in this document and both are correct.**
+0.751 +/- 0.001 is the mean of three independently-seeded models (0.7502,
+0.7527, 0.7514) and is the right number for "how well does this architecture
+do". 0.756 is the AUROC of the seed-AVERAGED probabilities, i.e. a 3-model
+ensemble, and is the right number for the operating-curve tables where a
+single probability vector is needed. Ensembling is worth +0.004.
 
 Full operating curves with precision at every burden:
 `results/operating_curves_full_ext/`.
@@ -125,13 +132,19 @@ concepts; every deviation is enumerated in `sepsis3.DEVIATIONS`).
 
 | | |
 |---|---|
-| Qualifying ICU stays (age >=18, LOS >=6h) | 93,224 |
+| ICU stays in MIMIC-IV 3.1 | 94,458 |
+| Qualifying (age >=18, LOS >=6h) | 93,224 (98.7%) |
 | With a suspicion-of-infection pair | 57,601 (61.8%) |
 | Septic by the Challenge rule | 36,118 (38.7%) |
 | ... onset at or before ICU hour 4 (excluded, spec section 2) | 27,576 |
 | Episodes after all section-2 exclusions | 63,672-64,236 |
 | Patient prevalence | 11.5-12.5% (PhysioNet 8.8%) |
 | Timestep prevalence | 2.2-2.6% (PhysioNet 2.2%) |
+
+The 98.7% retention is expected, not a filter that failed to bite: MIMIC-IV's
+ICU module is adults-only (minimum `anchor_age` is 18, so the age criterion
+drops nothing), and only 1,220 stays are shorter than 6 h (1st percentile of
+LOS is 5.0 h, median 47.2 h).
 
 Onset among usable septic stays: median 20 h from ICU admission, p75 46 h,
 p95 142 h — ample pre-onset history. All 38 extraction and SOFA itemids
