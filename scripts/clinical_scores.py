@@ -162,9 +162,10 @@ def main():
                 print("      at <=%.1f alerts/pt-day: unreachable "
                       "(score is coarse-grained)" % b)
                 continue
-            print("      at <=%.1f alerts/pt-day: recall %.2f, median lead %s h,"
-                  " capture>=6h %.2f"
-                  % (b, c["patient_recall"],
+            print("      at <=%.1f alerts/pt-day: recall %.2f, ts-prec %.3f, "
+                  "pt-prec %.3f, median lead %s h, capture>=6h %.2f"
+                  % (b, c["patient_recall"], c["timestep_precision"],
+                     c["patient_precision"],
                      "%.1f" % c["median_lead_time_h"]
                      if c["median_lead_time_h"] is not None else "n/a",
                      c["capture_6h"]))
@@ -184,15 +185,17 @@ def main():
     lines += ["", "## At equal alert burden", ""]
     for b in BURDEN_POINTS:
         lines += ["**Budget: %.1f false alerts per nonseptic patient-day**" % b,
-                  "", "| Score | Patient recall | Median lead (h) | "
-                  "Capture >=6h | Capture >=12h |", "|---|---|---|---|---|"]
+                  "", "| Score | Patient recall | Timestep prec. | Patient prec. | "
+                  "Median lead (h) | Capture >=6h | Capture >=12h |",
+                  "|---|---|---|---|---|---|---|"]
         for which, _, _, curve in rows:
             c = at_burden(curve, b)
             if c is None:
                 lines.append("| %s | (unreachable) | | | |" % which)
                 continue
-            lines.append("| %s | %.2f | %s | %.2f | %.2f |"
-                         % (which, c["patient_recall"],
+            lines.append("| %s | %.2f | %.3f | %.3f | %s | %.2f | %.2f |"
+                         % (which, c["patient_recall"], c["timestep_precision"],
+                            c["patient_precision"],
                             "%.1f" % c["median_lead_time_h"]
                             if c["median_lead_time_h"] is not None else "n/a",
                             c["capture_6h"], c["capture_12h"]))

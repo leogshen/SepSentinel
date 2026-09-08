@@ -244,15 +244,17 @@ def main():
     for budget in BURDEN_POINTS:
         lines += ["**Budget: %.1f false alerts per nonseptic patient-day**"
                   % budget, "",
-                  "| Model | Patient recall | Median lead (h) | Capture >=6h | "
-                  "Capture >=12h |", "|---|---|---|---|---|"]
+                  "| Model | Patient recall | Timestep prec. | Patient prec. | "
+                  "Median lead (h) | Capture >=6h | Capture >=12h |",
+                  "|---|---|---|---|---|---|---|"]
         for name in curves:
             c = at_burden(curves[name], budget)
             if c is None:
                 lines.append("| %s | (unreachable) | | | |" % name)
                 continue
-            lines.append("| %s | %.2f | %s | %.2f | %.2f |"
-                         % (name, c["patient_recall"],
+            lines.append("| %s | %.2f | %.3f | %.3f | %s | %.2f | %.2f |"
+                         % (name, c["patient_recall"], c["timestep_precision"],
+                            c["patient_precision"],
                             "%.1f" % c["median_lead_time_h"]
                             if c["median_lead_time_h"] is not None else "n/a",
                             c["capture_6h"], c["capture_12h"]))

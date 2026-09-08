@@ -57,11 +57,24 @@ GRID = {
 }
 BUDGET = 1.0          # false alerts per nonseptic patient-day
 
+# Selection objectives, all evaluated INSIDE the alert budget. Raw recall
+# without a burden ceiling is meaningless -- it is maximised by alarming on
+# every hour of every patient -- so every objective here is "the best X
+# reachable at <= BUDGET false alerts per nonseptic patient-day".
+OBJECTIVES = {
+    "recall": lambda c: c["patient_recall"],
+    "capture6h": lambda c: c["capture_6h"],
+    "capture12h": lambda c: c["capture_12h"],
+    "auroc": None,          # handled separately; uses the threshold-free value
+}
 
-def score(curve, budget=BUDGET):
-    """Selection objective: capture >=6h inside the alert budget."""
+
+def score(curve, objective="recall", budget=BUDGET):
+    """Selection objective, evaluated inside the alert budget."""
     c = at_burden(curve, budget)
-    return (c["capture_6h"] if c else 0.0), c
+    if c is None:
+        return 0.0, None
+    return OBJECTIVES[objective](c), c
 
 
 def main():
@@ -69,6 +82,10 @@ def main():
     ap.add_argument("--episodes", required=True)
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--n-trials", type=int, default=24)
+    ap.add_argument("--objective", default="recall",
+                    choices=["recall", "capture6h", "capture12h"],
+                    help="what to select on, inside the alert budget "
+                         "(default: patient recall)")
     ap.add_argument("--seed", type=int, default=42)
     args = ap.parse_args()
     os.makedirs(args.out_dir, exist_ok=True)
@@ -98,9 +115,9 @@ def main():
     all_combos = list(itertools.product(*(GRID[k] for k in keys)))
     random.shuffle(all_combos)
     trials = all_combos[:args.n_trials]
-    print("searching %d of %d configurations, selecting on capture>=6h at "
+    print("searching %d of %d configurations, selecting on %s at "
           "<=%.1f alerts/patient-day (validation)"
-          % (len(trials), len(all_combos), BUDGET))
+          % (len(trials), len(all_combos), args.objective, BUDGET))
 
     rows = []
     for i, combo in enumerate(trials, 1):
@@ -111,42 +128,51 @@ def main():
                                 **params).fit(X_tr, y_tr)
         prob = clf.predict_proba(X_va)[:, 1]
         curve = curve_for(patient_results_from_probs(va, raw_map, prob))
-        cap, c = score(curve)
+        cap, c = score(curve, args.objective)
         auroc = float(roc_auc_score(y_va, prob))
-        rows.append({"params": params, "val_capture_6h": cap,
-                     "val_auroc": auroc,
+        rows.append({"params": params, "objective_name": args.objective,
+                     "val_objective": cap, "val_auroc": auroc,
                      "val_recall": c["patient_recall"] if c else None,
+                     "val_capture_6h": c["capture_6h"] if c else None,
+                     "val_ts_precision": c["timestep_precision"] if c else None,
+                     "val_pt_precision": c["patient_precision"] if c else None,
                      "val_lead": c["median_lead_time_h"] if c else None,
                      "minutes": (time.time() - t0) / 60.0})
-        print("  [%2d/%d] capture6h %.3f  AUROC %.3f  %s  (%.1f min)"
-              % (i, len(trials), cap, auroc,
+        print("  [%2d/%d] %s %.3f  AUROC %.3f  %s  (%.1f min)"
+              % (i, len(trials), args.objective, cap, auroc,
                  " ".join("%s=%s" % (k, params[k]) for k in keys), rows[-1]["minutes"]))
 
-    by_capture = max(rows, key=lambda r: r["val_capture_6h"])
+    by_capture = max(rows, key=lambda r: r["val_objective"])
     by_auroc = max(rows, key=lambda r: r["val_auroc"])
-    print("\nbest by CAPTURE>=6h : capture %.3f, AUROC %.3f"
-          % (by_capture["val_capture_6h"], by_capture["val_auroc"]))
-    print("best by AUROC       : capture %.3f, AUROC %.3f"
-          % (by_auroc["val_capture_6h"], by_auroc["val_auroc"]))
+    print("\nbest by %-10s: %s %.3f, AUROC %.3f, capture>=6h %.3f"
+          % (args.objective.upper(), args.objective,
+             by_capture["val_objective"], by_capture["val_auroc"],
+             by_capture["val_capture_6h"]))
+    print("best by AUROC     : %s %.3f, AUROC %.3f, capture>=6h %.3f"
+          % (args.objective, by_auroc["val_objective"], by_auroc["val_auroc"],
+             by_auroc["val_capture_6h"]))
     print("same configuration? %s" % (by_capture["params"] == by_auroc["params"]))
 
     # Test set touched once, for both winners, to quantify what the choice costs.
     final = {}
-    for tag, row in [("selected_by_capture", by_capture),
+    for tag, row in [("selected_by_" + args.objective, by_capture),
                      ("selected_by_auroc", by_auroc)]:
         clf = xgb.XGBClassifier(random_state=args.seed, scale_pos_weight=spw,
                                 eval_metric="logloss", tree_method="hist",
                                 **row["params"]).fit(X_tr, y_tr)
         prob = clf.predict_proba(X_te)[:, 1]
         curve = curve_for(patient_results_from_probs(te, raw_map, prob))
-        cap, c = score(curve)
+        cap, c = score(curve, args.objective)
         final[tag] = {"params": row["params"],
                       "test_auroc": float(roc_auc_score(y_te, prob)),
                       "test_auprc": float(average_precision_score(y_te, prob)),
                       "test_at_1_per_day": c}
-        print("\n%s -> test AUROC %.4f, capture>=6h %.3f, recall %.2f, lead %s h"
-              % (tag, final[tag]["test_auroc"], cap,
-                 c["patient_recall"],
+        print("\n%s -> test AUROC %.4f AUPRC %.4f | at <=%.1f alerts/pt-day: "
+              "recall %.2f, ts-prec %.3f, pt-prec %.3f, capture>=6h %.3f, "
+              "lead %s h"
+              % (tag, final[tag]["test_auroc"], final[tag]["test_auprc"],
+                 BUDGET, c["patient_recall"], c["timestep_precision"],
+                 c["patient_precision"], c["capture_6h"],
                  "%.1f" % c["median_lead_time_h"]
                  if c["median_lead_time_h"] is not None else "n/a"))
 

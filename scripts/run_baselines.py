@@ -109,9 +109,10 @@ def main():
             c = at_burden(curve, b)
             if c is None:
                 continue
-            print("      at <=%.1f alerts/pt-day: recall %.2f, median lead %s h,"
-                  " capture>=6h %.2f"
-                  % (b, c["patient_recall"],
+            print("      at <=%.1f alerts/pt-day: recall %.2f, ts-prec %.3f, "
+                  "pt-prec %.3f, median lead %s h, capture>=6h %.2f"
+                  % (b, c["patient_recall"], c["timestep_precision"],
+                     c["patient_precision"],
                      "%.1f" % c["median_lead_time_h"]
                      if c["median_lead_time_h"] is not None else "n/a",
                      c["capture_6h"]))
@@ -134,15 +135,17 @@ def main():
               "recall reachable inside the stated false-alert budget.", ""]
     for b in BURDEN_POINTS:
         lines += ["**Budget: %.1f false alerts per nonseptic patient-day**" % b,
-                  "", "| Model | Patient recall | Median lead (h) | "
-                  "Capture >=6h | Capture >=12h |", "|---|---|---|---|---|"]
+                  "", "| Model | Patient recall | Timestep prec. | "
+                  "Patient prec. | Median lead (h) | Capture >=6h | "
+                  "Capture >=12h |", "|---|---|---|---|---|---|---|"]
         for name, _, _, curve in rows:
             c = at_burden(curve, b)
             if c is None:
                 lines.append("| %s | (unreachable) | | | |" % name)
                 continue
-            lines.append("| %s | %.2f | %s | %.2f | %.2f |"
-                         % (name, c["patient_recall"],
+            lines.append("| %s | %.2f | %.3f | %.3f | %s | %.2f | %.2f |"
+                         % (name, c["patient_recall"], c["timestep_precision"],
+                            c["patient_precision"],
                             "%.1f" % c["median_lead_time_h"]
                             if c["median_lead_time_h"] is not None else "n/a",
                             c["capture_6h"], c["capture_12h"]))
