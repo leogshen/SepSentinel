@@ -1,0 +1,122 @@
+{
+  "gru__strategy_b": {
+    "model": "gru",
+    "features": "strategy_b",
+    "in_dim": 38,
+    "auroc": 0.7548564932381513,
+    "auprc": 0.0815542637110657,
+    "at_1_per_day": {
+      "threshold": 0.78,
+      "patient_recall": 0.4675925925925926,
+      "alerts_per_patient_day": 0.900902158062558,
+      "median_lead_time_h": 20.0,
+      "timestep_precision": 0.10546858780052319,
+      "patient_precision": 0.2818080357142857,
+      "patients_alarmed": 1792,
+      "capture_3h": 0.43148148148148147,
+      "capture_6h": 0.3851851851851852,
+      "capture_12h": 0.3194444444444444
+    },
+    "minutes": 23.046720393498738
+  },
+  "transformer__strategy_b": {
+    "model": "transformer",
+    "features": "strategy_b",
+    "in_dim": 38,
+    "auroc": 0.7501743164470749,
+    "auprc": 0.08458938462534693,
+    "at_1_per_day": {
+      "threshold": 0.81,
+      "patient_recall": 0.487962962962963,
+      "alerts_per_patient_day": 0.9317136816840283,
+      "median_lead_time_h": 19.304444444444446,
+      "timestep_precision": 0.11035065823905954,
+      "patient_precision": 0.2684666327050433,
+      "patients_alarmed": 1963,
+      "capture_3h": 0.4537037037037037,
+      "capture_6h": 0.4083333333333333,
+      "capture_12h": 0.32222222222222224
+    },
+    "minutes": 9.82275447845459
+  },
+  "tcn__strategy_b": {
+    "model": "tcn",
+    "features": "strategy_b",
+    "in_dim": 38,
+    "auroc": 0.7452410144894139,
+    "auprc": 0.06893972394985808,
+    "at_1_per_day": {
+      "threshold": 0.81,
+      "patient_recall": 0.4601851851851852,
+      "alerts_per_patient_day": 0.96526028620668,
+      "median_lead_time_h": 18.516666666666666,
+      "timestep_precision": 0.09667126255662793,
+      "patient_precision": 0.2822260079500284,
+      "patients_alarmed": 1761,
+      "capture_3h": 0.41944444444444445,
+      "capture_6h": 0.3787037037037037,
+      "capture_12h": 0.2972222222222222
+    },
+    "minutes": 9.202566754817962
+  },
+  "gru__trajectory": {
+    "model": "gru",
+    "features": "trajectory",
+    "in_dim": 92,
+    "auroc": 0.7534604519641132,
+    "auprc": 0.07947460929503511,
+    "at_1_per_day": {
+      "threshold": 0.8,
+      "patient_recall": 0.5138888888888888,
+      "alerts_per_patient_day": 0.9623019333951982,
+      "median_lead_time_h": 18.315555555555555,
+      "timestep_precision": 0.10418865167627242,
+      "patient_precision": 0.25958840037418146,
+      "patients_alarmed": 2138,
+      "capture_3h": 0.4648148148148148,
+      "capture_6h": 0.4083333333333333,
+      "capture_12h": 0.3148148148148148
+    },
+    "minutes": 18.47920301357905
+  },
+  "transformer__trajectory": {
+    "model": "transformer",
+    "features": "trajectory",
+    "in_dim": 92,
+    "auroc": 0.7475545444276832,
+    "auprc": 0.07258329422184927,
+    "at_1_per_day": {
+      "threshold": 0.81,
+      "patient_recall": 0.5305555555555556,
+      "alerts_per_patient_day": 0.9378536592172925,
+      "median_lead_time_h": 19.0,
+      "timestep_precision": 0.1018011288180611,
+      "patient_precision": 0.2407563025210084,
+      "patients_alarmed": 2380,
+      "capture_3h": 0.5046296296296297,
+      "capture_6h": 0.4537037037037037,
+      "capture_12h": 0.35185185185185186
+    },
+    "minutes": 6.880832493305206
+  },
+  "tcn__trajectory": {
+    "model": "tcn",
+    "features": "trajectory",
+    "in_dim": 92,
+    "auroc": 0.7503096456900045,
+    "auprc": 0.07656477757522437,
+    "at_1_per_day": {
+      "threshold": 0.8200000000000001,
+      "patient_recall": 0.5361111111111111,
+      "alerts_per_patient_day": 0.8947621805292939,
+      "median_lead_time_h": 19.0,
+      "timestep_precision": 0.10363874014420037,
+      "patient_precision": 0.27043437645959834,
+      "patients_alarmed": 2141,
+      "capture_3h": 0.4888888888888889,
+      "capture_6h": 0.4287037037037037,
+      "capture_12h": 0.3388888888888889
+    },
+    "minutes": 5.871889130274455
+  }
+}
