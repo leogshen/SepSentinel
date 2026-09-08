@@ -1,0 +1,70 @@
+{
+  "values_only": {
+    "auroc": 0.7457016419937965,
+    "auprc": 0.0810484940026817,
+    "at_1_per_day": {
+      "threshold": 0.76,
+      "patient_recall": 0.48518518518518516,
+      "alerts_per_patient_day": 0.9198244524605261,
+      "median_lead_time_h": 19.954166666666666,
+      "timestep_precision": 0.10700816444941771,
+      "patient_precision": 0.2692702980472765,
+      "patients_alarmed": 1946,
+      "capture_3h": 0.45,
+      "capture_6h": 0.4,
+      "capture_12h": 0.33055555555555555
+    },
+    "minutes": 14.265031266212464
+  },
+  "strategy_b": {
+    "auroc": 0.7501743164470749,
+    "auprc": 0.08458938462534693,
+    "at_1_per_day": {
+      "threshold": 0.81,
+      "patient_recall": 0.487962962962963,
+      "alerts_per_patient_day": 0.9317136816840283,
+      "median_lead_time_h": 19.304444444444446,
+      "timestep_precision": 0.11035065823905954,
+      "patient_precision": 0.2684666327050433,
+      "patients_alarmed": 1963,
+      "capture_3h": 0.4537037037037037,
+      "capture_6h": 0.4083333333333333,
+      "capture_12h": 0.32222222222222224
+    },
+    "minutes": 13.708883845806122
+  },
+  "learned_decay": {
+    "auroc": 0.7528556725840192,
+    "auprc": 0.08158940842677212,
+    "at_1_per_day": {
+      "threshold": 0.8,
+      "patient_recall": 0.5101851851851852,
+      "alerts_per_patient_day": 0.9092748546988272,
+      "median_lead_time_h": 18.266666666666666,
+      "timestep_precision": 0.11208772453812348,
+      "patient_precision": 0.24719605204127412,
+      "patients_alarmed": 2229,
+      "capture_3h": 0.4722222222222222,
+      "capture_6h": 0.42314814814814816,
+      "capture_12h": 0.3277777777777778
+    },
+    "minutes": 12.477428988615673
+  },
+  "learned_embedding": {
+    "auroc": 0.7526264161081795,
+    "auprc": 0.08047434204687537,
+    "at_1_per_day": {
+      "threshold": 0.77,
+      "patient_recall": 0.4722222222222222,
+      "alerts_per_patient_day": 0.9103353962727545,
+      "median_lead_time_h": 18.369027777777777,
+      "timestep_precision": 0.10632513487107599,
+      "patient_precision": 0.2463768115942029,
+      "patients_alarmed": 2070,
+      "capture_3h": 0.44166666666666665,
+      "capture_6h": 0.38981481481481484,
+      "capture_12h": 0.30092592592592593
+    },
+    "minutes": 7.676776456832886
+  }
+}

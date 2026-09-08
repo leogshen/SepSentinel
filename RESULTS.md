@@ -198,7 +198,10 @@ Even in the final six hours before onset, discrimination is 0.724 —
 deterioration tasks with a strong physiological signal reach 0.85-0.90 near
 the event. The signal is weak everywhere, not merely early.
 
-**Representation is worth about six times the architecture:**
+**Representation is worth about six times the architecture** — but see
+section 4c, which isolates this properly: most of the gain below is the
+forward-fill, not the mask/delta indicators, which are worth only +0.0045
+when tested on their own.
 
 | | AUROC |
 |---|---|
@@ -272,6 +275,58 @@ Tuning on the deployment objective also beats the untuned default we had been
 quoting, by +0.112 capture, +0.08 recall and +2.2 h of lead. **This is the
 best operating point the project has produced**, and it came from changing
 the model-selection criterion, not the model.
+
+## 4c. Missingness encoding is NOT the bottleneck
+
+Four arms, identical episodes/split/metrics, one seed, increasingly informed
+about missingness (`scripts/missingness_experiment.py`):
+
+| Arm | AUROC | AUPRC | Recall | Timestep prec. | Patient prec. | Lead | Capture >=6h |
+|---|---|---|---|---|---|---|---|
+| values only (forward-filled, no mask/delta) | 0.7457 | 0.0810 | 0.49 | 0.107 | 0.269 | 20.0 h | 0.400 |
+| **Strategy B** (+ mask + hours-since-last) | 0.7502 | 0.0846 | 0.49 | 0.110 | 0.268 | 19.3 h | 0.408 |
+| learned decay (GRU-D style, per-lab) | 0.7529 | 0.0816 | 0.51 | 0.112 | 0.247 | 18.3 h | 0.423 |
+| learned embedding of (mask, delta) | 0.7526 | 0.0805 | 0.47 | 0.106 | 0.246 | 18.4 h | 0.390 |
+
+| Step | AUROC | Capture >=6h |
+|---|---|---|
+| forward-fill only -> + hand-built mask/delta | **+0.0045** | +0.008 |
+| hand-built -> learned per-channel decay | **+0.0027** | +0.015 |
+| hand-built -> learned embedding | +0.0025 | -0.019 |
+
+**Total spread across all four arms: 0.007 AUROC and 0.033 capture.** For
+scale, changing the model-SELECTION metric (section 4b) moved capture by
+0.162 — roughly five times the entire spread of every missingness
+architecture tested.
+
+Three conclusions:
+
+1. **A learned missingness representation buys essentially nothing here.**
+   GRU-D-style decay and a learned (mask, delta) embedding both land within
+   noise of the hand-built channels. This closes the question of whether to
+   adopt an irregular-time-series encoder, and with it the case for chasing
+   MIRA or any foundation model — the thing they would do better is the thing
+   that does not matter on this data.
+
+2. **A correction to an earlier claim in this document.** Section 3 reported
+   raw current-hour values at 0.640 against Strategy B at 0.722 and concluded
+   "representation is worth ~6x the architecture". That comparison conflated
+   two different things: the 0.640 arm had NO forward-fill (raw NaN, handled
+   natively by XGBoost), so most of that +0.082 was **imputation**, not
+   missingness *indicators*. Isolating them properly here, the mask and delta
+   channels are worth +0.0045. The forward-fill is what mattered.
+
+3. **Why this differs from Jin & Lee's +0.037 from missing-indicators.**
+   Their 12 features are all SOFA-component labs with no dense vitals, so
+   observation patterns carry proportionally more of their signal. Our input
+   is dominated by HR, SpO2, respiratory rate and MAP at 86-94% hourly
+   coverage, where there is little missingness left to encode. Both results
+   can be true; the difference is the feature set.
+
+**The ceiling is the data.** Not the sequence model (section 4), not the
+missingness encoding (here). What does move the deployable numbers is the
+problem definition — the label window, the feature set, and the selection
+metric.
 
 ## 5. What fixed it: the pre-onset target
 
