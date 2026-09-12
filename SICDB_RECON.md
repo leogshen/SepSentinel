@@ -1,6 +1,4 @@
-# SICdb reconnaissance — 2026-09-06
-
-Desk research only: nothing downloaded, no accounts created. Resolves several
+#Desk research only: nothing downloaded, no accounts created. Resolves several
 "verify on access" items in DATA_ACCESS_SPEC.md section 12 **without** access,
 because SICdb publishes its full schema openly (unlike the data).
 
@@ -10,6 +8,13 @@ which carries the real CREATE TABLE DDL), `sicdb.com/Documentation` wiki,
 (s41597-024-03164-9), and the third-party `github.com/yueritian/sicdb-derived`.
 
 ## 1. Access — harder than MIMIC-IV, and not immediate
+
+**RESOLVED 2026-09-08: access was granted and the full 1.0.8 archive
+downloaded (2.38 GB, all 8 tables plus Documentation.pdf and
+d_references). The gates below were cleared; they are left in place as
+the record of what it took. Data lives outside the repo at
+`F:/Claude/Sepsentinel/data_local/sicdb-1.0.8`, same DUA hygiene as
+MIMIC-IV.**
 
 PhysioNet 1.0.8, verbatim: "Only credentialed users who sign the DUA can
 access the files. **In addition, users must have individual studies reviewed
@@ -78,23 +83,53 @@ mortality, and two of the four wards are intermediate care without invasive
 ventilation, CRRT or ECMO. For a *sepsis* cohort this matters: it is not a
 representative medical-ICU population.
 
-## 5. IL-6 — still open, and cheaply resolvable
+## 5. IL-6 — RESOLVED 2026-09-12: present, in quantity
 
-Neither interleukin-6 nor procalcitonin appears in any public SICdb material,
-but `d_references` (the 426 lab names) ships only inside the restricted
-download, so absence of public mention is not evidence of absence. The
-descriptor lists only the highest-volume labs; CRP is not named either.
+Counted directly from `d_references.csv.gz` and `laboratory.csv.gz`. The
+guessed LOINC codes were both right.
 
-An Austrian tertiary ICU very likely records procalcitonin; IL-6 is plausible
-(routine post-CPB marker in German-speaking ICUs) but unconfirmed. Since
-1.0.8 attaches LOINC codes, they would be immediately identifiable if present
-(IL-6 = LOINC 26881-3, PCT = 33959-8/75241-0).
+| DataID | Name | Unit | LOINC |
+|---|---|---|---|
+| 569 | Interleukin 6 (ZL) | pg/ml | 26881-3 |
+| 570 | Interleukin 6 / Cordalblut | pg/ml | 26881-3 |
+| 568 | Interleukin 10 (ZL) | pg/ml | 26848-2 |
+| 263 | Procalcitonin (ZL) | ug/l | 33959-8 |
+| 341 / 351 | C-reactive protein / hs-CRP | mg/dl | 1988-5 / 30522-7 |
 
-**Action, no DUA required:** ask the maintainer directly — a GitHub issue on
-`nrodemund/sicdb` or an email. He answers issues promptly and substantively.
-One question: "does `d_references` contain Interleukin-6 and Procalcitonin
-lab items, and roughly how many cases have them?" See
-outreach/DATA_REQUESTS.md.
+Coverage over 27,350 cases:
+
+| Analyte | Cases | % | Measurements | Median |
+|---|---|---|---|---|
+| CRP | 26,577 | 97.2% | 164,795 | 7.2 mg/dl |
+| Procalcitonin | 5,448 | 19.9% | 15,160 | 0.5 ug/l |
+| **Interleukin-6** | **4,225** | **15.4%** | 11,677 | 46.0 pg/ml |
+
+Serial IL-6, which is what Model A actually needs:
+
+| >=2 measurements | >=3 | >=5 | >=10 | max | mean |
+|---|---|---|---|---|---|
+| 1,965 cases | 1,278 | 657 | 198 | 42 | 2.76 |
+
+For scale, the external leads in `outreach/DATA_REQUESTS.md` section 3 were
+VASST ancillary (363 patients, 2 timepoints) and a medRxiv longitudinal
+study (98 adults). SICdb has **1,965 patients with repeated IL-6 and 657
+with five or more**, already on disk.
+
+**The confound this creates.** Section 4's selection bias now cuts against
+us specifically: the cohort is heavily perioperative and cardiac-surgery
+weighted, and IL-6 is a routine post-CPB marker in German-speaking ICUs.
+That is very likely *why* coverage is 15% rather than 2%. So a large share
+of those 4,225 cases are post-bypass inflammation, where IL-6 rises without
+infection, and the median 46 pg/ml (normal <7) is consistent with either.
+Separating "IL-6 in sepsis" from "IL-6 in surgical inflammation" is now the
+central Model-A design problem in this dataset. `cases` carries the
+admission and surgical fields to stratify on. This is a better problem to
+have than "no serial IL-6 anywhere", but it is not the clean cohort the
+plan assumed.
+
+Note also that the cultures blocker in section 2 is unchanged: these are ICU
+patients with IL-6 trajectories, not confirmed-septic patients with IL-6
+trajectories.
 
 ## 6. What this changes in the plan
 
@@ -106,8 +141,33 @@ outreach/DATA_REQUESTS.md.
    clock.
 2. It stays valuable for two things MIMIC cannot give: **cross-site alarm
    burden** on a genuinely different population, and **high-resolution
-   dynamics** (per-minute vitals) if the project ever revisits the 1-hour
-   grid — `signals.py` already carries `DEFAULT_SAMPLING_INTERVAL_MIN = 5`.
-3. Access effort should not start before the IL-6 question is answered, since
-   that is the one thing that would make SICdb strategically important to
-   Model A rather than merely useful to Model B.
+   dynamics** (per-minute vitals).
+
+   Two corrections to this point, 2026-09-12. First, the parenthetical about
+   `signals.py` carrying `DEFAULT_SAMPLING_INTERVAL_MIN = 5` implied the
+   codebase is ready for sub-hourly data. It is not: that constant's only
+   consumer is `sepsentinel/data/sequences.py`, which nothing in the repo
+   imports — it is vestigial from the synthetic-wearable era. The live MIMIC
+   path is hour-based throughout (`gridding.grid_stay(events, n_hours, ...)`,
+   hourly `make_labels`, alerts per patient-day, capture by lead hour), so
+   adopting 5-minute data is a new pipeline, not a config change.
+
+   Second, the high-resolution motivation is weaker than written. Flat
+   XGBoost matches or beats the causal Transformer on every deployment
+   metric, and the 2026-09-12 window experiment reconfirmed it at the window
+   most favourable to early detection; HiRID's history ablation finds
+   sequence models extract almost nothing beyond ~12 h. If attention over
+   1-hour steps does not earn its keep, 5-minute steps multiply sequence
+   length 12x to chase temporal structure the hourly analysis says goes
+   unused. And per RESULTS.md the ceiling is *lab* sparsity — per-minute
+   resolution improves only HR/SpO2/RR, already at ~95% hourly coverage, so
+   it adds resolution where coverage is already good and none where it is
+   not. The good framing for the per-minute data is not "revisit the 1-hour
+   grid" but "continuous vitals with no labs is the closest available proxy
+   for what a wearable actually produces" — a Model A argument.
+3. ~~Access effort should not start before the IL-6 question is answered~~
+   **DONE.** Access obtained, IL-6 confirmed present in quantity (section 5).
+   SICdb is now strategically important to Model A, not merely useful to
+   Model B — but the question it answers has changed: not "are there serial
+   IL-6 trajectories" (there are, 1,965 of them) but "can IL-6 in sepsis be
+   separated from IL-6 in post-surgical inflammation in this cohort".

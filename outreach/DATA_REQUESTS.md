@@ -121,10 +121,34 @@ to PhysioNet-plus-IL-6 that exists (serial Olink IL-6 + daily vitals/labs).
   statement unread (403) — check manually, likely the single best lead for
   bacterial-sepsis IL-6 kinetics.
 
+## 3b. SICdb — RESOLVED 2026-09-12, and it beats every lead above
+
+SICdb 1.0.8 was downloaded 2026-09-08 and the IL-6 census run directly
+against `laboratory.csv.gz`. It is no longer a parking-lot item: it holds
+**more serial IL-6 than any dataset in this document**, with no further
+application to file.
+
+| | Cases with IL-6 | with >=2 draws | >=5 draws |
+|---|---|---|---|
+| SICdb 1.0.8 | **4,225** | **1,965** | **657** |
+| SDY1655 (Yale IMPACT) | 248 | 8 planned visits | - |
+| SDY1662 (Del Valle) | 1,484 | 244 serial | - |
+| VASST ancillary | 363 | 2 timepoints | - |
+| medRxiv 2025.05.17 | 98 | serial to d28 | - |
+
+Procalcitonin 5,448 cases, CRP 26,577. Full detail and DataIDs in
+SICDB_RECON.md section 5.
+
+Two things this does NOT solve, so the ImmPort/IMPACC track above stays
+open: SICdb has no microbiology, so septic cases cannot be identified by
+Challenge-rule Sepsis-3 (antibiotic-only suspicion is the fallback); and the
+cohort is perioperative/cardiac-surgery weighted, where IL-6 rises post-CPB
+without infection. SICdb gives IL-6 kinetics in ICU inflammation cheaply and
+at scale; a labelled septic IL-6 cohort is still wanted.
+
 ## 4. Parking lot (lower priority)
 
-- **MIMIC-IV / SICdb** — already in progress via PhysioNet credentialing;
-  IL-6 census queries specified in DATA_ACCESS_SPEC.md §5.
+- **Ozger / Dryad** — already in hand (git history); reference-only.
 - **Ozger / Dryad** — already in hand (git history); reference-only.
 
 ---
