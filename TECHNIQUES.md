@@ -51,8 +51,8 @@ different label definitions is close to meaningless.
 | 6 | **Grad clip 1.0 + LR schedule** | stability | one line each | **Absent from both HiRID and YAIB codebases [R]** |
 | 7 | **Pre-norm Transformer or add warmup** | up to several AUPRC | small | Ours is PyTorch-default **post-norm with no warmup, no clipping, no schedule** — the exact configuration Xiong et al. ICML 2020 show is unstable |
 | 8 | **Optimise the utility surrogate directly** | won CinC 2019 | moderate | Morrill regressed on per-timestep U1-U0 rather than the binary label |
-| 9 | **Per-site isotonic recalibration** | **0 AUROC cost**, large net-benefit gain | cheap | Monotone transforms are rank-preserving; Huang JAMIA 2020 Table 2: AUROC 0.870 -> 0.870, ECE 0.109 -> 0.011 **[R]** |
-| 10 | **Do NOT retry MAE pretraining** | saves weeks | — | See Topic B |
+| 9 | **Per-site isotonic recalibration** | near-zero AUROC cost; net-benefit gain **unverified here** | cheap | Huang JAMIA 2020 Table 2: AUROC 0.870 -> 0.870, ECE 0.109 -> 0.011 **[R]**. See the correction under Topic C: isotonic is rank-preserving only up to ties it creates, and it cannot improve a recall-burden frontier it merely remaps |
+| 10 | **Do not repeat the exp-6 MAE recipe** | saves weeks | — | See Topic B. Narrower than first written: what was tested is one recipe on PhysioNet, and its masking was defective (below) |
 
 ---
 
@@ -119,6 +119,21 @@ Labrador (100M MIMIC lab results) "does not consistently outperform
 XGBoost". Newell & Deng, CVPR 2020: *"utility approaches zero as labeled
 data grows... for all pretraining methods."*
 
+**Our exp-6 MAE had a defective pretext, found 2026-09-12.**
+`apply_mae_masking` builds its reconstruction target from
+`signals[:, :, :n_values]` -- the POST-preprocessing channels, i.e. causally
+forward-filled and train-median-imputed values. The observation-mask channels
+are right there in the tensor and are used to zero a lab's mask channel when
+it is masked, but never to restrict the loss, so the model is rewarded for
+reconstructing imputation artifacts. Worse, masking is i.i.d. per timestep
+(`torch.rand(B, T, n_values).topk`), so on a forward-filled staircase the
+unmasked neighbouring hour is the answer; the reported 72% reconstruction-MSE
+reduction may largely measure copy-the-neighbour. Any retry needs an
+observation-restricted loss and contiguous-block masking. Note this is only
+partly fixable as plumbed: Strategy B gives mask+delta channels to LABS only,
+so vitals have no observability signal to restrict against, and
+`AblationPreprocessor.transform()` drops everything that would carry one.
+
 **Reconstruction pretexts rank last in every paper that compares them to a
 contrastive objective.** The likely mechanism: a pretext reconstructing long
 masked histories optimises for structure the downstream task does not use.
@@ -160,9 +175,21 @@ alert burden is the axis where we are already competitive.**
 architecture sweep spans 0.010 AUROC, which is inside that.** Averaging
 5-10 seeds is worth about as much as an architecture change, at lower risk.
 
-**Calibration costs exactly zero AUROC.** Platt, temperature and isotonic
-are monotone, hence rank-preserving; Huang JAMIA 2020 Table 2 shows AUROC
-0.870 -> 0.870 under both, with ECE falling 10x. Justify it by net benefit
+**Calibration costs little AUROC -- but "exactly zero" was wrong, corrected
+2026-09-12.** Platt and temperature scaling are strictly monotone and so are
+rank-preserving. **Isotonic regression is not**: it is monotone
+*non-decreasing* and pools adjacent violators into constant segments, which
+creates ties, and ties change AUROC. Huang JAMIA 2020 Table 2 reports
+0.870 -> 0.870 on their data with ECE falling 10x; that is their measurement,
+not a guarantee transferable here.
+
+The more important limit: **calibration is a monotone remap of the score, so
+it cannot move the recall-burden frontier at all.** Every operating point it
+can reach was already reachable by moving the threshold. What it buys is that
+a *stated* probability means what it says, and therefore that a
+cost-derived threshold can be computed instead of read off an empirical
+curve. Empirical burden curves stay necessary either way. Justify it by net
+benefit
 (Van Calster & Vickers: miscalibration *always* reduced NB) and by threshold
 portability — Zabihi's hospital C held AUROC at 0.793 while utility
 collapsed to -0.146, a pure calibration failure under site shift. With

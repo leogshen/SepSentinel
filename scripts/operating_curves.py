@@ -145,9 +145,31 @@ def curve_for(patient_results):
 
 
 def at_burden(curve, budget):
-    """Best-recall point whose alert burden stays within budget."""
+    """Best-recall point whose alert burden stays within budget.
+
+    WARNING: this maximises patient recall over thresholds. Applied to a TEST
+    curve that is a maximum taken on test, and it flatters whatever it
+    reports. Use it for exploration; for a reported comparison, pick the
+    threshold on VALIDATION with spend_burden() and apply it unchanged.
+    """
     ok = [c for c in curve if c["alerts_per_patient_day"] <= budget]
     return max(ok, key=lambda c: c["patient_recall"]) if ok else None
+
+
+def spend_burden(curve, budget):
+    """Point that spends as much of the alert budget as possible without
+    exceeding it -- i.e. max burden subject to burden <= budget.
+
+    This is the threshold rule to use when a threshold must be chosen on one
+    split and applied to another. Maximising recall (at_burden) optimises the
+    outcome being measured, so it does not transfer: arms end up at different
+    realised burdens on the target split and the comparison stops being
+    equal-burden. Pinning the burden instead optimises a quantity that
+    depends only on the control patients' alarm rate, which transfers far
+    more stably and keeps arms comparable.
+    """
+    ok = [c for c in curve if c["alerts_per_patient_day"] <= budget]
+    return max(ok, key=lambda c: c["alerts_per_patient_day"]) if ok else None
 
 
 def main():

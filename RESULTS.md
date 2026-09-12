@@ -17,6 +17,31 @@ for why that is the point rather than a problem.
 For comparison, where this session started: recall 0.59, lead 11.9 h,
 capture >=6h 0.36 at the same alert burden.
 
+> ## Correction 2026-09-12: every "at <=1.0 alerts/patient-day" number below
+> is optimistic
+>
+> `operating_curves.at_burden()` returns `max(patient_recall)` over
+> thresholds inside the alert budget. Applied to a TEST curve that is a
+> maximum taken on test -- it optimises the quantity being reported. Every
+> burden-conditioned figure in this document, in `results/window_experiment/`
+> and in `results/recipe_experiment/` was produced that way.
+>
+> How much it matters was measured, not guessed. In
+> `results/xgb_tls/XGB_TLS.md` the defect manufactured a **+0.028 patient
+> recall gain with a bootstrap CI excluding zero** that vanished to **+0.001**
+> once the two arms were held at equal realised burden. A CI-backed finding
+> that did not exist.
+>
+> `spend_burden()` is the replacement rule: pin the alert budget rather than
+> maximise recall, choose the threshold on VALIDATION, apply it unchanged.
+> It transfers across splits because it depends only on the control patients'
+> alarm rate. `results/refrozen/REFROZEN.md` re-scores the recipe and window
+> experiments under it, with paired patient-bootstrap intervals; read that in
+> preference to the point estimates here. Section 4d summarises what changed.
+>
+> Contrasts survive better than absolute values, because every arm received
+> the same favour. Three did not survive -- see 4d.
+
 ---
 
 # Part 1 — PhysioNet/CinC 2019 (stage 1)
@@ -327,6 +352,64 @@ Three conclusions:
 missingness encoding (here). What does move the deployable numbers is the
 problem definition — the label window, the feature set, and the selection
 metric.
+
+## 4d. Re-scored with honest thresholds: what survived (2026-09-12)
+
+`scripts/refrozen_report.py` re-scores every existing checkpoint under two
+rules -- threshold frozen on validation via `spend_burden`, and threshold
+re-pinned so arms spend equal TEST burden -- with paired patient-bootstrap
+intervals (2000 resamples, all arms on the same resampled patients). Nothing
+was retrained. Full tables: `results/refrozen/REFROZEN.md`.
+
+### Survived, and got larger: Temporal Label Smoothing + pos_weight
+
+| Transformer, W=12, burden-equalised | baseline | TLS+posw | paired diff |
+|---|---|---|---|
+| Patient recall | 0.494 | 0.566 | **+0.090 [+0.066, +0.114]** |
+| Capture >=3h | 0.457 | 0.506 | **+0.077 [+0.054, +0.100]** |
+| Capture >=6h | 0.411 | 0.436 | **+0.047 [+0.027, +0.068]** |
+| Capture >=12h | 0.323 | 0.346 | **+0.046 [+0.028, +0.065]** |
+| Median lead (h) | 18.65 | 17.34 | -0.12 [-1.74, +1.50] (null) |
+| Patient precision | 0.263 | 0.245 | -0.039 [-0.050, -0.027] |
+
+The interaction holds: `pos_weight` alone is neutral (-0.005 recall,
+CI spans zero) and TLS WITHOUT it is catastrophic (-0.151), so the two
+review actions applied together give the worst of four arms.
+
+### Corrected: three claims that did not survive
+
+1. **"Attention loses every deployment metric" is wrong.** Patient precision
+   is +0.029 [+0.008, +0.051] for the Transformer -- a real win. The rest
+   holds: recall -0.086, capture >=6h -0.068, >=12h -0.062, all excluding
+   zero. The correct statement is that attention loses the early-warning
+   outcomes and wins precision.
+
+2. **The "alarms 2.4 h later" mechanism is not measurable.** Paired, the
+   Transformer's lead deficit is -1.88 h [-4.62, +0.92] -- not significant.
+   The attention conclusion rests on recall and capture; the explanation
+   offered for it does not.
+
+3. **"The prodrome window width barely matters" was too strong.** Several
+   contrasts clear the paired CI: W=3 beats every other window on recall
+   (-0.029 to -0.033), W=24 beats W=3 on lead (+2.25 h) and capture >=6h
+   (+0.027), and patient precision rises monotonically with W (+0.019 at
+   W=12). W=12 versus W=3 is a real trade -- **-2.9 points of recall for
+   +1.9 points of patient precision and ~1.5 h of lead** -- not an absence
+   of difference.
+
+Also corrected: the earlier reading that TLS "trades lead time for coverage"
+was a composition artifact. The raw median lead fell 1.31 h, but that was
+newly-caught harder cases lowering the median, not later alarms for the same
+patients; paired, the difference is -0.12 h and null.
+
+### TLS does not transfer to XGBoost
+
+`results/xgb_tls/XGB_TLS.md`. At equal test burden, patient recall +0.001
+[-0.021, +0.024], and capture >=6h **-0.031 [-0.052, -0.010]** and >=12h
+**-0.032 [-0.051, -0.012]** both move against it. A third arm holding total
+positive mass constant (the TLS ramp carries only 27.7% of the hard-label
+mass) is null on everything, so the ramp SHAPE -- TLS's entire mechanism --
+contributes nothing on a tree ensemble.
 
 ## 5. What fixed it: the pre-onset target
 

@@ -1,4 +1,16 @@
-#Desk research only: nothing downloaded, no accounts created. Resolves several
+# SICdb reconnaissance
+
+Originally 2026-09-06, desk research only. **Amended 2026-09-12: the
+database has been downloaded (v1.0.8, 2.38 GB, obtained 2026-09-08) and
+three of the open questions below are settled from the real files rather
+than from public material.** Sections 1 and 5 are amended in place;
+everything else predates access and still stands.
+
+**Headline: IL-6 IS PRESENT** - 4,225 cases, 1,965 with repeated draws.
+See section 5, including a same-day correction about what that does and
+does not mean for Model A.
+
+Desk research only: nothing downloaded, no accounts created. Resolves several
 "verify on access" items in DATA_ACCESS_SPEC.md section 12 **without** access,
 because SICdb publishes its full schema openly (unlike the data).
 
@@ -85,6 +97,15 @@ representative medical-ICU population.
 
 ## 5. IL-6 — RESOLVED 2026-09-12: present, in quantity
 
+**Correction, same day.** An earlier version of this update said IL-6
+presence makes SICdb "strategically important to Model A". That
+overstates it. Model A maps electrochemical SENSOR signal to biomarker
+concentration; SICdb has only the concentration side and no paired sensor
+readings, so it cannot calibrate Model A. What it can do is SPECIFY Model
+A - the concentration range, the kinetics between draws, and therefore the
+dynamic range and sampling rate a sensor must resolve. The trajectories
+themselves are a Model B biomarker-feature question.
+
 Counted directly from `d_references.csv.gz` and `laboratory.csv.gz`. The
 guessed LOINC codes were both right.
 
@@ -153,9 +174,10 @@ trajectories.
    adopting 5-minute data is a new pipeline, not a config change.
 
    Second, the high-resolution motivation is weaker than written. Flat
-   XGBoost matches or beats the causal Transformer on every deployment
-   metric, and the 2026-09-12 window experiment reconfirmed it at the window
-   most favourable to early detection; HiRID's history ablation finds
+   XGBoost beats the causal Transformer on the early-warning metrics
+   (recall, capture) though it loses on patient precision, and the
+   2026-09-12 window experiment reconfirmed that at the window most
+   favourable to early detection; HiRID's history ablation finds
    sequence models extract almost nothing beyond ~12 h. If attention over
    1-hour steps does not earn its keep, 5-minute steps multiply sequence
    length 12x to chase temporal structure the hourly analysis says goes
@@ -166,8 +188,22 @@ trajectories.
    grid" but "continuous vitals with no labs is the closest available proxy
    for what a wearable actually produces" — a Model A argument.
 3. ~~Access effort should not start before the IL-6 question is answered~~
-   **DONE.** Access obtained, IL-6 confirmed present in quantity (section 5).
-   SICdb is now strategically important to Model A, not merely useful to
-   Model B — but the question it answers has changed: not "are there serial
-   IL-6 trajectories" (there are, 1,965 of them) but "can IL-6 in sepsis be
-   separated from IL-6 in post-surgical inflammation in this cohort".
+   **DONE.** Access obtained, IL-6 confirmed present (section 5). This does
+   NOT make SICdb a Model A dataset - no paired sensor signals exist here.
+   It makes SICdb a Model B biomarker dataset and a Model A specification
+   input. The open question is whether IL-6 in sepsis can be separated from
+   IL-6 in post-surgical inflammation, and the available labels make that
+   hard.
+
+4. **New 2026-09-12: SICdb unblocks multi-source pretraining.** The one SSL
+   setting with a surviving positive result is cross-dataset (GenHPF:
+   -0.001 AUROC single-source, +0.9 multi-source). FOUNDATION_MODELS option
+   E called that blocked on eICU/HiRID; holding two credentialed ICU
+   datasets unblocks it. Pretraining is self-supervised, so SICdb's missing
+   culture labels do not block it - only the fine-tune target, which stays
+   MIMIC. Design around: hospital-shortcut learning in the encoder,
+   negative transfer from a surgical case mix, and a ~50x density mismatch.
+   **Decide first:** once SICdb patients enter pretraining they cannot serve
+   as external validation, which section 6.2 calls its most valuable use.
+   Split by patient up front, sealing a hold-out for control-only
+   alarm-burden evaluation, rather than discovering the conflict later.

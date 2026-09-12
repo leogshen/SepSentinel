@@ -198,6 +198,28 @@ class MAEModel(nn.Module):
 
 def apply_mae_masking(signals, lengths, n_vitals, n_labs, mask_ratio=0.40):
     """Apply random masking to preprocessed signals for MAE pretraining.
+    DEFECTIVE AS WRITTEN -- documented 2026-09-12, do not reuse unchanged.
+
+    Two problems, both of which make the pretext easier than the task it is
+    meant to teach:
+
+    1. The reconstruction target is `signals[:, :, :n_values]`, i.e. the
+       POST-preprocessing channels: causally forward-filled and
+       train-median-imputed. The observation-mask channels sit in the same
+       tensor and are used below to zero a lab mask when that lab is masked,
+       but they never restrict the loss -- so the model is rewarded for
+       reconstructing imputation artifacts.
+    2. Masking is i.i.d. per timestep (torch.rand(B, T, n_values).topk), so
+       on a forward-filled staircase the unmasked neighbouring hour IS the
+       answer. The 72% reconstruction-MSE reduction reported in
+       results/experiment6_mae/ may largely measure copy-the-neighbour.
+
+    A revised pretext needs an observation-restricted loss and contiguous
+    block masking. Note the fix is asymmetric: Strategy B gives mask+delta
+    channels to LABS only, so vitals carry no observability signal, and
+    AblationPreprocessor.transform() drops the raw episode fields that would
+    supply one.
+
 
     Input layout: [vital_values(nv), lab_values(nl), lab_masks(nl), lab_deltas(nl)]
     Total channels: nv + nl*3

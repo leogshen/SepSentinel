@@ -143,8 +143,17 @@ From `TECHNIQUES.md`, this is the strongest and most decision-relevant block.
 | NCL | best contrastive (NCL n_w) | +0.9 AUPRC |
 | Newell & Deng, CVPR 2020 | general | *"utility approaches zero as labeled data grows... for all pretraining methods"* |
 
-**Our own MAE null result (experiment 6) is the modal published outcome, not
-a bug in our code.** Reconstruction pretexts rank last in every paper that
+**Our own MAE null result (experiment 6) is the modal published outcome --
+but the verdict should be narrower than first written (corrected
+2026-09-12).** What was tested is ONE recipe on PhysioNet, never on MIMIC,
+and its pretext was defective: the reconstruction target is built from
+post-preprocessing channels, so imputed forward-filled values are targets,
+and masking is i.i.d. per timestep so an unmasked neighbouring hour reveals
+the answer on a staircase. That argues against repeating the recipe, not
+against pretraining on larger and more diverse data. See TECHNIQUES.md
+Topic B.
+
+**The published pattern still stands independently of our bug.** Reconstruction pretexts rank last in every paper that
 compares them against a contrastive objective. The likely mechanism: HiRID's
 history ablation shows sequence models extract almost nothing beyond ~12h of
 context, so a pretext that reconstructs long masked histories optimises for
@@ -212,6 +221,20 @@ Newell & Deng confirm linear eval does not correlate with fine-tuning), and
 make sure the supervised baseline is genuinely tuned.
 
 ### E. Cross-dataset SSL, not a foundation model **(~1 week, best evidence)**
+
+> **UNBLOCKED 2026-09-12.** This was written as blocked on eICU/HiRID access.
+> SICdb 1.0.8 is now in hand, so we hold two credentialed ICU datasets and
+> multi-source pretraining is runnable today. Pretraining is self-supervised,
+> so SICdb's missing culture labels do not block it; the fine-tune target
+> stays MIMIC. This is now the highest-evidence open item in this file.
+> Caveats to design around, not assume away: hospital-shortcut learning in
+> the encoder (probe for it directly), negative transfer from a
+> perioperative case mix, a ~50x measurement-density mismatch, and the fact
+> that SICdb patients used for pretraining can no longer serve as external
+> validation -- split by patient and seal a hold-out first. Harmonisation
+> means consistent units, time origins, aggregation and missingness
+> handling; it does not mean forcing the two hospitals' distributions to
+> match, since some of that difference is real case mix.
 
 Not an off-the-shelf FM but the setting with the only surviving positive
 result. Pretrain on eICU (~200k stays) + HiRID + AmsterdamUMCdb, fine-tune
