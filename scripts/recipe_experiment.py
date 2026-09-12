@@ -80,14 +80,8 @@ def soften(data, window_h, gamma):
             for d in data]
 
 
-def run_one(data, raw_map, in_dim, pos_weight, seed, device, epochs, ckpt):
-    torch.manual_seed(seed)
-    np.random.seed(seed)
-    model = SepsisTransformer(input_dim=in_dim)
-    trainer = Trainer(model, device=device, pos_weight=pos_weight,
-                      checkpoint_dir=ckpt)
-    trainer.fit(data["train"], data["val"], epochs=epochs,
-                batch_size=BATCH_SIZE, lr=LR, patience=PATIENCE)
+def score(model, data, raw_map, device):
+    """Test-set metrics for an already-fitted model."""
     res = collect_patient_predictions(model, data["test"], raw_map, device)
     y = np.concatenate([p["labels"] for p in res])
     p = np.concatenate([p["probs"] for p in res])
@@ -101,6 +95,30 @@ def run_one(data, raw_map, in_dim, pos_weight, seed, device, epochs, ckpt):
             "lead": c["median_lead_time_h"]}
 
 
+def run_one(data, raw_map, in_dim, pos_weight, seed, device, epochs, ckpt,
+            resume=False):
+    """Fit one run, or score an existing checkpoint if --resume and one exists.
+
+    The Sep-8 run trained all three tls_posw seeds and died before writing
+    their arm to recipe.json, so the checkpoints on disk are complete and only
+    the metrics were lost. Scoring them back is inference-only.
+    """
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    model = SepsisTransformer(input_dim=in_dim)
+    saved = os.path.join(ckpt, "best_model.pt")
+    if resume and os.path.exists(saved):
+        model.load_state_dict(torch.load(saved, weights_only=True))
+        model.to(device)
+        print("    resumed from %s (no retraining)" % saved)
+        return score(model, data, raw_map, device)
+    trainer = Trainer(model, device=device, pos_weight=pos_weight,
+                      checkpoint_dir=ckpt)
+    trainer.fit(data["train"], data["val"], epochs=epochs,
+                batch_size=BATCH_SIZE, lr=LR, patience=PATIENCE)
+    return score(model, data, raw_map, device)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--episodes", required=True)
@@ -112,6 +130,9 @@ def main():
     ap.add_argument("--epochs", type=int, default=50)
     ap.add_argument("--device",
                     default="cuda" if torch.cuda.is_available() else "cpu")
+    ap.add_argument("--resume", action="store_true",
+                    help="keep arms already in recipe.json, and score any "
+                         "existing per-seed checkpoint instead of retraining")
     args = ap.parse_args()
     os.makedirs(args.out_dir, exist_ok=True)
 
@@ -144,13 +165,24 @@ def main():
     }
 
     results = {}
+    json_path = os.path.join(args.out_dir, "recipe.json")
+    if args.resume and os.path.exists(json_path):
+        with open(json_path) as fh:
+            results = json.load(fh)
+        print("resuming: %d arm(s) already recorded (%s)"
+              % (len(results), ", ".join(results)))
+
     for name, (data, pos_weight) in configs.items():
+        if name in results:
+            print("%-18s already complete, skipping" % name)
+            continue
         runs = []
         for seed in seeds:
             t0 = time.time()
             r = run_one(data, raw_map, in_dim, pos_weight, seed, args.device,
                         args.epochs, os.path.join(args.out_dir,
-                                                  "%s_seed%d" % (name, seed)))
+                                                  "%s_seed%d" % (name, seed)),
+                        resume=args.resume)
             r["seed"] = seed
             r["minutes"] = (time.time() - t0) / 60.0
             runs.append(r)
@@ -165,7 +197,7 @@ def main():
             vals = [r[k] for r in runs if r[k] is not None]
             agg[k] = (float(np.mean(vals)), float(np.std(vals)))
         results[name] = {"runs": runs, "mean_sd": agg}
-        with open(os.path.join(args.out_dir, "recipe.json"), "w") as fh:
+        with open(json_path, "w") as fh:
             json.dump(results, fh, indent=2)
 
     print("\n%-18s %14s %14s %13s %13s %13s"

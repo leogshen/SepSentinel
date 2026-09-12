@@ -39,3 +39,6 @@ results/sepsis3_labels_*.csv
 # OS
 Thumbs.db
 .DS_Store
+
+# Experiment console logs (regenerate by re-running the script)
+results/*.log

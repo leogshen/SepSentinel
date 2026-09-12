@@ -102,6 +102,9 @@ def curve_for(patient_results):
       patient_precision   of all patients ever alarmed, the fraction who were
                           genuinely septic -- the number a clinician means by
                           "when it fires, how often is it right".
+    Timestep recall and F1 accompany timestep precision so the raw
+    confusion-matrix view is available without recomputing: AUROC is
+    optimistic at this prevalence and should never be quoted alone.
     Patient precision is the higher and more favourable of the two; both are
     reported so neither can be quoted selectively.
     """
@@ -115,6 +118,9 @@ def curve_for(patient_results):
         pred = y_prob >= t
         tp = float((pred & (y_true == 1)).sum())
         fp = float((pred & (y_true == 0)).sum())
+        fn = float(((~pred) & (y_true == 1)).sum())
+        ts_prec = tp / (tp + fp) if (tp + fp) else float("nan")
+        ts_rec = tp / (tp + fn) if (tp + fn) else float("nan")
         alarmed = np.array([bool((np.asarray(p["probs"]) >= t).any())
                             for p in patient_results])
         n_alarmed = int(alarmed.sum())
@@ -123,7 +129,11 @@ def curve_for(patient_results):
             "patient_recall": ew["patient_recall"],
             "alerts_per_patient_day": ew["alerts_per_patient_day"],
             "median_lead_time_h": ew["median_lead_time_h"],
-            "timestep_precision": tp / (tp + fp) if (tp + fp) else float("nan"),
+            "timestep_precision": ts_prec,
+            "timestep_recall": ts_rec,
+            "timestep_f1": (2 * ts_prec * ts_rec / (ts_prec + ts_rec)
+                            if (tp + fp) and (tp + fn) and (ts_prec + ts_rec)
+                            else float("nan")),
             "patient_precision": (float((alarmed & is_septic).sum()) / n_alarmed
                                   if n_alarmed else float("nan")),
             "patients_alarmed": n_alarmed,
