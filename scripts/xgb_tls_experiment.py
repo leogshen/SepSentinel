@@ -192,6 +192,12 @@ def reduce_stats(st, idx=None):
         "median_lead_time_h": float(np.median(leads)) if leads.size else np.nan,
         "alerts_per_patient_day": float(24.0 * healthy_alerts / healthy_hours)
         if healthy_hours else np.nan,
+        # Burden counts alarm events per patient-DAY. It says nothing about
+        # how many distinct people were disturbed, and the two diverge as
+        # alarms are merged into longer episodes -- a policy can hold burden
+        # flat while alarming on everybody. Report both.
+        "healthy_alarmed_frac": float(ever[heal].sum() / max(int(heal.sum()), 1))
+        if heal.any() else np.nan,
     }
     for h in LEAD_POINTS:
         out["capture_%dh" % h] = (float(st["caught"][h][idx][sep].sum() / n_sep)
