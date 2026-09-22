@@ -233,6 +233,13 @@ def main():
         if key == "full":
             diff = "-"
             r = dict(r, observed_fraction_target=float("nan"))
+        elif abs(r["alerts_per_patient_day"] - args.burden) > 0.02:
+            # Degenerate arm: with every channel removed the model emits one
+            # constant probability, so the burden quantile is a wall of ties
+            # and `>= threshold` fires on everybody. Realised burden overshoots
+            # and recall goes to 1.0 by construction. Not a result.
+            diff = "INVALID -- burden %.2f, not %.2f" % (
+                r["alerts_per_patient_day"], args.burden)
         else:
             b = contrasts[key]["capture_6h"]
             star = "" if (b["lo95"] <= 0 <= b["hi95"]) else " **"
