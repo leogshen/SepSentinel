@@ -1,0 +1,72 @@
+{
+  "data_root": "F:/Claude/Sepsentinel/data_local/sicdb-1.0.8",
+  "labels": "results/sicdb_labels.csv",
+  "label_name": "sicdb_abx_only_sofa_rise",
+  "label_rung": 1,
+  "label_warning": "SICdb labels use antibiotic-initiation WITHOUT culture pairing (rung 1 of DATA_ACCESS_SPEC section 12). They are not comparable to MIMIC-IV Challenge-rule Sepsis-3 labels and must never be pooled with them. Use SICdb for self-supervised pretraining, transfer discrimination under the relabelled definition, or control-only alarm-burden evaluation.",
+  "features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "map",
+    "sbp",
+    "fio2",
+    "urine_output",
+    "lactate",
+    "ph",
+    "creatinine",
+    "wbc",
+    "platelets",
+    "bilirubin",
+    "pao2",
+    "bun",
+    "glucose"
+  ],
+  "vitals": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "map",
+    "sbp",
+    "fio2",
+    "urine_output"
+  ],
+  "excluded_from_pool": [
+    "gcs"
+  ],
+  "prodrome_window_h": 12.0,
+  "post_onset_truncate_h": 0.0,
+  "implausible_values_dropped": {
+    "heart_rate": 194,
+    "spo2": 113,
+    "respiratory_rate": 7301,
+    "temperature": 76583,
+    "map": 866,
+    "sbp": 108,
+    "fio2": 669,
+    "urine_output": 93,
+    "lactate": 3,
+    "ph": 28,
+    "creatinine": 0,
+    "wbc": 30,
+    "platelets": 16,
+    "bilirubin": 0,
+    "pao2": 2821,
+    "bun": 2,
+    "glucose": 14
+  },
+  "attrition": {
+    "cases_gridded": 26763,
+    "early_onset": 0,
+    "no_hr_in_first_6h": 24,
+    "too_sparse": 107,
+    "empty_or_too_short": 6733,
+    "kept": 19899
+  },
+  "episodes": 19899,
+  "septic_episodes": 710,
+  "mean_observed_fraction": 0.44781645146958643,
+  "minutes": 2.053033729394277
+}

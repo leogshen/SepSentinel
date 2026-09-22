@@ -144,6 +144,34 @@ def curve_for(patient_results):
     return out
 
 
+def threshold_for_exact_burden(patient_results, budget):
+    """Threshold that makes the realised burden hit `budget` as closely as the
+    data allows -- solved, not searched.
+
+    spend_burden() picks from a 0.01 threshold grid, which at ~1-3% prevalence
+    is far too coarse: arms re-pinned that way still land 0.86 to 0.97
+    alerts/patient-day, and a capture comparison across that spread is still
+    a burden comparison. Burden depends only on NON-SEPTIC alarm-hours, so the
+    exact threshold is a quantile of their pooled hourly probabilities:
+
+        target alarm-hours k = budget * (nonseptic hours) / 24
+        threshold = the k-th largest nonseptic probability
+
+    Ties can push the realised count slightly above k; nothing else can.
+    """
+    probs = np.concatenate([np.asarray(p["probs"]) for p in patient_results
+                            if p["label"] == 0])
+    n = probs.size
+    if n == 0:
+        return None
+    k = int(np.floor(budget * n / 24.0))
+    if k <= 0:
+        return float(np.max(probs)) + 1e-9
+    if k >= n:
+        return float(np.min(probs))
+    return float(np.sort(probs)[::-1][k - 1])
+
+
 def at_burden(curve, budget):
     """Best-recall point whose alert burden stays within budget.
 

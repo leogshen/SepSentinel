@@ -31,6 +31,7 @@ results/**/*.pt
 # Extracted episodes and per-stay label tables (derived from MIMIC/SICdb)
 results/*.pkl
 results/sepsis3_labels_*.csv
+results/sicdb_labels.csv
 
 # External datasets (binary, keep local)
 *.sav

@@ -1,0 +1,125 @@
+{
+  "pooled_features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "map",
+    "sbp",
+    "fio2",
+    "urine_output",
+    "lactate",
+    "ph",
+    "creatinine",
+    "wbc",
+    "platelets",
+    "bilirubin",
+    "pao2",
+    "bun",
+    "glucose"
+  ],
+  "vitals": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "map",
+    "sbp",
+    "fio2",
+    "urine_output"
+  ],
+  "dropped_from_mimic": [
+    "gcs"
+  ],
+  "mimic_episodes": 63672,
+  "sicdb_episodes": 19899,
+  "mimic_septic": 7345,
+  "sicdb_septic_rung1": 710,
+  "observed_fraction": {
+    "heart_rate": {
+      "mimic": 0.9321050346391031,
+      "sicdb": 0.9844232691123217,
+      "ratio_sicdb_over_mimic": 1.0561291190680837
+    },
+    "spo2": {
+      "mimic": 0.906190144455436,
+      "sicdb": 0.9751136589679742,
+      "ratio_sicdb_over_mimic": 1.0760585567325465
+    },
+    "respiratory_rate": {
+      "mimic": 0.9134720948565476,
+      "sicdb": 0.9140877205175707,
+      "ratio_sicdb_over_mimic": 1.0006739403036935
+    },
+    "temperature": {
+      "mimic": 0.26977248104008666,
+      "sicdb": 0.750096463330753,
+      "ratio_sicdb_over_mimic": 2.780478054836486
+    },
+    "map": {
+      "mimic": 0.8632701184482461,
+      "sicdb": 0.9488157178908921,
+      "ratio_sicdb_over_mimic": 1.0990948228306765
+    },
+    "sbp": {
+      "mimic": 0.8505073191528638,
+      "sicdb": 0.9486659301102198,
+      "ratio_sicdb_over_mimic": 1.1154118356737077
+    },
+    "fio2": {
+      "mimic": 0.060352126803573825,
+      "sicdb": 0.1603040811777873,
+      "ratio_sicdb_over_mimic": 2.656146347576515
+    },
+    "urine_output": {
+      "mimic": 0.43724729403099827,
+      "sicdb": 0.7380930697387941,
+      "ratio_sicdb_over_mimic": 1.6880449114602585
+    },
+    "lactate": {
+      "mimic": 0.02492690579426002,
+      "sicdb": 0.24923128910958953,
+      "ratio_sicdb_over_mimic": 9.998484816634587
+    },
+    "ph": {
+      "mimic": 0.03655510846323062,
+      "sicdb": 0.24509834466527824,
+      "ratio_sicdb_over_mimic": 6.704899943377633
+    },
+    "creatinine": {
+      "mimic": 0.06621284894575756,
+      "sicdb": 0.05925724433622444,
+      "ratio_sicdb_over_mimic": 0.8949508332554721
+    },
+    "wbc": {
+      "mimic": 0.06117623199016223,
+      "sicdb": 0.05994387152282646,
+      "ratio_sicdb_over_mimic": 0.9798555676404859
+    },
+    "platelets": {
+      "mimic": 0.061949792058639874,
+      "sicdb": 0.05996064775426176,
+      "ratio_sicdb_over_mimic": 0.9678910253242619
+    },
+    "bilirubin": {
+      "mimic": 0.015680916517987625,
+      "sicdb": 0.015697759414461592,
+      "ratio_sicdb_over_mimic": 1.001074101533201
+    },
+    "pao2": {
+      "mimic": 0.03183180845095538,
+      "sicdb": 0.24284313983947542,
+      "ratio_sicdb_over_mimic": 7.628945751342848
+    },
+    "bun": {
+      "mimic": 0.06596326280353364,
+      "sicdb": 0.05971259918946836,
+      "ratio_sicdb_over_mimic": 0.9052402299643306
+    },
+    "glucose": {
+      "mimic": 0.06421804347696414,
+      "sicdb": 0.2592946313662803,
+      "ratio_sicdb_over_mimic": 4.037722380304107
+    }
+  }
+}
