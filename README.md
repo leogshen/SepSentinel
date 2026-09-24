@@ -2,6 +2,18 @@
 
 A wearable multimodal platform for early sepsis detection using continuous biosensor data and machine learning.
 
+## Where to read the results
+
+- **`RESEARCH_RECORD.html`** — the compiled research record: current frontier,
+  all 31 experiments with verdicts as they stand after re-measurement, the
+  seven open problems, and an inventory of every dataset on the build machine
+  with paths and contents. GitHub does not render HTML inline; open the file
+  locally, or view it through a raw-HTML viewer.
+- **`dev.md`** — the same record in Markdown, plus the local environment and
+  how to run jobs. Renders on GitHub.
+- **`RESULTS.md`** — the long-form numbers, including the 2026-09-12
+  correction notice about thresholds that were selected on test.
+
 ## What is SepSentinel?
 
 SepSentinel is a wearable patch system that monitors physiological signals and measures interstitial fluid biomarkers in situ via microneedle-integrated electrochemical sensors. No fluid is extracted or transported — the sensors contact ISF directly within the skin. This repository contains the software prototype: data pipeline, ML models, and monitoring dashboard.

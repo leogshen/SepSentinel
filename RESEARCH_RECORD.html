@@ -1,0 +1,955 @@
+<title>SepSentinel Research Record</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#F7F8FA; --raised:#FFFFFF; --sunken:#EEF0F4;
+    --ink:#161C26; --ink-2:#414B5A; --ink-3:#6B7585;
+    --rule:#D9DEE6; --rule-2:#E8EBF0;
+    --accent:#B8730F; --accent-soft:#F5E8D4;
+    --ok:#0F6E68; --ok-soft:#DCEEEC;
+    --bad:#9A4A3C; --bad-soft:#F6E3DF;
+    --null:#6B7585; --null-soft:#E6E9EF;
+    --measure:68ch;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#12161C; --raised:#181D25; --sunken:#0D1116;
+      --ink:#E8EBF0; --ink-2:#AEB7C4; --ink-3:#7C8697;
+      --rule:#2A313B; --rule-2:#212831;
+      --accent:#D99A3D; --accent-soft:#332512;
+      --ok:#4FB3A8; --ok-soft:#102B29;
+      --bad:#C97B6A; --bad-soft:#2E1B17;
+      --null:#7C8697; --null-soft:#1E242C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#12161C; --raised:#181D25; --sunken:#0D1116;
+    --ink:#E8EBF0; --ink-2:#AEB7C4; --ink-3:#7C8697;
+    --rule:#2A313B; --rule-2:#212831;
+    --accent:#D99A3D; --accent-soft:#332512;
+    --ok:#4FB3A8; --ok-soft:#102B29;
+    --bad:#C97B6A; --bad-soft:#2E1B17;
+    --null:#7C8697; --null-soft:#1E242C;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+    font-size:16.5px; line-height:1.62;
+    padding-block:0 5rem; padding-left:max(20px,env(safe-area-inset-left));
+    padding-right:max(20px,env(safe-area-inset-right));
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--measure); margin:0 auto}
+  .wide{max-width:1040px; margin:0 auto}
+
+  /* ---- masthead ---- */
+  header.mast{
+    border-bottom:2px solid var(--ink); padding-block:3.2rem 1.4rem;
+    margin-bottom:2.4rem;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:.7rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent); font-weight:600;
+  }
+  h1{
+    font-family:Spectral,Georgia,serif; font-weight:700;
+    font-size:clamp(2.1rem,5.2vw,3.1rem); line-height:1.08;
+    margin:.5rem 0 .6rem; letter-spacing:-.018em; text-wrap:balance;
+  }
+  .standfirst{
+    font-family:Spectral,Georgia,serif; font-size:1.12rem;
+    color:var(--ink-2); font-style:italic; max-width:58ch; margin:0;
+  }
+  .mast-meta{
+    display:flex; flex-wrap:wrap; gap:.5rem 1.4rem; margin-top:1.3rem;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:.74rem; color:var(--ink-3);
+  }
+
+  /* ---- operating point strip ---- */
+  .opstrip{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(112px,1fr));
+    gap:0; border:1px solid var(--rule); border-radius:3px;
+    background:var(--raised); overflow:hidden; margin:0 0 2.6rem;
+  }
+  .op{padding:.85rem 1rem; border-right:1px solid var(--rule-2)}
+  .op:last-child{border-right:0}
+  .op dt{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-3); margin:0 0 .3rem;
+  }
+  .op dd{
+    margin:0; font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:1.24rem; font-weight:600; font-variant-numeric:tabular-nums;
+    color:var(--ink);
+  }
+  .op dd small{font-size:.66rem; font-weight:400; color:var(--ink-3)}
+
+  /* ---- sections ---- */
+  section{margin-block:3.4rem}
+  h2{
+    font-family:Spectral,Georgia,serif; font-weight:600;
+    font-size:1.62rem; line-height:1.2; margin:0 0 .3rem;
+    letter-spacing:-.01em; text-wrap:balance;
+  }
+  h2 .num{
+    font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.72rem;
+    color:var(--accent); font-weight:600; letter-spacing:.1em;
+    display:block; margin-bottom:.45rem;
+  }
+  h3{
+    font-family:"Source Sans 3",sans-serif; font-weight:600; font-size:1rem;
+    margin:2rem 0 .5rem; color:var(--ink);
+  }
+  .lede{color:var(--ink-2); margin:.6rem 0 1.5rem}
+  p{margin:0 0 1rem}
+  strong{font-weight:600}
+  code,.mono{
+    font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.86em;
+    font-variant-numeric:tabular-nums;
+  }
+  code{background:var(--sunken); padding:.1em .34em; border-radius:2px;
+       color:var(--ink-2)}
+
+  /* ---- verdict chips ---- */
+  .chip{
+    display:inline-block; font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:.6rem; letter-spacing:.1em; text-transform:uppercase;
+    font-weight:600; padding:.18em .5em; border-radius:2px;
+    white-space:nowrap; vertical-align:.12em;
+  }
+  .c-ok{background:var(--ok-soft); color:var(--ok)}
+  .c-bad{background:var(--bad-soft); color:var(--bad)}
+  .c-null{background:var(--null-soft); color:var(--null)}
+  .c-fix{background:var(--accent-soft); color:var(--accent)}
+
+  /* ---- experiment list ---- */
+  .exp{list-style:none; padding:0; margin:0; border-top:1px solid var(--rule)}
+  .exp>li{
+    display:grid; grid-template-columns:2.6rem 1fr; gap:0 1rem;
+    padding:1rem 0; border-bottom:1px solid var(--rule-2);
+  }
+  .exp .idx{
+    font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.78rem;
+    color:var(--ink-3); font-variant-numeric:tabular-nums; padding-top:.16rem;
+  }
+  .exp .body h4{
+    margin:0 0 .25rem; font-size:.98rem; font-weight:600;
+    display:flex; flex-wrap:wrap; gap:.5rem; align-items:baseline;
+  }
+  .exp .body p{margin:0; color:var(--ink-2); font-size:.94rem}
+  .era{
+    font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.66rem;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3);
+    margin:2.2rem 0 .7rem; padding-bottom:.35rem;
+    border-bottom:1px solid var(--rule);
+  }
+
+  /* ---- tables ---- */
+  .tscroll{overflow-x:auto; margin:1.2rem 0 1.4rem;
+           border:1px solid var(--rule); border-radius:3px;
+           background:var(--raised)}
+  table{border-collapse:collapse; width:100%; font-size:.88rem}
+  caption{
+    caption-side:top; text-align:left; padding:.7rem .9rem;
+    font-size:.78rem; color:var(--ink-3); border-bottom:1px solid var(--rule-2);
+  }
+  th,td{
+    padding:.5rem .9rem; text-align:right; white-space:nowrap;
+    border-bottom:1px solid var(--rule-2);
+  }
+  th:first-child,td:first-child{text-align:left}
+  thead th{
+    font-family:"IBM Plex Mono",ui-monospace,monospace; font-weight:600;
+    font-size:.68rem; letter-spacing:.07em; text-transform:uppercase;
+    color:var(--ink-3); background:var(--sunken);
+  }
+  tbody td{font-variant-numeric:tabular-nums;
+           font-family:"IBM Plex Mono",ui-monospace,monospace}
+  tbody td:first-child{font-family:"Source Sans 3",sans-serif}
+  tbody tr:last-child td{border-bottom:0}
+  tr.best td{background:var(--ok-soft)}
+  .up{color:var(--ok); font-weight:600}
+  .down{color:var(--bad); font-weight:600}
+  .flat{color:var(--ink-3)}
+
+  /* ---- callout ---- */
+  .note{
+    border-left:3px solid var(--accent); background:var(--raised);
+    padding:1rem 1.2rem; margin:1.5rem 0; font-size:.95rem;
+  }
+  .note p:last-child{margin-bottom:0}
+  .note .t{
+    font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.66rem;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+    font-weight:600; display:block; margin-bottom:.4rem;
+  }
+
+  /* ---- ranked list ---- */
+  ol.ranked{list-style:none; counter-reset:r; padding:0; margin:1.2rem 0}
+  ol.ranked>li{
+    counter-increment:r; position:relative; padding-left:2.4rem;
+    margin-bottom:1.1rem;
+  }
+  ol.ranked>li::before{
+    content:counter(r); position:absolute; left:0; top:.06em;
+    font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.76rem;
+    font-weight:600; color:var(--accent);
+    border:1px solid var(--rule); border-radius:2px;
+    width:1.65rem; height:1.65rem; display:grid; place-items:center;
+  }
+  ol.ranked .struck{color:var(--ink-3); text-decoration:line-through}
+  ul.plain{margin:1rem 0; padding-left:1.15rem}
+  ul.plain li{margin-bottom:.5rem; color:var(--ink-2)}
+  footer{
+    margin-top:4rem; padding-top:1.2rem; border-top:1px solid var(--rule);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:.72rem; color:var(--ink-3);
+  }
+  @media (max-width:560px){
+    .exp>li{grid-template-columns:2rem 1fr}
+    body{font-size:16px}
+  }
+</style>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="eyebrow">Model B &middot; Research record</div>
+    <h1>SepSentinel</h1>
+    <p class="standfirst">Nine months of sepsis early-warning work, and what
+      survived being measured twice.</p>
+    <div class="mast-meta">
+      <span>Compiled 2026&#8209;09&#8209;22</span>
+      <span>MIMIC&#8209;IV 3.1 &middot; SICdb 1.0.8 &middot; PhysioNet/CinC 2019</span>
+      <span>31 experiments</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<dl class="opstrip">
+  <div class="op"><dt>Capture &ge;6h</dt><dd>0.607</dd></div>
+  <div class="op"><dt>Patient recall</dt><dd>0.681</dd></div>
+  <div class="op"><dt>Median lead</dt><dd>22.0<small> h</small></dd></div>
+  <div class="op"><dt>Alert burden</dt><dd>1.00<small> /pt-day</small></dd></div>
+  <div class="op"><dt>Channels</dt><dd>8<small> of 17</small></dd></div>
+  <div class="op"><dt>Patient prec.</dt><dd>0.172</dd></div>
+</dl>
+
+<section>
+  <h2><span class="num">The state</span>Flat XGBoost, and a ceiling made of
+    missing measurements</h2>
+  <p class="lede">Model B maps physiology and labs to per-hour sepsis risk. It
+    is complete end to end on MIMIC&#8209;IV 3.1, 63,672 episodes.</p>
+  <p>The best deployable configuration is <strong>flat XGBoost on 17 features
+    with a pre-onset target and a utility-weighted training objective</strong>.
+    Nine months of architecture work has produced no durable gain. Every gain
+    came from changing the problem definition, the evaluation, or what the
+    model is asked to care about.</p>
+  <p>The binding constraint is measurement sparsity, not model capacity: in
+    the pre-onset window there are effectively three live signals &mdash; heart
+    rate, SpO<sub>2</sub> and respiratory rate at ~95% of hours &mdash; while
+    every lab sits at 2&ndash;8%. That is the quantitative case for Model A,
+    and as of this record it is finally being tested causally rather than
+    asserted.</p>
+
+  <div class="note">
+    <span class="t">The pattern worth knowing first</span>
+    <p>Every model-side change tested before 2026&#8209;09&#8209;22 was null:
+      architecture (0.010 AUROC across six configs), MAE pretraining,
+      missingness encoding (0.007 across four arms), <code>pos_weight</code>,
+      TLS on XGBoost, pooled multi-source pretraining. The single exception
+      arrived last: <strong>weighting training hours by the warning they
+      actually deliver, +0.042 capture &ge;6h.</strong> Nothing about the
+      model changed &mdash; only which hours it was asked to care about.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">Settled 2026-09-22</span>The product decision closed
+    four questions at once</h2>
+  <p class="lede">Inpatient hospital monitoring. The alert goes to a nurse or
+    clinical response team, not to the patient.</p>
+</section>
+</div>
+
+<div class="wide">
+<div class="tscroll">
+  <table>
+    <caption>One choice, four consequences.</caption>
+    <thead><tr><th>Open question</th><th>Resolved to</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Governing metric</td><td>Capture &ge;6h at burden</td>
+        <td style="text-align:left;white-space:normal">The team's action needs
+          hours to matter; recall over-credits a 1&#8209;hour warning.</td></tr>
+      <tr><td>Cost unit</td><td>Episodes / patient-day</td>
+        <td style="text-align:left;white-space:normal">A nurse experiences
+          interruptions &mdash; with precision as the credibility floor.</td></tr>
+      <tr><td>Refractory R</td><td>2&ndash;6 h, set not tuned</td>
+        <td style="text-align:left;white-space:normal">A ward number. 12 h was
+          never clinical.</td></tr>
+      <tr><td>Prodrome window</td><td>W = 12 h</td>
+        <td style="text-align:left;white-space:normal">Under capture the
+          ordering flips; W=24 is 53% degenerate.</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<div class="wrap">
+<p>Two knock-ons. <strong>XGBoost wins decisively</strong> &mdash; capture
+  &ge;6h 0.523 against the Transformer's 0.408. And <strong>TLS becomes
+  moot</strong>: it helps the Transformer and harms XGBoost, so choosing
+  XGBoost retires the best model-side result we had at the time.</p>
+</div>
+
+<div class="wide">
+<section>
+  <div class="wrap"><h2><span class="num">Frontier &mdash; experiment 31</span>Two
+    changes stack, and eight channels beat seventeen</h2>
+  <p class="lede">Weighting hours by the warning they deliver, and deleting
+    the nine routine labs. Measured separately, never run together &mdash; so
+    a 2&times;2, because if the labs hurt <em>because</em> they teach late
+    firing, the utility ramp would already have fixed it and the second change
+    would buy nothing.</p></div>
+
+  <div class="tscroll">
+    <table>
+      <caption>Flat XGBoost, all arms at exactly 1.00 alerts per nonseptic
+        patient-day. Paired patient bootstrap, 2,000 resamples.</caption>
+      <thead><tr><th>Arm</th><th>Chan.</th><th>Capture &ge;6h</th>
+        <th>Capture &ge;12h</th><th>Recall</th><th>Lead (h)</th>
+        <th>Patient prec.</th><th>AUROC</th></tr></thead>
+      <tbody>
+        <tr><td>Hard labels</td><td>17</td><td>0.532</td><td>0.424</td>
+          <td>0.616</td><td>21.00</td><td>0.214</td><td>0.7202</td></tr>
+        <tr><td>Utility ramp</td><td>17</td><td class="up">0.574</td>
+          <td class="up">0.456</td><td>0.642</td><td>21.44</td><td>0.204</td>
+          <td>0.7140</td></tr>
+        <tr><td>Labs dropped</td><td>8</td><td>0.557</td><td>0.440</td>
+          <td class="up">0.653</td><td>20.30</td><td class="down">0.176</td>
+          <td>0.6676</td></tr>
+        <tr class="best"><td>Both</td><td>8</td><td class="up">0.607</td>
+          <td class="up">0.485</td><td class="up">0.681</td><td>22.00</td>
+          <td class="down">0.172</td><td>0.6628</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wrap">
+  <p><strong>Both interaction terms exclude zero</strong> &mdash; dropping labs
+    still helps once the utility ramp is in
+    (<span class="mono">+0.033 [+0.008, +0.058]</span>), and the ramp still
+    helps once the labs are gone
+    (<span class="mono">+0.050 [+0.030, +0.071]</span>). They are not two
+    fixes for one defect. Combined:
+    <span class="mono">+0.075 [+0.049, +0.102]</span> capture &ge;6h, against
+    an additive prediction of +0.067.</p>
+  <p>Against the project's standing headline of capture 0.53 / recall 0.64 /
+    lead 20.6 h: <strong>capture 0.607, recall 0.681, lead 22.0 h</strong>
+    &mdash; with <strong>eight channels instead of seventeen</strong>, no
+    architecture change, and no extra data.</p>
+
+  <div class="note">
+    <span class="t">The cost, stated plainly</span>
+    <p>Patient precision falls 0.214 &rarr; <strong>0.172</strong>, timestep
+      precision 0.094 &rarr; 0.077, AUROC 0.720 &rarr; 0.663. At 0.172,
+      roughly <strong>six of every seven alarmed patients are not
+      septic</strong>. Under the settled product decision that is the trade we
+      want, but it is a trade &mdash; and it makes precision, not capture, the
+      axis that now needs work.</p>
+  </div>
+  <p>The eight surviving channels are heart rate, SpO<sub>2</sub>, respiratory
+    rate, temperature, MAP, SBP, FiO<sub>2</sub> and urine output &mdash; the
+    continuously charted signals. That is the class a wearable produces.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap"><h2><span class="num">Result &mdash; experiment 30</span>Training
+    toward capture, not toward the label</h2>
+  <p class="lede">The project reports capture &ge;6h but trained on a target
+    that labels all twelve pre-onset hours identically. An alarm one hour
+    before onset scored exactly like one eleven hours before.</p></div>
+
+  <div class="tscroll">
+    <table>
+      <caption>Flat XGBoost at exactly 1.00 alerts per nonseptic patient-day.
+        Paired patient bootstrap, 2,000 resamples.</caption>
+      <thead><tr><th>Arm</th><th>Capture &ge;6h</th><th>Capture &ge;12h</th>
+        <th>Recall</th><th>Lead (h)</th><th>AUROC</th></tr></thead>
+      <tbody>
+        <tr><td>Hard labels</td><td>0.532</td><td>0.424</td><td>0.616</td>
+          <td>21.00</td><td>0.7202</td></tr>
+        <tr><td>TLS</td><td class="down">0.504</td><td class="down">0.390</td>
+          <td>0.628</td><td class="down">18.75</td><td>0.7249</td></tr>
+        <tr><td>Utility ramp</td><td class="up">0.558</td><td class="up">0.442</td>
+          <td>0.630</td><td>21.26</td><td>0.7153</td></tr>
+        <tr class="best"><td>Utility, mass-matched</td><td class="up">0.574</td>
+          <td class="up">0.456</td><td class="up">0.642</td><td>21.44</td>
+          <td>0.7140</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wrap">
+  <p><strong>TLS's ramp is backwards</strong>, and this was predicted before
+    the run rather than read off afterwards. TLS peaks <em>at</em> onset and
+    decays backwards, weighting the hours worth least for early warning. The
+    prediction was that utility would beat TLS on capture while TLS looked
+    relatively better on plain recall &mdash; which credits any lead above
+    zero. Measured: TLS is &minus;0.029 on capture but +0.012 on recall, and
+    utility beats it by <span class="mono">+0.055 [+0.030, +0.080]</span> on
+    capture and <span class="mono">+2.96 h</span> of lead. The prediction had
+    room to fail.</p>
+  <p>AUROC moved the other way again &mdash; 0.7202 &rarr; 0.7140 while every
+    deployment metric rose. That is the sixth independent instance.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap"><h2><span class="num">Result &mdash; experiment 29</span>Pooling
+    two hospitals buys nothing</h2>
+  <p class="lede">Four arms, compute-matched. SICdb 1.0.8 loaded end to end:
+    19,899 episodes, 17 channels harmonised, 5,948 sealed from pretraining so
+    the database survives as external validation.</p></div>
+
+  <div class="tscroll">
+    <table>
+      <caption>All four arms re-pinned to exactly 1.00 alerts per nonseptic
+        patient-day.</caption>
+      <thead><tr><th>Arm</th><th>Capture &ge;6h</th><th>Capture &ge;12h</th>
+        <th>Recall</th><th>Lead (h)</th><th>Patient prec.</th><th>AUROC</th></tr></thead>
+      <tbody>
+        <tr class="best"><td>XGBoost (flat)</td><td>0.523</td><td>0.421</td>
+          <td>0.619</td><td>20.95</td><td>0.220</td><td>0.720</td></tr>
+        <tr><td>Transformer, scratch</td><td>0.408</td><td>0.323</td>
+          <td>0.488</td><td>19.61</td><td>0.251</td><td>0.733</td></tr>
+        <tr><td>+ MAE, MIMIC only</td><td>0.375</td><td>0.290</td><td>0.436</td>
+          <td>19.74</td><td>0.257</td><td>0.729</td></tr>
+        <tr><td>+ MAE, MIMIC &cup; SICdb</td><td>0.392</td><td>0.306</td>
+          <td>0.457</td><td>20.29</td><td>0.255</td><td>0.735</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wrap">
+  <ul class="plain">
+    <li><strong>Adding SICdb: null.</strong>
+      <span class="mono">+0.005 [&minus;0.010, +0.020]</span> capture &ge;6h.
+      13,951 extra episodes from a second hospital change nothing measurable.</li>
+    <li><strong>MAE still does not help</strong>, and not because the old
+      recipe was broken &mdash; both experiment-6 defects were repaired here
+      (observation-restricted loss, contiguous block masking) and it still
+      lands below scratch.</li>
+    <li><strong>XGBoost beats every encoder arm</strong> by
+      <span class="mono">0.124</span> capture &ge;6h, roughly six CI widths.</li>
+  </ul>
+  </div>
+</section>
+</div>
+
+<div class="wide">
+<section>
+  <div class="wrap"><h2><span class="num">Result &mdash; experiment 30b</span>The
+    density ablation inverted the premise</h2>
+  <p class="lede">First causal test of &ldquo;the ceiling is measurement
+    sparsity.&rdquo; Stratifying patients by observed density cannot answer it
+    &mdash; sicker patients get more labs, so density and severity are
+    inseparable. This deletes observations at random from the <em>same</em>
+    patients, so severity is held fixed by construction.</p></div>
+
+  <div class="tscroll">
+    <table>
+      <caption>Every arm re-pinned to exactly 1.00 alerts per nonseptic
+        patient-day. Paired bootstrap against full density.</caption>
+      <thead><tr><th>Arm</th><th>Capture &ge;6h</th><th>Recall</th>
+        <th>AUROC</th><th>vs full density</th></tr></thead>
+      <tbody>
+        <tr><td>Full density</td><td>0.523</td><td>0.619</td><td>0.7203</td>
+          <td>&mdash;</td></tr>
+        <tr><td>Labs at 50%</td><td>0.537</td><td>0.617</td><td>0.6997</td>
+          <td class="flat">+0.014 [&minus;0.010, +0.037]</td></tr>
+        <tr><td>Labs at 25%</td><td>0.559</td><td>0.645</td><td>0.6844</td>
+          <td class="up">+0.036 [+0.012, +0.061]</td></tr>
+        <tr class="best"><td>Labs removed</td><td>0.564</td><td>0.664</td>
+          <td>0.6677</td><td class="up">+0.041 [+0.015, +0.068]</td></tr>
+        <tr><td>Vitals at 50%</td><td>0.497</td><td>0.595</td><td>0.7142</td>
+          <td class="down">&minus;0.025 [&minus;0.047, &minus;0.004]</td></tr>
+        <tr><td>Vitals at 25%</td><td>0.477</td><td>0.570</td><td>0.7077</td>
+          <td class="down">&minus;0.046 [&minus;0.072, &minus;0.021]</td></tr>
+        <tr><td>Vitals removed</td><td>0.387</td><td>0.470</td><td>0.6778</td>
+          <td class="down">&minus;0.136 [&minus;0.165, &minus;0.108]</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wrap">
+  <p><strong>Deleting every lab improves early warning</strong>, monotonically.
+    The project had spent months treating lab sparsity as the ceiling; causally,
+    the labs were costing capture. <strong>The vitals are load-bearing</strong>
+    &mdash; steeply and monotonically the other way.</p>
+  <p>AUROC falls in <em>both</em> directions, so the labs do carry
+    discriminative signal. It arrives too late to be worth anything: removing
+    them costs 5 points of AUROC and buys 4 of capture. Seventh instance of the
+    anti-correlation.</p>
+
+  <div class="note">
+    <span class="t">Mechanism &mdash; hypothesis, not finding</span>
+    <p>A lab draw is a <strong>clinician action</strong>, and
+      <code>t_sepsis</code> is partly a treatment-decision timestamp (culture
+      drawn, antibiotics started). Lab presence therefore correlates with
+      someone already being worried, which peaks near onset &mdash; so the
+      model may be learning <em>&ldquo;labs are being drawn, therefore
+      risk&rdquo;</em>, which maximises per-hour ranking and fires late.</p>
+    <p>If it holds it <em>sharpens</em> the wearable argument rather than
+      weakening it. The problem is not that labs are sparse; it is that labs
+      are sparse <em>and</em> their timing is confounded with clinical
+      suspicion. Passive continuous sensing breaks that confound, because it
+      measures whether or not anyone is worried. The clean test: thin the lab
+      <em>values</em> while keeping the observation indicators, then the
+      reverse.</p>
+  </div>
+  <p><strong>Scope.</strong> These are the nine routine clinical labs. The
+    result says nothing about IL&#8209;6, procalcitonin or PTX3 &mdash;
+    MIMIC&#8209;IV contains none of them, so the biomarker hypothesis is
+    untested here, not refuted.</p>
+  </div>
+</section>
+</div>
+
+<div class="wrap">
+<section>
+  <h2><span class="num">Method</span>Two burden confounds, one afternoon, two
+    different wrong answers</h2>
+  <p>Alert burden depends only on <em>non-septic</em> alarm-hours, so the
+    threshold that hits a target burden is a quantile, not a search. Before
+    that was implemented, the same comparison gave three answers:</p>
+  <ul class="plain">
+    <li>Validation-frozen thresholds said pretraining <strong>hurts
+      badly</strong>, <span class="mono">&minus;0.087</span> &mdash; but the
+      pretrained arms had drifted 0.099&ndash;0.182 alerts/patient-day below
+      scratch, and an arm that alarms less catches less.</li>
+    <li>Re-pinning on the 0.01 threshold grid <strong>flipped the sign</strong>
+      to <span class="mono">+0.021</span>, because that grid is far too coarse
+      at 2.6% prevalence.</li>
+    <li>Solving exactly gives the real answer:
+      <span class="mono">&minus;0.020</span>.</li>
+  </ul>
+  <p>The same failure had already manufactured a CI-backed
+    <span class="mono">+0.028</span> TLS &ldquo;gain&rdquo; that was really
+    <span class="mono">+0.001</span>. It is the ninth instance of this
+    project's recurring bug class &mdash; <strong>a quantity optimised or
+    compared on the same axis it is then reported on</strong> &mdash; and the
+    fix is now mechanical rather than a matter of care.</p>
+
+  <div class="note">
+    <span class="t">A false positive caught by its control</span>
+    <p>The hospital-shortcut probe reads <span class="mono">AUROC 0.989</span>
+      on pretrained encoders, which looks damning. The random-encoder control
+      reads <span class="mono">0.993</span>. The two databases are separable
+      from the raw inputs alone; pretraining moves it
+      <span class="mono">&minus;0.004</span>. Reporting the probe without the
+      control would have invented a shortcut that does not exist.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">Thirty experiments</span>The record</h2>
+  <p class="lede">Verdicts are as they stand today, not as first reported.
+    Four entries were reversed by later measurement.</p>
+
+  <div class="era">Part 1 &mdash; PhysioNet/CinC 2019 &middot; Jun&ndash;Aug 2026</div>
+  <ol class="exp">
+    <li><span class="idx">01</span><div class="body">
+      <h4>Five architectures <span class="chip c-bad">Reversed</span></h4>
+      <p>Transformer 0.793 &gt;&gt; XGBoost 0.638. Concluded &ldquo;sequence
+        models vastly outperform flat.&rdquo; Overturned in Part 2 &mdash; the
+        flat models had been given raw current-hour values only.</p></div></li>
+    <li><span class="idx">02</span><div class="body">
+      <h4>Strategy B representation <span class="chip c-ok">Confirmed</span></h4>
+      <p>Causal forward-fill + train median + lab masks + time-since-last.
+        Still the single largest representational win in the project.</p></div></li>
+    <li><span class="idx">03</span><div class="body">
+      <h4>Feature ablation, 15 configs <span class="chip c-ok">Confirmed</span></h4>
+      <p>Config I (all minus creatinine), confirmed over three seeds.</p></div></li>
+    <li><span class="idx">04</span><div class="body">
+      <h4>Trajectory + gating <span class="chip c-null">Never run</span></h4>
+      <p>Built 2026&#8209;08&#8209;19. Still outstanding.</p></div></li>
+    <li><span class="idx">05</span><div class="body">
+      <h4>Loss reweighting <span class="chip c-null">Null</span></h4>
+      <p>Does not move AUROC.</p></div></li>
+    <li><span class="idx">06</span><div class="body">
+      <h4>MAE pretraining <span class="chip c-null">Null</span>
+        <span class="chip c-fix">Pretext defective</span></h4>
+      <p>0.814 scratch, 0.816 fine-tuned, 0.776 frozen. The pretext also
+        rewarded reconstructing forward-filled values and masked i.i.d. per
+        timestep, so a neighbour revealed the answer.</p></div></li>
+  </ol>
+
+  <div class="note">
+    <span class="t">The 2026-08-19 pairing bug</span>
+    <p><code>collect_patient_predictions</code> paired patient metadata by
+      dataset order while <code>collate_fn</code> sorts each batch by length,
+      scrambling attribution for <strong>97% of test episodes</strong>. Every
+      patient-level number before that date is invalid. Timestep metrics,
+      AUROC and AUPRC were unaffected.</p>
+  </div>
+
+  <div class="era">Part 2 &mdash; MIMIC-IV 3.1 &middot; Sep 2026</div>
+  <ol class="exp" start="7">
+    <li><span class="idx">09</span><div class="body">
+      <h4>Pre-onset target <span class="chip c-ok">Largest gain</span></h4>
+      <p>Positives confined to the window before onset:
+        <strong>+7 h median lead</strong>, capture &ge;6h 0.43 &rarr; 0.53 at
+        equal burden.</p></div></li>
+    <li><span class="idx">10</span><div class="body">
+      <h4>Ceiling diagnosis <span class="chip c-ok">Confirmed</span></h4>
+      <p>Three live signals at ~95% of hours; every lab at 2&ndash;8%.
+        Detectability decays smoothly &mdash; 0.724 even in the final six
+        hours, where real physiological signal reaches 0.85&ndash;0.90.</p></div></li>
+    <li><span class="idx">11</span><div class="body">
+      <h4>AUROC is anti-correlated with early warning
+        <span class="chip c-ok">Confirmed &times;6</span></h4>
+      <p>Five independent observations at the time, including a synthetic
+        control where a 16&times; stronger injected signal gave higher AUROC
+        and <em>shorter</em> warning. Now six.</p></div></li>
+    <li><span class="idx">12</span><div class="body">
+      <h4>Selection-metric study <span class="chip c-ok">Confirmed</span></h4>
+      <p>Selecting on AUROC instead of capture costs a quarter of the early
+        warning. Capture moves by 0.162.</p></div></li>
+    <li><span class="idx">13</span><div class="body">
+      <h4>Missingness encoding <span class="chip c-null">Null</span></h4>
+      <p>Four arms span 0.007 AUROC. GRU&#8209;D decay and learned embeddings
+        add nothing over hand-built mask/delta.</p></div></li>
+    <li><span class="idx">14</span><div class="body">
+      <h4>Positive control &mdash; synthetic ramp
+        <span class="chip c-ok">Confirmed</span></h4>
+      <p>Measurement <em>frequency</em> beats effect size: a 0.25 SD drift in
+        a dense channel beats a 4 SD shift in a sparse one.</p></div></li>
+    <li><span class="idx">17</span><div class="body">
+      <h4>Foundation models <span class="chip c-null">Rejected</span></h4>
+      <p>TimesFM installed and rejected on four verified grounds. MIRA
+        architecturally right, weights unreleased.</p></div></li>
+  </ol>
+
+  <div class="era">Part 3 &mdash; 12&ndash;22 Sep 2026</div>
+  <ol class="exp" start="18">
+    <li><span class="idx">18</span><div class="body">
+      <h4>Recipe factorial &mdash; TLS + <code>pos_weight</code>
+        <span class="chip c-ok">Confirmed</span></h4>
+      <p>On the Transformer: recall
+        <span class="mono">+0.090 [+0.066, +0.114]</span>, capture &ge;6h
+        <span class="mono">+0.047</span>. The lead-time &ldquo;cost&rdquo; was
+        a composition artifact &mdash; paired, it is
+        <span class="mono">&minus;0.12 h</span> and null.</p></div></li>
+    <li><span class="idx">19</span><div class="body">
+      <h4><code>pos_weight</code> alone <span class="chip c-null">Null</span></h4>
+      <p>Ranked #1 in the techniques review at &ldquo;up to +4.2 AUPRC.&rdquo;
+        Worth 22% faster training and nothing else.</p></div></li>
+    <li><span class="idx">20</span><div class="body">
+      <h4>TLS without <code>pos_weight</code>
+        <span class="chip c-bad">Harmful</span></h4>
+      <p><span class="mono">&minus;0.151</span> recall. Applying the review's
+        two top actions together gives the worst of four arms.</p></div></li>
+    <li><span class="idx">21</span><div class="body">
+      <h4>Prodrome window sweep <span class="chip c-ok">Small but real</span></h4>
+      <p>A lead-time/recall dial with limited range. W=3 maximises recall;
+        W=24 maximises lead and capture. Having a window at all was worth
+        +7 h; its width is worth ~2 h.</p></div></li>
+    <li><span class="idx">22</span><div class="body">
+      <h4>Attention at the best window
+        <span class="chip c-fix">Partly corrected</span></h4>
+      <p>Loses recall and capture, <em>wins</em> patient precision
+        <span class="mono">+0.029</span>. The &ldquo;alarms later&rdquo;
+        mechanism I offered is not measurable &mdash;
+        <span class="mono">&minus;1.88 h [&minus;4.62, +0.92]</span>.</p></div></li>
+    <li><span class="idx">23</span><div class="body">
+      <h4>Threshold-on-test defect <span class="chip c-fix">Corrected</span></h4>
+      <p>Manufactured a CI-backed <span class="mono">+0.028</span> recall gain
+        that was really <span class="mono">+0.001</span>.</p></div></li>
+    <li><span class="idx">24</span><div class="body">
+      <h4>TLS on XGBoost <span class="chip c-bad">Harmful</span></h4>
+      <p>At equal burden, capture &ge;6h <span class="mono">&minus;0.031</span>
+        and &ge;12h <span class="mono">&minus;0.032</span>. A mass-matched arm
+        is null throughout, so the ramp shape contributes nothing on a tree
+        ensemble.</p></div></li>
+    <li><span class="idx">25</span><div class="body">
+      <h4>SICdb IL&#8209;6 census <span class="chip c-ok">Confirmed</span></h4>
+      <p>4,225 cases with IL&#8209;6, <strong>1,965 with repeated draws</strong>,
+        657 with five or more. More serial IL&#8209;6 than every external lead
+        combined.</p></div></li>
+    <li><span class="idx">26</span><div class="body">
+      <h4>Alarm episodes + refractory period
+        <span class="chip c-fix">Trap found</span></h4>
+      <p>An episode-<em>rate</em> budget does not constrain. At R=12 h capture
+        appears to gain <span class="mono">+0.394</span> while timestep
+        precision falls and non-septic patients alarmed rises
+        <strong>28% &rarr; 87%</strong>.</p></div></li>
+    <li><span class="idx">27</span><div class="body">
+      <h4>SICdb rung-1 labels <span class="chip c-bad">Unfit for training</span></h4>
+      <p>27.6% sepsis rate in a low-mortality perioperative cohort, 7&times;
+        more cases than the admitting physician flagged, and 22.7% of
+        <em>elective</em> surgical patients called septic at 0.9% mortality.
+        They do track severity, so they are kept for stratification only.</p></div></li>
+    <li><span class="idx">29</span><div class="body">
+      <h4>Pooled multi-source pretraining <span class="chip c-null">Null</span></h4>
+      <p>Was the highest-evidence open item in the project. Now closed:
+        <span class="mono">+0.005 [&minus;0.010, +0.020]</span>.</p></div></li>
+    <li><span class="idx">30</span><div class="body">
+      <h4>Utility surrogate <span class="chip c-ok">First model-side win</span></h4>
+      <p><span class="mono">+0.042 [+0.024, +0.061]</span> capture &ge;6h over
+        hard labels, at equal burden.</p></div></li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="num">The open question</span>Is data standardisation a dead
+    end?</h2>
+  <p class="lede">Four nulls, one untested case &mdash; and they are different
+    claims.</p>
+</section>
+</div>
+
+<div class="wide">
+<div class="tscroll">
+  <table>
+    <caption>Everything tried that reformats or harmonises the existing
+      signals.</caption>
+    <thead><tr><th>What was standardised</th><th>Gain</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Raw values &rarr; Strategy B</td><td class="up">+0.082 AUROC</td>
+        <td style="text-align:left">Largest representational win</td></tr>
+      <tr><td>&hellip;the mask/delta indicators alone</td><td>+0.0045</td>
+        <td style="text-align:left">Most of it was the forward-fill</td></tr>
+      <tr><td>GRU&#8209;D decay / learned (mask, delta)</td>
+        <td class="flat">0.007 span</td><td style="text-align:left">Null</td></tr>
+      <tr><td>MIMIC + SICdb harmonisation</td><td class="flat">+0.005</td>
+        <td style="text-align:left">Null</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<div class="wrap">
+<p>Representation delivered the single largest win in the project &mdash; and
+  it was almost entirely the <strong>forward-fill</strong>, which is already in
+  every model. Every further attempt to represent irregularity better has
+  returned nothing.</p>
+<p>The honest split: <strong>reformatting and harmonising the data is a closed
+  question. Deriving new physiological features from it is open and
+  untested.</strong> Shock index, BUN/creatinine ratio, partial SOFA, SOFA
+  deterioration deltas &mdash; relationships <em>between</em> channels that a
+  tree must otherwise rediscover. The CinC 2019 winner got 0.389 &rarr; 0.418
+  from exactly this, and it is the one item in the techniques review never
+  attempted here.</p>
+
+<section>
+  <h2><span class="num">The honest part</span>What we are struggling with</h2>
+  <p class="lede">Seven open problems, ordered by how much they block the
+    project rather than by how hard they are.</p>
+  <ol class="ranked">
+    <li><strong>Precision is now the binding problem, not capture.</strong> At
+      0.172 patient precision, roughly six of every seven alarmed patients are
+      not septic. Every capture gain this month cost precision. Nothing tried
+      so far moves precision without giving back capture &mdash; the two have
+      traded in every experiment.</li>
+    <li><strong>The signal is weak everywhere, not just early.</strong> AUROC
+      is 0.724 even in the final six hours before onset, where deterioration
+      tasks with real physiological signal reach 0.85&ndash;0.90. No amount of
+      modelling makes a weak signal strong, and this is the number that caps
+      everything else.</li>
+    <li><strong>Part of the label is clinician behaviour.</strong>
+      <code>t_sepsis</code> depends on when cultures were drawn and
+      antibiotics started, so we are partly predicting when someone decided to
+      act. The density ablation suggests the lab channels exploit exactly
+      that. We do not have a label free of this, and MIMIC cannot provide
+      one.</li>
+    <li><strong>There is no clean external validation.</strong> PhysioNet
+      shares a hospital (BIDMC) with MIMIC, so it is not independent. SICdb has
+      no microbiology, so its labels are a different definition and measured
+      to over-call by 3&ndash;7&times;. Generalisation to a new site is
+      therefore untested &mdash; not failed, untested.</li>
+    <li><strong>Model A has no paired data anywhere.</strong> Model A maps
+      electrochemical sensor signal to biomarker concentration. No dataset we
+      have found pairs the two. SICdb and Humanitas supply the concentration
+      side only, so they can specify what a sensor must resolve but cannot
+      train or calibrate one. This is the hard blocker on the actual
+      thesis.</li>
+    <li><strong>Architecture is exhausted.</strong> Every model-side change
+      was null until reweighting: six-config architecture sweep spanning 0.010
+      AUROC, MAE pretraining twice, missingness encoders, pooled multi-source
+      pretraining, <code>pos_weight</code>, TLS on trees. The remaining
+      headroom is not in the model.</li>
+    <li><strong>The measurement apparatus keeps being the bug &mdash; nine
+      times.</strong> The recurring shape is <em>a quantity optimised or
+      compared on the same axis it is then reported on</em>. It has produced a
+      CI-backed gain that did not exist, a sign flip inside one afternoon, a
+      97%-scrambled patient attribution, and a 63% cohort loss. The rate is
+      not obviously falling.</li>
+  </ol>
+
+  <div class="note">
+    <span class="t">The working rule this produced</span>
+    <p>Assume the next surprising result is an evaluation artifact until a
+      control says otherwise. Every check that has earned its place came from
+      this: exact-burden thresholds, paired patient bootstraps, mass-matched
+      arms, and random-encoder controls. Two of those caught false positives
+      this week alone.</p>
+  </div>
+</section>
+</div>
+
+<div class="wide">
+<section>
+  <div class="wrap"><h2><span class="num">Inventory</span>Data on this
+    machine</h2>
+  <p class="lede">Credentialed data lives outside the repository and outside
+    any cloud-synced folder, per DUA hygiene. Derived episode pickles are
+    gitignored and regenerable.</p></div>
+
+  <div class="tscroll">
+    <table>
+      <caption>Raw sources. <code>F:\Claude\Sepsentinel\data_local\</code></caption>
+      <thead><tr><th>Dataset</th><th>Size</th><th>Contents</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>mimic-iv-3.1</td><td>7.6 GB</td>
+          <td style="text-align:left;white-space:normal">13 tables.
+            chartevents 3.3 GB, labevents 2.5 GB, emar 774 MB, prescriptions
+            578 MB, inputevents 383 MB, microbiologyevents 112 MB, plus
+            icustays, patients, admissions and the item dictionaries.</td>
+          <td>Primary</td></tr>
+        <tr><td>sicdb-1.0.8</td><td>2.3 GB</td>
+          <td style="text-align:left;white-space:normal">7 tables.
+            data_float_h 2.16 GB (36.8M hourly signal rows), laboratory 148 MB
+            (17.6M rows), medication 67 MB, cases 27,350 admissions,
+            d_references (1,622-item dictionary with LOINC codes).</td>
+          <td>Pretraining pool</td></tr>
+        <tr><td>mimic-iv-demo-2.2</td><td>16 MB</td>
+          <td style="text-align:left;white-space:normal">Open 100-patient
+            demo. Used for rule regression tests before touching the full
+            database.</td><td>Test fixture</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tscroll">
+    <table>
+      <caption>Derived episode pickles.
+        <code>F:\Claude\Sepsentinel\Code\results\</code> &mdash; gitignored,
+        regenerable from the extract scripts.</caption>
+      <thead><tr><th>File</th><th>Size</th><th>Contents</th></tr></thead>
+      <tbody>
+        <tr><td>mimic31_pooled17.pkl</td><td>244 MB</td>
+          <td style="text-align:left;white-space:normal"><strong>Current
+            working set.</strong> 63,672 episodes, 7,345 septic, 17 channels
+            (GCS dropped for cross-site comparability).</td></tr>
+        <tr><td>mimic31_full_ext_prodrome.pkl</td><td>257 MB</td>
+          <td style="text-align:left;white-space:normal">The 18-feature
+            extended set with the pre-onset target. Parent of the pooled
+            file.</td></tr>
+        <tr><td>sicdb_episodes.pkl</td><td>65 MB</td>
+          <td style="text-align:left;white-space:normal">19,899 episodes,
+            17 channels, rung-1 labels attached. 13,951 pretrained on, 5,948
+            sealed.</td></tr>
+        <tr><td>mimic31_yaib_aligned.pkl</td><td>257 MB</td>
+          <td style="text-align:left;white-space:normal">Cohort aligned to the
+            YAIB benchmark definition, for external anchoring.</td></tr>
+        <tr><td>mimic31_full_trunc3.pkl</td><td>158 MB</td>
+          <td style="text-align:left;white-space:normal">Earlier
+            post-onset-truncation variant. Superseded.</td></tr>
+        <tr><td>mve_*.pkl</td><td>1.8&ndash;14 MB</td>
+          <td style="text-align:left;white-space:normal">5,000-stay
+            subsamples. Every script is smoke-tested against these before a
+            full run.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tscroll">
+    <table>
+      <caption>Archives and biomarker sources.
+        <code>C:\Users\Chaopeng Shen\Downloads\</code></caption>
+      <thead><tr><th>File</th><th>Size</th><th>Contents</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Humanitas PTX3 (PMID 36189302)</td><td>0.3 MB</td>
+          <td style="text-align:left;white-space:normal">135 Sepsis-3
+            patients, 174 columns. Day-1 and day-5 IL&#8209;6, PTX3, PCT, CRP;
+            79 patients with both timepoints. 28-day, 90-day and 1-year
+            outcomes, SOFA, qSOFA, infection site.</td>
+          <td>Immortal-time trap</td></tr>
+        <tr><td>SDY1662 (ImmPort)</td><td>15.7 MB</td>
+          <td style="text-align:left;white-space:normal">Del Valle COVID
+            cytokine cohort, 1,484 patients, mostly single-draw.</td>
+          <td>Cytokine bridge</td></tr>
+        <tr><td>Zigong Fourth People's Hospital</td><td>75 MB</td>
+          <td style="text-align:left;white-space:normal">Critical-care
+            database of patients with infection.</td>
+          <td><strong>Unexamined</strong></td></tr>
+        <tr><td>SICdb 1.0.8 (source zip)</td><td>2.27 GB</td>
+          <td style="text-align:left;white-space:normal">Original archive;
+            extracted copy lives in data_local.</td><td>Archive</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wrap">
+  <p>PhysioNet/CinC 2019 is not on disk as a managed copy &mdash; it is pulled
+    via <code>kagglehub</code> into
+    <code>~\.cache\kagglehub\datasets</code> on demand. Environment: conda at
+    <code>F:\Claude\Sepsentinel\.conda</code>, PyTorch 2.10.0+cu130 on an
+    RTX 2080 Ti.</p>
+  </div>
+</section>
+</div>
+
+<div class="wrap">
+<section>
+  <h2><span class="num">Next</span>What could still move the number</h2>
+  <ol class="ranked">
+    <li><strong>Conformal abstention.</strong> Now the largest untested lever:
+      &minus;78 to &minus;86% false alarms, acting on the axis the product
+      actually constrains. A rejected prediction is a delayed alarm, not a
+      free one &mdash; rejected septic patients must stay in the denominator
+      with their delay counted.</li>
+    <li><strong>Clinical derived features.</strong> Not reformatting.
+      Encoding physiology between channels. Never attempted here.</li>
+    <li><strong>Feature ablation on the extended set.</strong> The 18 features
+      went in as a block and nobody has checked which earn their place. MAP
+      and urine output are the dense ones and the likely winners.</li>
+    <li class="struck">Multi-source pretraining &mdash; tested, null
+      (experiment 29).</li>
+    <li><strong>More measurement, i.e. Model A.</strong> The density ablation
+      now running is the first causal test of whether that premise holds: same
+      patients, observations deleted at random, so severity cannot confound it
+      the way stratifying by observed density would.</li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="num">Still open</span>Decisions and traps</h2>
+  <ul class="plain">
+    <li><strong>Episode-rate or patients-disturbed as the alert budget?</strong>
+      Only the second actually constrains.</li>
+    <li><strong>The Humanitas immortal-time trap.</strong> Zero of the 79
+      patients with a day&#8209;5 sample died by day 5; 28&#8209;day mortality
+      is 9.4% against 43.1% without. Any trajectory-versus-outcome analysis
+      needs a day&#8209;5 landmark, which leaves <strong>6 deaths at 28 days
+      and 12 at 90</strong> &mdash; one predictor, not nine.</li>
+    <li><strong>SICdb sealed hold-out.</strong> 5,948 episodes never
+      pretrained on, so the database survives as external validation. Once a
+      patient is pretrained on, it cannot serve that role.</li>
+  </ul>
+</section>
+
+<footer>
+  SepSentinel Model B &middot; research record compiled 2026&#8209;09&#8209;22
+  &middot; experiments 1&ndash;31 &middot; pushed to bc297d6
+</footer>
+</div>
