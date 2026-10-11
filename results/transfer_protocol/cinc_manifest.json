@@ -1,0 +1,69 @@
+{
+  "site_counts": {
+    "A": {
+      "records": 20336,
+      "full_mirror_matches": 14056,
+      "prefix_mirror_matches": 14057
+    },
+    "B": {
+      "records": 20000,
+      "full_mirror_matches": 0,
+      "prefix_mirror_matches": 0
+    }
+  },
+  "mirror_records": 14057,
+  "mirror_records_matched_A": 14057,
+  "mirror_records_matched_B": 0,
+  "mirror_unmatched": 0,
+  "attrition": {
+    "left_censored_onset": 223,
+    "no_resolved_eligible_decision": 274
+  },
+  "invalid_values_removed": {
+    "heart_rate": 0,
+    "spo2": 0,
+    "respiratory_rate": 0,
+    "temperature": 2,
+    "lactate": 0,
+    "ph": 0,
+    "creatinine": 1,
+    "wbc": 6,
+    "platelets": 0,
+    "bilirubin": 0
+  },
+  "target": "official set B, mirror-matched records excluded",
+  "split_unit": "released record; repeat-person identity not recoverable",
+  "split_rule": "sha256 cinc_transfer_20260930:<record>; 60/15/10/15",
+  "endpoint": "assigned onset within next6h; first-positive hour+6; pre-onset only",
+  "source_receipt_clock": "not available; Challenge row time",
+  "splits": {
+    "fit": {
+      "records": 11759,
+      "eligible_hours": 329536,
+      "events": 556,
+      "rich_eligible_hours": 140365,
+      "rich_eligible_events": 375
+    },
+    "tune": {
+      "records": 2991,
+      "eligible_hours": 83599,
+      "events": 136,
+      "rich_eligible_hours": 36901,
+      "rich_eligible_events": 101
+    },
+    "cal": {
+      "records": 1934,
+      "eligible_hours": 54992,
+      "events": 77,
+      "rich_eligible_hours": 23847,
+      "rich_eligible_events": 53
+    },
+    "test": {
+      "records": 2819,
+      "eligible_hours": 79303,
+      "events": 150,
+      "rich_eligible_hours": 33490,
+      "rich_eligible_events": 106
+    }
+  }
+}

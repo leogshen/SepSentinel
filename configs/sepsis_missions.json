@@ -1,0 +1,15 @@
+{
+  "run_name": "sepsis_missions_v1",
+  "seeds": [42, 123, 456],
+  "initializations": ["scratch", "source", "adapt"],
+  "feature_counts": [10, 13, 34],
+  "training_horizon_hours": 12,
+  "recall_targets": [0.2, 0.3, 0.5, 0.6],
+  "windows": [[6, 0], [12, 0], [6, 3]],
+  "gates": ["all", "bp", "bp_routine", "bp_routine_perfusion"],
+  "calibration_quantiles": 501,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 930,
+  "refractory_hours": 6,
+  "exploratory": true
+}

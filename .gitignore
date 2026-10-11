@@ -33,6 +33,28 @@ results/*.pkl
 results/sepsis3_labels_*.csv
 results/sicdb_labels.csv
 
+# Audit predictions/models remain local; aggregate audit reports may be shared.
+results/research_audit/*_local_predictions.npz
+results/research_audit/*_audit_model.json
+results/research_audit/synthetic_label_fixture/
+results/prospective_qc/*.pkl
+results/prospective_qc/*.csv
+results/prospective_qc/*.npz
+results/prospective_qc/*.duckdb*
+results/prospective_qc/*_model.json
+results/prospective_qc/fixture/
+results/prospective_qc/cache/
+results/problem_simplification/*.csv
+results/simplified_experiment/local/
+results/tabpfn_experiment/local/
+results/transfer_protocol/local/
+results/transfer_followup/local/
+results/rich_transfer_20261009/local/
+results/sepsis_missions_v*/local/
+results/sepsis_missions_measurements_*/local/
+results/sepsis_missions_source_*/local/
+results/sepsis_missions_adapt_*/local/
+
 # External datasets (binary, keep local)
 *.sav
 *.psv

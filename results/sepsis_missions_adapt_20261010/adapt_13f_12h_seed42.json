@@ -1,0 +1,51 @@
+{
+  "name": "adapt_13f_12h_seed42",
+  "seed": 42,
+  "initialization": "adapt",
+  "nfeatures": 13,
+  "horizon": 12,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.1268852229538726,
+      "tune_record_weighted_ap": 0.09188989449769802
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.1389888899941598,
+      "tune_record_weighted_ap": 0.10017685149710166
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.0808221969611485,
+      "tune_record_weighted_ap": 0.10031273362211802
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.2082089238480564,
+      "tune_record_weighted_ap": 0.0978627682034635
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.1267721642715491,
+      "tune_record_weighted_ap": 0.09753771024860006
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.085956745341289,
+      "tune_record_weighted_ap": 0.09346991510563493
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.0759091650154933,
+      "tune_record_weighted_ap": 0.08511239862785816
+    }
+  ],
+  "adaptation": {
+    "steps": 1000,
+    "last100_loss": 0.20827894285321236,
+    "active_channels": 13
+  },
+  "complete": true,
+  "test_opened": false
+}

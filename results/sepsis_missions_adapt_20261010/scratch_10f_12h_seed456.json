@@ -1,0 +1,42 @@
+{
+  "name": "scratch_10f_12h_seed456",
+  "seed": 456,
+  "initialization": "scratch",
+  "nfeatures": 10,
+  "horizon": 12,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.990099095987959,
+      "tune_record_weighted_ap": 0.05190107526694698
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.0620900931333865,
+      "tune_record_weighted_ap": 0.05570724595259986
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.0294293431330286,
+      "tune_record_weighted_ap": 0.05406090807154099
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.0278429633055615,
+      "tune_record_weighted_ap": 0.05559745219269173
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.0053062090688436,
+      "tune_record_weighted_ap": 0.053841018540400104
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.0394677912647075,
+      "tune_record_weighted_ap": 0.05422965235756874
+    }
+  ],
+  "adaptation": null,
+  "complete": true,
+  "test_opened": false
+}

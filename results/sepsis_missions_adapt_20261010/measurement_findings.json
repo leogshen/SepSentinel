@@ -1,0 +1,418 @@
+{
+  "definition": "Three-seed means; next-12h window; calibration recall target 0.6",
+  "environment": {
+    "python": "3.13.15",
+    "torch": "2.6.0+cu124",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.1",
+    "duckdb": "1.5.5"
+  },
+  "arms": [
+    {
+      "initialization": "scratch",
+      "features": 10,
+      "gate": "all",
+      "means": {
+        "patient_precision": 0.34321905030074645,
+        "patient_recall": 0.5266666666666667,
+        "precision": 0.059025912969408435,
+        "recall": 0.5177777777777778,
+        "subgroup_recall": 0.5177777777777778,
+        "event_coverage": 1.0,
+        "decision_coverage": 1.0
+      },
+      "patient_precision_range": [
+        0.2608695652173913,
+        0.5063291139240507
+      ]
+    },
+    {
+      "initialization": "scratch",
+      "features": 10,
+      "gate": "bp_routine_perfusion",
+      "means": {
+        "patient_precision": 0.589722301391591,
+        "patient_recall": 0.38888888888888884,
+        "precision": 0.10767334087030171,
+        "recall": 0.29333333333333333,
+        "subgroup_recall": 0.55,
+        "event_coverage": 0.5333333333333333,
+        "decision_coverage": 0.22032382566130096
+      },
+      "patient_precision_range": [
+        0.5588235294117647,
+        0.6063829787234043
+      ]
+    },
+    {
+      "initialization": "scratch",
+      "features": 13,
+      "gate": "all",
+      "means": {
+        "patient_precision": 0.30176914778856523,
+        "patient_recall": 0.5244444444444444,
+        "precision": 0.05821290113784361,
+        "recall": 0.5222222222222223,
+        "subgroup_recall": 0.5222222222222223,
+        "event_coverage": 1.0,
+        "decision_coverage": 1.0
+      },
+      "patient_precision_range": [
+        0.2633333333333333,
+        0.3786407766990291
+      ]
+    },
+    {
+      "initialization": "scratch",
+      "features": 13,
+      "gate": "bp_routine_perfusion",
+      "means": {
+        "patient_precision": 0.5280193812303904,
+        "patient_recall": 0.3888888888888889,
+        "precision": 0.10225534979351299,
+        "recall": 0.29333333333333333,
+        "subgroup_recall": 0.55,
+        "event_coverage": 0.5333333333333333,
+        "decision_coverage": 0.22032382566130096
+      },
+      "patient_precision_range": [
+        0.47619047619047616,
+        0.5757575757575758
+      ]
+    },
+    {
+      "initialization": "scratch",
+      "features": 34,
+      "gate": "all",
+      "means": {
+        "patient_precision": 0.4058573718431566,
+        "patient_recall": 0.52,
+        "precision": 0.06151124328978013,
+        "recall": 0.5111111111111111,
+        "subgroup_recall": 0.5111111111111111,
+        "event_coverage": 1.0,
+        "decision_coverage": 1.0
+      },
+      "patient_precision_range": [
+        0.26158940397350994,
+        0.5095541401273885
+      ]
+    },
+    {
+      "initialization": "scratch",
+      "features": 34,
+      "gate": "bp_routine_perfusion",
+      "means": {
+        "patient_precision": 0.5700396825396825,
+        "patient_recall": 0.40444444444444444,
+        "precision": 0.10183892245698138,
+        "recall": 0.29333333333333333,
+        "subgroup_recall": 0.55,
+        "event_coverage": 0.5333333333333333,
+        "decision_coverage": 0.22032382566130096
+      },
+      "patient_precision_range": [
+        0.525,
+        0.6041666666666666
+      ]
+    },
+    {
+      "initialization": "source",
+      "features": 10,
+      "gate": "all",
+      "means": {
+        "patient_precision": 0.367258670559295,
+        "patient_recall": 0.5533333333333333,
+        "precision": 0.06494494372690433,
+        "recall": 0.5266666666666667,
+        "subgroup_recall": 0.5266666666666667,
+        "event_coverage": 1.0,
+        "decision_coverage": 1.0
+      },
+      "patient_precision_range": [
+        0.30847457627118646,
+        0.4105263157894737
+      ]
+    },
+    {
+      "initialization": "source",
+      "features": 10,
+      "gate": "bp_routine_perfusion",
+      "means": {
+        "patient_precision": 0.5364035087719299,
+        "patient_recall": 0.39111111111111113,
+        "precision": 0.10776990521526116,
+        "recall": 0.2911111111111111,
+        "subgroup_recall": 0.5458333333333333,
+        "event_coverage": 0.5333333333333333,
+        "decision_coverage": 0.22032382566130096
+      },
+      "patient_precision_range": [
+        0.5083333333333333,
+        0.5833333333333334
+      ]
+    },
+    {
+      "initialization": "source",
+      "features": 13,
+      "gate": "all",
+      "means": {
+        "patient_precision": 0.30896992636265486,
+        "patient_recall": 0.5711111111111111,
+        "precision": 0.06181709476382444,
+        "recall": 0.5244444444444444,
+        "subgroup_recall": 0.5244444444444444,
+        "event_coverage": 1.0,
+        "decision_coverage": 1.0
+      },
+      "patient_precision_range": [
+        0.26744186046511625,
+        0.37777777777777777
+      ]
+    },
+    {
+      "initialization": "source",
+      "features": 13,
+      "gate": "bp_routine_perfusion",
+      "means": {
+        "patient_precision": 0.45410204254597847,
+        "patient_recall": 0.42444444444444446,
+        "precision": 0.10087525525115194,
+        "recall": 0.3111111111111111,
+        "subgroup_recall": 0.5833333333333334,
+        "event_coverage": 0.5333333333333333,
+        "decision_coverage": 0.22032382566130096
+      },
+      "patient_precision_range": [
+        0.3526570048309179,
+        0.5263157894736842
+      ]
+    },
+    {
+      "initialization": "source",
+      "features": 34,
+      "gate": "all",
+      "means": {
+        "patient_precision": 0.3605337979865029,
+        "patient_recall": 0.5488888888888889,
+        "precision": 0.06374997153480653,
+        "recall": 0.5133333333333333,
+        "subgroup_recall": 0.5133333333333333,
+        "event_coverage": 1.0,
+        "decision_coverage": 1.0
+      },
+      "patient_precision_range": [
+        0.3244274809160305,
+        0.405
+      ]
+    },
+    {
+      "initialization": "source",
+      "features": 34,
+      "gate": "bp_routine_perfusion",
+      "means": {
+        "patient_precision": 0.5245088245088244,
+        "patient_recall": 0.41111111111111115,
+        "precision": 0.10502265129710793,
+        "recall": 0.29555555555555557,
+        "subgroup_recall": 0.5541666666666666,
+        "event_coverage": 0.5333333333333333,
+        "decision_coverage": 0.22032382566130096
+      },
+      "patient_precision_range": [
+        0.44755244755244755,
+        0.5714285714285714
+      ]
+    },
+    {
+      "initialization": "adapt",
+      "features": 10,
+      "gate": "all",
+      "means": {
+        "patient_precision": 0.32370773336611697,
+        "patient_recall": 0.5933333333333333,
+        "precision": 0.06352901674047459,
+        "recall": 0.5577777777777778,
+        "subgroup_recall": 0.5577777777777778,
+        "event_coverage": 1.0,
+        "decision_coverage": 1.0
+      },
+      "patient_precision_range": [
+        0.2691131498470948,
+        0.4020100502512563
+      ]
+    },
+    {
+      "initialization": "adapt",
+      "features": 10,
+      "gate": "bp_routine_perfusion",
+      "means": {
+        "patient_precision": 0.5267124291577097,
+        "patient_recall": 0.3977777777777778,
+        "precision": 0.10738514973314638,
+        "recall": 0.28444444444444444,
+        "subgroup_recall": 0.5333333333333333,
+        "event_coverage": 0.5333333333333333,
+        "decision_coverage": 0.22032382566130096
+      },
+      "patient_precision_range": [
+        0.46511627906976744,
+        0.5882352941176471
+      ]
+    },
+    {
+      "initialization": "adapt",
+      "features": 13,
+      "gate": "all",
+      "means": {
+        "patient_precision": 0.3308949324523627,
+        "patient_recall": 0.58,
+        "precision": 0.06498353129881147,
+        "recall": 0.5444444444444444,
+        "subgroup_recall": 0.5444444444444444,
+        "event_coverage": 1.0,
+        "decision_coverage": 1.0
+      },
+      "patient_precision_range": [
+        0.3283582089552239,
+        0.3359683794466403
+      ]
+    },
+    {
+      "initialization": "adapt",
+      "features": 13,
+      "gate": "bp_routine_perfusion",
+      "means": {
+        "patient_precision": 0.500587726003301,
+        "patient_recall": 0.39111111111111113,
+        "precision": 0.10911468052753055,
+        "recall": 0.29777777777777775,
+        "subgroup_recall": 0.5583333333333333,
+        "event_coverage": 0.5333333333333333,
+        "decision_coverage": 0.22032382566130096
+      },
+      "patient_precision_range": [
+        0.4370860927152318,
+        0.5425531914893617
+      ]
+    },
+    {
+      "initialization": "adapt",
+      "features": 34,
+      "gate": "all",
+      "means": {
+        "patient_precision": 0.31753772111293205,
+        "patient_recall": 0.5577777777777778,
+        "precision": 0.06026177601976302,
+        "recall": 0.4955555555555556,
+        "subgroup_recall": 0.4955555555555556,
+        "event_coverage": 1.0,
+        "decision_coverage": 1.0
+      },
+      "patient_precision_range": [
+        0.29431438127090304,
+        0.3568281938325991
+      ]
+    },
+    {
+      "initialization": "adapt",
+      "features": 34,
+      "gate": "bp_routine_perfusion",
+      "means": {
+        "patient_precision": 0.4504944688069587,
+        "patient_recall": 0.4155555555555556,
+        "precision": 0.09076439715671214,
+        "recall": 0.2866666666666667,
+        "subgroup_recall": 0.5375,
+        "event_coverage": 0.5333333333333333,
+        "decision_coverage": 0.22032382566130096
+      },
+      "patient_precision_range": [
+        0.4166666666666667,
+        0.48091603053435117
+      ]
+    }
+  ],
+  "example": {
+    "name": "source_34f_12h_seed42",
+    "policy": {
+      "threshold": 0.17902248322963715,
+      "precision": 0.06030150753768844,
+      "recall": 0.6233766233766234,
+      "subgroup_recall": 0.6233766233766234,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 48,
+      "alarms": 796,
+      "alarms_per_day": 0.4328537441939504,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 369,
+        "duplicate": 37,
+        "nonseptic": 342,
+        "other": 0
+      }
+    },
+    "test": {
+      "precision": 0.06296603148301574,
+      "recall": 0.5066666666666667,
+      "subgroup_recall": 0.5066666666666667,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.4544855502212181,
+      "control_stays_disturbed": 0.05582615211689772,
+      "hourly_precision": 0.11811535337124289,
+      "hourly_recall": 0.4482120838471023,
+      "patient_precision": 0.3521739130434783,
+      "patient_recall": 0.54,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 76,
+        "alarms": 1207,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 149,
+        "too_early": 648,
+        "duplicate": 60,
+        "nonseptic_alarms": 423,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 727,
+        "flagged_hours": 6155,
+        "flagged_records": 230,
+        "flagged_event_records": 81
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.05133669746739161,
+        0.07722269963649273
+      ],
+      "recall": [
+        0.42592293906810036,
+        0.586960028050491
+      ],
+      "subgroup_recall": [
+        0.42592293906810036,
+        0.586960028050491
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.36924261668297126,
+        0.5430150702146328
+      ],
+      "control_stays_disturbed": [
+        0.04727917615983007,
+        0.06462606563136618
+      ]
+    }
+  }
+}

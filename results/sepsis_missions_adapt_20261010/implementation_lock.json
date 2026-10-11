@@ -1,0 +1,59 @@
+{
+  "config": {
+    "run_name": "sepsis_missions_adapt_20261010",
+    "seeds": [
+      42,
+      123,
+      456
+    ],
+    "initializations": [
+      "scratch",
+      "source",
+      "adapt"
+    ],
+    "feature_counts": [
+      10,
+      13,
+      34
+    ],
+    "training_horizon_hours": 12,
+    "recall_targets": [
+      0.2,
+      0.3,
+      0.5,
+      0.6
+    ],
+    "windows": [
+      [
+        6,
+        0
+      ],
+      [
+        12,
+        0
+      ],
+      [
+        6,
+        3
+      ]
+    ],
+    "gates": [
+      "all",
+      "bp",
+      "bp_routine",
+      "bp_routine_perfusion"
+    ],
+    "calibration_quantiles": 501,
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 930,
+    "refractory_hours": 6,
+    "exploratory": true
+  },
+  "code_sha256": {
+    "scripts\\sepsis_missions.py": "59dde7ab3844a5dfe2cb79c7afe816da37b58fc8d0b88c90fc2e4b4c4edfd7ca",
+    "scripts\\train_rich_transfer.py": "b40c2a1b2b1aeb5ca0ebb377042c7ccf52c8ec9a66ac5cb4df09014306c69e5a",
+    "scripts\\transfer_sequence.py": "7bad1c1114b1b84e3b2907d2c331a6c91a8dd6105bcbacd67950bb5e67d25846",
+    "scripts\\prepare_transfer_cinc.py": "73edf3edfc77eb9f00e4a1e5f9ead36cb4e4c6a6fb2b776ca6c5a212699da4a5",
+    "scripts\\sepsis_mission_metrics.py": "2af52e04c3e9441119829e84401f0c4d20693e83c920836e01a964461848831f"
+  }
+}

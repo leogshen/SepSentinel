@@ -342,3 +342,211 @@ Those are different claims and the evidence separates them cleanly.
 | PhysioNet/CinC 2019 | 14,057 patients | Challenge rules | Continuity reference; shares BIDMC with MIMIC so NOT clean external validation |
 | Davoudian / Humanitas (PMID 36189302) | 135 patients, 79 with d1+d5 | Sepsis-3 with outcomes | Serial IL-6 + PTX3. **Immortal-time trap: 0 of the 79 with a day-5 sample died by day 5**, and 28-day mortality is 9.4% vs 43.1%. Any trajectory-vs-outcome analysis needs a day-5 landmark, which leaves 6 deaths at 28d and 12 at 90d -- one predictor, not nine. |
 | Zigong Fourth People's Hospital | downloaded 2026-09-07 | unexamined | Unexamined |
+## Deferred alternative tasks — 2026-10-09
+
+These are fallback research directions, to consider only if the sepsis-focused
+work on richer-input transfer learning, timing tolerance, and measurement-defined
+subgroups is unsuccessful. They are not currently authorized training jobs or
+replacements for the primary sepsis objective. Simpler means a clearer endpoint
+or decision time, not merely an easier denominator.
+
+| Candidate task | Exact setup | Dataset fit and limitation |
+| --- | --- | --- |
+| Recognize current sepsis | At a scheduled assessment, identify whether operational sepsis criteria have already been met. | CinC supports a retrospective label-based version after accounting for its six-hour label shift. Potentially circular if inputs reconstruct the label; this is recognition, not early warning. |
+| Predict deterioration after sepsis recognition | Among patients already identified as septic, predict a subsequent shock or organ-support event within a fixed horizon. | MIMIC is a candidate; medication and outcome timelines need extraction and audit. Preserves a sepsis-focused objective. Published precedent: [TREWScore](https://pubmed.ncbi.nlm.nih.gov/26246167/). |
+| Predict circulatory failure | Among currently stable patients, predict a clearly defined future circulatory-failure event. | MIMIC/SICdb are candidates because richer physiological and medication data exist. Requires a validated label pipeline; HiRID results do not guarantee transfer. [circEWS](https://www.nature.com/articles/s41591-020-0789-4). |
+| Predict mortality from a fixed early window | Use the first 24 or 48 hours to predict subsequent in-hospital death among patients alive at that landmark. | MIMIC is suitable; SICdb mortality endpoints need harmonization. CinC 2019 does not provide mortality outcomes. [Established first-48-hour benchmark](https://www.nature.com/articles/s41597-019-0103-9). |
+| Forecast a future measurement | Predict the next observed lactate or creatinine value from preceding history. | Tests whether temporal representations beat carry-forward. Evaluate timing and observation-selection effects: results apply to patients remeasured. A supporting experiment, not a substitute for clinical event prediction. |
+
+Primary work before considering these fallbacks: retain pretrain–fine-tune;
+expand beyond the ten shared channels using feature-specific adapters and masks;
+compare scratch and pretrained encoders with identical target inputs. Evaluate
+predeclared early-warning windows separately from near-onset recognition, and
+test measurement groups using the same patients, decision times, and endpoint.
+Higher performance in a well-measured subgroup alone does not establish that
+ordering more tests would cause an improvement. Report subgroup coverage and
+population event capture in addition to subgroup precision/recall.
+
+## Richer measurements and transfer: completed results (2026-10-10; documented 2026-10-11)
+
+The sequential RTX 2080 Ti queue completed 27 fits: seeds 42/123/456, inputs
+10/13/34, and scratch/source-MAE/source-MAE-plus-target-MAE initialization.
+These are exploratory results on the same previously inspected target records,
+not three independent confirmation cohorts. Aggregate evidence is in
+`results/sepsis_missions_adapt_20261010/`, including `evaluation.json`,
+`seed_summary.json`, `paired_comparisons.json`, and `measurement_findings.json`.
+
+### Inputs, output, and time handling
+
+The target is official PhysioNet/CinC 2019 **set B**: 20,000 released records,
+19,503 retained; fit/tune/calibration/test = 11,759/2,991/1,934/2,819.
+Exclusions: 223 left-censored onsets and 274 records without a resolved eligible
+decision. Test contains 150 eligible sepsis events. Record identity is available;
+repeated-person identity is not. The old 14,057-record mirror matches set A,
+not B. This supersedes the older target description above for these experiments.
+
+At each eligible hourly decision, output is a risk score for assigned sepsis onset
+within the **next 12 hours**, using at most 72 hours of causal history and known
+age/gender. Assigned onset is the first positive CinC label's ICULOS plus six
+hours, undoing the challenge's early label shift. No post-onset input is used for
+the early-warning views. Unresolved negative horizons are excluded. The 12-hour
+test view has 63,738 decisions, 1,622 positive (2.54%).
+
+| Arm | Measurement channels |
+| --- | --- |
+| 10 | HR, O2Sat, Resp, Temp; **Lactate, pH, Creatinine, WBC, Platelets, Bilirubin_total** |
+| 13 | Those ten plus SBP, MAP, DBP |
+| 34 | Those thirteen plus EtCO2, BaseExcess, HCO3, FiO2, PaCO2, SaO2, AST, BUN, Alkalinephos, Calcium, Chloride, Bilirubin_direct, Glucose, Magnesium, Phosphate, Potassium, TroponinI, Hct, Hgb, PTT, Fibrinogen |
+
+Thus ten versus 34 is **additional measurements**, not a vitals-only versus labs
+comparison. A vitals-only ablation has not been run in this matrix.
+The encoder is a two-layer causal transformer, width 96, four attention heads.
+Each feature supplies normalized value, current observation flag, ever-observed
+flag, and observation age. Values carry forward from preceding observations;
+never-observed features use the normalization median with explicit missingness.
+Padding and future time steps are attention-masked. Missing individual labs are
+represented explicitly rather than simply deleting the corresponding hour.
+Feature/value interactions precede feature pooling. Sparse lab trajectories may
+still be hard to learn with this small pooled architecture; this is a hypothesis,
+not evidence that the data lack predictive lab information.
+
+### Keep patient and alarm metrics separate
+
+Each threshold is chosen on calibration data for target **alarm event recall 60%**,
+then frozen. The achieved test recall need not be 60%. Early-warning matching here
+accepts one alarm 1–12 hours before onset per event, with six-hour alarm suppression.
+Patient precision counts flagged released records that have an eligible sepsis event
+anywhere in the evaluated stay, regardless of warning timing. Patient recall counts
+event records flagged anywhere. These are retrospective record-level metrics;
+they do not establish a fixed-landmark admission classifier's performance.
+
+| Initialization / inputs | Patient precision | Patient recall | Timely alarm precision | Timely event recall |
+| --- | ---: | ---: | ---: | ---: |
+| Scratch / 10 | 34.3% | 52.7% | 5.90% | 51.8% |
+| Scratch / 13 | 30.2% | 52.4% | 5.82% | 52.2% |
+| **Scratch / 34** | **40.6%** | **52.0%** | **6.15%** | **51.1%** |
+| Source MAE / 10 | 36.7% | 55.3% | 6.49% | 52.7% |
+| Source MAE / 34 | 36.1% | 54.9% | 6.37% | 51.3% |
+| Source + target MAE / 34 | 31.8% | 55.8% | 6.03% | 49.6% |
+
+All entries are arithmetic means over three seeds, not a pooled or ensemble result.
+Scratch-34 patient precision varies from **26.2% to 51.0%** across seeds; the 40.6%
+mean is not yet stable evidence of a robust gain. Scratch hourly AUROC rises from
+0.752 (10) to 0.770 (34), whereas AP changes only from 0.090 to 0.093.
+Paired alarm comparisons do not show a consistent precision/recall gain across seeds.
+Pretraining and target MAE also do not consistently improve the richer-input arm.
+
+The earlier **35.2% patient precision / 50.7% timely recall** example is
+source-34 seed 42. Its matching patient recall is **54.0%**; its matching alarm
+precision is **6.30%**. Do not present the mixed-unit pair as ordinary precision/recall.
+Here 81/230 flagged records develop sepsis; 76/150 events receive timely alarms.
+
+### Do labs help when available?
+
+The predeclared strongest availability gate requires a BP observation less than
+two hours old, all creatinine/WBC/platelets less than 24 hours old, and lactate
+or pH less than 24 hours old, evaluated using preceding observations only.
+It covers **80/150 events (53.3%)** and **22.0% of eligible decisions** in this view.
+This is a decision-time gate, not a cohort selected by ever having labs later.
+
+| Inputs / initialization, same gate | Alarm precision | Recall among gate-covered events | Recall among all events |
+| --- | ---: | ---: | ---: |
+| Scratch / 10 | 10.77% | 55.0% | 29.3% |
+| Scratch / 13 | 10.23% | 55.0% | 29.3% |
+| Scratch / 34 | 10.18% | 55.0% | 29.3% |
+| Source MAE / 10 | 10.78% | 54.6% | 29.1% |
+| Source MAE / 34 | 10.50% | 55.4% | 29.6% |
+
+Availability identifies a more favorable setting, but there is no consistent
+incremental benefit of the additional channels within that setting. Availability
+may reflect clinician suspicion, illness severity, and practice patterns. These
+results cannot establish that ordering more labs causes better prediction.
+This gate does not require every added lab and does not answer the value of each
+individual additional assay. A future study should predeclare assay-specific
+availability gates and remove/add those assay inputs on identical decisions.
+
+### Main limitation and defensible research claim
+
+The principal deployment limitation is **temporal specificity and repeated alarm
+burden**, along with false warnings in nonseptic stays. It is not merely that a
+warning lasts too long. In source-34 seed 42, 1,207 alarm episodes comprise 76 timely
+matches, **648 more than 12 hours early**, 60 duplicates, and 423 alarms in nonseptic
+records. Thus patient discrimination can be useful while individual alarms remain
+poorly actionable. Too-early warnings are not proof of clinically useful long-range
+prediction: that endpoint would need a separately specified horizon and evaluation.
+Allowing warnings after onset changes the task toward recognition; it must not be
+reported as early prediction. Six-hour suppression and one-match-per-event rules
+explain part of the patient/alarm discrepancy, but nonseptic false alarms persist.
+
+These results could support a methodological study of measurement availability,
+transfer, and evaluation definitions, but performance alone establishes neither
+publishability nor novelty. A stronger manuscript needs a clinically justified
+decision time/horizon, strong matched baselines, uncertainty, and a fresh independent
+confirmation set. Current limits include only 150 test events, seed instability,
+repeated test inspection, missing receipt timestamps, uncertain operational onset,
+selection by lab ordering, and unequal scratch/source encoder learning rates.
+The source MAE uses only ten shared channels: it does not pretrain the additional
+target labs. Target adaptation adds compute and lacks a scratch-plus-target-MAE
+control, so source and target self-supervision effects are not fully isolated.
+No claim of clinical readiness, superiority to published systems, or a causal
+benefit of extra monitoring is supported by these experiments.
+
+### Reproduction and provenance
+
+Committed configs are `configs/sepsis_missions_{measurements,source,adapt}_20261010.json`;
+`SEPSIS_MISSIONS.md` defines the explicit stages. Original code/config hashes,
+prepared-data hashes, frozen model hashes and policies are retained in
+`implementation_lock.json`, `data_sha256.json`, `fit_lock.json`, `policy_lock.json`,
+and `policies.json`. Per-arm JSON files retain training histories and selected epochs.
+Private records, predictions and weights remain in ignored `local/` directories.
+Source preparation used 58,844 MIMIC fitting episodes and 13,645 SICdb fitting
+episodes, with 6,565/1,543 validation episodes; previous patient holdouts were
+preserved. Source histories are outcome-independent and capped at 336 hours.
+MAE pretraining has a 20,000-step budget per seed; target adaptation adds 1,000 steps.
+Fine-tuning uses batch 32, up to 20 epochs, patience four, tune AP selection;
+source encoder LR 1e-4 versus scratch 3e-4. Bootstrap uses 2,000 record resamples
+at frozen policies; seed replicates reuse the same test records.
+
+Recorded reporting environment: Python 3.13.15, torch 2.6.0+cu124, NumPy 2.5.3,
+pandas 3.0.5, scikit-learn 1.9.1, DuckDB 1.5.5; one RTX 2080 Ti.
+These are the locally installed versions recorded after completion, not a
+guarantee of bit-identical CUDA reproducibility on other systems.
+
+From `F:\Claude\Sepsentinel\Code`, aggregate reporting and synthetic CPU verification:
+
+```powershell
+& '..\.conda\python.exe' scripts/report_measurement_findings.py
+& '..\.conda\python.exe' scripts/test_sepsis_mission_metrics.py
+```
+
+For training reproduction, first obtain the permitted raw datasets and existing
+local provenance inputs: `results/prospective_qc/events.duckdb`,
+`results/mimic31_pooled17.pkl`, SICdb raw tables/previous holdout inputs required
+by `prepare_transfer_sources.py`, and the historical Kaggle mirror required by
+`prepare_transfer_cinc.py`. Those private inputs are not supplied by this commit;
+the scripts currently contain local paths. Then run the following prerequisites:
+
+```powershell
+& '..\.conda\python.exe' scripts/download_cinc_transfer.py
+& '..\.conda\python.exe' scripts/prepare_transfer_sources.py
+& '..\.conda\python.exe' scripts/prepare_transfer_cinc.py
+& '..\.conda\python.exe' scripts/pretrain_transfer_mae.py --seeds 42,123,456 --steps 20000
+```
+
+Use a copy of the final config with a **new run_name** for a fresh training run;
+the original directory contains frozen results and is not a clean retraining target.
+Replace `NEW_CONFIG.json` below with that copied configuration. Stages run sequentially:
+
+```powershell
+& '..\.conda\python.exe' scripts/sepsis_missions.py --config NEW_CONFIG.json prepare
+& '..\.conda\python.exe' scripts/sepsis_missions.py --config NEW_CONFIG.json train
+& '..\.conda\python.exe' scripts/sepsis_missions.py --config NEW_CONFIG.json calibrate
+& '..\.conda\python.exe' scripts/sepsis_missions.py --config NEW_CONFIG.json evaluate
+& '..\.conda\python.exe' scripts/sepsis_missions.py --config NEW_CONFIG.json summarize
+```
+
+The original queue (`scripts/run_sepsis_priority_queue.py`) ran scratch first,
+source transfer second and target adaptation third, copying identical earlier
+fits into the later phase. It is resumable against the original local artifacts;
+it is not a command for an independent confirmation study. Reproduction commands
+are documentation only: no new training was launched while recording these findings.

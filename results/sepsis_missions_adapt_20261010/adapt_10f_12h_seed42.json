@@ -1,0 +1,91 @@
+{
+  "name": "adapt_10f_12h_seed42",
+  "seed": 42,
+  "initialization": "adapt",
+  "nfeatures": 10,
+  "horizon": 12,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.0885503149845384,
+      "tune_record_weighted_ap": 0.09343851733123935
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.0982334666238154,
+      "tune_record_weighted_ap": 0.09375130940559762
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.0380654953463861,
+      "tune_record_weighted_ap": 0.09849258336406153
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.1335823878187063,
+      "tune_record_weighted_ap": 0.10157274445060237
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.0789108635349707,
+      "tune_record_weighted_ap": 0.09592732710926095
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.0610855717069942,
+      "tune_record_weighted_ap": 0.10169516360897723
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.0611776010381861,
+      "tune_record_weighted_ap": 0.1014051912508264
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.1037859718077694,
+      "tune_record_weighted_ap": 0.10235580643294662
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.0802341897226324,
+      "tune_record_weighted_ap": 0.10283333102580623
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.0738996395682834,
+      "tune_record_weighted_ap": 0.10043445924141294
+    },
+    {
+      "epoch": 11,
+      "train_loss": 1.1340948637039605,
+      "tune_record_weighted_ap": 0.1263688872068516
+    },
+    {
+      "epoch": 12,
+      "train_loss": 1.040709355348978,
+      "tune_record_weighted_ap": 0.10788626837155744
+    },
+    {
+      "epoch": 13,
+      "train_loss": 1.1605265581778244,
+      "tune_record_weighted_ap": 0.1044005286110166
+    },
+    {
+      "epoch": 14,
+      "train_loss": 1.0530942983685,
+      "tune_record_weighted_ap": 0.09988792249286502
+    },
+    {
+      "epoch": 15,
+      "train_loss": 1.1105654082340228,
+      "tune_record_weighted_ap": 0.0923590468868738
+    }
+  ],
+  "adaptation": {
+    "steps": 1000,
+    "last100_loss": 0.19622658543288707,
+    "active_channels": 10
+  },
+  "complete": true,
+  "test_opened": false
+}

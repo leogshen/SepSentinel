@@ -1,0 +1,37 @@
+{
+  "name": "scratch_34f_12h_seed42",
+  "seed": 42,
+  "initialization": "scratch",
+  "nfeatures": 34,
+  "horizon": 12,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.0065149524497672,
+      "tune_record_weighted_ap": 0.0561045871906231
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.0089343629362297,
+      "tune_record_weighted_ap": 0.04988786493914102
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.9857935567667757,
+      "tune_record_weighted_ap": 0.05180337849190384
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.0223939799842947,
+      "tune_record_weighted_ap": 0.05407840042367955
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.9801290607478612,
+      "tune_record_weighted_ap": 0.05400531220695487
+    }
+  ],
+  "adaptation": null,
+  "complete": true,
+  "test_opened": false
+}

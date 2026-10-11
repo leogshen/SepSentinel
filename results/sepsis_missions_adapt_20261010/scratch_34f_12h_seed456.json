@@ -1,0 +1,97 @@
+{
+  "name": "scratch_34f_12h_seed456",
+  "seed": 456,
+  "initialization": "scratch",
+  "nfeatures": 34,
+  "horizon": 12,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.9916361821842683,
+      "tune_record_weighted_ap": 0.05187540860203723
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.0574944594607325,
+      "tune_record_weighted_ap": 0.05565933556862189
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.0320026554232817,
+      "tune_record_weighted_ap": 0.05424220643354521
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.028422382133098,
+      "tune_record_weighted_ap": 0.05523810530970874
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.0045366344476376,
+      "tune_record_weighted_ap": 0.05362582071935904
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.0418492845994287,
+      "tune_record_weighted_ap": 0.05574335724556158
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.961788941797448,
+      "tune_record_weighted_ap": 0.06243210344539688
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.0192087555954183,
+      "tune_record_weighted_ap": 0.05987968116459111
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.0184838661918543,
+      "tune_record_weighted_ap": 0.06715403212590346
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.9893186884629063,
+      "tune_record_weighted_ap": 0.06724618494444369
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.9905093238194667,
+      "tune_record_weighted_ap": 0.0686876345215404
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.958229174023587,
+      "tune_record_weighted_ap": 0.07384167589079685
+    },
+    {
+      "epoch": 13,
+      "train_loss": 1.026647829797523,
+      "tune_record_weighted_ap": 0.0755651093237067
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.9646640785606551,
+      "tune_record_weighted_ap": 0.07445815218285218
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.9789394341802492,
+      "tune_record_weighted_ap": 0.07025277732267607
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.9971266222511393,
+      "tune_record_weighted_ap": 0.07421365411671887
+    },
+    {
+      "epoch": 17,
+      "train_loss": 1.0311733495629778,
+      "tune_record_weighted_ap": 0.0748074484553504
+    }
+  ],
+  "adaptation": null,
+  "complete": true,
+  "test_opened": false
+}

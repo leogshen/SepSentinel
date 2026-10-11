@@ -1,0 +1,51 @@
+{
+  "name": "adapt_34f_12h_seed42",
+  "seed": 42,
+  "initialization": "adapt",
+  "nfeatures": 34,
+  "horizon": 12,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.1798328318553937,
+      "tune_record_weighted_ap": 0.09912640870864241
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.174058168230693,
+      "tune_record_weighted_ap": 0.09529992022825491
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.0948566646804034,
+      "tune_record_weighted_ap": 0.09976092367364754
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.2290674896031355,
+      "tune_record_weighted_ap": 0.09266401929878323
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.1265678117570639,
+      "tune_record_weighted_ap": 0.08970689104680041
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.0912410037761384,
+      "tune_record_weighted_ap": 0.09289121673808985
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.1154298330179233,
+      "tune_record_weighted_ap": 0.09068096809017974
+    }
+  ],
+  "adaptation": {
+    "steps": 1000,
+    "last100_loss": 0.24603772550821304,
+    "active_channels": 34
+  },
+  "complete": true,
+  "test_opened": false
+}

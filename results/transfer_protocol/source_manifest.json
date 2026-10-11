@@ -1,0 +1,69 @@
+{
+  "features": [
+    "heart_rate",
+    "spo2",
+    "respiratory_rate",
+    "temperature",
+    "lactate",
+    "ph",
+    "creatinine",
+    "wbc",
+    "platelets",
+    "bilirubin"
+  ],
+  "outcome_truncation": false,
+  "heldouts_preserved": true,
+  "sicdb_available_clock": "Hourly block end; laboratory Offset. Separate receipt times unavailable; source reconstruction only.",
+  "mimic": {
+    "train": {
+      "episodes": 58844,
+      "people": 40961,
+      "hours": 4595202
+    },
+    "val": {
+      "episodes": 6565,
+      "people": 4561,
+      "hours": 522563
+    }
+  },
+  "sicdb": {
+    "train": {
+      "episodes": 13645,
+      "people": 10217,
+      "hours": 742921
+    },
+    "val": {
+      "episodes": 1543,
+      "people": 1139,
+      "hours": 82008
+    }
+  },
+  "normalization": {
+    "median": [
+      81.0,
+      96.42829895019531,
+      18.0,
+      37.0,
+      1.2200000286102295,
+      7.420000076293945,
+      1.0,
+      10.399999618530273,
+      189.0,
+      0.699999988079071
+    ],
+    "std": [
+      16.55706214904785,
+      2.9494447708129883,
+      5.510015487670898,
+      1.532738208770752,
+      1.704610824584961,
+      0.07416647672653198,
+      1.2958006858825684,
+      6.990999221801758,
+      122.15451049804688,
+      4.3764495849609375
+    ],
+    "training_only": true
+  },
+  "elapsed_minutes": 2.540831112861633
+}

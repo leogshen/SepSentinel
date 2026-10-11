@@ -1,0 +1,10 @@
+{
+  "source": "F:\\Claude\\Sepsentinel\\Code\\results\\sepsis_missions_source_20261010",
+  "sha256": {
+    "fit.pkl": "cbcb6e67de7adc2febecb43b6521d0b30424622827ae0e1d744caed4f9bc3751",
+    "tune.pkl": "35bee2ccfd83cabe0f53ceb6946cb022d729a9af6c27c4ca87933a6a792f1585",
+    "cal.pkl": "22bd754cb3df84efc1ddde3cd9b0400eaf3d25b250910895339bbe0f9aec21b9",
+    "test.pkl": "0b698a5568f27bb9aa9c6a8523337ecefe55c2a66c8eab3c20b72452f219c62c",
+    "scaler.npz": "096145f29037f3181089488bc72b7041afd1603213a4fdd3e2429ce13e7aacd8"
+  }
+}

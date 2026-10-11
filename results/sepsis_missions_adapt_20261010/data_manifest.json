@@ -1,0 +1,58 @@
+{
+  "columns": [
+    "HR",
+    "O2Sat",
+    "Resp",
+    "Temp",
+    "Lactate",
+    "pH",
+    "Creatinine",
+    "WBC",
+    "Platelets",
+    "Bilirubin_total",
+    "SBP",
+    "MAP",
+    "DBP",
+    "EtCO2",
+    "BaseExcess",
+    "HCO3",
+    "FiO2",
+    "PaCO2",
+    "SaO2",
+    "AST",
+    "BUN",
+    "Alkalinephos",
+    "Calcium",
+    "Chloride",
+    "Bilirubin_direct",
+    "Glucose",
+    "Magnesium",
+    "Phosphate",
+    "Potassium",
+    "TroponinI",
+    "Hct",
+    "Hgb",
+    "PTT",
+    "Fibrinogen"
+  ],
+  "splits": {
+    "fit": {
+      "records": 11759,
+      "rows": 456192
+    },
+    "tune": {
+      "records": 2991,
+      "rows": 115809
+    },
+    "cal": {
+      "records": 1934,
+      "rows": 75832
+    },
+    "test": {
+      "records": 2819,
+      "rows": 109626
+    }
+  },
+  "exploratory": true,
+  "split_unit": "released record"
+}

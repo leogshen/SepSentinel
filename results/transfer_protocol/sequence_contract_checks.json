@@ -1,0 +1,7 @@
+{
+  "hidden_observations_removed": true,
+  "carry_recomputed": true,
+  "causal_prefix_invariance": true,
+  "padding_invariance": true,
+  "feature_value_binding": true
+}
