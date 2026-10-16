@@ -1,0 +1,83 @@
+{
+  "rich_scratch": {
+    "arm": {
+      "name": "rich_scratch",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "condition": "values",
+      "initialization": "rich_scratch",
+      "lr": 0.0003
+    },
+    "candidate": "rich_scratch_lr0.0003",
+    "tuning_ap": 0.2389297598536804,
+    "all_candidates": [
+      {
+        "name": "rich_scratch_lr3e-05",
+        "tuning_ap": 0.16348095190884687
+      },
+      {
+        "name": "rich_scratch_lr0.0001",
+        "tuning_ap": 0.21204820359678944
+      },
+      {
+        "name": "rich_scratch_lr0.0003",
+        "tuning_ap": 0.2389297598536804
+      }
+    ]
+  },
+  "rich_supervised": {
+    "arm": {
+      "name": "rich_supervised",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "condition": "values",
+      "initialization": "rich_supervised",
+      "lr": 0.0001
+    },
+    "candidate": "rich_supervised_lr0.0001",
+    "tuning_ap": 0.264515410089972,
+    "all_candidates": [
+      {
+        "name": "rich_supervised_lr3e-05",
+        "tuning_ap": 0.18308620446605497
+      },
+      {
+        "name": "rich_supervised_lr0.0001",
+        "tuning_ap": 0.264515410089972
+      },
+      {
+        "name": "rich_supervised_lr0.0003",
+        "tuning_ap": 0.2469331278276717
+      }
+    ]
+  },
+  "rich_mae": {
+    "arm": {
+      "name": "rich_mae",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "condition": "values",
+      "initialization": "rich_mae",
+      "lr": 0.0003
+    },
+    "candidate": "rich_mae_lr0.0003",
+    "tuning_ap": 0.28110141730712496,
+    "all_candidates": [
+      {
+        "name": "rich_mae_lr3e-05",
+        "tuning_ap": 0.23581777577546723
+      },
+      {
+        "name": "rich_mae_lr0.0001",
+        "tuning_ap": 0.25168920493837155
+      },
+      {
+        "name": "rich_mae_lr0.0003",
+        "tuning_ap": 0.28110141730712496
+      }
+    ]
+  }
+}

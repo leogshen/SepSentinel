@@ -1,0 +1,14 @@
+{
+  "scratch_34f_lr0.0003_seed42.json": "5303470856d098140f1b2e9375f64079aac7cdabe1603471f01a99b37f1c5194",
+  "local\\scratch_34f_lr0.0003_seed42.pt": "3eb963fe0917952b53621c504389a2716440ccdbb53359d896d0c68bb5cd74c5",
+  "targetmae_34f_lr0.0003_seed42.json": "2f3adf5f695bbc23b732a7b91879b3dc67610250d82f6f8bf0f3754de52bf5d9",
+  "local\\targetmae_34f_lr0.0003_seed42.pt": "28f6fa8d094bff6a59564ce514f4f608ad787b13f1492001f3469fc3f503e5ce",
+  "sourcetargetmae_34f_lr0.0003_seed42.json": "03c8837e9d2e5040fbb8c675523d9dc8eeccd3f2252019e5e3887188d60b2fbf",
+  "local\\sourcetargetmae_34f_lr0.0003_seed42.pt": "47dd934e84db484925967c17268f1fe08184d5788b5c0d196132d437c0191579",
+  "scratch_34f_lr0.0001_seed42.json": "be7288e01ef518c9fce8fc15c223880b2a8801188d56245668863901363e4baa",
+  "local\\scratch_34f_lr0.0001_seed42.pt": "0a6a7c620a15d441bfeab880f8bec77eedad8d6b2dd1b015cd41b674c396f496",
+  "targetmae_34f_lr0.0001_seed42.json": "3f984cc9fe10bcc3d812731c16c0f8fa74003580b7a3715c5e569ebef4aaff61",
+  "local\\targetmae_34f_lr0.0001_seed42.pt": "fd9deefbc5e9a43b9420c455b7c0340ed56ebaff3e9290011777fe86012d5574",
+  "sourcetargetmae_34f_lr0.0001_seed42.json": "651dc12e896979f145029888b7ded02dd1bc7a75fd5b54f3a8de801dfb525a30",
+  "local\\sourcetargetmae_34f_lr0.0001_seed42.pt": "fa6ea1869f76697cd347aef1d8a33bc3cf4bd14e44540ef010c987204907e8ed"
+}

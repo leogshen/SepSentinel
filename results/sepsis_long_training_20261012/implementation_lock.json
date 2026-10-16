@@ -1,0 +1,71 @@
+{
+  "config": {
+    "run_name": "sepsis_long_training_20261012",
+    "seeds": [
+      42,
+      123,
+      456
+    ],
+    "feature_counts_trees": [],
+    "feature_counts_neural": [
+      34
+    ],
+    "initializations": [
+      "scratch",
+      "source",
+      "targetmae",
+      "sourcetargetmae"
+    ],
+    "learning_rates": [
+      0.0003,
+      0.0001
+    ],
+    "epochs": 100,
+    "min_epochs": 20,
+    "patience": 15,
+    "adaptation_steps": 1000,
+    "training_horizon_hours": 12,
+    "windows": [
+      [
+        12,
+        0
+      ]
+    ],
+    "gates": [
+      "all",
+      "bp_routine_perfusion"
+    ],
+    "recall_targets": [
+      0.3,
+      0.5,
+      0.6
+    ],
+    "calibration_quantiles": 501,
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 930,
+    "refractory_hours": 6,
+    "threads": 4,
+    "exploratory": true
+  },
+  "code": {
+    "scripts\\run_sepsis_controls.py": "ccf4dcf73415741465a4438c4e6a7dec4035144919e1b57974e2dfbe4698fdb0",
+    "configs\\sepsis_long_training_20261012.json": "2e72615823c51c959fc6567ddd48581fbf521e1c52f4da77b76a59f8c47e2f7f",
+    "scripts\\causal_control_features.py": "aa7e9b73019bf25de8ecf02e72f223dcb8462fc0abc112484106c19d3a4de0db",
+    "scripts\\sepsis_missions.py": "59dde7ab3844a5dfe2cb79c7afe816da37b58fc8d0b88c90fc2e4b4c4edfd7ca",
+    "scripts\\train_rich_transfer.py": "b40c2a1b2b1aeb5ca0ebb377042c7ccf52c8ec9a66ac5cb4df09014306c69e5a",
+    "scripts\\transfer_sequence.py": "7bad1c1114b1b84e3b2907d2c331a6c91a8dd6105bcbacd67950bb5e67d25846",
+    "scripts\\sepsis_mission_metrics.py": "2af52e04c3e9441119829e84401f0c4d20693e83c920836e01a964461848831f"
+  },
+  "data": {
+    "fit.pkl": "cbcb6e67de7adc2febecb43b6521d0b30424622827ae0e1d744caed4f9bc3751",
+    "tune.pkl": "35bee2ccfd83cabe0f53ceb6946cb022d729a9af6c27c4ca87933a6a792f1585",
+    "cal.pkl": "22bd754cb3df84efc1ddde3cd9b0400eaf3d25b250910895339bbe0f9aec21b9",
+    "test.pkl": "0b698a5568f27bb9aa9c6a8523337ecefe55c2a66c8eab3c20b72452f219c62c",
+    "scaler.npz": "096145f29037f3181089488bc72b7041afd1603213a4fdd3e2429ce13e7aacd8"
+  },
+  "source_checkpoints": {
+    "42": "a50930fc46fe37c0815eff60b3985eacc870d551c2e685c90f5a121e51de0d76",
+    "123": "7efad44e17cc4dad8f7b4d0611fd00be2f0e3e6b3e3d4178f5d9faa524dfb763",
+    "456": "359d2cad7536b32b551db510a95a8a7ddea351cc317cedf493458b53ac14dffc"
+  }
+}

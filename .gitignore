@@ -54,6 +54,20 @@ results/sepsis_missions_v*/local/
 results/sepsis_missions_measurements_*/local/
 results/sepsis_missions_source_*/local/
 results/sepsis_missions_adapt_*/local/
+results/sepsis_controls_*/local/
+results/sepsis_controls_*/*.log
+results/sepsis_lab_values_*/local/
+results/sepsis_lab_values_*/*.log
+results/sepsis_long_training_*/local/
+results/sepsis_long_training_*/*.log
+results/sepsis_long_mae_*/local/
+results/sepsis_long_mae_*/*.log
+results/sepsis_mae_finetune_*/local/
+results/sepsis_mae_finetune_*/*.log
+results/sepsis_cv_*/**/local/
+results/sepsis_cv_*/**/*.log
+results/sepsis_lab_specialize_*/**/local/
+results/sepsis_lab_specialize_*/**/*.log
 
 # External datasets (binary, keep local)
 *.sav

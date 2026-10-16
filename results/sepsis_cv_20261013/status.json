@@ -1,0 +1,8 @@
+{
+  "stage": "complete",
+  "timestamp_utc": "2026-10-14T11:36:18Z",
+  "folds": 5,
+  "supervised_fits": 25,
+  "mae_fits": 5,
+  "aggregation_recovered": true
+}

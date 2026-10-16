@@ -1,0 +1,16 @@
+{
+  "run_name": "sepsis_mae_finetune_20261013",
+  "seeds": [42],
+  "feature_counts_trees": [],
+  "feature_counts_neural": [34],
+  "initializations": ["scratch", "targetmae", "sourcetargetmae"],
+  "learning_rates": [0.0003, 0.0001],
+  "epochs": 100, "min_epochs": 20, "patience": 15,
+  "adaptation_steps": 20000,
+  "training_horizon_hours": 12, "windows": [[12, 0]],
+  "gates": ["all", "bp_routine_perfusion"],
+  "recall_targets": [0.3, 0.5, 0.6],
+  "calibration_quantiles": 501,
+  "bootstrap_replicates": 2000, "bootstrap_seed": 930,
+  "refractory_hours": 6, "threads": 4, "exploratory": true
+}

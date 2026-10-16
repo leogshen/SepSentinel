@@ -1,0 +1,260 @@
+{
+  "name": "values__sourcetargetmae_34f_seed42",
+  "kind": "neural",
+  "initialization": "sourcetargetmae",
+  "features": 34,
+  "seed": 42,
+  "lr": 0.0001,
+  "condition": "values",
+  "complete": true,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.8918206282235958,
+      "tune_ap": 0.07168481638769296,
+      "optimizer_steps": 270
+    },
+    {
+      "epoch": 2,
+      "loss": 1.0770325883533116,
+      "tune_ap": 0.08174586189887978,
+      "optimizer_steps": 540
+    },
+    {
+      "epoch": 3,
+      "loss": 1.064055638346407,
+      "tune_ap": 0.07900645378028297,
+      "optimizer_steps": 810
+    },
+    {
+      "epoch": 4,
+      "loss": 1.0676251308371623,
+      "tune_ap": 0.07489506034798528,
+      "optimizer_steps": 1080
+    },
+    {
+      "epoch": 5,
+      "loss": 1.083210742901321,
+      "tune_ap": 0.08081687776173825,
+      "optimizer_steps": 1350
+    },
+    {
+      "epoch": 6,
+      "loss": 1.1639255230487497,
+      "tune_ap": 0.08376745347220133,
+      "optimizer_steps": 1620
+    },
+    {
+      "epoch": 7,
+      "loss": 1.0589253368615001,
+      "tune_ap": 0.0783256876646084,
+      "optimizer_steps": 1890
+    },
+    {
+      "epoch": 8,
+      "loss": 1.1200098225501953,
+      "tune_ap": 0.08220085600018968,
+      "optimizer_steps": 2160
+    },
+    {
+      "epoch": 9,
+      "loss": 1.1350118794237023,
+      "tune_ap": 0.07943225570541723,
+      "optimizer_steps": 2430
+    },
+    {
+      "epoch": 10,
+      "loss": 1.0741591001274409,
+      "tune_ap": 0.07234837523473882,
+      "optimizer_steps": 2700
+    },
+    {
+      "epoch": 11,
+      "loss": 1.0453015912876085,
+      "tune_ap": 0.0801105744462447,
+      "optimizer_steps": 2970
+    },
+    {
+      "epoch": 12,
+      "loss": 1.0889757516345493,
+      "tune_ap": 0.08006290379795976,
+      "optimizer_steps": 3240
+    },
+    {
+      "epoch": 13,
+      "loss": 1.0953963965177536,
+      "tune_ap": 0.07463760949161206,
+      "optimizer_steps": 3510
+    },
+    {
+      "epoch": 14,
+      "loss": 1.048923953898527,
+      "tune_ap": 0.07947056314510763,
+      "optimizer_steps": 3780
+    },
+    {
+      "epoch": 15,
+      "loss": 1.1117635415935958,
+      "tune_ap": 0.07090163861001507,
+      "optimizer_steps": 4050
+    },
+    {
+      "epoch": 16,
+      "loss": 1.1025439022660808,
+      "tune_ap": 0.08024976119598663,
+      "optimizer_steps": 4320
+    },
+    {
+      "epoch": 17,
+      "loss": 1.0759656484618232,
+      "tune_ap": 0.08387696931788322,
+      "optimizer_steps": 4590
+    },
+    {
+      "epoch": 18,
+      "loss": 1.1521574083232768,
+      "tune_ap": 0.08231702416400535,
+      "optimizer_steps": 4860
+    },
+    {
+      "epoch": 19,
+      "loss": 1.0766155876426233,
+      "tune_ap": 0.08438340414901703,
+      "optimizer_steps": 5130
+    },
+    {
+      "epoch": 20,
+      "loss": 1.0850359307946982,
+      "tune_ap": 0.08088215626192481,
+      "optimizer_steps": 5400
+    },
+    {
+      "epoch": 21,
+      "loss": 1.108118298297955,
+      "tune_ap": 0.08190997019170733,
+      "optimizer_steps": 5670
+    },
+    {
+      "epoch": 22,
+      "loss": 1.0657620267597614,
+      "tune_ap": 0.08414915053947701,
+      "optimizer_steps": 5940
+    },
+    {
+      "epoch": 23,
+      "loss": 1.1427167965996046,
+      "tune_ap": 0.08785853410046161,
+      "optimizer_steps": 6210
+    },
+    {
+      "epoch": 24,
+      "loss": 1.06283095550068,
+      "tune_ap": 0.08930182139444899,
+      "optimizer_steps": 6480
+    },
+    {
+      "epoch": 25,
+      "loss": 1.1784107339533942,
+      "tune_ap": 0.08543016970845807,
+      "optimizer_steps": 6750
+    },
+    {
+      "epoch": 26,
+      "loss": 1.133232958973558,
+      "tune_ap": 0.07610111622909581,
+      "optimizer_steps": 7020
+    },
+    {
+      "epoch": 27,
+      "loss": 1.1744295543542616,
+      "tune_ap": 0.08624736112220996,
+      "optimizer_steps": 7290
+    },
+    {
+      "epoch": 28,
+      "loss": 1.1376814811455982,
+      "tune_ap": 0.07752027440003854,
+      "optimizer_steps": 7560
+    },
+    {
+      "epoch": 29,
+      "loss": 1.0874675111707162,
+      "tune_ap": 0.07885191340328393,
+      "optimizer_steps": 7830
+    },
+    {
+      "epoch": 30,
+      "loss": 1.0751560359227437,
+      "tune_ap": 0.07139713630981888,
+      "optimizer_steps": 8100
+    },
+    {
+      "epoch": 31,
+      "loss": 1.0676900850815905,
+      "tune_ap": 0.07940724692571498,
+      "optimizer_steps": 8370
+    },
+    {
+      "epoch": 32,
+      "loss": 1.1259955380870788,
+      "tune_ap": 0.06797561947316312,
+      "optimizer_steps": 8640
+    },
+    {
+      "epoch": 33,
+      "loss": 1.052364391281649,
+      "tune_ap": 0.07051609372457632,
+      "optimizer_steps": 8910
+    },
+    {
+      "epoch": 34,
+      "loss": 1.1183642708799906,
+      "tune_ap": 0.07855746035801611,
+      "optimizer_steps": 9180
+    },
+    {
+      "epoch": 35,
+      "loss": 1.093935282976815,
+      "tune_ap": 0.07396018637670039,
+      "optimizer_steps": 9450
+    },
+    {
+      "epoch": 36,
+      "loss": 1.037926936701492,
+      "tune_ap": 0.07686681070067457,
+      "optimizer_steps": 9720
+    },
+    {
+      "epoch": 37,
+      "loss": 1.1207506424850888,
+      "tune_ap": 0.0788136662768642,
+      "optimizer_steps": 9990
+    },
+    {
+      "epoch": 38,
+      "loss": 1.1552199538452206,
+      "tune_ap": 0.07774669563002254,
+      "optimizer_steps": 10260
+    },
+    {
+      "epoch": 39,
+      "loss": 1.111144518941917,
+      "tune_ap": 0.07190534118948348,
+      "optimizer_steps": 10530
+    }
+  ],
+  "adaptation": {
+    "steps": 20000,
+    "selected_step": 20000,
+    "encoder_sha256": "266afe546f36a100aadad3726802e550ef8b4e90851a18c184b2a4243d67e974"
+  },
+  "best_tune_ap": 0.08930182139444899,
+  "selected_epoch": 24,
+  "optimizer_steps": 10530,
+  "examples_per_epoch": 8638,
+  "hit_epoch_cap": false,
+  "total_training_minutes": 5.873419777552287,
+  "first20_best_tune_ap": 0.08438340414901703,
+  "test_opened": false,
+  "elapsed_minutes": 5.924545729160309
+}

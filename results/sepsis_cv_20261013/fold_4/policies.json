@@ -1,0 +1,752 @@
+[
+  {
+    "name": "values__xgb_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.4954896569252014,
+      "precision": 0.08722741433021806,
+      "recall": 0.30434782608695654,
+      "subgroup_recall": 0.30434782608695654,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 28,
+      "alarms": 321,
+      "alarms_per_day": 0.1732598673113685,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 213,
+        "duplicate": 19,
+        "nonseptic": 61,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__xgb_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.44377708435058594,
+      "precision": 0.06917293233082707,
+      "recall": 0.5,
+      "subgroup_recall": 0.5,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 46,
+      "alarms": 665,
+      "alarms_per_day": 0.35893399302822443,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 393,
+        "duplicate": 37,
+        "nonseptic": 189,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__xgb_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.3876211180686947,
+      "precision": 0.06015037593984962,
+      "recall": 0.6086956521739131,
+      "subgroup_recall": 0.6086956521739131,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 56,
+      "alarms": 931,
+      "alarms_per_day": 0.5025075902395142,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 490,
+        "duplicate": 42,
+        "nonseptic": 343,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__xgb_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.5000494718551636,
+      "precision": 0.11347517730496454,
+      "recall": 0.17391304347826086,
+      "subgroup_recall": 0.3137254901960784,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 16,
+      "alarms": 141,
+      "alarms_per_day": 0.0761048015292927,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 95,
+        "duplicate": 7,
+        "nonseptic": 23,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__xgb_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.45402481150627194,
+      "precision": 0.1087866108786611,
+      "recall": 0.2826086956521739,
+      "subgroup_recall": 0.5098039215686274,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 26,
+      "alarms": 239,
+      "alarms_per_day": 0.12900033734397842,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 145,
+        "duplicate": 14,
+        "nonseptic": 54,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__xgb_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.40890607237815857,
+      "precision": 0.09253731343283582,
+      "recall": 0.33695652173913043,
+      "subgroup_recall": 0.6078431372549019,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 31,
+      "alarms": 335,
+      "alarms_per_day": 0.18081637242775217,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 183,
+        "duplicate": 16,
+        "nonseptic": 105,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__xgb_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.5502009391784668,
+      "precision": 0.10256410256410256,
+      "recall": 0.30434782608695654,
+      "subgroup_recall": 0.30434782608695654,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 28,
+      "alarms": 273,
+      "alarms_per_day": 0.14735184976948162,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 191,
+        "duplicate": 22,
+        "nonseptic": 32,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__xgb_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.4595519733428954,
+      "precision": 0.06283422459893048,
+      "recall": 0.5108695652173914,
+      "subgroup_recall": 0.5108695652173914,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 47,
+      "alarms": 748,
+      "alarms_per_day": 0.4037332733610705,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 435,
+        "duplicate": 39,
+        "nonseptic": 227,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__xgb_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.4008408784866333,
+      "precision": 0.05517909002904162,
+      "recall": 0.6195652173913043,
+      "subgroup_recall": 0.6195652173913043,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 57,
+      "alarms": 1033,
+      "alarms_per_day": 0.5575621275160239,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 489,
+        "duplicate": 45,
+        "nonseptic": 442,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__xgb_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.55880033493042,
+      "precision": 0.1415929203539823,
+      "recall": 0.17391304347826086,
+      "subgroup_recall": 0.3137254901960784,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 16,
+      "alarms": 113,
+      "alarms_per_day": 0.060991791296525356,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 79,
+        "duplicate": 10,
+        "nonseptic": 8,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__xgb_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.46929654479026794,
+      "precision": 0.09154929577464789,
+      "recall": 0.2826086956521739,
+      "subgroup_recall": 0.5098039215686274,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 26,
+      "alarms": 284,
+      "alarms_per_day": 0.15328910378949737,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 172,
+        "duplicate": 14,
+        "nonseptic": 72,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__xgb_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.43083945035934446,
+      "precision": 0.08493150684931507,
+      "recall": 0.33695652173913043,
+      "subgroup_recall": 0.6078431372549019,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 31,
+      "alarms": 365,
+      "alarms_per_day": 0.19700888339143147,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 187,
+        "duplicate": 17,
+        "nonseptic": 130,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__scratch_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.6833692321777345,
+      "precision": 0.08139534883720931,
+      "recall": 0.30434782608695654,
+      "subgroup_recall": 0.30434782608695654,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 28,
+      "alarms": 344,
+      "alarms_per_day": 0.18567412571685596,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 212,
+        "duplicate": 14,
+        "nonseptic": 90,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__scratch_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.36964958190917857,
+      "precision": 0.0609597924773022,
+      "recall": 0.5108695652173914,
+      "subgroup_recall": 0.5108695652173914,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 47,
+      "alarms": 771,
+      "alarms_per_day": 0.41614753176655794,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 444,
+        "duplicate": 40,
+        "nonseptic": 240,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__scratch_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.2898803830146789,
+      "precision": 0.06327683615819209,
+      "recall": 0.6086956521739131,
+      "subgroup_recall": 0.6086956521739131,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 56,
+      "alarms": 885,
+      "alarms_per_day": 0.4776790734285393,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 462,
+        "duplicate": 42,
+        "nonseptic": 325,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__scratch_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.6802781605720519,
+      "precision": 0.09815950920245399,
+      "recall": 0.17391304347826086,
+      "subgroup_recall": 0.3137254901960784,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 16,
+      "alarms": 163,
+      "alarms_per_day": 0.08797930956932419,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 105,
+        "duplicate": 6,
+        "nonseptic": 36,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__scratch_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.36964958190917857,
+      "precision": 0.08766233766233766,
+      "recall": 0.29347826086956524,
+      "subgroup_recall": 0.5294117647058824,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 27,
+      "alarms": 308,
+      "alarms_per_day": 0.1662431125604408,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 173,
+        "duplicate": 16,
+        "nonseptic": 92,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__scratch_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.2898803830146789,
+      "precision": 0.09042553191489362,
+      "recall": 0.3695652173913043,
+      "subgroup_recall": 0.6666666666666666,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 34,
+      "alarms": 376,
+      "alarms_per_day": 0.2029461374114472,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 185,
+        "duplicate": 16,
+        "nonseptic": 141,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__scratch_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.630620663166046,
+      "precision": 0.08536585365853659,
+      "recall": 0.30434782608695654,
+      "subgroup_recall": 0.30434782608695654,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 28,
+      "alarms": 328,
+      "alarms_per_day": 0.17703811986956033,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 219,
+        "duplicate": 21,
+        "nonseptic": 60,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__scratch_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.2102409757375717,
+      "precision": 0.05874840357598978,
+      "recall": 0.5,
+      "subgroup_recall": 0.5,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 46,
+      "alarms": 783,
+      "alarms_per_day": 0.42262453615202966,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 443,
+        "duplicate": 41,
+        "nonseptic": 253,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__scratch_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.1893323402404785,
+      "precision": 0.04185351270553064,
+      "recall": 0.6086956521739131,
+      "subgroup_recall": 0.6086956521739131,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 56,
+      "alarms": 1338,
+      "alarms_per_day": 0.7221859889800967,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 483,
+        "duplicate": 41,
+        "nonseptic": 758,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__scratch_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.6219191255569458,
+      "precision": 0.13793103448275862,
+      "recall": 0.17391304347826086,
+      "subgroup_recall": 0.3137254901960784,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 16,
+      "alarms": 116,
+      "alarms_per_day": 0.06261104239289329,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 77,
+        "duplicate": 10,
+        "nonseptic": 13,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__scratch_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.19133629536628724,
+      "precision": 0.08656716417910448,
+      "recall": 0.31521739130434784,
+      "subgroup_recall": 0.5686274509803921,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 29,
+      "alarms": 335,
+      "alarms_per_day": 0.18081637242775217,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 181,
+        "duplicate": 13,
+        "nonseptic": 112,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "availability__scratch_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.18956882774829864,
+      "precision": 0.0746987951807229,
+      "recall": 0.33695652173913043,
+      "subgroup_recall": 0.6078431372549019,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 31,
+      "alarms": 415,
+      "alarms_per_day": 0.2239964016642303,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 187,
+        "duplicate": 13,
+        "nonseptic": 184,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__sourcetargetmae_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.4646904478073126,
+      "precision": 0.08484848484848485,
+      "recall": 0.30434782608695654,
+      "subgroup_recall": 0.30434782608695654,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 28,
+      "alarms": 330,
+      "alarms_per_day": 0.1781176206004723,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 187,
+        "duplicate": 15,
+        "nonseptic": 100,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__sourcetargetmae_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.3162555615901961,
+      "precision": 0.06744868035190615,
+      "recall": 0.5,
+      "subgroup_recall": 0.5,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 46,
+      "alarms": 682,
+      "alarms_per_day": 0.36810974924097606,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 375,
+        "duplicate": 33,
+        "nonseptic": 228,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__sourcetargetmae_34f_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.17026666069030755,
+      "precision": 0.05870020964360587,
+      "recall": 0.6086956521739131,
+      "subgroup_recall": 0.6086956521739131,
+      "events": 92,
+      "eligible_events": 92,
+      "event_coverage": 1.0,
+      "matched": 56,
+      "alarms": 954,
+      "alarms_per_day": 0.5149218486450017,
+      "eligible_hours": 44465,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 472,
+        "duplicate": 42,
+        "nonseptic": 384,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__sourcetargetmae_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.47177356958389294,
+      "precision": 0.09876543209876543,
+      "recall": 0.17391304347826086,
+      "subgroup_recall": 0.3137254901960784,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 16,
+      "alarms": 162,
+      "alarms_per_day": 0.08743955920386821,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 89,
+        "duplicate": 8,
+        "nonseptic": 49,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__sourcetargetmae_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.37737010478973415,
+      "precision": 0.10743801652892562,
+      "recall": 0.2826086956521739,
+      "subgroup_recall": 0.5098039215686274,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 26,
+      "alarms": 242,
+      "alarms_per_day": 0.13061958844034635,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 136,
+        "duplicate": 14,
+        "nonseptic": 66,
+        "other": 0
+      }
+    }
+  },
+  {
+    "name": "values__sourcetargetmae_34f_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.2149854881763452,
+      "precision": 0.09253731343283582,
+      "recall": 0.33695652173913043,
+      "subgroup_recall": 0.6078431372549019,
+      "events": 92,
+      "eligible_events": 51,
+      "event_coverage": 0.5543478260869565,
+      "matched": 31,
+      "alarms": 335,
+      "alarms_per_day": 0.18081637242775217,
+      "eligible_hours": 9639,
+      "total_hours": 44465,
+      "false_alarm_categories": {
+        "too_early": 179,
+        "duplicate": 15,
+        "nonseptic": 110,
+        "other": 0
+      }
+    }
+  }
+]

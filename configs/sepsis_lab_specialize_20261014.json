@@ -1,0 +1,11 @@
+{
+  "run_name": "sepsis_lab_specialize_20261014", "folds": 5, "seed": 42,
+  "learning_rates": [0.00003, 0.0001, 0.0003],
+  "epochs": 200, "min_epochs": 30, "patience": 30,
+  "lr_patience": 8, "lr_factor": 0.5, "min_lr": 0.000001,
+  "mae_max_steps": 100000, "mae_min_steps": 20000, "mae_patience": 12,
+  "gates": ["bp_routine_perfusion"], "recall_targets": [0.3, 0.5, 0.6],
+  "calibration_quantiles": 501, "bootstrap_replicates": 1000,
+  "bootstrap_seed": 930, "refractory_hours": 6, "threads": 4,
+  "training_horizon_hours": 12, "exploratory": true
+}

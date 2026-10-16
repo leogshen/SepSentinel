@@ -1,0 +1,21 @@
+{
+  "run_name": "sepsis_lab_values_20261011",
+  "seeds": [42, 123, 456],
+  "feature_counts_trees": [34],
+  "feature_counts_neural": [34],
+  "initializations": ["scratch"],
+  "learning_rates": [0.0003],
+  "epochs": 20,
+  "patience": 4,
+  "adaptation_steps": 1000,
+  "training_horizon_hours": 12,
+  "windows": [[12, 0]],
+  "gates": ["all", "bp_routine_perfusion"],
+  "recall_targets": [0.3, 0.5, 0.6],
+  "calibration_quantiles": 501,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 930,
+  "refractory_hours": 6,
+  "threads": 4,
+  "exploratory": true
+}

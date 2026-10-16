@@ -1,0 +1,444 @@
+{
+  "independent_score_reconstruction_passed": true,
+  "folds": [
+    {
+      "fold": 0,
+      "name": "values__xgb_34f_seed42",
+      "septic_flagged": 71,
+      "nonseptic_flagged": 104,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.4057142857142857,
+      "patient_recall": 0.461038961038961,
+      "threshold": 0.6116793155670166,
+      "timely_recall": 0.42207792207792205
+    },
+    {
+      "fold": 0,
+      "name": "availability__xgb_34f_seed42",
+      "septic_flagged": 78,
+      "nonseptic_flagged": 128,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.3786407766990291,
+      "patient_recall": 0.5064935064935064,
+      "threshold": 0.6519430875778198,
+      "timely_recall": 0.461038961038961
+    },
+    {
+      "fold": 0,
+      "name": "values__scratch_34f_seed42",
+      "septic_flagged": 72,
+      "nonseptic_flagged": 90,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.4444444444444444,
+      "patient_recall": 0.4675324675324675,
+      "threshold": 0.6495486454963684,
+      "timely_recall": 0.43506493506493504
+    },
+    {
+      "fold": 0,
+      "name": "availability__scratch_34f_seed42",
+      "septic_flagged": 64,
+      "nonseptic_flagged": 36,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.64,
+      "patient_recall": 0.4155844155844156,
+      "threshold": 0.6402995281219482,
+      "timely_recall": 0.4090909090909091
+    },
+    {
+      "fold": 0,
+      "name": "values__sourcetargetmae_34f_seed42",
+      "septic_flagged": 74,
+      "nonseptic_flagged": 126,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.37,
+      "patient_recall": 0.4805194805194805,
+      "threshold": 0.15995415008068123,
+      "timely_recall": 0.44155844155844154
+    },
+    {
+      "fold": 1,
+      "name": "values__xgb_34f_seed42",
+      "septic_flagged": 89,
+      "nonseptic_flagged": 154,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.3662551440329218,
+      "patient_recall": 0.577922077922078,
+      "threshold": 0.5813007831573486,
+      "timely_recall": 0.551948051948052
+    },
+    {
+      "fold": 1,
+      "name": "availability__xgb_34f_seed42",
+      "septic_flagged": 95,
+      "nonseptic_flagged": 181,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.3442028985507246,
+      "patient_recall": 0.6168831168831169,
+      "threshold": 0.5505218148231508,
+      "timely_recall": 0.5909090909090909
+    },
+    {
+      "fold": 1,
+      "name": "values__scratch_34f_seed42",
+      "septic_flagged": 92,
+      "nonseptic_flagged": 219,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.2958199356913183,
+      "patient_recall": 0.5974025974025974,
+      "threshold": 0.23512728214263928,
+      "timely_recall": 0.5324675324675324
+    },
+    {
+      "fold": 1,
+      "name": "availability__scratch_34f_seed42",
+      "septic_flagged": 98,
+      "nonseptic_flagged": 296,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.24873096446700507,
+      "patient_recall": 0.6363636363636364,
+      "threshold": 0.35234752893447896,
+      "timely_recall": 0.551948051948052
+    },
+    {
+      "fold": 1,
+      "name": "values__sourcetargetmae_34f_seed42",
+      "septic_flagged": 88,
+      "nonseptic_flagged": 167,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.34509803921568627,
+      "patient_recall": 0.5714285714285714,
+      "threshold": 0.2674891459941868,
+      "timely_recall": 0.538961038961039
+    },
+    {
+      "fold": 2,
+      "name": "values__xgb_34f_seed42",
+      "septic_flagged": 93,
+      "nonseptic_flagged": 170,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.35361216730038025,
+      "patient_recall": 0.6038961038961039,
+      "threshold": 0.624769926071167,
+      "timely_recall": 0.5454545454545454
+    },
+    {
+      "fold": 2,
+      "name": "availability__xgb_34f_seed42",
+      "septic_flagged": 99,
+      "nonseptic_flagged": 178,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.3574007220216607,
+      "patient_recall": 0.6428571428571429,
+      "threshold": 0.5137709064483642,
+      "timely_recall": 0.6233766233766234
+    },
+    {
+      "fold": 2,
+      "name": "values__scratch_34f_seed42",
+      "septic_flagged": 101,
+      "nonseptic_flagged": 245,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.29190751445086704,
+      "patient_recall": 0.6558441558441559,
+      "threshold": 0.3442959144115447,
+      "timely_recall": 0.5844155844155844
+    },
+    {
+      "fold": 2,
+      "name": "availability__scratch_34f_seed42",
+      "septic_flagged": 108,
+      "nonseptic_flagged": 363,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.22929936305732485,
+      "patient_recall": 0.7012987012987013,
+      "threshold": 0.2070253083705903,
+      "timely_recall": 0.6753246753246753
+    },
+    {
+      "fold": 2,
+      "name": "values__sourcetargetmae_34f_seed42",
+      "septic_flagged": 104,
+      "nonseptic_flagged": 270,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.27807486631016043,
+      "patient_recall": 0.6753246753246753,
+      "threshold": 0.19348411166667936,
+      "timely_recall": 0.6623376623376623
+    },
+    {
+      "fold": 3,
+      "name": "values__xgb_34f_seed42",
+      "septic_flagged": 89,
+      "nonseptic_flagged": 178,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.3333333333333333,
+      "patient_recall": 0.577922077922078,
+      "threshold": 0.5861322307586669,
+      "timely_recall": 0.5454545454545454
+    },
+    {
+      "fold": 3,
+      "name": "availability__xgb_34f_seed42",
+      "septic_flagged": 90,
+      "nonseptic_flagged": 176,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.3383458646616541,
+      "patient_recall": 0.5844155844155844,
+      "threshold": 0.6317810472249985,
+      "timely_recall": 0.551948051948052
+    },
+    {
+      "fold": 3,
+      "name": "values__scratch_34f_seed42",
+      "septic_flagged": 82,
+      "nonseptic_flagged": 80,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.5061728395061729,
+      "patient_recall": 0.5324675324675324,
+      "threshold": 0.4180373749732971,
+      "timely_recall": 0.5
+    },
+    {
+      "fold": 3,
+      "name": "availability__scratch_34f_seed42",
+      "septic_flagged": 88,
+      "nonseptic_flagged": 117,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.4292682926829268,
+      "patient_recall": 0.5714285714285714,
+      "threshold": 0.4811197131872175,
+      "timely_recall": 0.525974025974026
+    },
+    {
+      "fold": 3,
+      "name": "values__sourcetargetmae_34f_seed42",
+      "septic_flagged": 93,
+      "nonseptic_flagged": 109,
+      "event_records": 154,
+      "records": 3337,
+      "patient_precision": 0.4603960396039604,
+      "patient_recall": 0.6038961038961039,
+      "threshold": 0.4956928522586822,
+      "timely_recall": 0.5584415584415584
+    },
+    {
+      "fold": 4,
+      "name": "values__xgb_34f_seed42",
+      "septic_flagged": 73,
+      "nonseptic_flagged": 110,
+      "event_records": 153,
+      "records": 3336,
+      "patient_precision": 0.3989071038251366,
+      "patient_recall": 0.477124183006536,
+      "threshold": 0.44377708435058594,
+      "timely_recall": 0.45751633986928103
+    },
+    {
+      "fold": 4,
+      "name": "availability__xgb_34f_seed42",
+      "septic_flagged": 75,
+      "nonseptic_flagged": 126,
+      "event_records": 153,
+      "records": 3336,
+      "patient_precision": 0.373134328358209,
+      "patient_recall": 0.49019607843137253,
+      "threshold": 0.4595519733428954,
+      "timely_recall": 0.477124183006536
+    },
+    {
+      "fold": 4,
+      "name": "values__scratch_34f_seed42",
+      "septic_flagged": 79,
+      "nonseptic_flagged": 149,
+      "event_records": 153,
+      "records": 3336,
+      "patient_precision": 0.34649122807017546,
+      "patient_recall": 0.5163398692810458,
+      "threshold": 0.36964958190917857,
+      "timely_recall": 0.48366013071895425
+    },
+    {
+      "fold": 4,
+      "name": "availability__scratch_34f_seed42",
+      "septic_flagged": 77,
+      "nonseptic_flagged": 192,
+      "event_records": 153,
+      "records": 3336,
+      "patient_precision": 0.2862453531598513,
+      "patient_recall": 0.5032679738562091,
+      "threshold": 0.2102409757375717,
+      "timely_recall": 0.5032679738562091
+    },
+    {
+      "fold": 4,
+      "name": "values__sourcetargetmae_34f_seed42",
+      "septic_flagged": 76,
+      "nonseptic_flagged": 140,
+      "event_records": 153,
+      "records": 3336,
+      "patient_precision": 0.35185185185185186,
+      "patient_recall": 0.49673202614379086,
+      "threshold": 0.3162555615901961,
+      "timely_recall": 0.48366013071895425
+    }
+  ],
+  "pooled": [
+    {
+      "name": "values__xgb_34f_seed42",
+      "septic_flagged": 415,
+      "nonseptic_flagged": 716,
+      "pooled_precision": 0.36693191865605657,
+      "mean_fold_precision": 0.3715644068412115,
+      "fold_precisions": [
+        0.4057,
+        0.3663,
+        0.3536,
+        0.3333,
+        0.3989
+      ],
+      "fold_recalls": [
+        0.461,
+        0.5779,
+        0.6039,
+        0.5779,
+        0.4771
+      ]
+    },
+    {
+      "name": "availability__xgb_34f_seed42",
+      "septic_flagged": 437,
+      "nonseptic_flagged": 789,
+      "pooled_precision": 0.3564437194127243,
+      "mean_fold_precision": 0.3583449180582555,
+      "fold_precisions": [
+        0.3786,
+        0.3442,
+        0.3574,
+        0.3383,
+        0.3731
+      ],
+      "fold_recalls": [
+        0.5065,
+        0.6169,
+        0.6429,
+        0.5844,
+        0.4902
+      ]
+    },
+    {
+      "name": "values__scratch_34f_seed42",
+      "septic_flagged": 426,
+      "nonseptic_flagged": 783,
+      "pooled_precision": 0.3523573200992556,
+      "mean_fold_precision": 0.3769671924325956,
+      "fold_precisions": [
+        0.4444,
+        0.2958,
+        0.2919,
+        0.5062,
+        0.3465
+      ],
+      "fold_recalls": [
+        0.4675,
+        0.5974,
+        0.6558,
+        0.5325,
+        0.5163
+      ]
+    },
+    {
+      "name": "availability__scratch_34f_seed42",
+      "septic_flagged": 435,
+      "nonseptic_flagged": 1004,
+      "pooled_precision": 0.30229325920778316,
+      "mean_fold_precision": 0.3667087946734216,
+      "fold_precisions": [
+        0.64,
+        0.2487,
+        0.2293,
+        0.4293,
+        0.2862
+      ],
+      "fold_recalls": [
+        0.4156,
+        0.6364,
+        0.7013,
+        0.5714,
+        0.5033
+      ]
+    },
+    {
+      "name": "values__sourcetargetmae_34f_seed42",
+      "septic_flagged": 435,
+      "nonseptic_flagged": 812,
+      "pooled_precision": 0.3488372093023256,
+      "mean_fold_precision": 0.36108415939633176,
+      "fold_precisions": [
+        0.37,
+        0.3451,
+        0.2781,
+        0.4604,
+        0.3519
+      ],
+      "fold_recalls": [
+        0.4805,
+        0.5714,
+        0.6753,
+        0.6039,
+        0.4967
+      ]
+    }
+  ],
+  "previous_scratch": [
+    {
+      "name": "scratch_34f_lr0.0001_seed42",
+      "patient_precision": 0.5555555555555556,
+      "patient_recall": 0.5,
+      "timely_recall": 0.4066666666666667,
+      "septic_flagged": 75,
+      "nonseptic_flagged": 60,
+      "events": 150,
+      "nonseptic": 2669
+    },
+    {
+      "name": "scratch_34f_lr0.0001_seed123",
+      "patient_precision": 0.44565217391304346,
+      "patient_recall": 0.5466666666666666,
+      "timely_recall": 0.41333333333333333,
+      "septic_flagged": 82,
+      "nonseptic_flagged": 102,
+      "events": 150,
+      "nonseptic": 2669
+    },
+    {
+      "name": "scratch_34f_lr0.0001_seed456",
+      "patient_precision": 0.5314685314685315,
+      "patient_recall": 0.5066666666666667,
+      "timely_recall": 0.44666666666666666,
+      "septic_flagged": 76,
+      "nonseptic_flagged": 67,
+      "events": 150,
+      "nonseptic": 2669
+    }
+  ]
+}

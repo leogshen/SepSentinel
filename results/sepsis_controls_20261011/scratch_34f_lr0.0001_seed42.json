@@ -1,0 +1,45 @@
+{
+  "name": "scratch_34f_lr0.0001_seed42",
+  "kind": "neural",
+  "features": 34,
+  "seed": 42,
+  "lr": 0.0001,
+  "initialization": "scratch",
+  "complete": true,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 1.0021980315709045,
+      "tune_ap": 0.050792250308151654
+    },
+    {
+      "epoch": 2,
+      "loss": 0.9927291117630397,
+      "tune_ap": 0.05438616927590261
+    },
+    {
+      "epoch": 3,
+      "loss": 0.9871328438787866,
+      "tune_ap": 0.05115822807511445
+    },
+    {
+      "epoch": 4,
+      "loss": 1.0226253946025001,
+      "tune_ap": 0.05050457517548845
+    },
+    {
+      "epoch": 5,
+      "loss": 0.9823621969855776,
+      "tune_ap": 0.052207839978750545
+    },
+    {
+      "epoch": 6,
+      "loss": 0.9890083483586912,
+      "tune_ap": 0.051993014499096664
+    }
+  ],
+  "adaptation": null,
+  "best_tune_ap": 0.05438616927590261,
+  "test_opened": false,
+  "elapsed_minutes": 1.2441126743952433
+}

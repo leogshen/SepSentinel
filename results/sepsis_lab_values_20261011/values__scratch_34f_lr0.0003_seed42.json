@@ -1,0 +1,49 @@
+{
+  "name": "values__scratch_34f_lr0.0003_seed42",
+  "kind": "neural",
+  "features": 34,
+  "seed": 42,
+  "lr": 0.0003,
+  "initialization": "scratch",
+  "complete": true,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 1.0208994267164262,
+      "tune_ap": 0.05516491485535022
+    },
+    {
+      "epoch": 2,
+      "loss": 0.9962720258538325,
+      "tune_ap": 0.055350579202354665
+    },
+    {
+      "epoch": 3,
+      "loss": 0.9725691843941764,
+      "tune_ap": 0.051826596441330294
+    },
+    {
+      "epoch": 4,
+      "loss": 1.028267283746399,
+      "tune_ap": 0.05281531684590458
+    },
+    {
+      "epoch": 5,
+      "loss": 0.9816797130312388,
+      "tune_ap": 0.05459484086202636
+    },
+    {
+      "epoch": 6,
+      "loss": 0.9949883882426097,
+      "tune_ap": 0.05502102923510637
+    }
+  ],
+  "adaptation": null,
+  "best_tune_ap": 0.055350579202354665,
+  "test_opened": false,
+  "elapsed_minutes": 0.00023475090662638347,
+  "base_name": "scratch_34f_lr0.0003_seed42",
+  "condition": "values",
+  "reused_from": "results\\sepsis_controls_20261011\\scratch_34f_lr0.0003_seed42.json",
+  "original_elapsed_minutes": 1.242919675509135
+}

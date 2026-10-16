@@ -1,0 +1,34 @@
+{
+  "source_fit_lock": "52a01938933ffaaa1f42d35ea3e9168671a49579366913a0cf10ac697ae912c8",
+  "code": {
+    "scripts\\run_lab_value_experiment.py": "b6a6ce0792d5ecb7a82522408bb59438ebbb86a57f81c1bba98c17fe3c324c24",
+    "scripts\\lab_value_ablation.py": "d11eab301d8652a79bc7c00bf52ce0714f8a1e05ef4aa36b9cf3795d68178e3a"
+  },
+  "lab_indices": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    14,
+    15,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "name": "sourcetargetmae_34f_lr0.0001_seed42",
+  "kind": "neural",
+  "features": 34,
+  "seed": 42,
+  "lr": 0.0001,
+  "initialization": "sourcetargetmae",
+  "condition": "values",
+  "complete": true,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 1.0509960563782372,
+      "tune_ap": 0.0892868318492186,
+      "optimizer_steps": 341
+    },
+    {
+      "epoch": 2,
+      "loss": 1.1279953818254806,
+      "tune_ap": 0.08696682385956525,
+      "optimizer_steps": 682
+    },
+    {
+      "epoch": 3,
+      "loss": 1.0722881621432618,
+      "tune_ap": 0.09309544482172485,
+      "optimizer_steps": 1023
+    },
+    {
+      "epoch": 4,
+      "loss": 1.1636792125393394,
+      "tune_ap": 0.09515042767616996,
+      "optimizer_steps": 1364
+    },
+    {
+      "epoch": 5,
+      "loss": 1.1188602871821423,
+      "tune_ap": 0.09298013619889703,
+      "optimizer_steps": 1705
+    },
+    {
+      "epoch": 6,
+      "loss": 1.0795889008582686,
+      "tune_ap": 0.0989630228451111,
+      "optimizer_steps": 2046
+    },
+    {
+      "epoch": 7,
+      "loss": 1.0532849802692965,
+      "tune_ap": 0.09124696059543817,
+      "optimizer_steps": 2387
+    },
+    {
+      "epoch": 8,
+      "loss": 1.1662169682883448,
+      "tune_ap": 0.09668114789594295,
+      "optimizer_steps": 2728
+    },
+    {
+      "epoch": 9,
+      "loss": 1.0770312835656304,
+      "tune_ap": 0.09035223748266986,
+      "optimizer_steps": 3069
+    },
+    {
+      "epoch": 10,
+      "loss": 1.0688158507264953,
+      "tune_ap": 0.09443186793370306,
+      "optimizer_steps": 3410
+    },
+    {
+      "epoch": 11,
+      "loss": 1.1055515829550207,
+      "tune_ap": 0.10085951547281403,
+      "optimizer_steps": 3751
+    },
+    {
+      "epoch": 12,
+      "loss": 1.0622359459394932,
+      "tune_ap": 0.09496523189954904,
+      "optimizer_steps": 4092
+    },
+    {
+      "epoch": 13,
+      "loss": 1.1204884652037426,
+      "tune_ap": 0.09787858614658032,
+      "optimizer_steps": 4433
+    },
+    {
+      "epoch": 14,
+      "loss": 1.023814712560946,
+      "tune_ap": 0.09316685283523048,
+      "optimizer_steps": 4774
+    },
+    {
+      "epoch": 15,
+      "loss": 1.1020055921786516,
+      "tune_ap": 0.08828281209657912,
+      "optimizer_steps": 5115
+    },
+    {
+      "epoch": 16,
+      "loss": 1.086512269250109,
+      "tune_ap": 0.0949408465065848,
+      "optimizer_steps": 5456
+    },
+    {
+      "epoch": 17,
+      "loss": 1.1028568831947017,
+      "tune_ap": 0.09186597597824922,
+      "optimizer_steps": 5797
+    },
+    {
+      "epoch": 18,
+      "loss": 1.0768854170928428,
+      "tune_ap": 0.09678099654796167,
+      "optimizer_steps": 6138
+    },
+    {
+      "epoch": 19,
+      "loss": 1.1076805588087377,
+      "tune_ap": 0.09541635482539805,
+      "optimizer_steps": 6479
+    },
+    {
+      "epoch": 20,
+      "loss": 1.100247677754272,
+      "tune_ap": 0.09535581657199298,
+      "optimizer_steps": 6820
+    },
+    {
+      "epoch": 21,
+      "loss": 1.0541864730024442,
+      "tune_ap": 0.09837611649827764,
+      "optimizer_steps": 7161
+    },
+    {
+      "epoch": 22,
+      "loss": 1.015777209309364,
+      "tune_ap": 0.10053916131838869,
+      "optimizer_steps": 7502
+    },
+    {
+      "epoch": 23,
+      "loss": 1.1441352313105837,
+      "tune_ap": 0.09457699441387606,
+      "optimizer_steps": 7843
+    },
+    {
+      "epoch": 24,
+      "loss": 1.1281461244738522,
+      "tune_ap": 0.0989930549387132,
+      "optimizer_steps": 8184
+    },
+    {
+      "epoch": 25,
+      "loss": 1.0708399637987362,
+      "tune_ap": 0.0952931477795354,
+      "optimizer_steps": 8525
+    },
+    {
+      "epoch": 26,
+      "loss": 1.1182555480699037,
+      "tune_ap": 0.09758968320089113,
+      "optimizer_steps": 8866
+    }
+  ],
+  "adaptation": {
+    "steps": 1000,
+    "last100_loss": 0.2450076512992382,
+    "active_channels": 34
+  },
+  "best_tune_ap": 0.10085951547281403,
+  "selected_epoch": 11,
+  "optimizer_steps": 8866,
+  "examples_per_epoch": 10888,
+  "hit_epoch_cap": false,
+  "total_training_minutes": 5.495000704129537,
+  "first20_best_tune_ap": 0.10085951547281403,
+  "test_opened": false,
+  "elapsed_minutes": 5.552988318602244
+}

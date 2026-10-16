@@ -1,0 +1,352 @@
+[
+  {
+    "fold": 0,
+    "name": "rich_scratch_lr3e-05",
+    "epochs": 55,
+    "selected_epoch": 25,
+    "hit_cap": false
+  },
+  {
+    "fold": 0,
+    "name": "rich_scratch_lr0.0001",
+    "epochs": 51,
+    "selected_epoch": 21,
+    "hit_cap": false
+  },
+  {
+    "fold": 0,
+    "name": "rich_scratch_lr0.0003",
+    "epochs": 66,
+    "selected_epoch": 36,
+    "hit_cap": false
+  },
+  {
+    "fold": 0,
+    "name": "rich_supervised_lr3e-05",
+    "epochs": 48,
+    "selected_epoch": 18,
+    "hit_cap": false
+  },
+  {
+    "fold": 0,
+    "name": "rich_supervised_lr0.0001",
+    "epochs": 43,
+    "selected_epoch": 13,
+    "hit_cap": false
+  },
+  {
+    "fold": 0,
+    "name": "rich_supervised_lr0.0003",
+    "epochs": 36,
+    "selected_epoch": 6,
+    "hit_cap": false
+  },
+  {
+    "fold": 0,
+    "name": "rich_mae_lr3e-05",
+    "epochs": 33,
+    "selected_epoch": 3,
+    "hit_cap": false
+  },
+  {
+    "fold": 0,
+    "name": "rich_mae_lr0.0001",
+    "epochs": 46,
+    "selected_epoch": 16,
+    "hit_cap": false
+  },
+  {
+    "fold": 0,
+    "name": "rich_mae_lr0.0003",
+    "epochs": 47,
+    "selected_epoch": 17,
+    "hit_cap": false
+  },
+  {
+    "fold": 0,
+    "name": "extended_mae",
+    "steps": 37500,
+    "selected_step": 31500,
+    "hit_cap": false
+  },
+  {
+    "fold": 1,
+    "name": "rich_scratch_lr3e-05",
+    "epochs": 51,
+    "selected_epoch": 21,
+    "hit_cap": false
+  },
+  {
+    "fold": 1,
+    "name": "rich_scratch_lr0.0001",
+    "epochs": 51,
+    "selected_epoch": 21,
+    "hit_cap": false
+  },
+  {
+    "fold": 1,
+    "name": "rich_scratch_lr0.0003",
+    "epochs": 65,
+    "selected_epoch": 35,
+    "hit_cap": false
+  },
+  {
+    "fold": 1,
+    "name": "rich_supervised_lr3e-05",
+    "epochs": 30,
+    "selected_epoch": 0,
+    "hit_cap": false
+  },
+  {
+    "fold": 1,
+    "name": "rich_supervised_lr0.0001",
+    "epochs": 30,
+    "selected_epoch": 0,
+    "hit_cap": false
+  },
+  {
+    "fold": 1,
+    "name": "rich_supervised_lr0.0003",
+    "epochs": 30,
+    "selected_epoch": 0,
+    "hit_cap": false
+  },
+  {
+    "fold": 1,
+    "name": "rich_mae_lr3e-05",
+    "epochs": 32,
+    "selected_epoch": 2,
+    "hit_cap": false
+  },
+  {
+    "fold": 1,
+    "name": "rich_mae_lr0.0001",
+    "epochs": 37,
+    "selected_epoch": 7,
+    "hit_cap": false
+  },
+  {
+    "fold": 1,
+    "name": "rich_mae_lr0.0003",
+    "epochs": 32,
+    "selected_epoch": 2,
+    "hit_cap": false
+  },
+  {
+    "fold": 1,
+    "name": "extended_mae",
+    "steps": 91500,
+    "selected_step": 85500,
+    "hit_cap": false
+  },
+  {
+    "fold": 2,
+    "name": "rich_scratch_lr3e-05",
+    "epochs": 56,
+    "selected_epoch": 26,
+    "hit_cap": false
+  },
+  {
+    "fold": 2,
+    "name": "rich_scratch_lr0.0001",
+    "epochs": 105,
+    "selected_epoch": 75,
+    "hit_cap": false
+  },
+  {
+    "fold": 2,
+    "name": "rich_scratch_lr0.0003",
+    "epochs": 69,
+    "selected_epoch": 39,
+    "hit_cap": false
+  },
+  {
+    "fold": 2,
+    "name": "rich_supervised_lr3e-05",
+    "epochs": 56,
+    "selected_epoch": 26,
+    "hit_cap": false
+  },
+  {
+    "fold": 2,
+    "name": "rich_supervised_lr0.0001",
+    "epochs": 81,
+    "selected_epoch": 51,
+    "hit_cap": false
+  },
+  {
+    "fold": 2,
+    "name": "rich_supervised_lr0.0003",
+    "epochs": 45,
+    "selected_epoch": 15,
+    "hit_cap": false
+  },
+  {
+    "fold": 2,
+    "name": "rich_mae_lr3e-05",
+    "epochs": 42,
+    "selected_epoch": 12,
+    "hit_cap": false
+  },
+  {
+    "fold": 2,
+    "name": "rich_mae_lr0.0001",
+    "epochs": 35,
+    "selected_epoch": 5,
+    "hit_cap": false
+  },
+  {
+    "fold": 2,
+    "name": "rich_mae_lr0.0003",
+    "epochs": 40,
+    "selected_epoch": 10,
+    "hit_cap": false
+  },
+  {
+    "fold": 2,
+    "name": "extended_mae",
+    "steps": 55500,
+    "selected_step": 49500,
+    "hit_cap": false
+  },
+  {
+    "fold": 3,
+    "name": "rich_scratch_lr3e-05",
+    "epochs": 41,
+    "selected_epoch": 11,
+    "hit_cap": false
+  },
+  {
+    "fold": 3,
+    "name": "rich_scratch_lr0.0001",
+    "epochs": 41,
+    "selected_epoch": 11,
+    "hit_cap": false
+  },
+  {
+    "fold": 3,
+    "name": "rich_scratch_lr0.0003",
+    "epochs": 68,
+    "selected_epoch": 38,
+    "hit_cap": false
+  },
+  {
+    "fold": 3,
+    "name": "rich_supervised_lr3e-05",
+    "epochs": 30,
+    "selected_epoch": 0,
+    "hit_cap": false
+  },
+  {
+    "fold": 3,
+    "name": "rich_supervised_lr0.0001",
+    "epochs": 50,
+    "selected_epoch": 20,
+    "hit_cap": false
+  },
+  {
+    "fold": 3,
+    "name": "rich_supervised_lr0.0003",
+    "epochs": 40,
+    "selected_epoch": 10,
+    "hit_cap": false
+  },
+  {
+    "fold": 3,
+    "name": "rich_mae_lr3e-05",
+    "epochs": 73,
+    "selected_epoch": 43,
+    "hit_cap": false
+  },
+  {
+    "fold": 3,
+    "name": "rich_mae_lr0.0001",
+    "epochs": 68,
+    "selected_epoch": 38,
+    "hit_cap": false
+  },
+  {
+    "fold": 3,
+    "name": "rich_mae_lr0.0003",
+    "epochs": 37,
+    "selected_epoch": 7,
+    "hit_cap": false
+  },
+  {
+    "fold": 3,
+    "name": "extended_mae",
+    "steps": 60500,
+    "selected_step": 54500,
+    "hit_cap": false
+  },
+  {
+    "fold": 4,
+    "name": "rich_scratch_lr3e-05",
+    "epochs": 61,
+    "selected_epoch": 31,
+    "hit_cap": false
+  },
+  {
+    "fold": 4,
+    "name": "rich_scratch_lr0.0001",
+    "epochs": 61,
+    "selected_epoch": 31,
+    "hit_cap": false
+  },
+  {
+    "fold": 4,
+    "name": "rich_scratch_lr0.0003",
+    "epochs": 93,
+    "selected_epoch": 63,
+    "hit_cap": false
+  },
+  {
+    "fold": 4,
+    "name": "rich_supervised_lr3e-05",
+    "epochs": 30,
+    "selected_epoch": 0,
+    "hit_cap": false
+  },
+  {
+    "fold": 4,
+    "name": "rich_supervised_lr0.0001",
+    "epochs": 83,
+    "selected_epoch": 53,
+    "hit_cap": false
+  },
+  {
+    "fold": 4,
+    "name": "rich_supervised_lr0.0003",
+    "epochs": 48,
+    "selected_epoch": 18,
+    "hit_cap": false
+  },
+  {
+    "fold": 4,
+    "name": "rich_mae_lr3e-05",
+    "epochs": 33,
+    "selected_epoch": 3,
+    "hit_cap": false
+  },
+  {
+    "fold": 4,
+    "name": "rich_mae_lr0.0001",
+    "epochs": 42,
+    "selected_epoch": 12,
+    "hit_cap": false
+  },
+  {
+    "fold": 4,
+    "name": "rich_mae_lr0.0003",
+    "epochs": 34,
+    "selected_epoch": 4,
+    "hit_cap": false
+  },
+  {
+    "fold": 4,
+    "name": "extended_mae",
+    "steps": 75500,
+    "selected_step": 69500,
+    "hit_cap": false
+  }
+]

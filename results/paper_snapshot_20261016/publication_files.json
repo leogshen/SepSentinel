@@ -1,0 +1,1370 @@
+{
+  ".gitignore": {
+    "bytes": 1915,
+    "sha256": "146daedb27028a920b6904342cc06e487ce6242764c0fb593b5ebcbfeb636a9e"
+  },
+  "configs/sepsis_controls_20261011.json": {
+    "bytes": 606,
+    "sha256": "5f61e2241e052b34ef99d1a4376be6269a8f18e76ba52051939eaf0d1cfe33ef"
+  },
+  "configs/sepsis_cv_20261013.json": {
+    "bytes": 590,
+    "sha256": "4a87a187b31942d150c9c9a98546e48191147868ef630ea8363ebe3d403988f1"
+  },
+  "configs/sepsis_lab_specialize_20261014.json": {
+    "bytes": 551,
+    "sha256": "ebb73140b27eb3a3930dab30818a242f9f3ee9fea0be51da78b85cf73b02f24a"
+  },
+  "configs/sepsis_lab_values_20261011.json": {
+    "bytes": 554,
+    "sha256": "ac5ed1ae3ded796e4f3510184e00095d1531bdd3fabef9ccbd185d89c0451648"
+  },
+  "configs/sepsis_long_training_20261012.json": {
+    "bytes": 627,
+    "sha256": "2e72615823c51c959fc6567ddd48581fbf521e1c52f4da77b76a59f8c47e2f7f"
+  },
+  "configs/sepsis_mae_finetune_20261013.json": {
+    "bytes": 595,
+    "sha256": "00f536d4165b1bbd30c691148779f94878e865829560c27255179a75407643f3"
+  },
+  "results/paper_snapshot_20261016/report_inputs.json": {
+    "bytes": 1860,
+    "sha256": "294d3d255a4865935bc52cb22dd0a3eca1047cd4830af4a5282036fe4b2255be"
+  },
+  "results/paper_snapshot_20261016/runtime.json": {
+    "bytes": 248,
+    "sha256": "267a77297db08238d47920cade5dc2fd93980c8e420612faeb4d284505c5ee93"
+  },
+  "results/sepsis_controls_20261011/CONFIRMATION_AUDIT.md": {
+    "bytes": 2369,
+    "sha256": "15999a0a28c723129e0f5ffe634dfc92998fecd2dd42497fbdd19c40b7676bfa"
+  },
+  "results/sepsis_controls_20261011/evaluation.json": {
+    "bytes": 576492,
+    "sha256": "5ec169d0436a7a5b7286e6f7825a745523d0a421166bf4a73dab57f0da656007"
+  },
+  "results/sepsis_controls_20261011/fit_lock.json": {
+    "bytes": 7731,
+    "sha256": "52a01938933ffaaa1f42d35ea3e9168671a49579366913a0cf10ac697ae912c8"
+  },
+  "results/sepsis_controls_20261011/implementation_lock.json": {
+    "bytes": 2388,
+    "sha256": "afc98b6cbc0a572106fc9e8caf5f9115cbe517a82a00d65252043fe7b4de345d"
+  },
+  "results/sepsis_controls_20261011/paired_comparisons.json": {
+    "bytes": 80759,
+    "sha256": "f9bb8be7698593333d48829f083146c0b46c2315373d6f58954081d94f89527c"
+  },
+  "results/sepsis_controls_20261011/policies.json": {
+    "bytes": 146339,
+    "sha256": "6f51e64cdb6027395e9527855fad8cb5ec3102695754fcb7ac038e053114b65f"
+  },
+  "results/sepsis_controls_20261011/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "ff3b12a2249116f47a4fd6d2114350595cc1e9bef28310af5624ba506f03df3c"
+  },
+  "results/sepsis_controls_20261011/PRETRAINING_AUDIT.md": {
+    "bytes": 2176,
+    "sha256": "5d0f5ead942817a0603058b3e97e184f1d13f71ad173dcbc04f11dc469f6e83c"
+  },
+  "results/sepsis_controls_20261011/PROTOCOL.md": {
+    "bytes": 4155,
+    "sha256": "f3cd19b6616d649ef1c99bbc4c05c253b0b47c887c00730e8332e28375f24a22"
+  },
+  "results/sepsis_controls_20261011/rf_10f_seed123.json": {
+    "bytes": 1887,
+    "sha256": "096655e3cd90c3bfffa99a6131b399bc9e0af9dba81ea7f3710ac2dc06f7439c"
+  },
+  "results/sepsis_controls_20261011/rf_10f_seed42.json": {
+    "bytes": 1885,
+    "sha256": "9065eded1e595c934dc97e61a799869acd4635fef8bf8d02ad731fc1b1487715"
+  },
+  "results/sepsis_controls_20261011/rf_10f_seed456.json": {
+    "bytes": 1889,
+    "sha256": "54d6b7c7fb7b4af831bdf398c65d5f0fa346fa5f0df0364da6c4df14cff65759"
+  },
+  "results/sepsis_controls_20261011/rf_34f_seed123.json": {
+    "bytes": 1887,
+    "sha256": "b86c35d83b4df38d4c0e7b7175fa26e08263472d6b6ef23130f650c59bcd7018"
+  },
+  "results/sepsis_controls_20261011/rf_34f_seed42.json": {
+    "bytes": 1885,
+    "sha256": "18426b9a076aa54d942513dd29aa3eb1c26fb77056c5b306191986fce1f013aa"
+  },
+  "results/sepsis_controls_20261011/rf_34f_seed456.json": {
+    "bytes": 1886,
+    "sha256": "1c16321e94db72d9df18d8b91dfea70b1bb8ae3477f86377083d08ba1d2bb235"
+  },
+  "results/sepsis_controls_20261011/scratch_34f_lr0.0001_seed123.json": {
+    "bytes": 2468,
+    "sha256": "c913dd9171026da5ee5e0967111ccb779e466591bfb8131d184a1e4bed8251b1"
+  },
+  "results/sepsis_controls_20261011/scratch_34f_lr0.0001_seed42.json": {
+    "bytes": 966,
+    "sha256": "7b4e58d942d0e788c48b35c251696e8e17bc4d145ca803f1b6f814c11ab4f0ae"
+  },
+  "results/sepsis_controls_20261011/scratch_34f_lr0.0001_seed456.json": {
+    "bytes": 2467,
+    "sha256": "f9e4c35de423948d2bd94681ed6ae92c6f3b08a25dcafcdc7aec69407b944789"
+  },
+  "results/sepsis_controls_20261011/scratch_34f_lr0.0003_seed123.json": {
+    "bytes": 2467,
+    "sha256": "0e1fc6490092d7bfafd2eb0a2a9cf9b45f2b62baa5e419a76590af43fbcf2c04"
+  },
+  "results/sepsis_controls_20261011/scratch_34f_lr0.0003_seed42.json": {
+    "bytes": 964,
+    "sha256": "ee01267b0ada6b1db1dbba63c24bc56384de67b8d25574b67a91c353bdbde5a0"
+  },
+  "results/sepsis_controls_20261011/scratch_34f_lr0.0003_seed456.json": {
+    "bytes": 2472,
+    "sha256": "22275dbebce5c37acd595fb74b1dfc36ac1492814db50e16079701f3ab745d60"
+  },
+  "results/sepsis_controls_20261011/seed_summary.json": {
+    "bytes": 79194,
+    "sha256": "574e1a211656243e3bf627a9f9108e6110bdfd88d283f054b8b64e407c6daf3a"
+  },
+  "results/sepsis_controls_20261011/source_34f_lr0.0001_seed123.json": {
+    "bytes": 1702,
+    "sha256": "93d44008900363f256e16f5ff966092cfb08de10854c4f00d7ee043448fbe41b"
+  },
+  "results/sepsis_controls_20261011/source_34f_lr0.0001_seed42.json": {
+    "bytes": 853,
+    "sha256": "c9d092c84c93cd2a85756c25a3ad36c83689a2a838a2048dce4a64c1e10e0bb3"
+  },
+  "results/sepsis_controls_20261011/source_34f_lr0.0001_seed456.json": {
+    "bytes": 2139,
+    "sha256": "218e2d26be3de76c074031425fc90a16a235b88ec640273e6540a1578a168a10"
+  },
+  "results/sepsis_controls_20261011/source_34f_lr0.0003_seed123.json": {
+    "bytes": 1711,
+    "sha256": "966ed514966ebfc697c921e6844e736facedde8b833b99b87bb47425a71f4abd"
+  },
+  "results/sepsis_controls_20261011/source_34f_lr0.0003_seed42.json": {
+    "bytes": 1600,
+    "sha256": "4d32d2dede8dfa897158ca54a2390ed6c4ce32bfbfcd616d3642fada05505e90"
+  },
+  "results/sepsis_controls_20261011/source_34f_lr0.0003_seed456.json": {
+    "bytes": 2142,
+    "sha256": "c6293be72612a3ab203c42c99a597cc4fc7aba05afd69683862a4edb6b79710d"
+  },
+  "results/sepsis_controls_20261011/sourcetargetmae_34f_lr0.0001_seed123.json": {
+    "bytes": 1388,
+    "sha256": "8cc6ab750b0a5f09a7dd477803e163e03216be206086f356082a33507b1c389c"
+  },
+  "results/sepsis_controls_20261011/sourcetargetmae_34f_lr0.0001_seed42.json": {
+    "bytes": 1495,
+    "sha256": "46f3ec0f5a2d107269c6c2f6af6170ab31d5e9f1be66abbe2c434bdd2b50cf15"
+  },
+  "results/sepsis_controls_20261011/sourcetargetmae_34f_lr0.0001_seed456.json": {
+    "bytes": 1498,
+    "sha256": "d3272165ee9f9befbc3311c38e4b3975c98a1ea35356e47c9f8241c320112440"
+  },
+  "results/sepsis_controls_20261011/sourcetargetmae_34f_lr0.0003_seed123.json": {
+    "bytes": 1824,
+    "sha256": "1a8524f7f2879d55d3e2f44a8af78144420cd5b66bc5ea9c106e053dc9d34420"
+  },
+  "results/sepsis_controls_20261011/sourcetargetmae_34f_lr0.0003_seed42.json": {
+    "bytes": 2027,
+    "sha256": "887268f2d21d81e3e5aea3e26de5918b26430339cba4c39be9661df39ba45f61"
+  },
+  "results/sepsis_controls_20261011/sourcetargetmae_34f_lr0.0003_seed456.json": {
+    "bytes": 2252,
+    "sha256": "48a375e57531240b3c61b9294f6a4e768656e7f20d1cf745e125e517aa664d9b"
+  },
+  "results/sepsis_controls_20261011/status.json": {
+    "bytes": 153,
+    "sha256": "86d25e7155d2b7f35e4b92d623dfd4f9fb37b7cf658938f4118c5d6640a6b0fd"
+  },
+  "results/sepsis_controls_20261011/targetmae_34f_lr0.0001_seed123.json": {
+    "bytes": 2569,
+    "sha256": "f6549e99332431e8d58d6f1e82c5e8458ec5cf6eca08daafce770e7b52f39cb7"
+  },
+  "results/sepsis_controls_20261011/targetmae_34f_lr0.0001_seed42.json": {
+    "bytes": 1057,
+    "sha256": "06bdb0621bdd4802dd8cc43ee2c383caceb4e351e83a894d14f3e2f9f0003e69"
+  },
+  "results/sepsis_controls_20261011/targetmae_34f_lr0.0001_seed456.json": {
+    "bytes": 2350,
+    "sha256": "3c3dbd242c9537e48d0659a4a1095dca177fd6e7bf5711395aeaef19650428a5"
+  },
+  "results/sepsis_controls_20261011/targetmae_34f_lr0.0003_seed123.json": {
+    "bytes": 2567,
+    "sha256": "32ca0d74793644b400a24cdd9b191094499cf400aa59ced9764624da58b4bfd1"
+  },
+  "results/sepsis_controls_20261011/targetmae_34f_lr0.0003_seed42.json": {
+    "bytes": 2565,
+    "sha256": "31da474ddd731f718b7f38a4019cd8c3dba76c82effd25683caa1cc4abec41e7"
+  },
+  "results/sepsis_controls_20261011/targetmae_34f_lr0.0003_seed456.json": {
+    "bytes": 2563,
+    "sha256": "26af3d74d4cf79c684ad2d14ac64245ec60114b3b1ccd5f92e2277e9ffd923a8"
+  },
+  "results/sepsis_controls_20261011/xgb_10f_seed123.json": {
+    "bytes": 3169,
+    "sha256": "ee1ed579bcfa50b705f22ca2a86ad4c7abe356739bca90ed4119f9568fcfe1aa"
+  },
+  "results/sepsis_controls_20261011/xgb_10f_seed42.json": {
+    "bytes": 3165,
+    "sha256": "58ebc6e188030be50c9285c24d0de699f2f00a4663133b2bd52ad5ca22e43de2"
+  },
+  "results/sepsis_controls_20261011/xgb_10f_seed456.json": {
+    "bytes": 3169,
+    "sha256": "2b16bdffc30c3384462ef12732d0733a96aff0322e6fabe61311b570998bd4f0"
+  },
+  "results/sepsis_controls_20261011/xgb_34f_seed123.json": {
+    "bytes": 3169,
+    "sha256": "404fa7ecd8c02d3b53f21843ebc49ec3b64de0cad28d9574a02104ab4f5c730c"
+  },
+  "results/sepsis_controls_20261011/xgb_34f_seed42.json": {
+    "bytes": 3166,
+    "sha256": "7dd25bef355f2ef24448cb29fb375ca687a918336dfa58aaa8a4d2dd34b406d2"
+  },
+  "results/sepsis_controls_20261011/xgb_34f_seed456.json": {
+    "bytes": 3169,
+    "sha256": "01a58795023dcf4eac74acdd7ce521100d07736f22132863318a735bea4359ef"
+  },
+  "results/sepsis_cv_20261013/aggregation_recovery.json": {
+    "bytes": 23797,
+    "sha256": "9bd240556578cc544ef072e79ab65bddc0732b3a938982565d1a34b301b906ac"
+  },
+  "results/sepsis_cv_20261013/fold_0/availability__scratch_34f_seed42.json": {
+    "bytes": 3352,
+    "sha256": "8c627299f160457f0c657f3ebdae7cef62d6d55935a36ffffa22bcf1c3817617"
+  },
+  "results/sepsis_cv_20261013/fold_0/availability__xgb_34f_seed42.json": {
+    "bytes": 3256,
+    "sha256": "3058de0d2c5a1191fac870cb9dfff45114b7a26425ebd67e920a730f4929556d"
+  },
+  "results/sepsis_cv_20261013/fold_0/evaluation.json": {
+    "bytes": 81898,
+    "sha256": "2ebac0336c80e2cced236eedcc4ec52e97997ebca3e01ee39488b1e425f05aa2"
+  },
+  "results/sepsis_cv_20261013/fold_0/fit_lock.json": {
+    "bytes": 1114,
+    "sha256": "e60765feb776a0bcdea58d4ba7902679c2fdecfd2be6c28070f504a25d8be9b1"
+  },
+  "results/sepsis_cv_20261013/fold_0/metric_summary.json": {
+    "bytes": 51874,
+    "sha256": "7d5c5b8f55594794f9a1d703dd90e8baebc76ccffb7897f96703881a5d1fe360"
+  },
+  "results/sepsis_cv_20261013/fold_0/policies.json": {
+    "bytes": 20331,
+    "sha256": "dc14761584d5bdde1d852ed14b3d552fc2404d77fa22f8a71e92c117c98609b5"
+  },
+  "results/sepsis_cv_20261013/fold_0/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "7762733b23055986d6fed47d248858576bdcda3fed076f43732c43b1f333c5fc"
+  },
+  "results/sepsis_cv_20261013/fold_0/status.json": {
+    "bytes": 138,
+    "sha256": "6833ee205e0d8f311958599aa3b5ed3464f02411df1fd42010c36a56f6866e89"
+  },
+  "results/sepsis_cv_20261013/fold_0/values__scratch_34f_seed42.json": {
+    "bytes": 14022,
+    "sha256": "5d9d2fe5f1fbb519d024ceffd1294e58e2a7395d110f27438f6132bf55061037"
+  },
+  "results/sepsis_cv_20261013/fold_0/values__sourcetargetmae_34f_seed42.json": {
+    "bytes": 3489,
+    "sha256": "9b82cac1feef00df203756b1f9255a85bf0bdeab3f7895372cc10c99c689d0c4"
+  },
+  "results/sepsis_cv_20261013/fold_0/values__xgb_34f_seed42.json": {
+    "bytes": 3243,
+    "sha256": "9ee8125cbeee1f440ea13400877f7538bc05c42d50ab0ba97979d0176ede57e9"
+  },
+  "results/sepsis_cv_20261013/fold_1/availability__scratch_34f_seed42.json": {
+    "bytes": 13477,
+    "sha256": "48e8bc8ff0079aad2b425290519135e902fa42d99739646dcfe0d56152a28b22"
+  },
+  "results/sepsis_cv_20261013/fold_1/availability__xgb_34f_seed42.json": {
+    "bytes": 3254,
+    "sha256": "63a2bb7ac4515d8275869ff0bc8c08756628eeef92fb8f3d7f8e4f8527567f5b"
+  },
+  "results/sepsis_cv_20261013/fold_1/evaluation.json": {
+    "bytes": 82304,
+    "sha256": "fd3fca33e543e81f1c8e2ce789222c576d7f14746fb80aad599a42b6b0c75241"
+  },
+  "results/sepsis_cv_20261013/fold_1/fit_lock.json": {
+    "bytes": 1114,
+    "sha256": "95491b5e8c9b2c48919400d4477f57e7e3c62056ad931a656f465836a0ce0a4a"
+  },
+  "results/sepsis_cv_20261013/fold_1/metric_summary.json": {
+    "bytes": 52306,
+    "sha256": "4cd52d56caad19a8db54fe68217bf4919893c4ab5aba83de551bac9d95f7f8ea"
+  },
+  "results/sepsis_cv_20261013/fold_1/policies.json": {
+    "bytes": 20311,
+    "sha256": "4249a78e3926027acfcb7b937b1d4599773046c3c45295a37b9c1e96dccf06e5"
+  },
+  "results/sepsis_cv_20261013/fold_1/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "dc79aabdb82aff01eda216aab5dd7a848d5af1688906b4f4c3f85eb071adb727"
+  },
+  "results/sepsis_cv_20261013/fold_1/status.json": {
+    "bytes": 138,
+    "sha256": "5119db3d996b161a1f5e6bcd79039f2f1946948039177b71e9de8a700d66fc28"
+  },
+  "results/sepsis_cv_20261013/fold_1/values__scratch_34f_seed42.json": {
+    "bytes": 10376,
+    "sha256": "589640ca81adf183b30a1036cec9f1badacb1e9d09dcb6dbde0a75aa8e9edaf5"
+  },
+  "results/sepsis_cv_20261013/fold_1/values__sourcetargetmae_34f_seed42.json": {
+    "bytes": 3628,
+    "sha256": "5424d793f27d5f7ff0995f70e0a6466cbc0b08271995b7f9e9c5024050c9cb36"
+  },
+  "results/sepsis_cv_20261013/fold_1/values__xgb_34f_seed42.json": {
+    "bytes": 3242,
+    "sha256": "5ec67182d93ab85f33f0d38a84579a336793fb29e10a9e4e742cf4df9c40d78e"
+  },
+  "results/sepsis_cv_20261013/fold_2/availability__scratch_34f_seed42.json": {
+    "bytes": 8678,
+    "sha256": "f332ecc681a8eed81dce321b28f285bf263d9a8180a9a53a6cd9ed886434eaa0"
+  },
+  "results/sepsis_cv_20261013/fold_2/availability__xgb_34f_seed42.json": {
+    "bytes": 3256,
+    "sha256": "8e2e4da74d2e17b784c591e2eec1deab02539608440e87ac103eba3fcc5c0b82"
+  },
+  "results/sepsis_cv_20261013/fold_2/evaluation.json": {
+    "bytes": 82310,
+    "sha256": "6cb0d712bbf77f99d9ba84216b7427d1c35a43996ad360d2369b211b6221ef90"
+  },
+  "results/sepsis_cv_20261013/fold_2/fit_lock.json": {
+    "bytes": 1114,
+    "sha256": "373ab2339e6b671209f1ca0136fcd8a96feeafe2c2758b68c5461add3bdd50f9"
+  },
+  "results/sepsis_cv_20261013/fold_2/metric_summary.json": {
+    "bytes": 52293,
+    "sha256": "b6de58525ef9cf0cea02cd1f9d53d1e2268c0d45dd2d7bd66066e70c56476691"
+  },
+  "results/sepsis_cv_20261013/fold_2/policies.json": {
+    "bytes": 20348,
+    "sha256": "eca28ab09ca2761907c3913afdd12c0a734510072a2e4c0d2fa7e05e430868cc"
+  },
+  "results/sepsis_cv_20261013/fold_2/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "8a9819c352487a2f315aa511d59cf0b490f7f6ec9b0e3caf206d22f120102958"
+  },
+  "results/sepsis_cv_20261013/fold_2/status.json": {
+    "bytes": 138,
+    "sha256": "82f928a4ff299a7f9ffc9dafb34aaba80ddca1a47551d19895d494b770d98519"
+  },
+  "results/sepsis_cv_20261013/fold_2/values__scratch_34f_seed42.json": {
+    "bytes": 14004,
+    "sha256": "bbe9deab2fb8b73732e63d03b362ec0aa27447a6721ef155a844d49e202e5c2f"
+  },
+  "results/sepsis_cv_20261013/fold_2/values__sourcetargetmae_34f_seed42.json": {
+    "bytes": 3487,
+    "sha256": "3873bd970d471a633f54226f36c16d915726bf7ef991e01ecba0352119f76598"
+  },
+  "results/sepsis_cv_20261013/fold_2/values__xgb_34f_seed42.json": {
+    "bytes": 3242,
+    "sha256": "65eff3bed43ff9d17bc8ea252c3dd9d93b406adea2a479d6e53e96963d37e2e7"
+  },
+  "results/sepsis_cv_20261013/fold_3/availability__scratch_34f_seed42.json": {
+    "bytes": 10226,
+    "sha256": "a68b5a267c337b98e6207bd79a80bd44b561effb7a910622c5f1cd9a51ab0bce"
+  },
+  "results/sepsis_cv_20261013/fold_3/availability__xgb_34f_seed42.json": {
+    "bytes": 3255,
+    "sha256": "a77c334d5a24212c0d4da59547019efcf87fe452355d229653dde9fff592887e"
+  },
+  "results/sepsis_cv_20261013/fold_3/evaluation.json": {
+    "bytes": 82267,
+    "sha256": "7656f374c61d16ef05d2cd901927c7bc09d9a7e00970dff2455ccd255bce217e"
+  },
+  "results/sepsis_cv_20261013/fold_3/fit_lock.json": {
+    "bytes": 1114,
+    "sha256": "18dea321ce0a347d82baeb7f1b6adbb29862be6852ef99fec8494f05c740c61e"
+  },
+  "results/sepsis_cv_20261013/fold_3/metric_summary.json": {
+    "bytes": 52247,
+    "sha256": "aa990777001ad0b8cd595349b82c84a8cac018d08fc403147586a6b86489ae4a"
+  },
+  "results/sepsis_cv_20261013/fold_3/policies.json": {
+    "bytes": 20327,
+    "sha256": "d6af46a1a5d5c364d029d2b71c5f5243f3621de5b904e601ab03e470f4ccf30c"
+  },
+  "results/sepsis_cv_20261013/fold_3/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "664ec204c21526eff57a07fbca6cd1cbf46bdc93c9dda09118750c5d5bde098c"
+  },
+  "results/sepsis_cv_20261013/fold_3/status.json": {
+    "bytes": 138,
+    "sha256": "6270b9c85a7200cf804a90380c1e5c8d536aa2de74c78c6a7cfff27a8ba118b3"
+  },
+  "results/sepsis_cv_20261013/fold_3/values__scratch_34f_seed42.json": {
+    "bytes": 7677,
+    "sha256": "61a28792efd2e83b6355da1fe361f6e7d613b21245356a652e1037e89c6018a2"
+  },
+  "results/sepsis_cv_20261013/fold_3/values__sourcetargetmae_34f_seed42.json": {
+    "bytes": 4333,
+    "sha256": "9056a9b466b4e71e19f45268aa74fca4b5034f4984fe61742bb1d4c532e85417"
+  },
+  "results/sepsis_cv_20261013/fold_3/values__xgb_34f_seed42.json": {
+    "bytes": 3242,
+    "sha256": "9d847e07f5088eaff68c741e28b68bcf6896ba1fd4333405a916ab1dc15fadb0"
+  },
+  "results/sepsis_cv_20261013/fold_4/availability__scratch_34f_seed42.json": {
+    "bytes": 5039,
+    "sha256": "fbd284576f08c4c7a576f376bfd4078c5e191c07bdb55a327b53297cfabf7976"
+  },
+  "results/sepsis_cv_20261013/fold_4/availability__xgb_34f_seed42.json": {
+    "bytes": 3254,
+    "sha256": "0560e56bb7c2a27d48c9c99f0f056f5bc361f8704ec8432f7f6e8505ecb69695"
+  },
+  "results/sepsis_cv_20261013/fold_4/evaluation.json": {
+    "bytes": 82366,
+    "sha256": "4f9181005d2040a8a7fb4b226979535d4f323b9d0a4571226264ae2f84a982c8"
+  },
+  "results/sepsis_cv_20261013/fold_4/fit_lock.json": {
+    "bytes": 1114,
+    "sha256": "626516f7479ec311355e1149821e85d759b5cabf954b742019ddf25e08c0178d"
+  },
+  "results/sepsis_cv_20261013/fold_4/metric_summary.json": {
+    "bytes": 52277,
+    "sha256": "c79f0acedcf4ad07d3588d21797d0af17bb1aa9d21e9194ba13d36b24db5c80b"
+  },
+  "results/sepsis_cv_20261013/fold_4/policies.json": {
+    "bytes": 20396,
+    "sha256": "f435244f7e363a2e59a2b6de2d2dde6f880d72a9f22e13f77fe89149be41d426"
+  },
+  "results/sepsis_cv_20261013/fold_4/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "f63c1a0c0c109db2e409eb72d24790d518b8c16b5b52dca003c0ec53c92617db"
+  },
+  "results/sepsis_cv_20261013/fold_4/status.json": {
+    "bytes": 138,
+    "sha256": "fccd62c01eb0719ecefedecdd9a67c61a807d6394eaabf75cfb8b1dee864c965"
+  },
+  "results/sepsis_cv_20261013/fold_4/values__scratch_34f_seed42.json": {
+    "bytes": 10225,
+    "sha256": "b06652f60f01e8f485d27df4047b16fbe3c503edb948c0b4c0b88e093ea3e284"
+  },
+  "results/sepsis_cv_20261013/fold_4/values__sourcetargetmae_34f_seed42.json": {
+    "bytes": 6147,
+    "sha256": "33ae85b4de9ebc1cfd661d04fa68d02fd15ad184b0e5983cf02d77ed55a5c000"
+  },
+  "results/sepsis_cv_20261013/fold_4/values__xgb_34f_seed42.json": {
+    "bytes": 3242,
+    "sha256": "2dad8c02edaf9304aa28dc8f83463de60fe259465993063630bea34d82da2abf"
+  },
+  "results/sepsis_cv_20261013/fold_manifest.json": {
+    "bytes": 4986,
+    "sha256": "06d9cae6b997096cf1558b74e2ed531206abab68ca78e4b9b3c8f96a3f6fa58e"
+  },
+  "results/sepsis_cv_20261013/fold_metrics.json": {
+    "bytes": 176931,
+    "sha256": "369b1820fa77e20ba5d8489b74d365dc5d954320bbbaec10be9ca84f4b18764c"
+  },
+  "results/sepsis_cv_20261013/implementation_lock.json": {
+    "bytes": 2493,
+    "sha256": "e4bd7b5d1325b5e6769b61bc93587b5f267ad68f9072d407d7e04592665e8dc5"
+  },
+  "results/sepsis_cv_20261013/out_of_fold_summary.json": {
+    "bytes": 54076,
+    "sha256": "e339821628ca4fe464474009011a03501020093dc2740ef6e4f93fbad20db7e8"
+  },
+  "results/sepsis_cv_20261013/paired_comparisons.json": {
+    "bytes": 31311,
+    "sha256": "ffd925a6be967c46062546914a36cfd43535f63395bcf1c1767375681ade9820"
+  },
+  "results/sepsis_cv_20261013/patient_precision_audit.json": {
+    "bytes": 12595,
+    "sha256": "9e28b353a358bfb309a6eb2dbc97c6ec8e4316375688776688dd5e472d28d53f"
+  },
+  "results/sepsis_cv_20261013/PROTOCOL.md": {
+    "bytes": 3277,
+    "sha256": "b7f122dc36d7a1ad51cc1bc0252c2d3cc96eb13f619fd1bed8f31767ad993cef"
+  },
+  "results/sepsis_cv_20261013/status.json": {
+    "bytes": 164,
+    "sha256": "549f673f05d37c7467ce93c899d7bec1d68cc5e0bea365d1c5e99560a5dbdbcd"
+  },
+  "results/sepsis_lab_specialize_20261014/convergence.json": {
+    "bytes": 6585,
+    "sha256": "eb9b73fd5faea7b2fbcbe28056eb95e7f4ee07e4a82e7384fde5b174aceda9ca"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/broad_scratch.json": {
+    "bytes": 14009,
+    "sha256": "a3ec2313bed1c5b672ec8eea7cd1466e4c3aface537618ee187a751c894c3a1e"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/broad_xgb.json": {
+    "bytes": 3230,
+    "sha256": "0b119583ad90da34abef2b713980c4dc6a5a708dc3a9a044fc58596758a239da"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/evaluation.json": {
+    "bytes": 40607,
+    "sha256": "9c5bc1caab355c2f9f723966098490dd5a4d43ef9d3ec15c6bee9aef9ccca7a9"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/fit_lock.json": {
+    "bytes": 943,
+    "sha256": "8dd8e4353c5fbf48930a676da120e55384b1bc58fce8c6d4789df3c0650286f7"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/policies.json": {
+    "bytes": 10197,
+    "sha256": "8804a9ecdb129872e862c14f9491d8d0f875aadd9477ae061eb323c501f83e11"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "a696e5d47942856646e0eeb3cd571c6be11a1939faf66e9eacaa5ee426af0bc8"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_mae.json": {
+    "bytes": 7020,
+    "sha256": "577740dd124c3cc838e7408027498e8acd7c087173be32a1cf331a379fada440"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_mae_lr0.0001.json": {
+    "bytes": 9568,
+    "sha256": "8dd87df0816bf6448ef40bd325629e77e330739952f322ce3ba78dd4fbe5ed6e"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_mae_lr0.0003.json": {
+    "bytes": 9781,
+    "sha256": "3552ab290560238f2d2cd75930f7702e5692e2f948890c335b22f8bc1a226e49"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_mae_lr3e-05.json": {
+    "bytes": 6985,
+    "sha256": "53115e75bc961c89334ce21c7e978455a134f1b7b0fb2fbc695f89ce611505a3"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_scratch.json": {
+    "bytes": 13659,
+    "sha256": "5d1256d8ed05d63bd4eea6ee64de265e0d95816679887e72df6029377d76838f"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_scratch_lr0.0001.json": {
+    "bytes": 10584,
+    "sha256": "cdd4ec18c6d5f3fd7aa2e1b66d0996c34b9950a6b5f57b57803951c95d70cb33"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_scratch_lr0.0003.json": {
+    "bytes": 13620,
+    "sha256": "ddf9db99daa17a2aa7a1d6ee9ec1089b7a23cfd5eea509fd547642904c0292e1"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_scratch_lr3e-05.json": {
+    "bytes": 11401,
+    "sha256": "a4326c61bfa4edf5ddd3fea88db34e1d8b134288fdd3d9d7cd48281a43473176"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_supervised.json": {
+    "bytes": 7652,
+    "sha256": "dbe28608b55e7cfdd120550fdea9e68d34cf289fcc1909d7af81517b2dc43a4e"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_supervised_lr0.0001.json": {
+    "bytes": 8994,
+    "sha256": "128f5e1ce8920122d20406099bf3e83df1d1150837e668c9a1661bb77a347a93"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_supervised_lr0.0003.json": {
+    "bytes": 7610,
+    "sha256": "3a6909388f35437e61873abd56e8ffcd14286489db1c886a6e9c1db25b99a43d"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/rich_supervised_lr3e-05.json": {
+    "bytes": 9981,
+    "sha256": "50c3713c8f58466830c382aa1e09c7b8c48a3e3dcd2900f7d21948473f5409ae"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/selection.json": {
+    "bytes": 1966,
+    "sha256": "42ba05593e409d3de90f92c9e059ceecb7690db846dcd0403d074c1fe651b956"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_0/status.json": {
+    "bytes": 113,
+    "sha256": "b2b53457afadce6da7d8a0b228d3495525267a1544a2651c1bc07a22a81c1518"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/broad_scratch.json": {
+    "bytes": 10363,
+    "sha256": "9f3e6c7907ed2bc1466f9da3d37645d53386fa620fcd1a562a93bb1e1bca7205"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/broad_xgb.json": {
+    "bytes": 3229,
+    "sha256": "19f3615e355065b399be0cf29cbad559fcb70fa8ed730b5abe65bdaa69c60b8c"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/evaluation.json": {
+    "bytes": 40886,
+    "sha256": "17410f6d67d47ae0ba5913f1dda2dda4cf00ec6866036f2357779b9101730b70"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/fit_lock.json": {
+    "bytes": 943,
+    "sha256": "d5ffc65df8baa5b81647ceb651fe011f6fff97edf0d75d83fce0bd7b5b200265"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/policies.json": {
+    "bytes": 10092,
+    "sha256": "7a9eda7c3383cf6d09e9c603427ea2ff14abc161b4f9b79bfdd4ac8b0591a89f"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "05055d2b332f310026c9df714097d3171f158c6d1aceb11324f270e93c10edf9"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_mae.json": {
+    "bytes": 6851,
+    "sha256": "122b99bfd6aec603af768af7b07515f7b4a5c46439bae18c445441940680a5ab"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_mae_lr0.0001.json": {
+    "bytes": 7788,
+    "sha256": "bc42c2bc2af958e83cf30094a17a32ad041c3b0c00184fefd4357961ddab013e"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_mae_lr0.0003.json": {
+    "bytes": 6816,
+    "sha256": "e7f6f87c38ada73dfda21a126f3972f834c73d8193e29f2c2e7e091f1e730ddf"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_mae_lr3e-05.json": {
+    "bytes": 6806,
+    "sha256": "d8e33085e2c3df966c8dea4edc623ff757c244efd35003e40236173f7bb468c3"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_scratch.json": {
+    "bytes": 13423,
+    "sha256": "72742951c411e64bb88021c2cca772907e99bb9251055d51f2c99ac9bb492504"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_scratch_lr0.0001.json": {
+    "bytes": 10600,
+    "sha256": "c8600d7b7647950f141820cc97f31bbff693aa84120c153da3d519016b04234b"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_scratch_lr0.0003.json": {
+    "bytes": 13384,
+    "sha256": "4e2a1a61597895d5dda1e4319c125c1442aca0c0b32356cc997f9e100bd3ad4a"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_scratch_lr3e-05.json": {
+    "bytes": 10570,
+    "sha256": "c1c3b151259da86d953c1d894a2e55f5f05bc1221b2485af670c690f6d724e81"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_supervised.json": {
+    "bytes": 6431,
+    "sha256": "f91f58b3fdd9abca81ff8855569bc426b4ef01e76343804c32bc53e751a2ae02"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_supervised_lr0.0001.json": {
+    "bytes": 6379,
+    "sha256": "4d5b00b7886f1ea8b5ef9665a6cfca824a6de4f11be65963d4cbdab8d2f8f10d"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_supervised_lr0.0003.json": {
+    "bytes": 6392,
+    "sha256": "89f3df48fabdfe8cb80055f75db7a2924e69a2e5f4ceef6e53e039f1e45264fb"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/rich_supervised_lr3e-05.json": {
+    "bytes": 6389,
+    "sha256": "1a6158002b78d253862e1e31caa5bcb260fc48f412fab4608741303edc4de59f"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/selection.json": {
+    "bytes": 1967,
+    "sha256": "848e9626b97bcd1c76a5b450f7e3e3cda3cd33224423409e5781f4f104b5efb1"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_1/status.json": {
+    "bytes": 113,
+    "sha256": "46105706f495a0c9ad600fe0c2f2dd101b486fd1e6089ed392fed79889337bb2"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/broad_scratch.json": {
+    "bytes": 13991,
+    "sha256": "0c8a17194b61855a3df663889ede9c881d1de3ea1e1a98d3894c45b935cf4192"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/broad_xgb.json": {
+    "bytes": 3229,
+    "sha256": "79ee496deb9d4e9f6af6ab07bb6e423fab4cd5a931c500875280e22b7de42924"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/evaluation.json": {
+    "bytes": 40975,
+    "sha256": "c2616324409d0681336953ab5b89f219388295db5a04432ada698345aa7ab47d"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/fit_lock.json": {
+    "bytes": 943,
+    "sha256": "13c1d80e7c33f619ab5d60dd2273cd17da21e473c983d3c71a9d184e99294cb6"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/policies.json": {
+    "bytes": 10191,
+    "sha256": "0eae35905a3f3b1265e9c6d58081f6d18f040dc2bf356181ba72e46d5c9e1e42"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "2894d7f8de20d36829b0d0cce0b75761d435c56b5e784697165fb8a8b39bb055"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_mae.json": {
+    "bytes": 8442,
+    "sha256": "ee7b1b4980493f109081223681236166e5aa5e77a9629fa2296e49779ce3739f"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_mae_lr0.0001.json": {
+    "bytes": 7401,
+    "sha256": "ea21cf3f68252d2dd3b54145714170cc23c50caf9bb42a1e0153691740900093"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_mae_lr0.0003.json": {
+    "bytes": 8407,
+    "sha256": "79f12875b592da47ed06f9de99a05e12ecd2c365b9c84c919676a6bcc38c6508"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_mae_lr3e-05.json": {
+    "bytes": 8779,
+    "sha256": "ea05586f7d2cd83cdf2a777de1493964ae9bad7056806bbaacfad52a4c68dd8f"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_scratch.json": {
+    "bytes": 14209,
+    "sha256": "00f4883d319eb02e4696123fac373a617bf041ed519994330a83aa8899ca6c0a"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_scratch_lr0.0001.json": {
+    "bytes": 21347,
+    "sha256": "db9d6a40fbacb49f67cc067e33539be693d913ecc8f6dfcc58e2f4aa38bd6bb3"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_scratch_lr0.0003.json": {
+    "bytes": 14170,
+    "sha256": "24d7ce38ae376abf19270f9b4549c9727b626f6b4bb52840ad6ad8456a6d5dc6"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_scratch_lr3e-05.json": {
+    "bytes": 11554,
+    "sha256": "72444a07812746ec4f4a5e0ad0afe75e91da9399070a4017771a0fcc7776f909"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_supervised.json": {
+    "bytes": 16572,
+    "sha256": "a2aacf074cddfa86be7d0341a4d48e4d3e97f222a39bbdb3c607ab3d98007cf2"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_supervised_lr0.0001.json": {
+    "bytes": 16530,
+    "sha256": "f013fc1bbe0ad3980242d7037ed125c79b85fd9d0bc506be7a73e30245f42370"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_supervised_lr0.0003.json": {
+    "bytes": 9408,
+    "sha256": "12466b13e11e0d1b95f3844f294023fd3362fb121605e8efc2050ede048a5817"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/rich_supervised_lr3e-05.json": {
+    "bytes": 11565,
+    "sha256": "ab00016cbb9c1def86672cdf7f391c865c83e5f442179a3165962d11f6979093"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/selection.json": {
+    "bytes": 1966,
+    "sha256": "e3cc73d90cc8f1fbb44d0404482e9135ec0b9a4ab0e319e11a6b57ee3096ec13"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_2/status.json": {
+    "bytes": 113,
+    "sha256": "6b7cbd4e9abd3492497cfa01c2cb12cea2a037cfeed415ef3881e917938da59f"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/broad_scratch.json": {
+    "bytes": 7664,
+    "sha256": "cf2a751b4f4617693ccdeaa338d37206bffdbf9ac2f41b3e77dc739856002147"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/broad_xgb.json": {
+    "bytes": 3229,
+    "sha256": "4c6115198ea35220b30d71fe6640e36275d66f318f021c000e337d180807e584"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/evaluation.json": {
+    "bytes": 40983,
+    "sha256": "d0445bba750f2f59c9ea613e69046cc2db20a65e9e9c928d82f1bf4aeee871ed"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/fit_lock.json": {
+    "bytes": 943,
+    "sha256": "10732046111cfd8d81cc672f0a267992fcc0a9ce0277ac549ce75309f457b801"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/policies.json": {
+    "bytes": 10144,
+    "sha256": "a70e03e16c8a9a920ae06894fe73801e5b02e1decb8e1f79b707ff68a8e80fd6"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "70bbbcb79b892fe1f80829074037605be765cb7d43400bffe056a69914bbb4a2"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_mae.json": {
+    "bytes": 7881,
+    "sha256": "170d5b00f058f1c13b7fbcf9c15b5429b01e7d2b181d3d05eb8288a3cd2001ee"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_mae_lr0.0001.json": {
+    "bytes": 14025,
+    "sha256": "0248f74ecee7785f9436235271271c6bf13b8065c73b7a8c948b8f04bdb249da"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_mae_lr0.0003.json": {
+    "bytes": 7846,
+    "sha256": "db690efd697f0b1f9dfe43ddbfbdba1b10ec14136176c7f83b2cd6da0aacf177"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_mae_lr3e-05.json": {
+    "bytes": 14970,
+    "sha256": "f9fc6b04e7a5bf8b740f5312667c7b41b8509b542b845382de54b31413026d67"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_scratch.json": {
+    "bytes": 14010,
+    "sha256": "4d37a8b47cdc33be1e960b39ae760c36cf8ce9d1063f93de5545406e5b0a8d92"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_scratch_lr0.0001.json": {
+    "bytes": 8624,
+    "sha256": "4e9ab72dd776434d6c36e5ab2d3af8b2d30e0b609ff54acb38066190c55e6bfc"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_scratch_lr0.0003.json": {
+    "bytes": 13971,
+    "sha256": "72e0f769fb46a4b859309f46bba1cfa6c581d35b460792cbe22babc315333f53"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_scratch_lr3e-05.json": {
+    "bytes": 8603,
+    "sha256": "5740b9e67c1217f24d8189fe892121b0c12f3f4f1cab005a313b69961827e96d"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_supervised.json": {
+    "bytes": 8422,
+    "sha256": "b4b1c83edc6443c1e963a4a8e70f1ec77ed73185dfd46e94aaf18fbd33065a3a"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_supervised_lr0.0001.json": {
+    "bytes": 10344,
+    "sha256": "f97b65c2ef67343eae97d96cf27ceae052ff2d4397eccc171f0226115dff7f38"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_supervised_lr0.0003.json": {
+    "bytes": 8380,
+    "sha256": "68203959b2d2186e0d06f91ccb9192d18578075a35c0fed8c3377ba2e0a0e005"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/rich_supervised_lr3e-05.json": {
+    "bytes": 6352,
+    "sha256": "492350e9a7a575ca616188da6cf531230d0f17129153bd44a6114aa55210bc80"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/selection.json": {
+    "bytes": 1967,
+    "sha256": "76c5a3242f03c2b357fe995af1f5c3f38269419e2c77659b344d823d8a9bc8ad"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_3/status.json": {
+    "bytes": 113,
+    "sha256": "b4d30bc49b7d36e9c2bbb6bc2c0bf903d393150430ac8e5cfd0430493db312bf"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/broad_scratch.json": {
+    "bytes": 10212,
+    "sha256": "09a4272c8b18e6380fb306e6e1039ce6ca55627561db4581a679055e58505b6e"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/broad_xgb.json": {
+    "bytes": 3229,
+    "sha256": "71d204aeba43fb16ebee009ce0e552ff8bfc7d244c40113c1a41282cf171f56d"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/evaluation.json": {
+    "bytes": 41015,
+    "sha256": "0bdaa6c28c46d9577afc1f5740b584a4c7af0174b26b83df8b9f9ee3ff4ea188"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/fit_lock.json": {
+    "bytes": 943,
+    "sha256": "a6162171e3bd6f9ddd576693e4dd9566af7a6619edcc2ee70a021c55cd6a6934"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/policies.json": {
+    "bytes": 10210,
+    "sha256": "47e324534b0c77a5fe20648e15db706fbb45f357dadb8d952d14055261f37125"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "5ae47ce829ff4bd7e0dc446121e2aa22b369ff8a7d50a0fccb0043ac14b6adc4"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_mae.json": {
+    "bytes": 7252,
+    "sha256": "2ea4ab084b47df06aedd0a14144449b9eba20190f7392a6fabcc60b810f0d199"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_mae_lr0.0001.json": {
+    "bytes": 8785,
+    "sha256": "85cd692f39e885cc8f1d8ac00532e6d56d501c34b6ec85d847ba8adae6a8a947"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_mae_lr0.0003.json": {
+    "bytes": 7217,
+    "sha256": "51ff2bfb35af3a85cf9bd28c9d34206d0be3d364b4b407f512916efe73036433"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_mae_lr3e-05.json": {
+    "bytes": 6994,
+    "sha256": "b02a6369bd92e54bbea1b402e5f3c56d0dca0c75a3f8e7e2e0115b149b56ad6b"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_scratch.json": {
+    "bytes": 19038,
+    "sha256": "029efaf150f66490670bf5e49ed21448808e0c47f4be3c9444508a6981352776"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_scratch_lr0.0001.json": {
+    "bytes": 12563,
+    "sha256": "48ed6311c7acf4478fa6ecf29cb90c50ac3d5a17cb48232dacf47169984d501f"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_scratch_lr0.0003.json": {
+    "bytes": 18999,
+    "sha256": "87885ce96f5719a6f272ffcc2c6dcba23ff4a2cc323d6fca0893fc3f46287351"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_scratch_lr3e-05.json": {
+    "bytes": 12539,
+    "sha256": "1cc4a7a8e3a79a00be396e7591024929ec48a358c8a5964ba77dce6a647edc64"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_supervised.json": {
+    "bytes": 10041,
+    "sha256": "688f0b99278649bc4012cc6def1ed70c6923388d43d0aa5f03f649d2ab0af0c8"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_supervised_lr0.0001.json": {
+    "bytes": 16927,
+    "sha256": "afa431e64c8858b69943f7abf84145beb466ac12a5680654f178b0a405f58251"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_supervised_lr0.0003.json": {
+    "bytes": 9999,
+    "sha256": "bfba09768f343a9ca898668fe3a2de2321613365b5f2f92441f3be3e399e5284"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/rich_supervised_lr3e-05.json": {
+    "bytes": 6428,
+    "sha256": "90082d56445962f300985783ac255cccd65ece643d79fae1bb95988476649a2f"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/selection.json": {
+    "bytes": 1968,
+    "sha256": "3d8c4b2746be224a36f6a6af8e67650b7243d2fb3fefb8c241397dade7bc5929"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_4/status.json": {
+    "bytes": 113,
+    "sha256": "8a3ae851ca123e2b48f15478399c723c9942b318a915360ed5749b693882e7f7"
+  },
+  "results/sepsis_lab_specialize_20261014/fold_metrics.json": {
+    "bytes": 85892,
+    "sha256": "09ee8b76847a3fcdf62159110362882763d6c39242e1ba7daa898a522cc68ffb"
+  },
+  "results/sepsis_lab_specialize_20261014/implementation_lock.json": {
+    "bytes": 3666,
+    "sha256": "7dcddde07ccf8fb2ce1bfdbba51f904dcbe7b60fe10f76799b653d4d46674c42"
+  },
+  "results/sepsis_lab_specialize_20261014/out_of_fold_summary.json": {
+    "bytes": 26207,
+    "sha256": "0cf8a4797ef6eb6c41c4dbfba97bde5067532d4bd93943f574f3af79b4099776"
+  },
+  "results/sepsis_lab_specialize_20261014/paired_comparisons.json": {
+    "bytes": 14541,
+    "sha256": "203955a7083f2a0d99e918e115aa3afa7af66f022cd7e1dc1c8d0404e03486fd"
+  },
+  "results/sepsis_lab_specialize_20261014/PROTOCOL.md": {
+    "bytes": 2947,
+    "sha256": "dafc52cfd7bb6efd4141fb9568cf731b01231418277645b60aef2cc41f22e000"
+  },
+  "results/sepsis_lab_specialize_20261014/random_baselines.json": {
+    "bytes": 13732,
+    "sha256": "c5e4954b626f08b1c582b93c17719340ddb6b821672e64b6988f0c86653fa6a8"
+  },
+  "results/sepsis_lab_specialize_20261014/status.json": {
+    "bytes": 118,
+    "sha256": "5885c57777fe1c8b04711c259d1cb1d4248f0891a2d467cf51b07eeef9050bca"
+  },
+  "results/sepsis_lab_specialize_20261014/training_coverage.json": {
+    "bytes": 3427,
+    "sha256": "dd43810be3e0289dd591530d430825acdb7f8cf1e4f41bd22d80bd972eed2dcc"
+  },
+  "results/sepsis_lab_values_20261011/ablation_lock.json": {
+    "bytes": 575,
+    "sha256": "c0a98c5e9859cf3a113cbb9ab6370027af8d439e7342ffdb3ac638755ebe47d9"
+  },
+  "results/sepsis_lab_values_20261011/availability__rf_34f_seed123.json": {
+    "bytes": 1969,
+    "sha256": "acd7ea4b12587389cddafa42d8289647339429df4ad82e6edf8f9cb960e6ca61"
+  },
+  "results/sepsis_lab_values_20261011/availability__rf_34f_seed42.json": {
+    "bytes": 1964,
+    "sha256": "34073eac0829934e5114ae51351d8bf21e18ffec5a9c61c09a0759c7fdaac214"
+  },
+  "results/sepsis_lab_values_20261011/availability__rf_34f_seed456.json": {
+    "bytes": 1968,
+    "sha256": "744c3e981c3e55921b8c3dacff956ce83e036a9872fefef2ca2e1ec8a47f489f"
+  },
+  "results/sepsis_lab_values_20261011/availability__scratch_34f_lr0.0003_seed123.json": {
+    "bytes": 2569,
+    "sha256": "8ac606ffaddaf44b370a1e15ab5059ebe0581baf8ea3acf2ae8acd159ab3c9e4"
+  },
+  "results/sepsis_lab_values_20261011/availability__scratch_34f_lr0.0003_seed42.json": {
+    "bytes": 947,
+    "sha256": "c036176327b9031484b72ac4967d28814da2d8a49bbd1bce2d3506d128a0281e"
+  },
+  "results/sepsis_lab_values_20261011/availability__scratch_34f_lr0.0003_seed456.json": {
+    "bytes": 2341,
+    "sha256": "a1b369ef03fe4f1eb1ab59679e320cc5b9aab3189ee1f35a1e38ba2d4b07822c"
+  },
+  "results/sepsis_lab_values_20261011/availability__xgb_34f_seed123.json": {
+    "bytes": 3249,
+    "sha256": "d17ddef3ad88f7eb85f193e7fdcfbddd834b748192682e7a9776771ead9b5ba6"
+  },
+  "results/sepsis_lab_values_20261011/availability__xgb_34f_seed42.json": {
+    "bytes": 3246,
+    "sha256": "b0819750a55dc40503186d882d4f021fa842b7919c239042084b92f3e2d378e6"
+  },
+  "results/sepsis_lab_values_20261011/availability__xgb_34f_seed456.json": {
+    "bytes": 3250,
+    "sha256": "a857150c26bf98739921f06e10c4809b0f05d46e9c2ef65b94b1c583aebca705"
+  },
+  "results/sepsis_lab_values_20261011/evaluation.json": {
+    "bytes": 295812,
+    "sha256": "633e879c00dfa0e1d1f098305835101342a230392f33e4791cab3047a4733469"
+  },
+  "results/sepsis_lab_values_20261011/fit_lock.json": {
+    "bytes": 4053,
+    "sha256": "c1a65cd38fbe2ba69a776b9dd5ced7e4ee864759cde035abcd37aeaf67c96467"
+  },
+  "results/sepsis_lab_values_20261011/implementation_lock.json": {
+    "bytes": 2303,
+    "sha256": "619875a1aa1a567fe0754ca54bea1db55b05df7b55930aaac71b258545e1de63"
+  },
+  "results/sepsis_lab_values_20261011/paired_comparisons.json": {
+    "bytes": 2,
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "results/sepsis_lab_values_20261011/paired_lab_value_comparisons.json": {
+    "bytes": 75400,
+    "sha256": "5e456d4945b742a449cde04565aff6147e258a8813a90e68b6f5272b925c7c8e"
+  },
+  "results/sepsis_lab_values_20261011/policies.json": {
+    "bytes": 73704,
+    "sha256": "52b8d313f7d7cbd32d1d596a40483426608be5b4a438035816b5da01a5761f63"
+  },
+  "results/sepsis_lab_values_20261011/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "d7e9ef4692a0e7576f5fe9590a61f9640ca61227dfe214ee9f8281201d371e24"
+  },
+  "results/sepsis_lab_values_20261011/PROTOCOL.md": {
+    "bytes": 3775,
+    "sha256": "c9e24b6bfb90e9df21f27d5086bb6b3dc2cc948143c3e13a8ebdd1d25532a331"
+  },
+  "results/sepsis_lab_values_20261011/seed_summary.json": {
+    "bytes": 39947,
+    "sha256": "304cd5aaa1dae9f1269452eb728bb7a2ab5dc0dfcb08a5fdf350e1a7ad2ef43e"
+  },
+  "results/sepsis_lab_values_20261011/status.json": {
+    "bytes": 153,
+    "sha256": "4e10b73deea7dccc1d779b9be185c2fc256c1dc9330a4a0b194829480a624af8"
+  },
+  "results/sepsis_lab_values_20261011/values__rf_34f_seed123.json": {
+    "bytes": 2085,
+    "sha256": "935a33ac78592808614bc67205304f841c7fdf58650dbfb83a641dc9e99d92d6"
+  },
+  "results/sepsis_lab_values_20261011/values__rf_34f_seed42.json": {
+    "bytes": 2081,
+    "sha256": "dd85bcabd909c4e6ce28026ef569335362e75bc3eb75eb9b9f47f453f57230a1"
+  },
+  "results/sepsis_lab_values_20261011/values__rf_34f_seed456.json": {
+    "bytes": 2084,
+    "sha256": "0aefb718fcfe736bd15a5306188858e923823d9a804058b35c33800216d56f59"
+  },
+  "results/sepsis_lab_values_20261011/values__scratch_34f_lr0.0003_seed123.json": {
+    "bytes": 2694,
+    "sha256": "ff87fba7f14e2422a9ac404cbf9576574a168cb2dbdeb98b79ae05041f5e0915"
+  },
+  "results/sepsis_lab_values_20261011/values__scratch_34f_lr0.0003_seed42.json": {
+    "bytes": 1189,
+    "sha256": "9d337e580dcbc8c452db4a6224c8126d399ec5cdcb5b1379a50e8988fa22f397"
+  },
+  "results/sepsis_lab_values_20261011/values__scratch_34f_lr0.0003_seed456.json": {
+    "bytes": 2698,
+    "sha256": "7abece7790ff8921825f7d39801136d5d12ab42b7b4b0aaf0781d79215d885c1"
+  },
+  "results/sepsis_lab_values_20261011/values__xgb_34f_seed123.json": {
+    "bytes": 3370,
+    "sha256": "ee29985878633790504bc5af399d83bcaafa7d2ae79e50dadffecba43eb44428"
+  },
+  "results/sepsis_lab_values_20261011/values__xgb_34f_seed42.json": {
+    "bytes": 3365,
+    "sha256": "0488a364e2156445902a4a386b32a75ca0025c821cb50ae443852996863f52e5"
+  },
+  "results/sepsis_lab_values_20261011/values__xgb_34f_seed456.json": {
+    "bytes": 3369,
+    "sha256": "89eea900fdd9996c8f933574dc24aea0297ea73e04d4e93453ccae20ae8fbe00"
+  },
+  "results/sepsis_long_mae_20261012/implementation_lock.json": {
+    "bytes": 1023,
+    "sha256": "aad5e97a3ceea492fd7adac3bf89c618b42f021970ead8a6da8a1a139000ef7d"
+  },
+  "results/sepsis_long_mae_20261012/PROTOCOL.md": {
+    "bytes": 1538,
+    "sha256": "e299fb3ac7b92f81017ed37f2b15088d99467c2a20a23542653b7cf74409d274"
+  },
+  "results/sepsis_long_mae_20261012/sourcetargetmae_34f_seed42.json": {
+    "bytes": 5291,
+    "sha256": "723fdc2bd8a92320d03587a262999f56d09596c0277d410a8ef5dba85a8e63e6"
+  },
+  "results/sepsis_long_mae_20261012/status.json": {
+    "bytes": 110,
+    "sha256": "2013a44d2def6697122058ad184308ecc5bbdb621ca02bf5b277c065b3215bc7"
+  },
+  "results/sepsis_long_mae_20261012/targetmae_34f_seed42.json": {
+    "bytes": 5290,
+    "sha256": "1df51cece81810a048735130621448d7605d3e861c109ed69dadf54b313a55c4"
+  },
+  "results/sepsis_long_training_20261012/availability__scratch_34f_lr0.0003_seed123.json": {
+    "bytes": 6455,
+    "sha256": "e493c35231d342a68c68110a913756d607af67c4e1e8e7f5e83db3f18fdcd034"
+  },
+  "results/sepsis_long_training_20261012/availability__scratch_34f_lr0.0003_seed42.json": {
+    "bytes": 9547,
+    "sha256": "83cad3934230890647de145de4b4a227b04b756338165602f01990863010850a"
+  },
+  "results/sepsis_long_training_20261012/availability__scratch_34f_lr0.0003_seed456.json": {
+    "bytes": 14606,
+    "sha256": "5214e692126449feeef3774582d86c9c7cf11ae7d05d2f3de418e1086d9ec761"
+  },
+  "results/sepsis_long_training_20261012/budget_and_lab_comparisons.json": {
+    "bytes": 136274,
+    "sha256": "0112883265af336b0620e1b6c794fd01e31d50602db9198f2855d3b890529ee4"
+  },
+  "results/sepsis_long_training_20261012/convergence.json": {
+    "bytes": 7067,
+    "sha256": "1b37a0ff37de2e3bb70d6749cb521ade89f1eecb6300d3423d2146503859b6c0"
+  },
+  "results/sepsis_long_training_20261012/evaluation.json": {
+    "bytes": 444070,
+    "sha256": "ea08586a4b7e6ae6316b35216f29d432e54380e32a95b3c400badf3ff2aadc35"
+  },
+  "results/sepsis_long_training_20261012/fit_lock.json": {
+    "bytes": 6144,
+    "sha256": "98d90918e3b14c826b55de1d2c2ec20d1d7a29d3cbdaa8e628b6c5c6cc3e607d"
+  },
+  "results/sepsis_long_training_20261012/implementation_lock.json": {
+    "bytes": 2396,
+    "sha256": "4c52db8017571f0e45027caf9c3cc3c82a08cc1382f9a26bad696c141fd3b6f5"
+  },
+  "results/sepsis_long_training_20261012/long_training_lock.json": {
+    "bytes": 1806,
+    "sha256": "46fcd69faf9ae92a361b70da05ebd74e7c21cf64322423ea01198066e57acc9a"
+  },
+  "results/sepsis_long_training_20261012/paired_comparisons.json": {
+    "bytes": 81380,
+    "sha256": "f09f719bcea9f324574c3f0b4b52dd3f170ad72803ba91bd2f433dbe49184bf2"
+  },
+  "results/sepsis_long_training_20261012/policies.json": {
+    "bytes": 110771,
+    "sha256": "d1bf4943c870278f5de50a20cf7f450919de7cd608e28ff9830cb1ec26c06b6f"
+  },
+  "results/sepsis_long_training_20261012/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "4196984e02a1a729988e17c5c9aa538319d3a35c2324680551d07f582720ae9c"
+  },
+  "results/sepsis_long_training_20261012/PROTOCOL.md": {
+    "bytes": 3554,
+    "sha256": "c10b103a7dbd69b9132f9bb8fdd68bf865e7b590559aa3a4f60f12173e90e1cc"
+  },
+  "results/sepsis_long_training_20261012/scratch_34f_lr0.0001_seed123.json": {
+    "bytes": 9948,
+    "sha256": "a047606db143dfa7606fc030a1658e2be16e77d60c64585fc237a3bb0bcb0d90"
+  },
+  "results/sepsis_long_training_20261012/scratch_34f_lr0.0001_seed42.json": {
+    "bytes": 13457,
+    "sha256": "be7288e01ef518c9fce8fc15c223880b2a8801188d56245668863901363e4baa"
+  },
+  "results/sepsis_long_training_20261012/scratch_34f_lr0.0001_seed456.json": {
+    "bytes": 11351,
+    "sha256": "95321fc7fcac02dab331f8a6f63ae7a2d835966fa5c8c2b399676ec4412e673e"
+  },
+  "results/sepsis_long_training_20261012/scratch_34f_lr0.0003_seed123.json": {
+    "bytes": 6430,
+    "sha256": "ff74539f566b0ea3c63c16d59cc6c8e576de128640bedf56294b8680ff4acdb7"
+  },
+  "results/sepsis_long_training_20261012/scratch_34f_lr0.0003_seed42.json": {
+    "bytes": 14585,
+    "sha256": "5303470856d098140f1b2e9375f64079aac7cdabe1603471f01a99b37f1c5194"
+  },
+  "results/sepsis_long_training_20261012/scratch_34f_lr0.0003_seed456.json": {
+    "bytes": 10237,
+    "sha256": "d49e38546fd3199fdb6c4b09198a89b4c8cdad964ce1344fcb1dcfd76a050046"
+  },
+  "results/sepsis_long_training_20261012/seed_summary.json": {
+    "bytes": 59834,
+    "sha256": "3391c0f7be68e95c8817539f387b3496afeceb5860f71db482c40875ee68c98b"
+  },
+  "results/sepsis_long_training_20261012/source_34f_lr0.0001_seed123.json": {
+    "bytes": 6277,
+    "sha256": "b87a9b412fcfd764c77f45acbe974a7dd96af2e5cfa853bd0fa75fbb0d663fdb"
+  },
+  "results/sepsis_long_training_20261012/source_34f_lr0.0001_seed42.json": {
+    "bytes": 5720,
+    "sha256": "7ac361666c037ee22124535bc6c0dc474db9881738fa2500b0ea1e6d24d93dc7"
+  },
+  "results/sepsis_long_training_20261012/source_34f_lr0.0001_seed456.json": {
+    "bytes": 4451,
+    "sha256": "3392335f431336a37702b58c90b39ce7b90f22a1299ff05d27917f6177f1af1c"
+  },
+  "results/sepsis_long_training_20261012/source_34f_lr0.0003_seed123.json": {
+    "bytes": 7264,
+    "sha256": "ef1572d1a85fc046bb843a3020028872d0ef8a7883bfb1c0f9295d84dd0b978e"
+  },
+  "results/sepsis_long_training_20261012/source_34f_lr0.0003_seed42.json": {
+    "bytes": 9795,
+    "sha256": "67d14499f62cf882204bb629c27959ede3bc954fc28fecdd5749bd8a014bd3dd"
+  },
+  "results/sepsis_long_training_20261012/source_34f_lr0.0003_seed456.json": {
+    "bytes": 6565,
+    "sha256": "e39b58748aeb4153ec7111bb3e58eba64549a6db4baa84d452da40bf0415b30f"
+  },
+  "results/sepsis_long_training_20261012/sourcetargetmae_34f_lr0.0001_seed123.json": {
+    "bytes": 5688,
+    "sha256": "de1df90d49d160214eae294b32973024bbb5469f3490bbd6b4d82ffe4faa4e90"
+  },
+  "results/sepsis_long_training_20261012/sourcetargetmae_34f_lr0.0001_seed42.json": {
+    "bytes": 4280,
+    "sha256": "05758ee9a2dff30a085e5d0160a1e23c68ffdd36f3aa5fe1f8c1f82f3b845b51"
+  },
+  "results/sepsis_long_training_20261012/sourcetargetmae_34f_lr0.0001_seed456.json": {
+    "bytes": 4560,
+    "sha256": "0911753285276e70a69f539311a115f68da0cff71b4061b92c9707eb18a1ff3f"
+  },
+  "results/sepsis_long_training_20261012/sourcetargetmae_34f_lr0.0003_seed123.json": {
+    "bytes": 9621,
+    "sha256": "767bc251cfbab0d786895cfd39e4b33f6a17b4d83858ef0b2064a302c59e5cf5"
+  },
+  "results/sepsis_long_training_20261012/sourcetargetmae_34f_lr0.0003_seed42.json": {
+    "bytes": 9067,
+    "sha256": "905ad7b0795a634b844d4f8e6ba1f79091b5554d8bd5f0ecdf9f820ef1c858fd"
+  },
+  "results/sepsis_long_training_20261012/sourcetargetmae_34f_lr0.0003_seed456.json": {
+    "bytes": 4559,
+    "sha256": "8f5319d0bbc8b2f9d1a5a9ae423dc8f3e765c41ce2ec9ce2c8dda91c82da12e8"
+  },
+  "results/sepsis_long_training_20261012/status.json": {
+    "bytes": 153,
+    "sha256": "fd7c791e9c5a5d419a39d52db5b5c8bd02dae34821559b0b69c1b5f9407992f3"
+  },
+  "results/sepsis_long_training_20261012/targetmae_34f_lr0.0001_seed123.json": {
+    "bytes": 10613,
+    "sha256": "5765d7d0a69d0feb7c272fb2d059939e60f561b40f02b76273a0c0cab9dc7d60"
+  },
+  "results/sepsis_long_training_20261012/targetmae_34f_lr0.0001_seed42.json": {
+    "bytes": 13276,
+    "sha256": "02d52c37d59ec8277c953a2b04d16d5040d2a4a2954f8587ca6d59791a55d2c4"
+  },
+  "results/sepsis_long_training_20261012/targetmae_34f_lr0.0001_seed456.json": {
+    "bytes": 11166,
+    "sha256": "224ba16edff735f010c2b6573cfe9266524adf5cb8a8128aed66f751f8599dd1"
+  },
+  "results/sepsis_long_training_20261012/targetmae_34f_lr0.0003_seed123.json": {
+    "bytes": 5821,
+    "sha256": "21604c853b3af9fb6bff2f65990f6b9684ee7349061eacd405cc7894210eda27"
+  },
+  "results/sepsis_long_training_20261012/targetmae_34f_lr0.0003_seed42.json": {
+    "bytes": 7373,
+    "sha256": "605bf547cba81ed778b03a9d7e7c0d7d0dabadcaeaff632c0b784bdceb760a91"
+  },
+  "results/sepsis_long_training_20261012/targetmae_34f_lr0.0003_seed456.json": {
+    "bytes": 7931,
+    "sha256": "731ec6ac13c81d2f1df515d44bf7019632dca5a942fe1e14facfb6977c01eac9"
+  },
+  "results/sepsis_mae_finetune_20261013/evaluation.json": {
+    "bytes": 98614,
+    "sha256": "24382858612bf548d43054a997e2af0044dece2f8c6a0c71c8b5f77b4dc88bf1"
+  },
+  "results/sepsis_mae_finetune_20261013/finetune_lock.json": {
+    "bytes": 858,
+    "sha256": "1ebb763d99c1a7eb5f95ae54fe97040d89f64f6b8649c8164e13c5846a4e7501"
+  },
+  "results/sepsis_mae_finetune_20261013/fit_lock.json": {
+    "bytes": 1357,
+    "sha256": "4ecf3ac655022fb4a8a10dc2e56006e7495a52ca20191e46eb1571cafc6d5cf3"
+  },
+  "results/sepsis_mae_finetune_20261013/implementation_lock.json": {
+    "bytes": 2194,
+    "sha256": "1ac9019a489bff916e7640e908ef810b78bc47eeaf9ed6c8f822715b472bdc34"
+  },
+  "results/sepsis_mae_finetune_20261013/mae_budget_comparisons.json": {
+    "bytes": 18602,
+    "sha256": "78bc0aa4e3976c21333a3a0c3ac8bfdb30c917759b581be592d440345c7db3ca"
+  },
+  "results/sepsis_mae_finetune_20261013/paired_comparisons.json": {
+    "bytes": 18070,
+    "sha256": "081d649205406a91c7e5bdbef74bc8a53ef723445a1ef7960a03c7a0ef6703d4"
+  },
+  "results/sepsis_mae_finetune_20261013/policies.json": {
+    "bytes": 24598,
+    "sha256": "3719dd4c30e01b33b256b899f11426b7fa943f3bdd77b95f9c810f512d14773a"
+  },
+  "results/sepsis_mae_finetune_20261013/policy_lock.json": {
+    "bytes": 84,
+    "sha256": "43a0fbd0beac7367ab10550308826a0ddeae6a4a31d73fd6b95df6da318abebb"
+  },
+  "results/sepsis_mae_finetune_20261013/PROTOCOL.md": {
+    "bytes": 1370,
+    "sha256": "b515db2c390888336678df22cd8fdd13aaaa480e6d687456cf5949dc21c69dd3"
+  },
+  "results/sepsis_mae_finetune_20261013/scratch_34f_lr0.0001_seed42.json": {
+    "bytes": 13457,
+    "sha256": "be7288e01ef518c9fce8fc15c223880b2a8801188d56245668863901363e4baa"
+  },
+  "results/sepsis_mae_finetune_20261013/scratch_34f_lr0.0003_seed42.json": {
+    "bytes": 14585,
+    "sha256": "5303470856d098140f1b2e9375f64079aac7cdabe1603471f01a99b37f1c5194"
+  },
+  "results/sepsis_mae_finetune_20261013/seed_summary.json": {
+    "bytes": 39435,
+    "sha256": "149c072a9ee380898422f9a2c418729844ee7a88053fc8422a6222d538bfa30f"
+  },
+  "results/sepsis_mae_finetune_20261013/sourcetargetmae_34f_lr0.0001_seed42.json": {
+    "bytes": 4350,
+    "sha256": "651dc12e896979f145029888b7ded02dd1bc7a75fd5b54f3a8de801dfb525a30"
+  },
+  "results/sepsis_mae_finetune_20261013/sourcetargetmae_34f_lr0.0003_seed42.json": {
+    "bytes": 9423,
+    "sha256": "03c8837e9d2e5040fbb8c675523d9dc8eeccd3f2252019e5e3887188d60b2fbf"
+  },
+  "results/sepsis_mae_finetune_20261013/status.json": {
+    "bytes": 152,
+    "sha256": "8aaec69a6bd2d0dc250895f57f8dc2d8a4571514aa05b8ef221d104af757888a"
+  },
+  "results/sepsis_mae_finetune_20261013/targetmae_34f_lr0.0001_seed42.json": {
+    "bytes": 9550,
+    "sha256": "3f984cc9fe10bcc3d812731c16c0f8fa74003580b7a3715c5e569ebef4aaff61"
+  },
+  "results/sepsis_mae_finetune_20261013/targetmae_34f_lr0.0003_seed42.json": {
+    "bytes": 9420,
+    "sha256": "2f3adf5f695bbc23b732a7b91879b3dc67610250d82f6f8bf0f3754de52bf5d9"
+  },
+  "results/sepsis_missions_adapt_20261010/evaluation.json": {
+    "bytes": 3178468,
+    "sha256": "caa8075de9e281726c1e65841684c7c8346079c7a4be2b1ec59d92176c88042c"
+  },
+  "results/transfer_protocol/source_manifest.json": {
+    "bytes": 1413,
+    "sha256": "1c85be0023e4a2c0826a79cf46dbd75fe9d0bb6bbba0e04a0b4fc6b90350d279"
+  },
+  "scripts/audit_cv_patient_precision.py": {
+    "bytes": 3407,
+    "sha256": "95da8ccfae641bfbcddeb22927347641c013f2b84a8a1a90719f595838c5bb2c"
+  },
+  "scripts/build_working_report.py": {
+    "bytes": 31810,
+    "sha256": "a340c77ac6bf1739853a22967023ad3a1a98ace3f723be4e0cd7cbdcf376ecd4"
+  },
+  "scripts/calculate_random_baselines.py": {
+    "bytes": 7312,
+    "sha256": "2cae2e7f6fe2548236982bc9f6e66394231d1eba5b8f39da2e47b7109f22fae7"
+  },
+  "scripts/causal_control_features.py": {
+    "bytes": 2798,
+    "sha256": "aa7e9b73019bf25de8ecf02e72f223dcb8462fc0abc112484106c19d3a4de0db"
+  },
+  "scripts/explain_lab_gate_recall.py": {
+    "bytes": 2259,
+    "sha256": "5588ed385c4d04f37badaeac383d183e9fc92ae762ae2e982f378f74ba3da243"
+  },
+  "scripts/lab_value_ablation.py": {
+    "bytes": 1075,
+    "sha256": "d11eab301d8652a79bc7c00bf52ce0714f8a1e05ef4aa36b9cf3795d68178e3a"
+  },
+  "scripts/package_working_results.py": {
+    "bytes": 3137,
+    "sha256": "e26a28a1868002e5ca24f8ae49d04edb97f98eb343300607e0f35e52842f6e61"
+  },
+  "scripts/run_lab_specialization.py": {
+    "bytes": 15892,
+    "sha256": "7afe0e2bf53449bf9938fea4c82784b7dd096352d2de97494769e6c0930db13c"
+  },
+  "scripts/run_lab_value_experiment.py": {
+    "bytes": 6900,
+    "sha256": "b6a6ce0792d5ecb7a82522408bb59438ebbb86a57f81c1bba98c17fe3c324c24"
+  },
+  "scripts/run_long_sepsis_training.py": {
+    "bytes": 10658,
+    "sha256": "218db9434883592ed4ee9e7f3d6df6981d406315d7c223c8d86e015ddc595d95"
+  },
+  "scripts/run_long_target_mae.py": {
+    "bytes": 6062,
+    "sha256": "70ff82fcd67322ffc0ed0dc2f2d91efb736cfdf57267e09028b48b0aa291896e"
+  },
+  "scripts/run_mae_finetune.py": {
+    "bytes": 4012,
+    "sha256": "7ddae236103a06416652a949231864af58776b1944a50c382ab77272ea18f7a3"
+  },
+  "scripts/run_sepsis_controls.py": {
+    "bytes": 17727,
+    "sha256": "ccf4dcf73415741465a4438c4e6a7dec4035144919e1b57974e2dfbe4698fdb0"
+  },
+  "scripts/run_sepsis_cv.py": {
+    "bytes": 12884,
+    "sha256": "d8bb3b81d36ae83fd1e25d330f564cfba001eb6a8276a40ec8d4984315f3e7f5"
+  },
+  "scripts/summarize_sepsis_cv.py": {
+    "bytes": 4158,
+    "sha256": "2d92e8a536224595be199cc310e3b21109936d62936da3e1bb4d9fb767c566ce"
+  },
+  "scripts/test_lab_specialization.py": {
+    "bytes": 1910,
+    "sha256": "aa80250b4064f5d6021f0db2b47b6db59aa390cd8228126792c4aab10efab091"
+  },
+  "scripts/test_lab_value_ablation.py": {
+    "bytes": 2054,
+    "sha256": "17ff2215e4bd5e1cab9319c538df5b1763f3d5dc31e288c33ab3e098edee2090"
+  },
+  "scripts/test_long_training.py": {
+    "bytes": 2674,
+    "sha256": "4293f84be5cbfa0a8eab832d2dbbc70ebeecc1b1f36687068b2abece8d0bafeb"
+  },
+  "scripts/test_sepsis_controls.py": {
+    "bytes": 4093,
+    "sha256": "7487cae572be95e4af93451f0b1621e264c02939c37502e8e6f77351a388fc91"
+  },
+  "scripts/test_sepsis_cv.py": {
+    "bytes": 1436,
+    "sha256": "6b5600231926b5659c915b8f7b6fdf0fe80b34857e4a93c4e66976c1f358d8f5"
+  },
+  "working.md": {
+    "bytes": 32465,
+    "sha256": "fba51ca3ea753e9a7d18350044c3eb14e018ed750583d3c250dc0d4c8b3afb47"
+  }
+}

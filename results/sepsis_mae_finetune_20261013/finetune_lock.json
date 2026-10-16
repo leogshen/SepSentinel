@@ -1,0 +1,18 @@
+{
+  "checkpoints": {
+    "targetmae_34f_seed42": {
+      "sha256": "df38897b858fd6cc0ceff7aef0cb4405dad89428c273e1cf7ee7f80d9ce0e648",
+      "report_sha256": "1df51cece81810a048735130621448d7605d3e861c109ed69dadf54b313a55c4"
+    },
+    "sourcetargetmae_34f_seed42": {
+      "sha256": "6245c4315956a15edd78751df478047fd619174f3b68ef1910b0fafa336d02ba",
+      "report_sha256": "723fdc2bd8a92320d03587a262999f56d09596c0277d410a8ef5dba85a8e63e6"
+    }
+  },
+  "code": {
+    "run_mae_finetune.py": "7ddae236103a06416652a949231864af58776b1944a50c382ab77272ea18f7a3",
+    "run_long_sepsis_training.py": "218db9434883592ed4ee9e7f3d6df6981d406315d7c223c8d86e015ddc595d95"
+  },
+  "reference_fit_lock": "98d90918e3b14c826b55de1d2c2ec20d1d7a29d3cbdaa8e628b6c5c6cc3e607d",
+  "mae_lock": "aad5e97a3ceea492fd7adac3bf89c618b42f021970ead8a6da8a1a139000ef7d"
+}

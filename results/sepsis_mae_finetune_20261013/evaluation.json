@@ -1,0 +1,3530 @@
+[
+  {
+    "name": "scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.7443158617019642,
+      "precision": 0.08759124087591241,
+      "recall": 0.3116883116883117,
+      "subgroup_recall": 0.3116883116883117,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 24,
+      "alarms": 274,
+      "alarms_per_day": 0.1489973943582191,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 117,
+        "duplicate": 9,
+        "nonseptic": 124,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.803441860973848,
+      "ap": 0.09167789513038126
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.1,
+      "recall": 0.2866666666666667,
+      "subgroup_recall": 0.2866666666666667,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.16191283065047538,
+      "control_stays_disturbed": 0.03521918321468715,
+      "hourly_precision": 0.11753731343283583,
+      "hourly_recall": 0.11652281134401973,
+      "patient_precision": 0.4437869822485207,
+      "patient_recall": 0.5,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 43,
+        "alarms": 430,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 94,
+        "too_early": 219,
+        "duplicate": 11,
+        "nonseptic_alarms": 157,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 189,
+        "flagged_hours": 1608,
+        "flagged_records": 169,
+        "flagged_event_records": 75
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.07352733466267863,
+        0.13351840049943747
+      ],
+      "recall": [
+        0.21794117647058825,
+        0.35812092264678463
+      ],
+      "subgroup_recall": [
+        0.21794117647058825,
+        0.35812092264678463
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.1298613953911086,
+        0.1958141184817311
+      ],
+      "control_stays_disturbed": [
+        0.028389988793425476,
+        0.042370498715803104
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0003_seed42_all_0.3_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.607118215560913,
+      "precision": 0.06743421052631579,
+      "recall": 0.5324675324675324,
+      "subgroup_recall": 0.5324675324675324,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 41,
+      "alarms": 608,
+      "alarms_per_day": 0.3306219553642234,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 245,
+        "duplicate": 25,
+        "nonseptic": 297,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.803441860973848,
+      "ap": 0.09167789513038126
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.07734204793028322,
+      "recall": 0.47333333333333333,
+      "subgroup_recall": 0.47333333333333333,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.3456650663654335,
+      "control_stays_disturbed": 0.0648182840014987,
+      "hourly_precision": 0.11828486939379004,
+      "hourly_recall": 0.2959309494451295,
+      "patient_precision": 0.32945736434108525,
+      "patient_recall": 0.5666666666666667,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 71,
+        "alarms": 918,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 173,
+        "too_early": 445,
+        "duplicate": 37,
+        "nonseptic_alarms": 365,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 480,
+        "flagged_hours": 4058,
+        "flagged_records": 258,
+        "flagged_event_records": 85
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.0605497957120244,
+        0.0976695274142555
+      ],
+      "recall": [
+        0.39622335211957854,
+        0.5482032295850067
+      ],
+      "subgroup_recall": [
+        0.39622335211957854,
+        0.5482032295850067
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.2795428343998226,
+        0.41378700634176147
+      ],
+      "control_stays_disturbed": [
+        0.05528104429653004,
+        0.07484016547574276
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0003_seed42_all_0.5_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.5083748373985293,
+      "precision": 0.056490384615384616,
+      "recall": 0.6103896103896104,
+      "subgroup_recall": 0.6103896103896104,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 47,
+      "alarms": 832,
+      "alarms_per_day": 0.4524300441826215,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 323,
+        "duplicate": 33,
+        "nonseptic": 429,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.803441860973848,
+      "ap": 0.09167789513038126
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.06591639871382636,
+      "recall": 0.5466666666666666,
+      "subgroup_recall": 0.5466666666666666,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.46841758448649157,
+      "control_stays_disturbed": 0.0962907455976021,
+      "hourly_precision": 0.11421098517872712,
+      "hourly_recall": 0.4038224414303329,
+      "patient_precision": 0.2636103151862464,
+      "patient_recall": 0.6133333333333333,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 82,
+        "alarms": 1244,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 257,
+        "too_early": 589,
+        "duplicate": 50,
+        "nonseptic_alarms": 523,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 655,
+        "flagged_hours": 5735,
+        "flagged_records": 349,
+        "flagged_event_records": 92
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.05357089135293106,
+        0.0813986488108095
+      ],
+      "recall": [
+        0.46706885295299316,
+        0.6223810957254666
+      ],
+      "subgroup_recall": [
+        0.46706885295299316,
+        0.6223810957254666
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.3875542598093176,
+        0.5513838224815607
+      ],
+      "control_stays_disturbed": [
+        0.08436309355470452,
+        0.10730289702300898
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0003_seed42_all_0.6_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.8290209078788756,
+      "precision": 0.16455696202531644,
+      "recall": 0.16883116883116883,
+      "subgroup_recall": 0.3023255813953488,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 13,
+      "alarms": 79,
+      "alarms_per_day": 0.042959102752917186,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 37,
+        "duplicate": 2,
+        "nonseptic": 27,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.803441860973848,
+      "ap": 0.09167789513038126
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.12903225806451613,
+      "recall": 0.10666666666666667,
+      "subgroup_recall": 0.2,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.046691141861997555,
+      "control_stays_disturbed": 0.009741476208317721,
+      "hourly_precision": 0.15647921760391198,
+      "hourly_recall": 0.10440456769983687,
+      "patient_precision": 0.6285714285714286,
+      "patient_recall": 0.29333333333333333,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 16,
+        "alarms": 124,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 26,
+        "too_early": 76,
+        "duplicate": 2,
+        "nonseptic_alarms": 30,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 64,
+        "flagged_hours": 409,
+        "flagged_records": 70,
+        "flagged_event_records": 44
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.07256793083405987,
+        0.1956521739130435
+      ],
+      "recall": [
+        0.058823529411764705,
+        0.15883021390374327
+      ],
+      "subgroup_recall": [
+        0.11391685845799769,
+        0.2933529411764705
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.03353458585199573,
+        0.060481090412665715
+      ],
+      "control_stays_disturbed": [
+        0.006028465848837681,
+        0.013755672540882486
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0003_seed42_bp_routine_perfusion_0.3_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.6589877700805664,
+      "precision": 0.10091743119266056,
+      "recall": 0.2857142857142857,
+      "subgroup_recall": 0.5116279069767442,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 22,
+      "alarms": 218,
+      "alarms_per_day": 0.11854537215361957,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 88,
+        "duplicate": 10,
+        "nonseptic": 98,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.803441860973848,
+      "ap": 0.09167789513038126
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.10857142857142857,
+      "recall": 0.25333333333333335,
+      "subgroup_recall": 0.475,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.13178951332015437,
+      "control_stays_disturbed": 0.028100412139378046,
+      "hourly_precision": 0.12626262626262627,
+      "hourly_recall": 0.28548123980424145,
+      "patient_precision": 0.43609022556390975,
+      "patient_recall": 0.38666666666666666,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 38,
+        "alarms": 350,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 75,
+        "too_early": 177,
+        "duplicate": 11,
+        "nonseptic_alarms": 124,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 175,
+        "flagged_hours": 1386,
+        "flagged_records": 133,
+        "flagged_event_records": 58
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.07758560989588309,
+        0.1457663309005368
+      ],
+      "recall": [
+        0.18468737813596775,
+        0.3221476510067114
+      ],
+      "subgroup_recall": [
+        0.36249547101449275,
+        0.5844393411466581
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.09828064678118044,
+        0.16637491320458989
+      ],
+      "control_stays_disturbed": [
+        0.022138629169487493,
+        0.03458570085723864
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0003_seed42_bp_routine_perfusion_0.5_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.5896176421642304,
+      "precision": 0.08996539792387544,
+      "recall": 0.33766233766233766,
+      "subgroup_recall": 0.6046511627906976,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 26,
+      "alarms": 289,
+      "alarms_per_day": 0.1571541860201654,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 118,
+        "duplicate": 10,
+        "nonseptic": 135,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.803441860973848,
+      "ap": 0.09167789513038126
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.09691629955947137,
+      "recall": 0.29333333333333333,
+      "subgroup_recall": 0.55,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.1709498258495717,
+      "control_stays_disturbed": 0.035593855376545525,
+      "hourly_precision": 0.12857142857142856,
+      "hourly_recall": 0.4110929853181077,
+      "patient_precision": 0.391025641025641,
+      "patient_recall": 0.4066666666666667,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 44,
+        "alarms": 454,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 95,
+        "too_early": 232,
+        "duplicate": 17,
+        "nonseptic_alarms": 161,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 252,
+        "flagged_hours": 1960,
+        "flagged_records": 156,
+        "flagged_event_records": 61
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.07423176451560731,
+        0.1262135922330097
+      ],
+      "recall": [
+        0.21997945205479452,
+        0.36431318681318664
+      ],
+      "subgroup_recall": [
+        0.4399848484848485,
+        0.6582278481012658
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.12936901154080188,
+        0.21337702389608318
+      ],
+      "control_stays_disturbed": [
+        0.02874206793579694,
+        0.04304101601629454
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0003_seed42_bp_routine_perfusion_0.6_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.847086243867874,
+      "precision": 0.08960573476702509,
+      "recall": 0.3246753246753247,
+      "subgroup_recall": 0.3246753246753247,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 25,
+      "alarms": 279,
+      "alarms_per_day": 0.1517163249122012,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 88,
+        "duplicate": 9,
+        "nonseptic": 157,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7956083608020601,
+      "ap": 0.08540313344804644
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.08471074380165289,
+      "recall": 0.2733333333333333,
+      "subgroup_recall": 0.2733333333333333,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.18224606984844205,
+      "control_stays_disturbed": 0.04008992131884601,
+      "hourly_precision": 0.1198368179500255,
+      "hourly_recall": 0.14488286066584463,
+      "patient_precision": 0.3954802259887006,
+      "patient_recall": 0.4666666666666667,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 41,
+        "alarms": 484,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 107,
+        "too_early": 247,
+        "duplicate": 14,
+        "nonseptic_alarms": 182,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 235,
+        "flagged_hours": 1961,
+        "flagged_records": 177,
+        "flagged_event_records": 70
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.06200251389432589,
+        0.1122725273361943
+      ],
+      "recall": [
+        0.2013888888888889,
+        0.3483188627851549
+      ],
+      "subgroup_recall": [
+        0.2013888888888889,
+        0.3483188627851549
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.13683899336484254,
+        0.23387494060234335
+      ],
+      "control_stays_disturbed": [
+        0.03230593008485571,
+        0.047654959035729694
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0003_seed42_all_0.3_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.8002093985080719,
+      "precision": 0.07208872458410351,
+      "recall": 0.5064935064935064,
+      "subgroup_recall": 0.5064935064935064,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 39,
+      "alarms": 541,
+      "alarms_per_day": 0.29418828594086327,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 207,
+        "duplicate": 27,
+        "nonseptic": 268,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7956083608020601,
+      "ap": 0.08540313344804644
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.06908267270668177,
+      "recall": 0.4066666666666667,
+      "subgroup_recall": 0.4066666666666667,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.3324861150334181,
+      "control_stays_disturbed": 0.05919820157362308,
+      "hourly_precision": 0.11579481970543423,
+      "hourly_recall": 0.281134401972873,
+      "patient_precision": 0.3416666666666667,
+      "patient_recall": 0.5466666666666666,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 61,
+        "alarms": 883,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 158,
+        "too_early": 432,
+        "duplicate": 38,
+        "nonseptic_alarms": 352,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 456,
+        "flagged_hours": 3938,
+        "flagged_records": 240,
+        "flagged_event_records": 82
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.053381092759149505,
+        0.08783827432083247
+      ],
+      "recall": [
+        0.33072981366459625,
+        0.48428161256299074
+      ],
+      "subgroup_recall": [
+        0.33072981366459625,
+        0.48428161256299074
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.26357992792816315,
+        0.40774993739386245
+      ],
+      "control_stays_disturbed": [
+        0.049604945633437994,
+        0.0687086326891064
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0003_seed42_all_0.5_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.7712174181938172,
+      "precision": 0.07057057057057058,
+      "recall": 0.6103896103896104,
+      "subgroup_recall": 0.6103896103896104,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 47,
+      "alarms": 666,
+      "alarms_per_day": 0.36216154979041576,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 270,
+        "duplicate": 32,
+        "nonseptic": 317,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7956083608020601,
+      "ap": 0.08540313344804644
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.06442577030812324,
+      "recall": 0.46,
+      "subgroup_recall": 0.46,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.4032759107596724,
+      "control_stays_disturbed": 0.07006369426751592,
+      "hourly_precision": 0.11088211046990931,
+      "hourly_recall": 0.3316892725030826,
+      "patient_precision": 0.32,
+      "patient_recall": 0.5866666666666667,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 69,
+        "alarms": 1071,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 187,
+        "too_early": 524,
+        "duplicate": 46,
+        "nonseptic_alarms": 432,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 538,
+        "flagged_hours": 4852,
+        "flagged_records": 275,
+        "flagged_event_records": 88
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.05110108761585014,
+        0.08025031011873116
+      ],
+      "recall": [
+        0.38254071730859657,
+        0.5394760507383567
+      ],
+      "subgroup_recall": [
+        0.38254071730859657,
+        0.5394760507383567
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.32483808595115926,
+        0.48368367615075003
+      ],
+      "control_stays_disturbed": [
+        0.06011913445617209,
+        0.08025498509356702
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0003_seed42_all_0.6_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.8443961925506591,
+      "precision": 0.15306122448979592,
+      "recall": 0.19480519480519481,
+      "subgroup_recall": 0.3488372093023256,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 15,
+      "alarms": 98,
+      "alarms_per_day": 0.053291038858049165,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 40,
+        "duplicate": 5,
+        "nonseptic": 38,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7956083608020601,
+      "ap": 0.08540313344804644
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.12631578947368421,
+      "recall": 0.16,
+      "subgroup_recall": 0.3,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.07154287865951238,
+      "control_stays_disturbed": 0.014612214312476583,
+      "hourly_precision": 0.12602739726027398,
+      "hourly_recall": 0.1500815660685155,
+      "patient_precision": 0.524390243902439,
+      "patient_recall": 0.2866666666666667,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 24,
+        "alarms": 190,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 39,
+        "too_early": 103,
+        "duplicate": 5,
+        "nonseptic_alarms": 58,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 92,
+        "flagged_hours": 730,
+        "flagged_records": 82,
+        "flagged_event_records": 43
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.08633093525179857,
+        0.18244151409473985
+      ],
+      "recall": [
+        0.10429128323108385,
+        0.21876512096774187
+      ],
+      "subgroup_recall": [
+        0.2028985507246377,
+        0.4
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.049420651279527925,
+        0.09601748930649356
+      ],
+      "control_stays_disturbed": [
+        0.010085446996913805,
+        0.01945397924689342
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0003_seed42_bp_routine_perfusion_0.3_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.8002093985080719,
+      "precision": 0.13218390804597702,
+      "recall": 0.2987012987012987,
+      "subgroup_recall": 0.5348837209302325,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 23,
+      "alarms": 174,
+      "alarms_per_day": 0.09461878327857709,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 80,
+        "duplicate": 9,
+        "nonseptic": 62,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7956083608020601,
+      "ap": 0.08540313344804644
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.10967741935483871,
+      "recall": 0.22666666666666666,
+      "subgroup_recall": 0.425,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.11672785465499388,
+      "control_stays_disturbed": 0.02098164106406894,
+      "hourly_precision": 0.1370906321401371,
+      "hourly_recall": 0.2936378466557912,
+      "patient_precision": 0.48623853211009177,
+      "patient_recall": 0.35333333333333333,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 34,
+        "alarms": 310,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 56,
+        "too_early": 171,
+        "duplicate": 12,
+        "nonseptic_alarms": 93,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 180,
+        "flagged_hours": 1313,
+        "flagged_records": 109,
+        "flagged_event_records": 53
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.08074425193418329,
+        0.1497598111056831
+      ],
+      "recall": [
+        0.16278075929238722,
+        0.2916731366459627
+      ],
+      "subgroup_recall": [
+        0.3188365981844242,
+        0.5301390748177897
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.08373198056391114,
+        0.15171216241579477
+      ],
+      "control_stays_disturbed": [
+        0.01570064132328349,
+        0.026652152246160507
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0003_seed42_bp_routine_perfusion_0.5_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.7749353191852573,
+      "precision": 0.12560386473429952,
+      "recall": 0.33766233766233766,
+      "subgroup_recall": 0.6046511627906976,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 26,
+      "alarms": 207,
+      "alarms_per_day": 0.11256372493485896,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 92,
+        "duplicate": 10,
+        "nonseptic": 79,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7956083608020601,
+      "ap": 0.08540313344804644
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.10298102981029811,
+      "recall": 0.25333333333333335,
+      "subgroup_recall": 0.475,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.1389438011861056,
+      "control_stays_disturbed": 0.024353690520794304,
+      "hourly_precision": 0.13639260675589548,
+      "hourly_recall": 0.34910277324632955,
+      "patient_precision": 0.4715447154471545,
+      "patient_recall": 0.38666666666666666,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 38,
+        "alarms": 369,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 65,
+        "too_early": 207,
+        "duplicate": 16,
+        "nonseptic_alarms": 108,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 214,
+        "flagged_hours": 1569,
+        "flagged_records": 123,
+        "flagged_event_records": 58
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.07644523632649271,
+        0.13652149972220015
+      ],
+      "recall": [
+        0.1875,
+        0.32374607356368423
+      ],
+      "subgroup_recall": [
+        0.3673404804959959,
+        0.5844155844155844
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.10359799921879877,
+        0.17720490228380625
+      ],
+      "control_stays_disturbed": [
+        0.018497023123213916,
+        0.030474901480659598
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0003_seed42_bp_routine_perfusion_0.6_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.7710643169879909,
+      "precision": 0.10572687224669604,
+      "recall": 0.3116883116883117,
+      "subgroup_recall": 0.3116883116883117,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 24,
+      "alarms": 227,
+      "alarms_per_day": 0.12343944715078736,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 103,
+        "duplicate": 9,
+        "nonseptic": 91,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8120250523284108,
+      "ap": 0.09399086578613317
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.0893719806763285,
+      "recall": 0.24666666666666667,
+      "subgroup_recall": 0.24666666666666667,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.15588816718441117,
+      "control_stays_disturbed": 0.018358935931060322,
+      "hourly_precision": 0.1274390243902439,
+      "hourly_recall": 0.12885326757090013,
+      "patient_precision": 0.5196078431372549,
+      "patient_recall": 0.35333333333333333,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 37,
+        "alarms": 414,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 49,
+        "too_early": 262,
+        "duplicate": 17,
+        "nonseptic_alarms": 98,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 209,
+        "flagged_hours": 1640,
+        "flagged_records": 102,
+        "flagged_event_records": 53
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.06470461460446249,
+        0.12317130987292275
+      ],
+      "recall": [
+        0.17857142857142858,
+        0.3137394957983192
+      ],
+      "subgroup_recall": [
+        0.17857142857142858,
+        0.3137394957983192
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.11039326245580812,
+        0.20601181906860438
+      ],
+      "control_stays_disturbed": [
+        0.013630813638761735,
+        0.023264758661100126
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0003_seed42_all_0.3_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.7240784735679628,
+      "precision": 0.08016032064128256,
+      "recall": 0.5194805194805194,
+      "subgroup_recall": 0.5194805194805194,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 40,
+      "alarms": 499,
+      "alarms_per_day": 0.2713492692874136,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 243,
+        "duplicate": 28,
+        "nonseptic": 188,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8120250523284108,
+      "ap": 0.09399086578613317
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.08031088082901554,
+      "recall": 0.41333333333333333,
+      "subgroup_recall": 0.41333333333333333,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.29069001223759766,
+      "control_stays_disturbed": 0.029973772948669913,
+      "hourly_precision": 0.11939429237041352,
+      "hourly_recall": 0.2527743526510481,
+      "patient_precision": 0.47368421052631576,
+      "patient_recall": 0.48,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 62,
+        "alarms": 772,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 80,
+        "too_early": 457,
+        "duplicate": 34,
+        "nonseptic_alarms": 219,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 410,
+        "flagged_hours": 3434,
+        "flagged_records": 152,
+        "flagged_event_records": 72
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.06280788177339902,
+        0.10241442649209552
+      ],
+      "recall": [
+        0.3359941605839416,
+        0.4927635497319833
+      ],
+      "subgroup_recall": [
+        0.3359941605839416,
+        0.4927635497319833
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.21958854642742393,
+        0.36493719770176486
+      ],
+      "control_stays_disturbed": [
+        0.023577844311377244,
+        0.036309487708089005
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0003_seed42_all_0.5_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.6871959686279296,
+      "precision": 0.07448494453248812,
+      "recall": 0.6103896103896104,
+      "subgroup_recall": 0.6103896103896104,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 47,
+      "alarms": 631,
+      "alarms_per_day": 0.34312903591254107,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 289,
+        "duplicate": 34,
+        "nonseptic": 261,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8120250523284108,
+      "ap": 0.09399086578613317
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.07352941176470588,
+      "recall": 0.4666666666666667,
+      "subgroup_recall": 0.4666666666666667,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.3584674762308199,
+      "control_stays_disturbed": 0.04683402023229674,
+      "hourly_precision": 0.11823425022182786,
+      "hourly_recall": 0.3286066584463625,
+      "patient_precision": 0.3842364532019704,
+      "patient_recall": 0.52,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 70,
+        "alarms": 952,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 125,
+        "too_early": 536,
+        "duplicate": 42,
+        "nonseptic_alarms": 304,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 533,
+        "flagged_hours": 4508,
+        "flagged_records": 203,
+        "flagged_event_records": 78
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.05847293341526277,
+        0.09288012077452278
+      ],
+      "recall": [
+        0.39005940867642996,
+        0.5419354838709678
+      ],
+      "subgroup_recall": [
+        0.39005940867642996,
+        0.5419354838709678
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.27989007148229095,
+        0.44008659080780643
+      ],
+      "control_stays_disturbed": [
+        0.03873491244142531,
+        0.0549493934636712
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0003_seed42_all_0.6_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.7678131031990051,
+      "precision": 0.16666666666666666,
+      "recall": 0.16883116883116883,
+      "subgroup_recall": 0.3023255813953488,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 13,
+      "alarms": 78,
+      "alarms_per_day": 0.04241531664212077,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 40,
+        "duplicate": 4,
+        "nonseptic": 21,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8120250523284108,
+      "ap": 0.09399086578613317
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.10555555555555556,
+      "recall": 0.12666666666666668,
+      "subgroup_recall": 0.2375,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.06777746399322225,
+      "control_stays_disturbed": 0.007118771075309105,
+      "hourly_precision": 0.11842105263157894,
+      "hourly_recall": 0.13213703099510604,
+      "patient_precision": 0.6415094339622641,
+      "patient_recall": 0.22666666666666666,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 19,
+        "alarms": 180,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 19,
+        "too_early": 129,
+        "duplicate": 6,
+        "nonseptic_alarms": 26,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 81,
+        "flagged_hours": 684,
+        "flagged_records": 53,
+        "flagged_event_records": 34
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.06808454940403252,
+        0.1607242063492063
+      ],
+      "recall": [
+        0.0779201337584571,
+        0.18183247570040015
+      ],
+      "subgroup_recall": [
+        0.14998563218390804,
+        0.3333333333333333
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.042092920178947085,
+        0.09601892009177594
+      ],
+      "control_stays_disturbed": [
+        0.004121393780442113,
+        0.010440164947076697
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0003_seed42_bp_routine_perfusion_0.3_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.7369834280014037,
+      "precision": 0.1506849315068493,
+      "recall": 0.2857142857142857,
+      "subgroup_recall": 0.5116279069767442,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 22,
+      "alarms": 146,
+      "alarms_per_day": 0.07939277217627733,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 74,
+        "duplicate": 8,
+        "nonseptic": 42,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8120250523284108,
+      "ap": 0.09399086578613317
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.1111111111111111,
+      "recall": 0.2,
+      "subgroup_recall": 0.375,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.10166619598983338,
+      "control_stays_disturbed": 0.009741476208317721,
+      "hourly_precision": 0.12410714285714286,
+      "hourly_recall": 0.2267536704730832,
+      "patient_precision": 0.6438356164383562,
+      "patient_recall": 0.31333333333333335,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 30,
+        "alarms": 270,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 26,
+        "too_early": 183,
+        "duplicate": 9,
+        "nonseptic_alarms": 48,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 139,
+        "flagged_hours": 1120,
+        "flagged_records": 73,
+        "flagged_event_records": 47
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.08,
+        0.15585866647319152
+      ],
+      "recall": [
+        0.13836477987421383,
+        0.26207752506725357
+      ],
+      "subgroup_recall": [
+        0.2702702702702703,
+        0.4805194805194805
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.06903188165419989,
+        0.136688741372461
+      ],
+      "control_stays_disturbed": [
+        0.00600375234521576,
+        0.013538924407672057
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0003_seed42_bp_routine_perfusion_0.5_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.7240784735679628,
+      "precision": 0.15757575757575756,
+      "recall": 0.33766233766233766,
+      "subgroup_recall": 0.6046511627906976,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 26,
+      "alarms": 165,
+      "alarms_per_day": 0.08972470828140931,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 83,
+        "duplicate": 10,
+        "nonseptic": 46,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0003_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0003,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8120250523284108,
+      "ap": 0.09399086578613317
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.11551155115511551,
+      "recall": 0.23333333333333334,
+      "subgroup_recall": 0.4375,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.11409206438859079,
+      "control_stays_disturbed": 0.012364181341326339,
+      "hourly_precision": 0.12248062015503876,
+      "hourly_recall": 0.25774877650897227,
+      "patient_precision": 0.6071428571428571,
+      "patient_recall": 0.34,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 35,
+        "alarms": 303,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 33,
+        "too_early": 200,
+        "duplicate": 10,
+        "nonseptic_alarms": 58,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 158,
+        "flagged_hours": 1290,
+        "flagged_records": 84,
+        "flagged_event_records": 51
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.08540925266903915,
+        0.1598401639344262
+      ],
+      "recall": [
+        0.16872588087248325,
+        0.30497401331817436
+      ],
+      "subgroup_recall": [
+        0.3333333333333333,
+        0.5512820512820513
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.07882464332982042,
+        0.1520780963312035
+      ],
+      "control_stays_disturbed": [
+        0.008230222000775066,
+        0.01652908090850081
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0003_seed42_bp_routine_perfusion_0.6_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.6234553875923156,
+      "precision": 0.11538461538461539,
+      "recall": 0.3116883116883117,
+      "subgroup_recall": 0.3116883116883117,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 24,
+      "alarms": 208,
+      "alarms_per_day": 0.11310751104565538,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 103,
+        "duplicate": 7,
+        "nonseptic": 74,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8015236736581071,
+      "ap": 0.1002925828205714
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.10610079575596817,
+      "recall": 0.26666666666666666,
+      "subgroup_recall": 0.26666666666666666,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.14195613291913772,
+      "control_stays_disturbed": 0.014986886474334956,
+      "hourly_precision": 0.1335548172757475,
+      "hourly_recall": 0.12392108508014797,
+      "patient_precision": 0.6330275229357798,
+      "patient_recall": 0.46,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 40,
+        "alarms": 377,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 40,
+        "too_early": 227,
+        "duplicate": 15,
+        "nonseptic_alarms": 95,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 201,
+        "flagged_hours": 1505,
+        "flagged_records": 109,
+        "flagged_event_records": 69
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.07989124277784071,
+        0.14013826004655558
+      ],
+      "recall": [
+        0.196196117003079,
+        0.3380281690140845
+      ],
+      "subgroup_recall": [
+        0.196196117003079,
+        0.3380281690140845
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.10681421869512002,
+        0.17776162693734268
+      ],
+      "control_stays_disturbed": [
+        0.010549221645474659,
+        0.019519702766980274
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0001_seed42_all_0.3_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.5521477675437928,
+      "precision": 0.09466019417475728,
+      "recall": 0.5064935064935064,
+      "subgroup_recall": 0.5064935064935064,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 39,
+      "alarms": 412,
+      "alarms_per_day": 0.22403987764812508,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 211,
+        "duplicate": 23,
+        "nonseptic": 139,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8015236736581071,
+      "ap": 0.1002925828205714
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.08827785817655572,
+      "recall": 0.4066666666666667,
+      "subgroup_recall": 0.4066666666666667,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.26019015344064766,
+      "control_stays_disturbed": 0.022480329711502434,
+      "hourly_precision": 0.13495024875621892,
+      "hourly_recall": 0.2675709001233046,
+      "patient_precision": 0.5555555555555556,
+      "patient_recall": 0.5,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 61,
+        "alarms": 691,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 60,
+        "too_early": 411,
+        "duplicate": 31,
+        "nonseptic_alarms": 188,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 434,
+        "flagged_hours": 3216,
+        "flagged_records": 135,
+        "flagged_event_records": 75
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.06876753303950699,
+        0.11481252353134068
+      ],
+      "recall": [
+        0.33089540343772883,
+        0.48587670088326573
+      ],
+      "subgroup_recall": [
+        0.33089540343772883,
+        0.48587670088326573
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.19769029816899628,
+        0.3224117648908008
+      ],
+      "control_stays_disturbed": [
+        0.017154163338031613,
+        0.028358208955223882
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0001_seed42_all_0.5_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.4339560358524321,
+      "precision": 0.06300268096514745,
+      "recall": 0.6103896103896104,
+      "subgroup_recall": 0.6103896103896104,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 47,
+      "alarms": 746,
+      "alarms_per_day": 0.4056644386541294,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 368,
+        "duplicate": 37,
+        "nonseptic": 294,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8015236736581071,
+      "ap": 0.1002925828205714
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.06721915285451197,
+      "recall": 0.4866666666666667,
+      "subgroup_recall": 0.4866666666666667,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.4089240327591076,
+      "control_stays_disturbed": 0.04121393780442113,
+      "hourly_precision": 0.11772151898734177,
+      "hourly_recall": 0.40135635018495686,
+      "patient_precision": 0.42105263157894735,
+      "patient_recall": 0.5333333333333333,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 73,
+        "alarms": 1086,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 110,
+        "too_early": 626,
+        "duplicate": 54,
+        "nonseptic_alarms": 333,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 651,
+        "flagged_hours": 5530,
+        "flagged_records": 190,
+        "flagged_event_records": 80
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.053673691915021395,
+        0.08438177525816241
+      ],
+      "recall": [
+        0.40879200625209333,
+        0.5655240471869328
+      ],
+      "subgroup_recall": [
+        0.40879200625209333,
+        0.5655240471869328
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.3218184037687495,
+        0.49445472456988526
+      ],
+      "control_stays_disturbed": [
+        0.0335440646127152,
+        0.0488441461595824
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0001_seed42_all_0.6_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.6479764862060546,
+      "precision": 0.16049382716049382,
+      "recall": 0.16883116883116883,
+      "subgroup_recall": 0.3023255813953488,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 13,
+      "alarms": 81,
+      "alarms_per_day": 0.04404667497451003,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 39,
+        "duplicate": 3,
+        "nonseptic": 26,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8015236736581071,
+      "ap": 0.1002925828205714
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.14634146341463414,
+      "recall": 0.16,
+      "subgroup_recall": 0.3,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.06175280052715805,
+      "control_stays_disturbed": 0.0067440989134507304,
+      "hourly_precision": 0.13928012519561817,
+      "hourly_recall": 0.14518760195758565,
+      "patient_precision": 0.7272727272727273,
+      "patient_recall": 0.32,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 24,
+        "alarms": 164,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 18,
+        "too_early": 102,
+        "duplicate": 4,
+        "nonseptic_alarms": 34,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 89,
+        "flagged_hours": 639,
+        "flagged_records": 66,
+        "flagged_event_records": 48
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.09448709536307962,
+        0.2155688622754491
+      ],
+      "recall": [
+        0.10344827586206896,
+        0.22078299607369373
+      ],
+      "subgroup_recall": [
+        0.20269465894465896,
+        0.40426798378926027
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.04329359260378839,
+        0.08077819048547583
+      ],
+      "control_stays_disturbed": [
+        0.003749496174297553,
+        0.010067301913252528
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0001_seed42_bp_routine_perfusion_0.3_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.5845106482505796,
+      "precision": 0.15714285714285714,
+      "recall": 0.2857142857142857,
+      "subgroup_recall": 0.5116279069767442,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 22,
+      "alarms": 140,
+      "alarms_per_day": 0.0761300555114988,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 74,
+        "duplicate": 6,
+        "nonseptic": 38,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8015236736581071,
+      "ap": 0.1002925828205714
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.12727272727272726,
+      "recall": 0.23333333333333334,
+      "subgroup_recall": 0.4375,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.10354890332297845,
+      "control_stays_disturbed": 0.01049082053203447,
+      "hourly_precision": 0.15119145439605589,
+      "hourly_recall": 0.300163132137031,
+      "patient_precision": 0.654320987654321,
+      "patient_recall": 0.35333333333333333,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 35,
+        "alarms": 275,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 28,
+        "too_early": 175,
+        "duplicate": 14,
+        "nonseptic_alarms": 51,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 184,
+        "flagged_hours": 1217,
+        "flagged_records": 81,
+        "flagged_event_records": 53
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.0940386344726735,
+        0.1712089385648069
+      ],
+      "recall": [
+        0.16556291390728478,
+        0.30138278624967685
+      ],
+      "subgroup_recall": [
+        0.323943661971831,
+        0.5443037974683544
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.07169806600797281,
+        0.13746316815842016
+      ],
+      "control_stays_disturbed": [
+        0.006741573033707865,
+        0.014498276055138584
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0001_seed42_bp_routine_perfusion_0.5_stats.npz"
+  },
+  {
+    "name": "scratch_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.3663850784301757,
+      "precision": 0.08843537414965986,
+      "recall": 0.33766233766233766,
+      "subgroup_recall": 0.6046511627906976,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 26,
+      "alarms": 294,
+      "alarms_per_day": 0.1598731165741475,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 130,
+        "duplicate": 12,
+        "nonseptic": 126,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "scratch_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "scratch",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8015236736581071,
+      "ap": 0.1002925828205714
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.09561752988047809,
+      "recall": 0.32,
+      "subgroup_recall": 0.6,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.1890238162477643,
+      "control_stays_disturbed": 0.03334582240539528,
+      "hourly_precision": 0.12531645569620253,
+      "hourly_recall": 0.48450244698205547,
+      "patient_precision": 0.4258064516129032,
+      "patient_recall": 0.44,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 48,
+        "alarms": 502,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 89,
+        "too_early": 291,
+        "duplicate": 20,
+        "nonseptic_alarms": 143,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 297,
+        "flagged_hours": 2370,
+        "flagged_records": 155,
+        "flagged_event_records": 66
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.07264821536600122,
+        0.12276785714285714
+      ],
+      "recall": [
+        0.24666666666666667,
+        0.3915673182239447
+      ],
+      "subgroup_recall": [
+        0.49295264339661155,
+        0.7045600233100233
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.1446387308117711,
+        0.23512981260086327
+      ],
+      "control_stays_disturbed": [
+        0.02667117483749715,
+        0.04017861333887667
+      ]
+    },
+    "statistics_file": "scratch_34f_lr0.0001_seed42_bp_routine_perfusion_0.6_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.6361391983032226,
+      "precision": 0.07987220447284345,
+      "recall": 0.3246753246753247,
+      "subgroup_recall": 0.3246753246753247,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 25,
+      "alarms": 313,
+      "alarms_per_day": 0.1702050526792795,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 150,
+        "duplicate": 14,
+        "nonseptic": 124,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7944730599898252,
+      "ap": 0.09054674130222036
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.08289241622574955,
+      "recall": 0.31333333333333335,
+      "subgroup_recall": 0.31333333333333335,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.2134990115786501,
+      "control_stays_disturbed": 0.02098164106406894,
+      "hourly_precision": 0.11090365944734877,
+      "hourly_recall": 0.18310727496917387,
+      "patient_precision": 0.5692307692307692,
+      "patient_recall": 0.49333333333333335,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 47,
+        "alarms": 567,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 56,
+        "too_early": 334,
+        "duplicate": 20,
+        "nonseptic_alarms": 166,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 297,
+        "flagged_hours": 2678,
+        "flagged_records": 130,
+        "flagged_event_records": 74
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.06220658623865678,
+        0.11139885707263115
+      ],
+      "recall": [
+        0.2375,
+        0.3897116629670736
+      ],
+      "subgroup_recall": [
+        0.2375,
+        0.3897116629670736
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.15488923658476655,
+        0.27606049131229077
+      ],
+      "control_stays_disturbed": [
+        0.015571060893115853,
+        0.026682311930656795
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0001_seed42_all_0.3_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.560839443206787,
+      "precision": 0.07959183673469387,
+      "recall": 0.5064935064935064,
+      "subgroup_recall": 0.5064935064935064,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 39,
+      "alarms": 490,
+      "alarms_per_day": 0.26645519429024583,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 240,
+        "duplicate": 27,
+        "nonseptic": 184,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7944730599898252,
+      "ap": 0.09054674130222036
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.08160621761658031,
+      "recall": 0.42,
+      "subgroup_recall": 0.42,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.29069001223759766,
+      "control_stays_disturbed": 0.02772573997751967,
+      "hourly_precision": 0.11702688455455983,
+      "hourly_recall": 0.27373612823674476,
+      "patient_precision": 0.5099337748344371,
+      "patient_recall": 0.5133333333333333,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 63,
+        "alarms": 772,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 74,
+        "too_early": 443,
+        "duplicate": 32,
+        "nonseptic_alarms": 234,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 444,
+        "flagged_hours": 3794,
+        "flagged_records": 151,
+        "flagged_event_records": 77
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.06296167283731022,
+        0.10673257873470969
+      ],
+      "recall": [
+        0.33938862307283363,
+        0.4968944099378882
+      ],
+      "subgroup_recall": [
+        0.33938862307283363,
+        0.4968944099378882
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.21920417196633069,
+        0.36603620365684436
+      ],
+      "control_stays_disturbed": [
+        0.021755234927967087,
+        0.03393021944965275
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0001_seed42_all_0.5_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.33864286077022615,
+      "precision": 0.05075593952483801,
+      "recall": 0.6103896103896104,
+      "subgroup_recall": 0.6103896103896104,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 47,
+      "alarms": 926,
+      "alarms_per_day": 0.503545938597485,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 412,
+        "duplicate": 41,
+        "nonseptic": 426,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7944730599898252,
+      "ap": 0.09054674130222036
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.060057887120115776,
+      "recall": 0.5533333333333333,
+      "subgroup_recall": 0.5533333333333333,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.5203803068812953,
+      "control_stays_disturbed": 0.08954664668415137,
+      "hourly_precision": 0.11420247632920612,
+      "hourly_recall": 0.4833538840937115,
+      "patient_precision": 0.2735562310030395,
+      "patient_recall": 0.6,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 83,
+        "alarms": 1382,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 239,
+        "too_early": 693,
+        "duplicate": 66,
+        "nonseptic_alarms": 540,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 784,
+        "flagged_hours": 6865,
+        "flagged_records": 329,
+        "flagged_event_records": 90
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.0489825078534756,
+        0.07375693342037043
+      ],
+      "recall": [
+        0.4714182194616977,
+        0.6315959252971136
+      ],
+      "subgroup_recall": [
+        0.4714182194616977,
+        0.6315959252971136
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.4261616212747025,
+        0.6144213874458818
+      ],
+      "control_stays_disturbed": [
+        0.07893752338196783,
+        0.10098135962438348
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0001_seed42_all_0.6_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.6176026844978332,
+      "precision": 0.14432989690721648,
+      "recall": 0.18181818181818182,
+      "subgroup_recall": 0.32558139534883723,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 14,
+      "alarms": 97,
+      "alarms_per_day": 0.05274725274725275,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 58,
+        "duplicate": 3,
+        "nonseptic": 22,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7944730599898252,
+      "ap": 0.09054674130222036
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.12554112554112554,
+      "recall": 0.19333333333333333,
+      "subgroup_recall": 0.3625,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.08698107879130189,
+      "control_stays_disturbed": 0.006369426751592357,
+      "hourly_precision": 0.13482056256062075,
+      "hourly_recall": 0.2267536704730832,
+      "patient_precision": 0.7424242424242424,
+      "patient_recall": 0.32666666666666666,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 29,
+        "alarms": 231,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 17,
+        "too_early": 154,
+        "duplicate": 9,
+        "nonseptic_alarms": 39,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 139,
+        "flagged_hours": 1031,
+        "flagged_records": 66,
+        "flagged_event_records": 49
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.08835305887862403,
+        0.17937507186386106
+      ],
+      "recall": [
+        0.13178178526667597,
+        0.25874754741661216
+      ],
+      "subgroup_recall": [
+        0.2563725490196078,
+        0.4675324675324675
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.05776083510577863,
+        0.11985278032387492
+      ],
+      "control_stays_disturbed": [
+        0.0037270323659102694,
+        0.0093951409626238
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0001_seed42_bp_routine_perfusion_0.3_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.574894879817963,
+      "precision": 0.16541353383458646,
+      "recall": 0.2857142857142857,
+      "subgroup_recall": 0.5116279069767442,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 22,
+      "alarms": 133,
+      "alarms_per_day": 0.07232355273592388,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 72,
+        "duplicate": 8,
+        "nonseptic": 31,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7944730599898252,
+      "ap": 0.09054674130222036
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.13793103448275862,
+      "recall": 0.24,
+      "subgroup_recall": 0.45,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.09827732279017226,
+      "control_stays_disturbed": 0.007493443237167478,
+      "hourly_precision": 0.140625,
+      "hourly_recall": 0.27895595432300163,
+      "patient_precision": 0.7222222222222222,
+      "patient_recall": 0.3466666666666667,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 36,
+        "alarms": 261,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 20,
+        "too_early": 173,
+        "duplicate": 9,
+        "nonseptic_alarms": 43,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 171,
+        "flagged_hours": 1216,
+        "flagged_records": 72,
+        "flagged_event_records": 52
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.10040085994535763,
+        0.19101302511987403
+      ],
+      "recall": [
+        0.17283506528110842,
+        0.3087302886451683
+      ],
+      "subgroup_recall": [
+        0.3417572598659717,
+        0.5522486252945797
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.06644072971770604,
+        0.13343743728849333
+      ],
+      "control_stays_disturbed": [
+        0.004509582863585118,
+        0.010877719429857465
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0001_seed42_bp_routine_perfusion_0.5_stats.npz"
+  },
+  {
+    "name": "targetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.3011303759813315,
+      "precision": 0.08970099667774087,
+      "recall": 0.35064935064935066,
+      "subgroup_recall": 0.627906976744186,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 27,
+      "alarms": 301,
+      "alarms_per_day": 0.16367961934972244,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 132,
+        "duplicate": 13,
+        "nonseptic": 129,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "targetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "targetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.7944730599898252,
+      "ap": 0.09054674130222036
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.09486166007905138,
+      "recall": 0.32,
+      "subgroup_recall": 0.6,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.19052998211428032,
+      "control_stays_disturbed": 0.037841888347695765,
+      "hourly_precision": 0.13034188034188035,
+      "hourly_recall": 0.49755301794453505,
+      "patient_precision": 0.39156626506024095,
+      "patient_recall": 0.43333333333333335,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 48,
+        "alarms": 506,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 101,
+        "too_early": 282,
+        "duplicate": 20,
+        "nonseptic_alarms": 156,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 305,
+        "flagged_hours": 2340,
+        "flagged_records": 166,
+        "flagged_event_records": 65
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.07263443827490856,
+        0.12214103468304013
+      ],
+      "recall": [
+        0.24827334507928517,
+        0.3942877263581489
+      ],
+      "subgroup_recall": [
+        0.4935021645021645,
+        0.7011531571876399
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.14543422602736883,
+        0.23573126119630805
+      ],
+      "control_stays_disturbed": [
+        0.03086170290164299,
+        0.045301781131341326
+      ]
+    },
+    "statistics_file": "targetmae_34f_lr0.0001_seed42_bp_routine_perfusion_0.6_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.5825080161094665,
+      "precision": 0.0963855421686747,
+      "recall": 0.3116883116883117,
+      "subgroup_recall": 0.3116883116883117,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 24,
+      "alarms": 249,
+      "alarms_per_day": 0.1354027415883086,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 133,
+        "duplicate": 16,
+        "nonseptic": 76,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8070178143688683,
+      "ap": 0.10846077462921971
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.112565445026178,
+      "recall": 0.2866666666666667,
+      "subgroup_recall": 0.2866666666666667,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.14383884025228277,
+      "control_stays_disturbed": 0.018358935931060322,
+      "hourly_precision": 0.16171003717472118,
+      "hourly_recall": 0.16091245376078914,
+      "patient_precision": 0.5625,
+      "patient_recall": 0.42,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 43,
+        "alarms": 382,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 49,
+        "too_early": 222,
+        "duplicate": 14,
+        "nonseptic_alarms": 103,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 261,
+        "flagged_hours": 1614,
+        "flagged_records": 112,
+        "flagged_event_records": 63
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.08470266315481416,
+        0.14572311396468696
+      ],
+      "recall": [
+        0.21537974683544306,
+        0.3603031581485053
+      ],
+      "subgroup_recall": [
+        0.21537974683544306,
+        0.3603031581485053
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.11337755649867706,
+        0.17478200474773112
+      ],
+      "control_stays_disturbed": [
+        0.013417067394155756,
+        0.02364887065999533
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0001_seed42_all_0.3_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.3964310479164123,
+      "precision": 0.07481751824817519,
+      "recall": 0.5324675324675324,
+      "subgroup_recall": 0.5324675324675324,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 41,
+      "alarms": 548,
+      "alarms_per_day": 0.2979947887164382,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 255,
+        "duplicate": 27,
+        "nonseptic": 225,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8070178143688683,
+      "ap": 0.10846077462921971
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.08196721311475409,
+      "recall": 0.43333333333333335,
+      "subgroup_recall": 0.43333333333333335,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.29859738303680694,
+      "control_stays_disturbed": 0.03484451105282878,
+      "hourly_precision": 0.13055842812823165,
+      "hourly_recall": 0.31134401972872994,
+      "patient_precision": 0.46551724137931033,
+      "patient_recall": 0.54,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 65,
+        "alarms": 793,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 93,
+        "too_early": 449,
+        "duplicate": 38,
+        "nonseptic_alarms": 241,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 505,
+        "flagged_hours": 3868,
+        "flagged_records": 174,
+        "flagged_event_records": 81
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.0647217831966082,
+        0.10277854203696035
+      ],
+      "recall": [
+        0.3561617891241179,
+        0.5126104287868993
+      ],
+      "subgroup_recall": [
+        0.3561617891241179,
+        0.5126104287868993
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.24276256756077289,
+        0.35538371382035655
+      ],
+      "control_stays_disturbed": [
+        0.028047082560686915,
+        0.04162018780848193
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0001_seed42_all_0.5_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.2809602168798448,
+      "precision": 0.06385869565217392,
+      "recall": 0.6103896103896104,
+      "subgroup_recall": 0.6103896103896104,
+      "events": 77,
+      "eligible_events": 77,
+      "event_coverage": 1.0,
+      "matched": 47,
+      "alarms": 736,
+      "alarms_per_day": 0.4002265775461652,
+      "eligible_hours": 44135,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 328,
+        "duplicate": 35,
+        "nonseptic": 326,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8070178143688683,
+      "ap": 0.10846077462921971
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.0684931506849315,
+      "recall": 0.5,
+      "subgroup_recall": 0.5,
+      "event_coverage": 1.0,
+      "decision_coverage": 1.0,
+      "alarms_per_patient_day": 0.4123129059587687,
+      "control_stays_disturbed": 0.057699512926189585,
+      "hourly_precision": 0.12079426365140651,
+      "hourly_recall": 0.40505548705302097,
+      "patient_precision": 0.36363636363636365,
+      "patient_recall": 0.5866666666666667,
+      "counts": {
+        "event": 150,
+        "eligible_event": 150,
+        "matched": 75,
+        "alarms": 1095,
+        "hours": 63738,
+        "eligible_hours": 63738,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 154,
+        "too_early": 599,
+        "duplicate": 53,
+        "nonseptic_alarms": 368,
+        "other": 0,
+        "positive_hours": 1622,
+        "true_positive_hours": 657,
+        "flagged_hours": 5439,
+        "flagged_records": 242,
+        "flagged_event_records": 88
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.05517039894076334,
+        0.08540266539689147
+      ],
+      "recall": [
+        0.4218544407894737,
+        0.5800104895104894
+      ],
+      "subgroup_recall": [
+        0.4218544407894737,
+        0.5800104895104894
+      ],
+      "event_coverage": [
+        1.0,
+        1.0
+      ],
+      "alarms_per_patient_day": [
+        0.3377677287424737,
+        0.48712397559041876
+      ],
+      "control_stays_disturbed": [
+        0.049289136425692485,
+        0.06656701498851847
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0001_seed42_all_0.6_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "policy": {
+      "threshold": 0.6738663268089293,
+      "precision": 0.1794871794871795,
+      "recall": 0.18181818181818182,
+      "subgroup_recall": 0.32558139534883723,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 14,
+      "alarms": 78,
+      "alarms_per_day": 0.04241531664212077,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 43,
+        "duplicate": 4,
+        "nonseptic": 17,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8070178143688683,
+      "ap": 0.10846077462921971
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.16964285714285715,
+      "recall": 0.12666666666666668,
+      "subgroup_recall": 0.2375,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.042172644262449405,
+      "control_stays_disturbed": 0.005994754589733983,
+      "hourly_precision": 0.17633410672853828,
+      "hourly_recall": 0.12398042414355628,
+      "patient_precision": 0.7037037037037037,
+      "patient_recall": 0.25333333333333335,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 19,
+        "alarms": 112,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 16,
+        "too_early": 62,
+        "duplicate": 2,
+        "nonseptic_alarms": 29,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 76,
+        "flagged_hours": 431,
+        "flagged_records": 54,
+        "flagged_event_records": 38
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.10377358490566038,
+        0.2564356435643563
+      ],
+      "recall": [
+        0.07332926829268292,
+        0.18181818181818182
+      ],
+      "subgroup_recall": [
+        0.14285714285714285,
+        0.3333333333333333
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.028992231993640524,
+        0.056411592943000036
+      ],
+      "control_stays_disturbed": [
+        0.0033593685413018477,
+        0.008998959526158255
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0001_seed42_bp_routine_perfusion_0.3_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "policy": {
+      "threshold": 0.451753643155099,
+      "precision": 0.11891891891891893,
+      "recall": 0.2857142857142857,
+      "subgroup_recall": 0.5116279069767442,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 22,
+      "alarms": 185,
+      "alarms_per_day": 0.10060043049733772,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 96,
+        "duplicate": 9,
+        "nonseptic": 58,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8070178143688683,
+      "ap": 0.10846077462921971
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.125,
+      "recall": 0.25333333333333335,
+      "subgroup_recall": 0.475,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.11446860585521981,
+      "control_stays_disturbed": 0.014612214312476583,
+      "hourly_precision": 0.15846599131693198,
+      "hourly_recall": 0.3572593800978793,
+      "patient_precision": 0.59375,
+      "patient_recall": 0.38,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 38,
+        "alarms": 304,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 39,
+        "too_early": 189,
+        "duplicate": 15,
+        "nonseptic_alarms": 62,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 219,
+        "flagged_hours": 1382,
+        "flagged_records": 96,
+        "flagged_event_records": 57
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.09090284715284716,
+        0.1683510361345413
+      ],
+      "recall": [
+        0.18517094017094016,
+        0.32394851869839725
+      ],
+      "subgroup_recall": [
+        0.36363636363636365,
+        0.5795495718050067
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.0831026127091209,
+        0.14748450780900332
+      ],
+      "control_stays_disturbed": [
+        0.01013114214381739,
+        0.019424910646134122
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0001_seed42_bp_routine_perfusion_0.5_stats.npz"
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "policy": {
+      "threshold": 0.37422409582138055,
+      "precision": 0.11659192825112108,
+      "recall": 0.33766233766233766,
+      "subgroup_recall": 0.6046511627906976,
+      "events": 77,
+      "eligible_events": 43,
+      "event_coverage": 0.5584415584415584,
+      "matched": 26,
+      "alarms": 223,
+      "alarms_per_day": 0.12126430270760168,
+      "eligible_hours": 9829,
+      "total_hours": 44135,
+      "false_alarm_categories": {
+        "too_early": 108,
+        "duplicate": 11,
+        "nonseptic": 78,
+        "other": 0
+      }
+    },
+    "arm": {
+      "name": "sourcetargetmae_34f_lr0.0001_seed42",
+      "kind": "neural",
+      "features": 34,
+      "seed": 42,
+      "lr": 0.0001,
+      "initialization": "sourcetargetmae",
+      "condition": "values"
+    },
+    "discrimination": {
+      "auroc": 0.8070178143688683,
+      "ap": 0.10846077462921971
+    },
+    "exploratory": true,
+    "test": {
+      "precision": 0.11864406779661017,
+      "recall": 0.28,
+      "subgroup_recall": 0.525,
+      "event_coverage": 0.5333333333333333,
+      "decision_coverage": 0.22032382566130096,
+      "alarms_per_patient_day": 0.13329567918667043,
+      "control_stays_disturbed": 0.016860247283626825,
+      "hourly_precision": 0.1483050847457627,
+      "hourly_recall": 0.399673735725938,
+      "patient_precision": 0.5794392523364486,
+      "patient_recall": 0.41333333333333333,
+      "counts": {
+        "event": 150,
+        "eligible_event": 80,
+        "matched": 42,
+        "alarms": 354,
+        "hours": 63738,
+        "eligible_hours": 14043,
+        "nonseptic": 2669,
+        "disturbed_nonseptic": 45,
+        "too_early": 225,
+        "duplicate": 15,
+        "nonseptic_alarms": 72,
+        "other": 0,
+        "positive_hours": 613,
+        "true_positive_hours": 245,
+        "flagged_hours": 1652,
+        "flagged_records": 107,
+        "flagged_event_records": 62
+      }
+    },
+    "ci95": {
+      "precision": [
+        0.08683328703382179,
+        0.15894215243488638
+      ],
+      "recall": [
+        0.2117522783761392,
+        0.3488372093023256
+      ],
+      "subgroup_recall": [
+        0.41553963278101214,
+        0.6349259974259973
+      ],
+      "event_coverage": [
+        0.453227229537125,
+        0.613340909090909
+      ],
+      "alarms_per_patient_day": [
+        0.09695726739461343,
+        0.17235858466166648
+      ],
+      "control_stays_disturbed": [
+        0.012016072155456723,
+        0.021773411212417226
+      ]
+    },
+    "statistics_file": "sourcetargetmae_34f_lr0.0001_seed42_bp_routine_perfusion_0.6_stats.npz"
+  }
+]

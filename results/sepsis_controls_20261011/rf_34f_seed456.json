@@ -1,0 +1,73 @@
+{
+  "name": "rf_34f_seed456",
+  "kind": "rf",
+  "features": 34,
+  "seed": 456,
+  "complete": true,
+  "history": [
+    {
+      "candidate": 0,
+      "tune_ap": 0.1016813690501712,
+      "parameters": {
+        "bootstrap": true,
+        "ccp_alpha": 0.0,
+        "class_weight": {
+          "0": 1.0,
+          "1": 20.0
+        },
+        "criterion": "gini",
+        "max_depth": 14,
+        "max_features": "sqrt",
+        "max_leaf_nodes": null,
+        "max_samples": 0.7,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 20,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 300,
+        "n_jobs": 4,
+        "oob_score": false,
+        "random_state": 456,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "best_iteration": null
+    },
+    {
+      "candidate": 1,
+      "tune_ap": 0.0966906067452202,
+      "parameters": {
+        "bootstrap": true,
+        "ccp_alpha": 0.0,
+        "class_weight": {
+          "0": 1.0,
+          "1": 20.0
+        },
+        "criterion": "gini",
+        "max_depth": 22,
+        "max_features": "sqrt",
+        "max_leaf_nodes": null,
+        "max_samples": 0.7,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 8,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 300,
+        "n_jobs": 4,
+        "oob_score": false,
+        "random_state": 456,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "best_iteration": null
+    }
+  ],
+  "best_tune_ap": 0.1016813690501712,
+  "fit_decisions": 263997,
+  "fit_weighting": "equal total weight per released record",
+  "tuning_decisions": 19876,
+  "test_opened": false,
+  "elapsed_minutes": 7.590388226509094
+}

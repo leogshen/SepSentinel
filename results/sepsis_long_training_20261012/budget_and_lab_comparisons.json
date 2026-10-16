@@ -1,0 +1,5762 @@
+[
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.007810194434297113,
+        0.04322528608391365
+      ],
+      "recall": [
+        -0.07598611678236013,
+        0.07587634526685692
+      ],
+      "subgroup_recall": [
+        -0.07598611678236013,
+        0.07587634526685692
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.06090545151005888,
+        0.0003690612866595683
+      ],
+      "control_stays_disturbed": [
+        0.018824947079514445,
+        0.0315634064849744
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.008014751405090241,
+        0.017905504927339243
+      ],
+      "recall": [
+        -0.028815129714410328,
+        0.09939440993788813
+      ],
+      "subgroup_recall": [
+        -0.028815129714410328,
+        0.09939440993788813
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.04202416145471159,
+        0.0532213859728683
+      ],
+      "control_stays_disturbed": [
+        0.027787427048275398,
+        0.047169899620663584
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.0006896938103496002,
+        0.017777778852469072
+      ],
+      "recall": [
+        -0.043485054347826166,
+        0.08725461409395968
+      ],
+      "subgroup_recall": [
+        -0.043485054347826166,
+        0.08725461409395968
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.10419566658264183,
+        0.0007984958707670274
+      ],
+      "control_stays_disturbed": [
+        0.0007567086981682461,
+        0.027240333951037626
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.06388588090300469,
+        0.054868788819875745
+      ],
+      "recall": [
+        -0.0774204906860518,
+        0.022222222222222227
+      ],
+      "subgroup_recall": [
+        -0.14667647058823527,
+        0.0434782608695652
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.024860853569480774,
+        0.002211477082078178
+      ],
+      "control_stays_disturbed": [
+        0.004848891764929054,
+        0.01198501872659176
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.052154542920190165,
+        0.008462898588284331
+      ],
+      "recall": [
+        -0.037500000000000006,
+        0.06400256410256407
+      ],
+      "subgroup_recall": [
+        -0.07042253521126762,
+        0.11957608695652165
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0019210048437012426,
+        0.04773643468922447
+      ],
+      "control_stays_disturbed": [
+        0.01789709172259508,
+        0.029766951560637002
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.024263497497576142,
+        0.015268955733040136
+      ],
+      "recall": [
+        -0.05325641025641028,
+        0.05001582278481003
+      ],
+      "subgroup_recall": [
+        -0.10170936055469959,
+        0.09375919117647054
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.016104682754318023,
+        0.026116130969487547
+      ],
+      "control_stays_disturbed": [
+        0.004119811626331928,
+        0.019087183778510392
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        0.0035080883200810224,
+        0.06954843999746788
+      ],
+      "recall": [
+        0.02125488493269646,
+        0.19517587522813973
+      ],
+      "subgroup_recall": [
+        0.02125488493269646,
+        0.19517587522813973
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.039764929519408666,
+        0.0422211378873703
+      ],
+      "control_stays_disturbed": [
+        0.007145543437382475,
+        0.01612343853977712
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "availability__scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.028255398369184594,
+        0.014964918981339783
+      ],
+      "recall": [
+        -0.10204885103647758,
+        0.03974843326370052
+      ],
+      "subgroup_recall": [
+        -0.10204885103647758,
+        0.03974843326370052
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.03360336664595619,
+        0.01446076623292899
+      ],
+      "control_stays_disturbed": [
+        0.012048192771084338,
+        0.02548821310065687
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        0.0050979408798868175,
+        0.037123472955421
+      ],
+      "recall": [
+        -0.07548363983759258,
+        0.06098183175709305
+      ],
+      "subgroup_recall": [
+        -0.07548363983759258,
+        0.06098183175709305
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.15425455873063856,
+        -0.039386100708737985
+      ],
+      "control_stays_disturbed": [
+        0.009310381681290312,
+        0.019476203115060056
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "availability__scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.017959866619068204,
+        0.010217249171577316
+      ],
+      "recall": [
+        0.02993235750720782,
+        0.15753424657534243
+      ],
+      "subgroup_recall": [
+        0.02993235750720782,
+        0.15753424657534243
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.043828757931411194,
+        0.11449959240804658
+      ],
+      "control_stays_disturbed": [
+        0.03391678300915367,
+        0.050638134439801315
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.004209255536712477,
+        0.019646695625000453
+      ],
+      "recall": [
+        -0.08163265306122452,
+        0.0
+      ],
+      "subgroup_recall": [
+        -0.08163265306122452,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.16311812106061496,
+        -0.08205569426695929
+      ],
+      "control_stays_disturbed": [
+        -0.051692880317000305,
+        -0.029782224323074785
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "availability__scratch_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.012165399408056273,
+        0.005743198961402589
+      ],
+      "recall": [
+        -0.006713692188284754,
+        0.1287890407138874
+      ],
+      "subgroup_recall": [
+        -0.006713692188284754,
+        0.1287890407138874
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.030765040691608823,
+        0.10259525072526172
+      ],
+      "control_stays_disturbed": [
+        0.043836642937429754,
+        0.06367100837329134
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.038620907492858715,
+        0.06324654027527706
+      ],
+      "recall": [
+        -0.013160073196235635,
+        0.10897435897435895
+      ],
+      "subgroup_recall": [
+        -0.025324569944823107,
+        0.2
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.004633533480474696,
+        0.031757898421499065
+      ],
+      "control_stays_disturbed": [
+        0.0037706680260649853,
+        0.011153248006120933
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "availability__scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.05822964634133778,
+        0.0441415128725871
+      ],
+      "recall": [
+        -0.133343949044586,
+        -0.02702702702702703
+      ],
+      "subgroup_recall": [
+        -0.25,
+        -0.052617872807017615
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.053712777527201286,
+        -0.012212680408650598
+      ],
+      "control_stays_disturbed": [
+        -0.0026335838464093737,
+        0.005303783916333144
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.027629802464153176,
+        0.01675870485963419
+      ],
+      "recall": [
+        -0.079136690647482,
+        0.007693798449612422
+      ],
+      "subgroup_recall": [
+        -0.14705882352941174,
+        0.014925373134328348
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.03047858137655492,
+        0.004489172078459463
+      ],
+      "control_stays_disturbed": [
+        0.007097430940914263,
+        0.01532724610125892
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "availability__scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.0263843768276322,
+        0.01971476099849809
+      ],
+      "recall": [
+        -0.016023728813559308,
+        0.08528239202657803
+      ],
+      "subgroup_recall": [
+        -0.03126662234042553,
+        0.1566582117945465
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.005281451337482806,
+        0.03605356612061092
+      ],
+      "control_stays_disturbed": [
+        0.008978424000845524,
+        0.021029705615812185
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed42",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.017664562743085845,
+        0.0032380168876595568
+      ],
+      "recall": [
+        -0.04295030233481929,
+        0.01205001825483756
+      ],
+      "subgroup_recall": [
+        -0.08139534883720934,
+        0.02197802197802201
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.007839563647012403,
+        0.012288735651559848
+      ],
+      "control_stays_disturbed": [
+        -0.0029851582580188367,
+        0.009318188455782955
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed42",
+    "reference": "availability__scratch_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.015339094955194024,
+        0.017963355143813184
+      ],
+      "recall": [
+        -0.02857142857142858,
+        0.05635234169243091
+      ],
+      "subgroup_recall": [
+        -0.05263157894736842,
+        0.10666990291262136
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.013641537060962565,
+        0.022168229942796724
+      ],
+      "control_stays_disturbed": [
+        0.005243347574513894,
+        0.016829035925904363
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed42",
+    "reference": "short_budget:source_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.09129600657072091,
+        0.0014458281916015418
+      ],
+      "recall": [
+        0.04216340888027635,
+        0.1698177384161211
+      ],
+      "subgroup_recall": [
+        0.04216340888027635,
+        0.1698177384161211
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.07018009132237361,
+        0.11596698449722413
+      ],
+      "control_stays_disturbed": [
+        0.02729941511739577,
+        0.04165273319042086
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed42",
+    "reference": "short_budget:source_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.009031252567378127,
+        0.016680172703202906
+      ],
+      "recall": [
+        -0.07385061407113176,
+        0.061256377551020244
+      ],
+      "subgroup_recall": [
+        -0.07385061407113176,
+        0.061256377551020244
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.0529197546041029,
+        0.013810868174815749
+      ],
+      "control_stays_disturbed": [
+        0.03180418710943899,
+        0.047513048030956434
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed42",
+    "reference": "short_budget:source_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.001841011375205273,
+        0.016220755621737228
+      ],
+      "recall": [
+        -0.07598861740751639,
+        0.05109956953022643
+      ],
+      "subgroup_recall": [
+        -0.07598861740751639,
+        0.05109956953022643
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.09593976668478714,
+        -0.01380923485038995
+      ],
+      "control_stays_disturbed": [
+        0.022888876695291143,
+        0.03994102221194104
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed42",
+    "reference": "short_budget:source_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.1405262550233342,
+        -0.011474240087672732
+      ],
+      "recall": [
+        -0.023999999999999994,
+        0.06617768796260223
+      ],
+      "subgroup_recall": [
+        -0.0468795955882353,
+        0.125
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.020032599402142897,
+        0.049242454869166764
+      ],
+      "control_stays_disturbed": [
+        0.012038787841770987,
+        0.02240603743968373
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed42",
+    "reference": "short_budget:source_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.07135860670236695,
+        -0.004256716344905894
+      ],
+      "recall": [
+        -0.022990716180371327,
+        0.08724832214765102
+      ],
+      "subgroup_recall": [
+        -0.045454545454545414,
+        0.16179667519181562
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.030101658936458463,
+        0.0617802595003273
+      ],
+      "control_stays_disturbed": [
+        0.01985706719756441,
+        0.032222410003170734
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed42",
+    "reference": "short_budget:source_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.033590247685875436,
+        0.009179979894499871
+      ],
+      "recall": [
+        -0.07051282051282048,
+        0.04380135885782488
+      ],
+      "subgroup_recall": [
+        -0.1333333333333333,
+        0.08641975308641969
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.007778296617104663,
+        0.028126356352346095
+      ],
+      "control_stays_disturbed": [
+        0.01315282649371462,
+        0.024245363815124772
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.010857115269556133,
+        0.03073925078734209
+      ],
+      "recall": [
+        -0.08725689511585755,
+        0.03593573722120969
+      ],
+      "subgroup_recall": [
+        -0.08725689511585755,
+        0.03593573722120969
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.05374120426873583,
+        -0.020982443995454812
+      ],
+      "control_stays_disturbed": [
+        -0.007172653415199841,
+        0.0029874436562678207
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.0034381747080841235,
+        0.016092049166019834
+      ],
+      "recall": [
+        -0.13375908316138874,
+        -0.029848525230987907
+      ],
+      "subgroup_recall": [
+        -0.13375908316138874,
+        -0.029848525230987907
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.11780460088245387,
+        -0.06298521280293629
+      ],
+      "control_stays_disturbed": [
+        -0.01164537941397445,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.0021941591798681076,
+        0.010389093705901353
+      ],
+      "recall": [
+        -0.06476348333098231,
+        0.025316455696202445
+      ],
+      "subgroup_recall": [
+        -0.06476348333098231,
+        0.025316455696202445
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.05968882363002389,
+        -0.025552595037575475
+      ],
+      "control_stays_disturbed": [
+        -0.01621494366541479,
+        -0.00415243206157808
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.043597996476185896,
+        0.04673379773527869
+      ],
+      "recall": [
+        -0.07471557588552662,
+        0.03145151659899687
+      ],
+      "subgroup_recall": [
+        -0.13956213662790695,
+        0.06153846153846154
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.022076287451541672,
+        -0.0007475778516871747
+      ],
+      "control_stays_disturbed": [
+        -0.0014805223800981725,
+        0.004150865276773225
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.006555549785735446,
+        0.02739209920205274
+      ],
+      "recall": [
+        -0.061736909323116214,
+        0.019354838709677413
+      ],
+      "subgroup_recall": [
+        -0.11392405063291139,
+        0.0357142857142857
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.03939824653031497,
+        -0.012944185204527734
+      ],
+      "control_stays_disturbed": [
+        -0.010123829466928035,
+        -0.0018859919591606717
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.013584123780599516,
+        0.009576120242425528
+      ],
+      "recall": [
+        -0.024006060606060628,
+        0.05369629867781214
+      ],
+      "subgroup_recall": [
+        -0.04598143236074276,
+        0.09782608695652173
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0031951402533127154,
+        0.021636527474874188
+      ],
+      "control_stays_disturbed": [
+        -0.0018868102594784785,
+        0.007172857025372517
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.038374640418984036,
+        0.01188911657427398
+      ],
+      "recall": [
+        -0.07051282051282051,
+        0.0719554790949848
+      ],
+      "subgroup_recall": [
+        -0.07051282051282051,
+        0.0719554790949848
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.007235154396335565,
+        0.05141915367155449
+      ],
+      "control_stays_disturbed": [
+        0.001870539937730163,
+        0.010443961653871636
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.014590457630738159,
+        0.011845631439017767
+      ],
+      "recall": [
+        -0.12337662337662336,
+        0.013700991969768527
+      ],
+      "subgroup_recall": [
+        -0.12337662337662336,
+        0.013700991969768527
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.06415005358947613,
+        0.004854718786250232
+      ],
+      "control_stays_disturbed": [
+        -0.013060801617148256,
+        -0.0026168224299065457
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.00011672364808124552,
+        0.018839640053550776
+      ],
+      "recall": [
+        -0.10001677852348996,
+        0.03573383733055259
+      ],
+      "subgroup_recall": [
+        -0.10001677852348996,
+        0.03573383733055259
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.12118964784138371,
+        -0.046777129573499415
+      ],
+      "control_stays_disturbed": [
+        -0.05269197958343197,
+        -0.03604754214076954
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.0807537560478737,
+        0.010435164260716591
+      ],
+      "recall": [
+        -0.046052631578947345,
+        0.05807394218684534
+      ],
+      "subgroup_recall": [
+        -0.08750548245614032,
+        0.10938035102739722
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0014833824595769074,
+        0.04187148842325117
+      ],
+      "control_stays_disturbed": [
+        0.0003750902573787426,
+        0.006772072747909819
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.026010578861271158,
+        0.02647446779600789
+      ],
+      "recall": [
+        -0.10000000000000003,
+        0.006494567523979284
+      ],
+      "subgroup_recall": [
+        -0.18423489278752445,
+        0.011634828349944611
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.037307537241281816,
+        -0.007570264427617125
+      ],
+      "control_stays_disturbed": [
+        -0.0063362498933406475,
+        0.0018642977719589419
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.0228225457407043,
+        0.01879870132209299
+      ],
+      "recall": [
+        0.013886494252873569,
+        0.10844028287061287
+      ],
+      "subgroup_recall": [
+        0.028169014084507005,
+        0.2
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.015847586991677418,
+        0.05101344475995883
+      ],
+      "control_stays_disturbed": [
+        0.0041491433417091324,
+        0.01317275122318404
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.00899929031194187,
+        0.043070502123506736
+      ],
+      "recall": [
+        -0.09143043884220356,
+        0.06395721526535478
+      ],
+      "subgroup_recall": [
+        -0.09143043884220356,
+        0.06395721526535478
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.06279619399063527,
+        -0.0014858450114966825
+      ],
+      "control_stays_disturbed": [
+        0.0018454714656416333,
+        0.009032998954291447
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        0.0007513326562510412,
+        0.03071496855432068
+      ],
+      "recall": [
+        -0.058441558441558406,
+        0.06
+      ],
+      "subgroup_recall": [
+        -0.058441558441558406,
+        0.06
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.08853149088889274,
+        -0.013662937358039034
+      ],
+      "control_stays_disturbed": [
+        0.007850467289719627,
+        0.016931140171986714
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.0037319677487634077,
+        0.01770118390008858
+      ],
+      "recall": [
+        -0.08275971886668136,
+        0.0
+      ],
+      "subgroup_recall": [
+        -0.08275971886668136,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.14351479001814688,
+        -0.08182164904055014
+      ],
+      "control_stays_disturbed": [
+        -0.05181557674139309,
+        -0.030732908601794853
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.02137404580152671,
+        0.08095654345654342
+      ],
+      "recall": [
+        -0.01575755651511303,
+        0.08148846960167712
+      ],
+      "subgroup_recall": [
+        -0.03076923076923077,
+        0.1538659793814432
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.01238315860969401,
+        0.01659556514765608
+      ],
+      "control_stays_disturbed": [
+        0.002626641651031895,
+        0.0079316389749366
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.02118272495014984,
+        0.02820830615419704
+      ],
+      "recall": [
+        -0.050015822784810114,
+        0.03704278812974462
+      ],
+      "subgroup_recall": [
+        -0.09198075380914193,
+        0.07042253521126757
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.02281772496616359,
+        0.009059444578401134
+      ],
+      "control_stays_disturbed": [
+        0.004874345026586819,
+        0.011646256985897132
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed42",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.01830797101211352,
+        0.005940081948282307
+      ],
+      "recall": [
+        -0.0001412429378530994,
+        0.0600100671140939
+      ],
+      "subgroup_recall": [
+        -0.00026595744680849454,
+        0.11268173557473879
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.013412235731729893,
+        0.03744114630701273
+      ],
+      "control_stays_disturbed": [
+        0.004438751625778658,
+        0.01698221443235618
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed42",
+    "reference": "short_budget:source_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        0.01990969637343346,
+        0.0819007000853838
+      ],
+      "recall": [
+        -0.0196210027635215,
+        0.1463495934959349
+      ],
+      "subgroup_recall": [
+        -0.0196210027635215,
+        0.1463495934959349
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.06654981640217862,
+        -0.010296052116391742
+      ],
+      "control_stays_disturbed": [
+        -0.013443496453205193,
+        -0.003346969133506881
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed42",
+    "reference": "short_budget:source_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        0.015018621347353114,
+        0.044857049395829386
+      ],
+      "recall": [
+        0.0,
+        0.13157894736842102
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.13157894736842102
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.10216993058032624,
+        -0.03770731089614834
+      ],
+      "control_stays_disturbed": [
+        -0.02542103625385038,
+        -0.011256719201374926
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed42",
+    "reference": "short_budget:source_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.002324642650281855,
+        0.017877313322677682
+      ],
+      "recall": [
+        0.09458480219349788,
+        0.20271643594814323
+      ],
+      "subgroup_recall": [
+        0.09458480219349788,
+        0.20271643594814323
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.03733536197303853,
+        0.09257822478723461
+      ],
+      "control_stays_disturbed": [
+        0.0015104602700833558,
+        0.018365817091454267
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed42",
+    "reference": "short_budget:source_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        0.021987761596264463,
+        0.148460719776471
+      ],
+      "recall": [
+        -0.04700399926450309,
+        0.08965738284703799
+      ],
+      "subgroup_recall": [
+        -0.0869804108934544,
+        0.16475490196078402
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.045312952155048526,
+        -0.010305437417783996
+      ],
+      "control_stays_disturbed": [
+        -0.010070869078701975,
+        -0.0029551015260436803
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed42",
+    "reference": "short_budget:source_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        0.031209677669226086,
+        0.10754945220378735
+      ],
+      "recall": [
+        -0.05369127516778524,
+        0.05385135135135133
+      ],
+      "subgroup_recall": [
+        -0.09999999999999998,
+        0.10205389848246985
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.08651621111623155,
+        -0.043803038968751165
+      ],
+      "control_stays_disturbed": [
+        -0.020637898686679174,
+        -0.010428111349285719
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed42",
+    "reference": "short_budget:source_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.011024981784500084,
+        0.04192126122560985
+      ],
+      "recall": [
+        0.03946723426212586,
+        0.125942334739803
+      ],
+      "subgroup_recall": [
+        0.07608695652173919,
+        0.23079268292682908
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.01470724609460046,
+        0.01391687845930698
+      ],
+      "control_stays_disturbed": [
+        -0.0033785690317857365,
+        0.007877191087107117
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.011623342213960518,
+        0.04330087745739743
+      ],
+      "recall": [
+        -0.12865829346092503,
+        0.022079872025145855
+      ],
+      "subgroup_recall": [
+        -0.12865829346092503,
+        0.022079872025145855
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.09179296658362787,
+        -0.020346587865528155
+      ],
+      "control_stays_disturbed": [
+        0.005978905856378375,
+        0.013842643579124157
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.0006241940074420263,
+        0.028243626218510808
+      ],
+      "recall": [
+        -0.03355704697986578,
+        0.09878076834598565
+      ],
+      "subgroup_recall": [
+        -0.03355704697986578,
+        0.09878076834598565
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.06121925702663492,
+        0.011978426964389397
+      ],
+      "control_stays_disturbed": [
+        0.014888630921843874,
+        0.02559277380504328
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.006564723485695442,
+        0.019794285454663572
+      ],
+      "recall": [
+        -0.029629629629629617,
+        0.05488405031688108
+      ],
+      "subgroup_recall": [
+        -0.029629629629629617,
+        0.05488405031688108
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.11038300372024602,
+        -0.05280236166816573
+      ],
+      "control_stays_disturbed": [
+        -0.04130764647759384,
+        -0.019923504627711013
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.03871351949870857,
+        0.07441254128436192
+      ],
+      "recall": [
+        -0.042687282229965165,
+        0.07051282051282051
+      ],
+      "subgroup_recall": [
+        -0.08045977011494249,
+        0.13580246913580246
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.019344028150472373,
+        0.01841832562081866
+      ],
+      "control_stays_disturbed": [
+        0.0044742729306487695,
+        0.010761368467841679
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.02127139631078575,
+        0.05124991439015828
+      ],
+      "recall": [
+        -0.057381471871682986,
+        0.06164383561643835
+      ],
+      "subgroup_recall": [
+        -0.1111111111111111,
+        0.11249999999999999
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.031049834127725547,
+        0.00504634258681077
+      ],
+      "control_stays_disturbed": [
+        0.005596962733887445,
+        0.01266294227188082
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.016420176098762285,
+        0.011851340991079132
+      ],
+      "recall": [
+        -0.014184397163120588,
+        0.05714285714285716
+      ],
+      "subgroup_recall": [
+        -0.02777777777777779,
+        0.10465116279069764
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0015344740865858512,
+        0.027915130149101956
+      ],
+      "control_stays_disturbed": [
+        -0.0003750937734433614,
+        0.011265490048817123
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.03039970331593868,
+        0.021566996025823914
+      ],
+      "recall": [
+        0.006895370807746825,
+        0.11242788461538462
+      ],
+      "subgroup_recall": [
+        0.006895370807746825,
+        0.11242788461538462
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.024518893812348504,
+        0.05222404377286478
+      ],
+      "control_stays_disturbed": [
+        0.0011290611266593278,
+        0.007145543437382473
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.00987305251162525,
+        0.00672007567306018
+      ],
+      "recall": [
+        -0.029862053369516084,
+        0.07092312971859985
+      ],
+      "subgroup_recall": [
+        -0.029862053369516084,
+        0.07092312971859985
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.002903190715080895,
+        0.04398596448174107
+      ],
+      "control_stays_disturbed": [
+        0.009380423860418378,
+        0.01852758468098517
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.009824359004129335,
+        0.0014734463911677748
+      ],
+      "recall": [
+        -0.029857489660133043,
+        0.07317073170731703
+      ],
+      "subgroup_recall": [
+        -0.029857489660133043,
+        0.07317073170731703
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.027080630890723826,
+        0.07026889888597691
+      ],
+      "control_stays_disturbed": [
+        0.025177795467395236,
+        0.039230658791927234
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.01532930791987974,
+        0.07807736089739069
+      ],
+      "recall": [
+        -0.007354302832244011,
+        0.0649377045718509
+      ],
+      "subgroup_recall": [
+        -0.015157342657342698,
+        0.11842105263157898
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.011364061058714446,
+        0.010660738756089451
+      ],
+      "control_stays_disturbed": [
+        -0.0007487902383346162,
+        0.0033620666532742836
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.012083072187250665,
+        0.022156230936673373
+      ],
+      "recall": [
+        -0.026666666666666644,
+        0.054803967879074135
+      ],
+      "subgroup_recall": [
+        -0.05128205128205121,
+        0.10146986166007894
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.009963042377883518,
+        0.010714977609629741
+      ],
+      "control_stays_disturbed": [
+        0.0003743916136278551,
+        0.0052259281398801365
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed42",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed42",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.028947231357714518,
+        -0.000883840905659257
+      ],
+      "recall": [
+        -0.05882352941176472,
+        0.018404907975460072
+      ],
+      "subgroup_recall": [
+        -0.10871263586956526,
+        0.03409090909090906
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0026487027879274943,
+        0.018327610079740105
+      ],
+      "control_stays_disturbed": [
+        0.0022463286642738505,
+        0.007827497834634734
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.0327960802200022,
+        0.014104498669177913
+      ],
+      "recall": [
+        -0.020003355704697977,
+        0.08610802740879678
+      ],
+      "subgroup_recall": [
+        -0.020003355704697977,
+        0.08610802740879678
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0038039822103421985,
+        0.07866872423040319
+      ],
+      "control_stays_disturbed": [
+        0.012350299401197603,
+        0.022273819731087344
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.017373236390813746,
+        0.008793050941105801
+      ],
+      "recall": [
+        -0.04065455450472872,
+        0.08163265306122447
+      ],
+      "subgroup_recall": [
+        -0.04065455450472872,
+        0.08163265306122447
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.014209300125416897,
+        0.0722089160700616
+      ],
+      "control_stays_disturbed": [
+        0.03699475757374488,
+        0.05330467594460131
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.01601395133455129,
+        0.0011451104071253763
+      ],
+      "recall": [
+        -0.10317588325652843,
+        0.007701612903225783
+      ],
+      "subgroup_recall": [
+        -0.10317588325652843,
+        0.007701612903225783
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.0375931046548075,
+        0.035759300818032594
+      ],
+      "control_stays_disturbed": [
+        0.041355726251742476,
+        0.05998565580713806
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.07642407485440329,
+        -0.003145751766743933
+      ],
+      "recall": [
+        -0.07042253521126761,
+        0.012820512820512817
+      ],
+      "subgroup_recall": [
+        -0.13157894736842107,
+        0.02381669535283989
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.005984647365527926,
+        0.024278663988822956
+      ],
+      "control_stays_disturbed": [
+        0.008525425508090252,
+        0.017991679835757793
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.07649789873108138,
+        -0.01895263627064605
+      ],
+      "recall": [
+        -0.02027027027027023,
+        0.0736309929561463
+      ],
+      "subgroup_recall": [
+        -0.037048611111111164,
+        0.13544034090909074
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0561856528121364,
+        0.08490669929575186
+      ],
+      "control_stays_disturbed": [
+        0.036184768974894636,
+        0.05207663777237668
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.038121559456787336,
+        -0.009678663095484846
+      ],
+      "recall": [
+        -0.0511042829540575,
+        0.022388059701492546
+      ],
+      "subgroup_recall": [
+        -0.0957483241037598,
+        0.04287267080745334
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.029826227488328912,
+        0.050353085403932574
+      ],
+      "control_stays_disturbed": [
+        0.027584667726344228,
+        0.042211553909340095
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.02539287122347469,
+        0.01499007346378107
+      ],
+      "recall": [
+        -0.04256079027355626,
+        0.07092312971859988
+      ],
+      "subgroup_recall": [
+        -0.04256079027355626,
+        0.07092312971859988
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.003947762424795517,
+        0.03711776375694729
+      ],
+      "control_stays_disturbed": [
+        0.00037174721189591094,
+        0.0030109145652992093
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "availability__scratch_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.04851194665883697,
+        -0.006326664553686872
+      ],
+      "recall": [
+        -0.1125851133289805,
+        0.0
+      ],
+      "subgroup_recall": [
+        -0.1125851133289805,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.008392021464424604,
+        0.03943284629638173
+      ],
+      "control_stays_disturbed": [
+        0.008658988431202285,
+        0.01928926893457679
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        0.004020610327559701,
+        0.027843407780535075
+      ],
+      "recall": [
+        -0.006330121744739209,
+        0.05921052631578949
+      ],
+      "subgroup_recall": [
+        -0.006330121744739209,
+        0.05921052631578949
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.07524835020137402,
+        0.0019043633276012771
+      ],
+      "control_stays_disturbed": [
+        0.004169471182419167,
+        0.011165075794275354
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "availability__scratch_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.03316125809776316,
+        -0.007901101419740526
+      ],
+      "recall": [
+        -0.060611179361179365,
+        0.046361466194363155
+      ],
+      "subgroup_recall": [
+        -0.060611179361179365,
+        0.046361466194363155
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.04513108224902924,
+        0.08843558320648603
+      ],
+      "control_stays_disturbed": [
+        0.031704587840358074,
+        0.04758515004811689
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.0022495605301857393,
+        0.009976104334553945
+      ],
+      "recall": [
+        -0.0579815931450333,
+        0.01602016806722674
+      ],
+      "subgroup_recall": [
+        -0.0579815931450333,
+        0.01602016806722674
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.07169432154073574,
+        -0.011622865130561101
+      ],
+      "control_stays_disturbed": [
+        0.004494255917476892,
+        0.01794510221524751
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "availability__scratch_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.02208357168299422,
+        -0.006269446482862728
+      ],
+      "recall": [
+        -0.10273972602739723,
+        -0.006666666666666652
+      ],
+      "subgroup_recall": [
+        -0.10273972602739723,
+        -0.006666666666666652
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.013941215176500916,
+        0.0552581811911909
+      ],
+      "control_stays_disturbed": [
+        0.024004878044670278,
+        0.03938558541662442
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.003741511170563345,
+        0.06377233113038383
+      ],
+      "recall": [
+        -0.031060753105590064,
+        0.032894736842105254
+      ],
+      "subgroup_recall": [
+        -0.05884103641456584,
+        0.0625
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.02877296201701985,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "availability__scratch_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.12638153968960494,
+        -0.02837186986863713
+      ],
+      "recall": [
+        -0.07693661971830987,
+        0.00684931506849315
+      ],
+      "subgroup_recall": [
+        -0.14635939741750362,
+        0.01315789473684209
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0085071682724678,
+        0.04130426082435245
+      ],
+      "control_stays_disturbed": [
+        0.008525425508090252,
+        0.017991679835757793
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.022769622676484094,
+        0.012851799084030347
+      ],
+      "recall": [
+        -0.109375,
+        -0.031054696904039683
+      ],
+      "subgroup_recall": [
+        -0.20455230010952907,
+        -0.05880642954856367
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.03665301808609347,
+        -0.01981912175324517
+      ],
+      "control_stays_disturbed": [
+        -0.008998875140607423,
+        -0.0014886490509862307
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "availability__scratch_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.05505262231329804,
+        -0.006753240256902704
+      ],
+      "recall": [
+        0.025316455696202556,
+        0.11268934360882267
+      ],
+      "subgroup_recall": [
+        0.04686591569767442,
+        0.20779220779220775
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.06127496332018992,
+        0.09128254708145433
+      ],
+      "control_stays_disturbed": [
+        0.03243902666723008,
+        0.046958180405788454
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed123",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.021475270450574267,
+        0.001230887129985744
+      ],
+      "recall": [
+        -0.018642385407657867,
+        0.046515503875969
+      ],
+      "subgroup_recall": [
+        -0.03448275862068961,
+        0.08697010869565215
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0162572857608855,
+        0.03386640355143869
+      ],
+      "control_stays_disturbed": [
+        0.017182773336684765,
+        0.030246735042487063
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed123",
+    "reference": "availability__scratch_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.028229977136364093,
+        -0.007340683113016113
+      ],
+      "recall": [
+        -0.061072596977722375,
+        0.0
+      ],
+      "subgroup_recall": [
+        -0.11224776427424904,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.01193891787601884,
+        0.030822688681980466
+      ],
+      "control_stays_disturbed": [
+        0.002612890892681049,
+        0.011896242821349665
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed123",
+    "reference": "short_budget:source_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.04404899343526137,
+        0.01980151917226219
+      ],
+      "recall": [
+        -0.0657067240295838,
+        0.05426752096187309
+      ],
+      "subgroup_recall": [
+        -0.0657067240295838,
+        0.05426752096187309
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.011027013912835502,
+        0.03940177448675259
+      ],
+      "control_stays_disturbed": [
+        -0.0030132394624143646,
+        0.00446441041500399
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed123",
+    "reference": "short_budget:source_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.008209778735709234,
+        0.01113689988842711
+      ],
+      "recall": [
+        -0.0413990444536768,
+        0.04093967796202839
+      ],
+      "subgroup_recall": [
+        -0.0413990444536768,
+        0.04093967796202839
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.0290709318211208,
+        0.02401009043163117
+      ],
+      "control_stays_disturbed": [
+        -0.006376594148537133,
+        0.003004187127085537
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed123",
+    "reference": "short_budget:source_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.005601800052341407,
+        0.008770786869204052
+      ],
+      "recall": [
+        -0.02516932752781809,
+        0.07792207792207789
+      ],
+      "subgroup_recall": [
+        -0.02516932752781809,
+        0.07792207792207789
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.01087588372265252,
+        0.039942079952804424
+      ],
+      "control_stays_disturbed": [
+        -0.007804153582181358,
+        0.00486895946383992
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed123",
+    "reference": "short_budget:source_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.09320151093714411,
+        0.021961464243775257
+      ],
+      "recall": [
+        -0.035211267605633784,
+        0.06504506892895014
+      ],
+      "subgroup_recall": [
+        -0.06818960149439598,
+        0.12070271682340637
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0037060963052809146,
+        0.03865419573357704
+      ],
+      "control_stays_disturbed": [
+        0.0007448650963775514,
+        0.005624561063976694
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed123",
+    "reference": "short_budget:source_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.003481401261986365,
+        0.028455009243118435
+      ],
+      "recall": [
+        -0.021280395136778117,
+        0.03593355457759175
+      ],
+      "subgroup_recall": [
+        -0.04054054054054046,
+        0.06818181818181818
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.018599665002094916,
+        0.002239194281046209
+      ],
+      "control_stays_disturbed": [
+        -0.002622729708581453,
+        0.004868913857677902
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed123",
+    "reference": "short_budget:source_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.00423228839812461,
+        0.03981058097207614
+      ],
+      "recall": [
+        -0.058833204334365334,
+        0.0
+      ],
+      "subgroup_recall": [
+        -0.10975944786920395,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.05392688745222802,
+        -0.029456103194317095
+      ],
+      "control_stays_disturbed": [
+        -0.013458069747446856,
+        -0.004511278195488723
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.029413498746880085,
+        0.012180021212718524
+      ],
+      "recall": [
+        -0.06748466257668709,
+        0.02667114093959727
+      ],
+      "subgroup_recall": [
+        -0.06748466257668709,
+        0.02667114093959727
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.021563885673224797,
+        0.01904978536683459
+      ],
+      "control_stays_disturbed": [
+        0.004101264157009334,
+        0.010514556124739134
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.02009010087944897,
+        0.003974124799701642
+      ],
+      "recall": [
+        -0.08089154411764705,
+        0.02759099616858235
+      ],
+      "subgroup_recall": [
+        -0.08089154411764705,
+        0.02759099616858235
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.030575081108159142,
+        0.04745389727133052
+      ],
+      "control_stays_disturbed": [
+        0.0308610041286883,
+        0.04629480304773464
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.008964768298977072,
+        0.006484644773480169
+      ],
+      "recall": [
+        -0.0897435897435897,
+        0.008000000000000007
+      ],
+      "subgroup_recall": [
+        -0.0897435897435897,
+        0.008000000000000007
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.06937579864053056,
+        0.008640301714776604
+      ],
+      "control_stays_disturbed": [
+        0.01930886464917135,
+        0.032684039595647786
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.04186304629378633,
+        0.04071406782246174
+      ],
+      "recall": [
+        -0.020979020979020976,
+        0.03597555690387447
+      ],
+      "subgroup_recall": [
+        -0.04001010101010102,
+        0.068189601494396
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.012870546157838973,
+        0.01605296756707325
+      ],
+      "control_stays_disturbed": [
+        0.003003003003003003,
+        0.00907227962742116
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.03775679647901869,
+        0.005474886922854237
+      ],
+      "recall": [
+        -0.03252032520325204,
+        0.04516129032258062
+      ],
+      "subgroup_recall": [
+        -0.05955086580086581,
+        0.08433734939759041
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.005777009990448143,
+        0.03091891792352477
+      ],
+      "control_stays_disturbed": [
+        0.01390951317060495,
+        0.02468258602465973
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.01698451419071422,
+        0.004093833051154313
+      ],
+      "recall": [
+        -0.03871092773193297,
+        0.02098271446862995
+      ],
+      "subgroup_recall": [
+        -0.0714285714285714,
+        0.04166666666666663
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.0021603306311090906,
+        0.015644408044159227
+      ],
+      "control_stays_disturbed": [
+        0.008239546188521832,
+        0.016692014695702397
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.0239984545207837,
+        0.038407965668077575
+      ],
+      "recall": [
+        -0.10960793575814834,
+        0.03174855929633001
+      ],
+      "subgroup_recall": [
+        -0.10960793575814834,
+        0.03174855929633001
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.046330663855039936,
+        -0.011897494453668134
+      ],
+      "control_stays_disturbed": [
+        -0.010906561011006,
+        -0.0033644545492644926
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.009792140652310719,
+        0.010334945395117987
+      ],
+      "recall": [
+        -0.007300611850579638,
+        0.10274699045246989
+      ],
+      "subgroup_recall": [
+        -0.007300611850579638,
+        0.10274699045246989
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.008181209304754213,
+        0.0603191428343237
+      ],
+      "control_stays_disturbed": [
+        -0.003383490457999081,
+        0.009356462636524707
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed123",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.007830763201110274,
+        0.007526528433610178
+      ],
+      "recall": [
+        -0.04546197266785498,
+        0.06918894129979031
+      ],
+      "subgroup_recall": [
+        -0.04546197266785498,
+        0.06918894129979031
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.016834490819727946,
+        0.040460290408622916
+      ],
+      "control_stays_disturbed": [
+        -0.00600831778556522,
+        0.010447761194029848
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.06055681213562652,
+        0.05666859605271475
+      ],
+      "recall": [
+        -0.10625647189349112,
+        0.012909592529711359
+      ],
+      "subgroup_recall": [
+        -0.20008474576271187,
+        0.023816695352839864
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.02943262641789878,
+        -0.0064384857052523356
+      ],
+      "control_stays_disturbed": [
+        -0.003741149855171811,
+        0.001128668171557562
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.01120143402148511,
+        0.040326769767026455
+      ],
+      "recall": [
+        -0.08641975308641975,
+        0.005820119802677918
+      ],
+      "subgroup_recall": [
+        -0.15942414431082336,
+        0.01012321012321001
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.046970695918465435,
+        -0.01757052209800221
+      ],
+      "control_stays_disturbed": [
+        -0.009029345372460498,
+        -0.0007498992348595101
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.012554229790042276,
+        0.022827771445611118
+      ],
+      "recall": [
+        -0.07534246575342463,
+        0.019740109794353422
+      ],
+      "subgroup_recall": [
+        -0.1392682656007106,
+        0.03751186708860751
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.036701449999007735,
+        -0.006924808873969568
+      ],
+      "control_stays_disturbed": [
+        -0.011940409932420765,
+        -0.0011303373466570656
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.036612138314062626,
+        0.012872750816218952
+      ],
+      "recall": [
+        -0.04605263157894737,
+        0.07432957025348329
+      ],
+      "subgroup_recall": [
+        -0.04605263157894737,
+        0.07432957025348329
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.04568302442160914
+      ],
+      "control_stays_disturbed": [
+        0.005928449428398268,
+        0.013780903443675472
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.017325508283221734,
+        0.010636724238269009
+      ],
+      "recall": [
+        -0.055565268065268035,
+        0.05333333333333329
+      ],
+      "subgroup_recall": [
+        -0.055565268065268035,
+        0.05333333333333329
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.027247920607781737,
+        0.04374341998918908
+      ],
+      "control_stays_disturbed": [
+        0.02135551426172133,
+        0.03423659000332186
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.004507355147260349,
+        0.02012845607405461
+      ],
+      "recall": [
+        -0.05806451612903224,
+        0.044307313642756675
+      ],
+      "subgroup_recall": [
+        -0.05806451612903224,
+        0.044307313642756675
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.1432371505861136,
+        -0.04323184023692899
+      ],
+      "control_stays_disturbed": [
+        -0.012826806903212687,
+        0.009039180770538427
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.05118046364472041,
+        0.04193628453402862
+      ],
+      "recall": [
+        -0.048284243295019166,
+        0.038461538461538464
+      ],
+      "subgroup_recall": [
+        -0.08955702257941067,
+        0.06978381919423507
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.009869665555523469,
+        0.007292216978513961
+      ],
+      "control_stays_disturbed": [
+        0.00037369207772795223,
+        0.004486065221267713
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.07275036281601034,
+        -0.006860911397382187
+      ],
+      "recall": [
+        -0.041666666666666685,
+        0.040936870865688806
+      ],
+      "subgroup_recall": [
+        -0.07692307692307693,
+        0.07694444444444433
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.012709860651036242,
+        0.04142892945757841
+      ],
+      "control_stays_disturbed": [
+        0.013493253373313344,
+        0.02360523191363279
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed123",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.030731009920133216,
+        0.003795678852574548
+      ],
+      "recall": [
+        -0.03872877758913411,
+        0.05036654220927048
+      ],
+      "subgroup_recall": [
+        -0.07145445134575566,
+        0.09335294117647042
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.007746049601923967,
+        0.03880519578338275
+      ],
+      "control_stays_disturbed": [
+        0.014699785970278711,
+        0.029050437440708336
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed123",
+    "reference": "short_budget:source_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.04041226130482284,
+        0.003192148677798929
+      ],
+      "recall": [
+        -0.10897435897435895,
+        0.020134228187919462
+      ],
+      "subgroup_recall": [
+        -0.10897435897435895,
+        0.020134228187919462
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.018061850487318294,
+        0.0228655267867864
+      ],
+      "control_stays_disturbed": [
+        -0.003721657266544388,
+        0.0041384889015004455
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed123",
+    "reference": "short_budget:source_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.009854250575332629,
+        0.0103098503266152
+      ],
+      "recall": [
+        -0.07101648351648354,
+        0.03268511351909181
+      ],
+      "subgroup_recall": [
+        -0.07101648351648354,
+        0.03268511351909181
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.036352283016268194,
+        0.011781479876913506
+      ],
+      "control_stays_disturbed": [
+        -0.01798476970310393,
+        -0.006371754409419494
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed123",
+    "reference": "short_budget:source_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.0011747038200009003,
+        0.011764764215923412
+      ],
+      "recall": [
+        -0.027397260273972657,
+        0.04195804195804198
+      ],
+      "subgroup_recall": [
+        -0.027397260273972657,
+        0.04195804195804198
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.053132759206679245,
+        -0.01688338671500376
+      ],
+      "control_stays_disturbed": [
+        -0.02104099629861534,
+        -0.005235504269089599
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed123",
+    "reference": "short_budget:source_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.05322080723784355,
+        0.03832765310530037
+      ],
+      "recall": [
+        -0.027411629466423986,
+        0.08176921993804556
+      ],
+      "subgroup_recall": [
+        -0.05263157894736842,
+        0.1562911184210524
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0011310428447997593,
+        0.030963412884295015
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.005999250093738283
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed123",
+    "reference": "short_budget:source_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.011328881676670633,
+        0.029873775491003198
+      ],
+      "recall": [
+        -0.05194805194805194,
+        0.02128039513677807
+      ],
+      "subgroup_recall": [
+        -0.09590278923914843,
+        0.04054054054054046
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.02490992803606782,
+        -0.005010865102238415
+      ],
+      "control_stays_disturbed": [
+        -0.005239569998901485,
+        0.0011308059858812613
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed123",
+    "reference": "short_budget:source_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.0001476522580017576,
+        0.02248654443109577
+      ],
+      "recall": [
+        -0.014186930091185431,
+        0.03125491352201255
+      ],
+      "subgroup_recall": [
+        -0.027027027027026973,
+        0.05882352941176466
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.019415331565328424,
+        -0.0011585748086759117
+      ],
+      "control_stays_disturbed": [
+        -0.004115264840688991,
+        0.004106048036048363
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.03273106673269613,
+        0.031375887234829675
+      ],
+      "recall": [
+        -0.03817527891955368,
+        0.10527133050016341
+      ],
+      "subgroup_recall": [
+        -0.03817527891955368,
+        0.10527133050016341
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.008490519604502755,
+        0.04419776167618979
+      ],
+      "control_stays_disturbed": [
+        0.0007490566593330789,
+        0.0067876508366852585
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.0161526729335802,
+        0.013886528295589201
+      ],
+      "recall": [
+        -0.013078431372549028,
+        0.10829760738200217
+      ],
+      "subgroup_recall": [
+        -0.013078431372549028,
+        0.10829760738200217
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.010421058134669512,
+        0.07778437302143121
+      ],
+      "control_stays_disturbed": [
+        0.02346346876208938,
+        0.0363583432642653
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.003875543284498141,
+        0.007940242250236531
+      ],
+      "recall": [
+        -0.02238805970149249,
+        0.05161290322580647
+      ],
+      "subgroup_recall": [
+        -0.02238805970149249,
+        0.05161290322580647
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.04729787930895047,
+        0.0315742638579808
+      ],
+      "control_stays_disturbed": [
+        0.0313547188945237,
+        0.04945774675480503
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.08402652648868417,
+        0.041045236058495235
+      ],
+      "recall": [
+        -0.09161560867818401,
+        0.025481789972235803
+      ],
+      "subgroup_recall": [
+        -0.17286634460547504,
+        0.05001582278481003
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.020016563349011023,
+        0.011293041335980138
+      ],
+      "control_stays_disturbed": [
+        -0.0011160818125631345,
+        0.002617801047120419
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.029312362403057648,
+        0.037707196927143936
+      ],
+      "recall": [
+        -0.046365342163355396,
+        0.04412581699346402
+      ],
+      "subgroup_recall": [
+        -0.08772411798727588,
+        0.0821958098307816
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.0242651838297945,
+        0.01390436898150986
+      ],
+      "control_stays_disturbed": [
+        0.0030029748322431254,
+        0.008624245852107389
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.006383107170835527,
+        0.014371219489692898
+      ],
+      "recall": [
+        -0.019354838709677413,
+        0.045454545454545414
+      ],
+      "subgroup_recall": [
+        -0.03616688978134761,
+        0.08451301026497968
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.009823101533421667,
+        0.010839298518384888
+      ],
+      "control_stays_disturbed": [
+        0.00150093808630394,
+        0.013508950422085953
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        0.004046095666659674,
+        0.0434114179374464
+      ],
+      "recall": [
+        0.04604510663914692,
+        0.17808219178082194
+      ],
+      "subgroup_recall": [
+        0.04604510663914692,
+        0.17808219178082194
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.0011232519408759494,
+        0.04378259285461033
+      ],
+      "control_stays_disturbed": [
+        0.005615821660684619,
+        0.013842254464135702
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.0021689986686453653,
+        0.01710577167556572
+      ],
+      "recall": [
+        -0.02817400859055041,
+        0.09741508491508483
+      ],
+      "subgroup_recall": [
+        -0.02817400859055041,
+        0.09741508491508483
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.03465560665482624,
+        0.01854941929232646
+      ],
+      "control_stays_disturbed": [
+        -0.0011215163053169346,
+        0.009338812103100481
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed123",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.0006448144183102515,
+        0.015768243232593963
+      ],
+      "recall": [
+        -0.05427683975788466,
+        0.05521472392638033
+      ],
+      "subgroup_recall": [
+        -0.05427683975788466,
+        0.05521472392638033
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.07312856028863976,
+        -0.022522454737062342
+      ],
+      "control_stays_disturbed": [
+        -0.007868410637877596,
+        0.003398984507754126
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        0.003392300666236862,
+        0.060807461609700415
+      ],
+      "recall": [
+        -0.007520221007063112,
+        0.06429147465437784
+      ],
+      "subgroup_recall": [
+        -0.01471136962247586,
+        0.11842105263157893
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.02073903915395442,
+        0.005685001255069443
+      ],
+      "control_stays_disturbed": [
+        -0.0003777861730260672,
+        0.004157218442932728
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.013626808612614717,
+        0.02246612035544524
+      ],
+      "recall": [
+        -0.04939814814814814,
+        0.03775399129172706
+      ],
+      "subgroup_recall": [
+        -0.09303100775193804,
+        0.06976744186046513
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.021801574736352938,
+        0.0034562849055114523
+      ],
+      "control_stays_disturbed": [
+        -0.0007504760858419412,
+        0.005255255255255253
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed123",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed123",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.0034256180335014573,
+        0.03338778798853085
+      ],
+      "recall": [
+        -0.03205645161290322,
+        0.047305341055341024
+      ],
+      "subgroup_recall": [
+        -0.06061529933481153,
+        0.08697010869565215
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.035093119452342766,
+        -0.00967501187673736
+      ],
+      "control_stays_disturbed": [
+        -0.002627676982015825,
+        0.004110612855007474
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.04340619490916943,
+        0.008292643354792984
+      ],
+      "recall": [
+        -0.10393028024606969,
+        0.007575757575757569
+      ],
+      "subgroup_recall": [
+        -0.10393028024606969,
+        0.007575757575757569
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.028274712180520425,
+        0.011081615102783132
+      ],
+      "control_stays_disturbed": [
+        0.005259154233389467,
+        0.013084112149532711
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.002201557509267066,
+        0.021450775111009592
+      ],
+      "recall": [
+        -0.03390701184118878,
+        0.07432957025348323
+      ],
+      "subgroup_recall": [
+        -0.03390701184118878,
+        0.07432957025348323
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.056158086008522144,
+        0.01667071962984071
+      ],
+      "control_stays_disturbed": [
+        0.01455223880597015,
+        0.025056095736724005
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.000916137833633783,
+        0.014810386143619049
+      ],
+      "recall": [
+        -0.07785132859281443,
+        0.02207553475935823
+      ],
+      "subgroup_recall": [
+        -0.07785132859281443,
+        0.02207553475935823
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.10184741923713558,
+        -0.025598158578667547
+      ],
+      "control_stays_disturbed": [
+        -0.0140032115314023,
+        -0.001119779091029371
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.050980932844959,
+        0.022616830468033356
+      ],
+      "recall": [
+        -0.08642592592592592,
+        0.006666666666666655
+      ],
+      "subgroup_recall": [
+        -0.16364993215739485,
+        0.012662284972411543
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.02841862840568954,
+        0.0015456728403022639
+      ],
+      "control_stays_disturbed": [
+        0.0033987915407854984,
+        0.010216631642090407
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.019501242173494103,
+        0.013892407311930291
+      ],
+      "recall": [
+        -0.06557676199593154,
+        0.007195547909498491
+      ],
+      "subgroup_recall": [
+        -0.12195121951219512,
+        0.014084507042253504
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.02659204671366399,
+        -0.0011497291909753464
+      ],
+      "control_stays_disturbed": [
+        -0.0029996531753860864,
+        0.004484430754983818
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.017065136866879563,
+        0.00765753175659088
+      ],
+      "recall": [
+        -0.06717426381605483,
+        0.007195547909498491
+      ],
+      "subgroup_recall": [
+        -0.12499999999999994,
+        0.014084507042253502
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.02092007986155464,
+        0.001434104232909433
+      ],
+      "control_stays_disturbed": [
+        -0.010550311945542235,
+        -0.0007535724067853355
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.0019638526456559778,
+        0.05175756708689776
+      ],
+      "recall": [
+        -0.06790824915824915,
+        0.08108530405405401
+      ],
+      "subgroup_recall": [
+        -0.06790824915824915,
+        0.08108530405405401
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.06143640119325615,
+        -0.002647218199563098
+      ],
+      "control_stays_disturbed": [
+        0.005247376311844078,
+        0.012758093459312971
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "availability__scratch_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.046630052585816616,
+        0.002334722348545037
+      ],
+      "recall": [
+        -0.15231788079470196,
+        -0.02595758671708046
+      ],
+      "subgroup_recall": [
+        -0.15231788079470196,
+        -0.02595758671708046
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.039165443138879555,
+        -0.0010997721202596357
+      ],
+      "control_stays_disturbed": [
+        -0.006741636180701435,
+        0.0030007501875468877
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.01152810207081682,
+        0.011373667196315064
+      ],
+      "recall": [
+        -0.12805268918073795,
+        -0.007194244604316556
+      ],
+      "subgroup_recall": [
+        -0.12805268918073795,
+        -0.007194244604316556
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.07238600384322642,
+        -0.013085705983489014
+      ],
+      "control_stays_disturbed": [
+        0.002252992448574808,
+        0.01644905982427668
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "availability__scratch_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.012650337661196885,
+        0.011558509221085143
+      ],
+      "recall": [
+        -0.09678341013824887,
+        0.02190902418138071
+      ],
+      "subgroup_recall": [
+        -0.09678341013824887,
+        0.02190902418138071
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.04937476752799221,
+        -0.0015345264014428987
+      ],
+      "control_stays_disturbed": [
+        -0.018775993079891314,
+        -0.00528895648839192
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.0018810360624659038,
+        0.0175793917336485
+      ],
+      "recall": [
+        -0.08127354452054793,
+        0.02580645161290318
+      ],
+      "subgroup_recall": [
+        -0.08127354452054793,
+        0.02580645161290318
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.11336023029536223,
+        -0.05348786295774432
+      ],
+      "control_stays_disturbed": [
+        -0.046459783409157164,
+        -0.025949361227438673
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "availability__scratch_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.010016679974432733,
+        0.00783931455479202
+      ],
+      "recall": [
+        -0.1478938445487741,
+        -0.027772988505747165
+      ],
+      "subgroup_recall": [
+        -0.1478938445487741,
+        -0.027772988505747165
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.0913825432897753,
+        -0.04038865292610973
+      ],
+      "control_stays_disturbed": [
+        -0.029203092932022175,
+        -0.01280036358351167
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.025463539074166243,
+        0.09003955624628587
+      ],
+      "recall": [
+        0.006622516556291396,
+        0.11904761904761904
+      ],
+      "subgroup_recall": [
+        0.012658227848101276,
+        0.22222222222222224
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.004160735207671389,
+        0.028641929877551823
+      ],
+      "control_stays_disturbed": [
+        0.003379583606633605,
+        0.00975243810952738
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "availability__scratch_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.09108787897162639,
+        -0.008665156201161947
+      ],
+      "recall": [
+        -0.09805035650623888,
+        -0.01155416217628428
+      ],
+      "subgroup_recall": [
+        -0.1857142857142857,
+        -0.02126014476858967
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.012675847848480663,
+        0.012524361692905816
+      ],
+      "control_stays_disturbed": [
+        -0.0014964459408903855,
+        0.006029148854032075
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        0.0063837668426883175,
+        0.051796638299987374
+      ],
+      "recall": [
+        -0.0763888888888889,
+        0.006946889671361519
+      ],
+      "subgroup_recall": [
+        -0.14458227647431834,
+        0.013513513513513487
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.05449040215874334,
+        -0.021642470779973402
+      ],
+      "control_stays_disturbed": [
+        -0.001498702690617973,
+        0.008218154650728426
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "availability__scratch_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.07822240678836585,
+        -0.023545576650766016
+      ],
+      "recall": [
+        -0.058832231117299,
+        0.028990796572516648
+      ],
+      "subgroup_recall": [
+        -0.11392405063291139,
+        0.05558712121212106
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0202607357885145,
+        0.05095381665038387
+      ],
+      "control_stays_disturbed": [
+        -0.0007516254313657017,
+        0.008922016033931435
+      ]
+    }
+  },
+  {
+    "model": "availability__scratch_34f_lr0.0003_seed456",
+    "reference": "short_budget:availability__scratch_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.008935514088764997,
+        0.01431518973606973
+      ],
+      "recall": [
+        -0.040275258479956465,
+        0.027782634032634018
+      ],
+      "subgroup_recall": [
+        -0.07594936708860756,
+        0.05264557670772674
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.018355727251264435,
+        0.0029928831072804103
+      ],
+      "control_stays_disturbed": [
+        -0.009798858719271391,
+        0.003745388541684216
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0003_seed456",
+    "reference": "availability__scratch_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.02371146754199461,
+        0.00458136982482684
+      ],
+      "recall": [
+        -0.07333333333333336,
+        0.0
+      ],
+      "subgroup_recall": [
+        -0.13794429708222805,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.016331908032013932,
+        0.009686340280876967
+      ],
+      "control_stays_disturbed": [
+        -0.011707059208566498,
+        -0.00036326378539498354
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed456",
+    "reference": "short_budget:source_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.028458590992269037,
+        0.01554058332281542
+      ],
+      "recall": [
+        -0.09999999999999998,
+        0.04111015981735152
+      ],
+      "subgroup_recall": [
+        -0.09999999999999998,
+        0.04111015981735152
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.033777171676653776,
+        0.026372985438157717
+      ],
+      "control_stays_disturbed": [
+        -0.016406126697580736,
+        -0.006359776372237433
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed456",
+    "reference": "short_budget:source_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.021920754588217108,
+        0.006712793631368599
+      ],
+      "recall": [
+        -0.0680506685432794,
+        0.0684931506849315
+      ],
+      "subgroup_recall": [
+        -0.0680506685432794,
+        0.0684931506849315
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.009803362330527348,
+        0.06864143153182933
+      ],
+      "control_stays_disturbed": [
+        -0.02432657499489976,
+        -0.013498312710911134
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed456",
+    "reference": "short_budget:source_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.005912048813934807,
+        0.007386724097717393
+      ],
+      "recall": [
+        -0.06289555786658742,
+        0.02500791139240504
+      ],
+      "subgroup_recall": [
+        -0.06289555786658742,
+        0.02500791139240504
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.045020109163789,
+        0.008730570580545082
+      ],
+      "control_stays_disturbed": [
+        -0.035352301208088424,
+        -0.022539232428812006
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed456",
+    "reference": "short_budget:source_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.07895414576669574,
+        0.028177578018995904
+      ],
+      "recall": [
+        -0.07633830894150823,
+        0.048006896551724104
+      ],
+      "subgroup_recall": [
+        -0.14084958468761286,
+        0.08955702257941062
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.010910721962529821,
+        0.023419218304319804
+      ],
+      "control_stays_disturbed": [
+        -0.008212096072096725,
+        -0.0018677449844511221
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed456",
+    "reference": "short_budget:source_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.023389514818305562,
+        0.026865386128808243
+      ],
+      "recall": [
+        -0.02941721132897604,
+        0.06832723559942139
+      ],
+      "subgroup_recall": [
+        -0.05407256571640134,
+        0.12988424618859393
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.008154645806433268,
+        0.02739127685321046
+      ],
+      "control_stays_disturbed": [
+        -0.011580451805722534,
+        -0.00374946106633636
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0003_seed456",
+    "reference": "short_budget:source_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.005222356231493474,
+        0.020405399775306542
+      ],
+      "recall": [
+        -0.018190235690235694,
+        0.04697986577181207
+      ],
+      "subgroup_recall": [
+        -0.03195971790580922,
+        0.08824460163812357
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.01343035810829891,
+        0.009082366923785168
+      ],
+      "control_stays_disturbed": [
+        -0.009019165727170236,
+        -0.0018698578908003007
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.01989848553899942,
+        0.01835104866440659
+      ],
+      "recall": [
+        0.014485044711686665,
+        0.14494358833241597
+      ],
+      "subgroup_recall": [
+        0.014485044711686665,
+        0.14494358833241597
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.023789454397439392,
+        0.07497094707001453
+      ],
+      "control_stays_disturbed": [
+        0.01471656508473853,
+        0.025316927314229656
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.005124103857924165,
+        0.015538295215937784
+      ],
+      "recall": [
+        0.04515405293631101,
+        0.1455727638527957
+      ],
+      "subgroup_recall": [
+        0.04515405293631101,
+        0.1455727638527957
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.02167863761757014,
+        0.06969030239795772
+      ],
+      "control_stays_disturbed": [
+        0.01241068070703272,
+        0.022214064591700132
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.014191183321716323,
+        -0.0003380816482833428
+      ],
+      "recall": [
+        0.033112582781456956,
+        0.11586054287962225
+      ],
+      "subgroup_recall": [
+        0.033112582781456956,
+        0.11586054287962225
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.07777662698997274,
+        0.13531533262279288
+      ],
+      "control_stays_disturbed": [
+        0.022488755622188907,
+        0.035041622483080986
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.02146067523683249,
+        0.0786418603441418
+      ],
+      "recall": [
+        -0.013703386605783865,
+        0.09561788425047421
+      ],
+      "subgroup_recall": [
+        -0.026666666666666644,
+        0.1818181818181818
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.010423048250798393,
+        0.017073023700550985
+      ],
+      "control_stays_disturbed": [
+        0.003731343283582089,
+        0.010150662457800504
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.010179501862964528,
+        0.020412981864287506
+      ],
+      "recall": [
+        0.0,
+        0.07086753783436646
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.12988424618859387
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.003014093382087542,
+        0.017736550321538286
+      ],
+      "control_stays_disturbed": [
+        0.004890711679977206,
+        0.011725326285557638
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.007612518833021213,
+        0.009088964921612144
+      ],
+      "recall": [
+        -0.012660243489478364,
+        0.040005747126436786
+      ],
+      "subgroup_recall": [
+        -0.02352941176470591,
+        0.07501893939393936
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.0018941360917560566,
+        0.01554011739172143
+      ],
+      "control_stays_disturbed": [
+        -0.0033557359895260977,
+        0.006352765321375183
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed456",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0003_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0003_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.026468458656736877,
+        0.03483090764399054
+      ],
+      "recall": [
+        -0.007144141829393629,
+        0.15605623100303936
+      ],
+      "subgroup_recall": [
+        -0.007144141829393629,
+        0.15605623100303936
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.01518483622937267,
+        0.04757065535415062
+      ],
+      "control_stays_disturbed": [
+        0.0007457052066161875,
+        0.004887263994887557
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.014050779706755003,
+        0.009229973444678007
+      ],
+      "recall": [
+        -0.02778755868544602,
+        0.08404544916558164
+      ],
+      "subgroup_recall": [
+        -0.02778755868544602,
+        0.08404544916558164
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.005386415296557287,
+        0.05059816855824762
+      ],
+      "control_stays_disturbed": [
+        0.010494752623688156,
+        0.019887989958036315
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.006685553471246729,
+        0.017122620293395455
+      ],
+      "recall": [
+        -0.050632911392405,
+        0.006993006993006978
+      ],
+      "subgroup_recall": [
+        -0.050632911392405,
+        0.006993006993006978
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.132462317277645,
+        -0.05258758200948151
+      ],
+      "control_stays_disturbed": [
+        -0.013026043177478139,
+        -0.002255596730368374
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        0.006022744161348719,
+        0.1306311717365684
+      ],
+      "recall": [
+        0.014385919835560118,
+        0.13513513513513514
+      ],
+      "subgroup_recall": [
+        0.028169014084507032,
+        0.24699074074074032
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.00426937133749163,
+        0.014969311505551823
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.002605184351997583
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.0316646952229087,
+        0.0156733187008004
+      ],
+      "recall": [
+        -0.041965428937259915,
+        0.0410958904109589
+      ],
+      "subgroup_recall": [
+        -0.07778138528138523,
+        0.07692307692307693
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.00778733154922826,
+        0.01882152194065182
+      ],
+      "control_stays_disturbed": [
+        0.004122938530734633,
+        0.010455563853622106
+      ]
+    }
+  },
+  {
+    "model": "scratch_34f_lr0.0001_seed456",
+    "reference": "short_budget:scratch_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.019449299698406777,
+        0.007411695627219973
+      ],
+      "recall": [
+        0.013983585858585884,
+        0.08333333333333331
+      ],
+      "subgroup_recall": [
+        0.027027027027027084,
+        0.15384615384615385
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.026945566257900226,
+        0.045092826515617315
+      ],
+      "control_stays_disturbed": [
+        0.013467887551657185,
+        0.024426907177752723
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed456",
+    "reference": "short_budget:source_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed456",
+    "reference": "short_budget:source_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed456",
+    "reference": "short_budget:source_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed456",
+    "reference": "short_budget:source_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed456",
+    "reference": "short_budget:source_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "source_34f_lr0.0001_seed456",
+    "reference": "short_budget:source_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.0,
+        0.0
+      ],
+      "recall": [
+        0.0,
+        0.0
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.0
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.0
+      ],
+      "control_stays_disturbed": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.01794105802358265,
+        0.04379185212425549
+      ],
+      "recall": [
+        -0.006624738877283413,
+        0.13939393939393938
+      ],
+      "subgroup_recall": [
+        -0.006624738877283413,
+        0.13939393939393938
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.0007326743054103365,
+        0.04326728257457935
+      ],
+      "control_stays_disturbed": [
+        0.0033619409720120194,
+        0.011219357283936242
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.005545771482232623,
+        0.020274807230315262
+      ],
+      "recall": [
+        -0.035929220695299996,
+        0.09027889784946237
+      ],
+      "subgroup_recall": [
+        -0.035929220695299996,
+        0.09027889784946237
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.045838215519253926,
+        0.026603897178219312
+      ],
+      "control_stays_disturbed": [
+        0.019043885017232195,
+        0.03096743015146353
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        0.003330858086318331,
+        0.020919770656253726
+      ],
+      "recall": [
+        -0.06717426381605489,
+        0.03788118527042573
+      ],
+      "subgroup_recall": [
+        -0.06717426381605489,
+        0.03788118527042573
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.13386841134514937,
+        -0.02879345340532604
+      ],
+      "control_stays_disturbed": [
+        0.010828875794112425,
+        0.02618927684544482
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.07056370588548969,
+        0.061581400777298026
+      ],
+      "recall": [
+        -0.0160032258064516,
+        0.08785277624563331
+      ],
+      "subgroup_recall": [
+        -0.031275201612903224,
+        0.16470588235294115
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0,
+        0.025056075780352415
+      ],
+      "control_stays_disturbed": [
+        0.0003774938237798255,
+        0.00561382499882302
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.04189523604628683,
+        0.01287158126308582
+      ],
+      "recall": [
+        -0.04896840747904581,
+        0.04930451503346316
+      ],
+      "subgroup_recall": [
+        -0.09093228200371055,
+        0.09525075987841944
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.004451783388703751,
+        0.028387448433689292
+      ],
+      "control_stays_disturbed": [
+        0.00934212751635147,
+        0.017957519304824695
+      ]
+    }
+  },
+  {
+    "model": "targetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:targetmae_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.023515497535390176,
+        0.009500300625936776
+      ],
+      "recall": [
+        -0.029586894586894626,
+        0.0559017069886635
+      ],
+      "subgroup_recall": [
+        -0.05496031746031749,
+        0.10588235294117643
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.0003570959638257508,
+        0.03178033625478712
+      ],
+      "control_stays_disturbed": [
+        0.005634861006761836,
+        0.01616571762363018
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.00411198370386693,
+        0.021858018717631707
+      ],
+      "recall": [
+        -0.01282051282051283,
+        0.06748466257668712
+      ],
+      "subgroup_recall": [
+        -0.01282051282051283,
+        0.06748466257668712
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.016852352270561335,
+        0.014496208811715521
+      ],
+      "control_stays_disturbed": [
+        0.001888930865130336,
+        0.009745127436281857
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.009333589214339461,
+        0.006982182144240851
+      ],
+      "recall": [
+        0.0,
+        0.08176376475780643
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.08176376475780643
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.02117651771750935,
+        0.05384700706318465
+      ],
+      "control_stays_disturbed": [
+        0.01511672996869567,
+        0.02639482739506105
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed456",
+    "gate": "all",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.002671352812591043,
+        0.00889939097566891
+      ],
+      "recall": [
+        -0.06024500687313013,
+        0.020141076564854064
+      ],
+      "subgroup_recall": [
+        -0.06024500687313013,
+        0.020141076564854064
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.0795449314193498,
+        -0.0007605867687111426
+      ],
+      "control_stays_disturbed": [
+        0.011244167242221582,
+        0.023247530268847717
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.3,
+    "difference_ci95": {
+      "precision": [
+        -0.03169426682591565,
+        0.02562178595937716
+      ],
+      "recall": [
+        -0.028576567317574506,
+        0.0410958904109589
+      ],
+      "subgroup_recall": [
+        -0.053369863013698636,
+        0.07792715097402594
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        -0.002568615278145431,
+        0.011849032808900446
+      ],
+      "control_stays_disturbed": [
+        0.000373828283251611,
+        0.0052436916331133916
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.5,
+    "difference_ci95": {
+      "precision": [
+        -0.02768587031866918,
+        0.0010415565224256612
+      ],
+      "recall": [
+        0.0,
+        0.060981831757093076
+      ],
+      "subgroup_recall": [
+        0.0,
+        0.11363636363636365
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.022249171100960245,
+        0.04111769749361133
+      ],
+      "control_stays_disturbed": [
+        0.007835383303141773,
+        0.01583188188028601
+      ]
+    }
+  },
+  {
+    "model": "sourcetargetmae_34f_lr0.0001_seed456",
+    "reference": "short_budget:sourcetargetmae_34f_lr0.0001_seed456",
+    "gate": "bp_routine_perfusion",
+    "target_recall": 0.6,
+    "difference_ci95": {
+      "precision": [
+        -0.02725274717941168,
+        0.002921219973326179
+      ],
+      "recall": [
+        -0.03947368421052627,
+        0.04195804195804198
+      ],
+      "subgroup_recall": [
+        -0.07528583095140873,
+        0.07956831243469166
+      ],
+      "event_coverage": [
+        0.0,
+        0.0
+      ],
+      "alarms_per_patient_day": [
+        0.007440743772236891,
+        0.03112264314777442
+      ],
+      "control_stays_disturbed": [
+        0.008279859356659052,
+        0.01683517434827315
+      ]
+    }
+  }
+]

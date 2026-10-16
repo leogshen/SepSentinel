@@ -1,0 +1,12 @@
+{
+  "python": "3.13.15",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "torch": "2.6.0+cu124",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "duckdb": "1.5.5"
+  }
+}

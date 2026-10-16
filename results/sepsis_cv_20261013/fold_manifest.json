@@ -1,0 +1,153 @@
+{
+  "records": 16684,
+  "events": 769,
+  "excluded_original_test_records": 2819,
+  "split_unit": "released record; person identity beyond this unavailable",
+  "folds": [
+    {
+      "fold": 0,
+      "splits": {
+        "fit": {
+          "records": 9342,
+          "events": 431
+        },
+        "tune": {
+          "records": 2002,
+          "events": 92
+        },
+        "cal": {
+          "records": 2003,
+          "events": 92
+        },
+        "test": {
+          "records": 3337,
+          "events": 154
+        }
+      },
+      "hashes": {
+        "fit.pkl": "86f20c57bac530e280530525ed60c486ce8fac16319680696469c14b0c3ed72b",
+        "tune.pkl": "043f742d7716023d4e7e94aed7b72f263abe6156896cdbe196607497b37715d0",
+        "cal.pkl": "267ed5597f5e5a0551afcb35d5f7591d9ab1ca92bb95170cefe29df2178e8709",
+        "test.pkl": "01da8e84b3cac4159a1ee1c17779433efe13cba6e62383d1e76ffe214bd5df22",
+        "scaler.npz": "02661d193bb115ad99d6d8a24199b5c2d4a6177c2ecb4f11df251894b54faa78",
+        "record_ids.json": "ad15d7801fc5b0d72e028d003b53d669befcd5a0c5fb03195fb257ff0d250e07"
+      }
+    },
+    {
+      "fold": 1,
+      "splits": {
+        "fit": {
+          "records": 9342,
+          "events": 431
+        },
+        "tune": {
+          "records": 2002,
+          "events": 92
+        },
+        "cal": {
+          "records": 2003,
+          "events": 92
+        },
+        "test": {
+          "records": 3337,
+          "events": 154
+        }
+      },
+      "hashes": {
+        "fit.pkl": "b2d0e827df60a85a1095e9cd5004c56596339d7fe033e9779ba9847ae58483f7",
+        "tune.pkl": "a306d675db7bbbc48a57bf27f80a4b0a342930295420617d5af2f10abd4346a4",
+        "cal.pkl": "68c7bf05b8a4b25d3943676d3c283eb9769ab4bcced357b99f6975d8699122e0",
+        "test.pkl": "8d474bed12914894a2cb963890f81e7dd614e499840ef9a8a349f3950be20b79",
+        "scaler.npz": "e34c8295e1771b8ac9e70d83194bb42c8708d3e7bf479b56e115bb9b55cae781",
+        "record_ids.json": "92de94de40a78c9619775e6e408af921bd4519240ade3dacafe072c3e683c1cf"
+      }
+    },
+    {
+      "fold": 2,
+      "splits": {
+        "fit": {
+          "records": 9342,
+          "events": 431
+        },
+        "tune": {
+          "records": 2002,
+          "events": 92
+        },
+        "cal": {
+          "records": 2003,
+          "events": 92
+        },
+        "test": {
+          "records": 3337,
+          "events": 154
+        }
+      },
+      "hashes": {
+        "fit.pkl": "b87abdbdea55bdf3e1b9d45f425ce515ccc407ce2caf749c8a7096beada1389b",
+        "tune.pkl": "45468d3e4714c6c129c1929e7d8aaf3ccb3934de15a5cbe7e958c10aebf79cdf",
+        "cal.pkl": "8d88ca894382f66f879c46cdad30b9ac95086e4b87803b832d8fa5364519a25f",
+        "test.pkl": "fb2f93750034dd352b28bcc2635b7d49048642bac7166671ef86c3dad9228009",
+        "scaler.npz": "3a515306c5f6f3395dfd50baefe302a0606889bcec62661d48474a6e984055b5",
+        "record_ids.json": "423b77355cfbe347a2be88f50db8adabc2eabc8b3d3c9ce5bbc62c3e54d1b297"
+      }
+    },
+    {
+      "fold": 3,
+      "splits": {
+        "fit": {
+          "records": 9342,
+          "events": 431
+        },
+        "tune": {
+          "records": 2002,
+          "events": 92
+        },
+        "cal": {
+          "records": 2003,
+          "events": 92
+        },
+        "test": {
+          "records": 3337,
+          "events": 154
+        }
+      },
+      "hashes": {
+        "fit.pkl": "3a37e764fa31e84e8bf5504be1bdd483cfa69ac6923f15ffeeddb629bcbf26e1",
+        "tune.pkl": "3368b82232fd39d11ca61002eca70f69794e563d0df549bdb6ec6260069f1dac",
+        "cal.pkl": "70a26a8610c079fc6c6d8961750f3382cafbc25b0f0340fa355945ecbc6ac7ad",
+        "test.pkl": "773c0868d0badf6ac049f061442737b070ae684d88dca97347cf50c2d90c470b",
+        "scaler.npz": "04afea8128a1581f83e7fb07274dd7e9394a32eeeb523ad562066c30bb25b16b",
+        "record_ids.json": "3c45e73fb3d41ebb770a9587878a6c9fb2c30c6a2f98d27e8599bef0725c9028"
+      }
+    },
+    {
+      "fold": 4,
+      "splits": {
+        "fit": {
+          "records": 9342,
+          "events": 431
+        },
+        "tune": {
+          "records": 2003,
+          "events": 93
+        },
+        "cal": {
+          "records": 2003,
+          "events": 92
+        },
+        "test": {
+          "records": 3336,
+          "events": 153
+        }
+      },
+      "hashes": {
+        "fit.pkl": "ce84b61a45be06efedb77dd83a49a817b4e3d298450d9629661bd1d2dade6bd2",
+        "tune.pkl": "ac46ea340489359cf824b913cb6c940124169ae8f5e7846310bc23fc3aa905d4",
+        "cal.pkl": "a62a6ebc516ae82877a8b9960e5054d91104cf8ad00bc3d902e30843843400c6",
+        "test.pkl": "c3a1cdd81c0dc0cbd112316e2ebe7a7476b0bfb41d4319e1a2b5c289ea0dcc43",
+        "scaler.npz": "8119092da238e18a1a36e43a3ea3e1881b8b2c307fae926ea54b6509368e57c4",
+        "record_ids.json": "82bfc143b24736838f6483da567255910ae776c38b6a73c9f768370f65128208"
+      }
+    }
+  ]
+}

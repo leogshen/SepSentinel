@@ -1,0 +1,64 @@
+{
+  "config": {
+    "run_name": "sepsis_lab_specialize_20261014",
+    "folds": 5,
+    "seed": 42,
+    "learning_rates": [
+      3e-05,
+      0.0001,
+      0.0003
+    ],
+    "epochs": 200,
+    "min_epochs": 30,
+    "patience": 30,
+    "lr_patience": 8,
+    "lr_factor": 0.5,
+    "min_lr": 1e-06,
+    "mae_max_steps": 100000,
+    "mae_min_steps": 20000,
+    "mae_patience": 12,
+    "gates": [
+      "bp_routine_perfusion"
+    ],
+    "recall_targets": [
+      0.3,
+      0.5,
+      0.6
+    ],
+    "calibration_quantiles": 501,
+    "bootstrap_replicates": 1000,
+    "bootstrap_seed": 930,
+    "refractory_hours": 6,
+    "threads": 4,
+    "training_horizon_hours": 12,
+    "exploratory": true
+  },
+  "source_cv_lock": "e4bd7b5d1325b5e6769b61bc93587b5f267ad68f9072d407d7e04592665e8dc5",
+  "fold_manifest": "06d9cae6b997096cf1558b74e2ed531206abab68ca78e4b9b3c8f96a3f6fa58e",
+  "source_files": {
+    "fold_0/fit_lock.json": "e60765feb776a0bcdea58d4ba7902679c2fdecfd2be6c28070f504a25d8be9b1",
+    "fold_0/local/mae/local/sourcetargetmae_34f_seed42_recovery.pt": "2319ea827dfc76f6967c2903273e16bcbdde279c4aeabe5bcb4225272237db08",
+    "fold_0/local/mae/local/sourcetargetmae_34f_seed42_encoder.pt": "033584bf09eea072991b8692af17a05b678cd2436915544ded90837c93cf2ea6",
+    "fold_0/local/mae/sourcetargetmae_34f_seed42.json": "963944776331d87cb0fcf300cdba7c0b2b871a8a63c8ab14d6149d9a232ac1ae",
+    "fold_1/fit_lock.json": "95491b5e8c9b2c48919400d4477f57e7e3c62056ad931a656f465836a0ce0a4a",
+    "fold_1/local/mae/local/sourcetargetmae_34f_seed42_recovery.pt": "a5f38577e82401311a1ff93a94be32ec2327123f0ddcc8ed4d2930edf9f3187c",
+    "fold_1/local/mae/local/sourcetargetmae_34f_seed42_encoder.pt": "a75344145e4ed11b302da7b692843328b98332cf13cf917351ad1fc8c7a2f09c",
+    "fold_1/local/mae/sourcetargetmae_34f_seed42.json": "dc7381257a683bce14938b0c4eb6f5d6c7f0711e728d97d51aa36dfda7b89cf0",
+    "fold_2/fit_lock.json": "373ab2339e6b671209f1ca0136fcd8a96feeafe2c2758b68c5461add3bdd50f9",
+    "fold_2/local/mae/local/sourcetargetmae_34f_seed42_recovery.pt": "8e04715656aab57e0c20d4be467c983f033c13f60116b83dd22885aae0ab5081",
+    "fold_2/local/mae/local/sourcetargetmae_34f_seed42_encoder.pt": "b2cb1d8b6a27d67ebb1adba2870c22513357441f4be5e216aed271cf7ce025f2",
+    "fold_2/local/mae/sourcetargetmae_34f_seed42.json": "ff5332a434beb728a734d06de24746828bed707fa83554b0ad162d71026e3adb",
+    "fold_3/fit_lock.json": "18dea321ce0a347d82baeb7f1b6adbb29862be6852ef99fec8494f05c740c61e",
+    "fold_3/local/mae/local/sourcetargetmae_34f_seed42_recovery.pt": "646fd4272a1961befd4f7d1b64cf14857e185051240bf50a357594cb08036715",
+    "fold_3/local/mae/local/sourcetargetmae_34f_seed42_encoder.pt": "35309f30034a370caa18bcc6e7aa7acca8f76601753b1044b9100ad090c8388b",
+    "fold_3/local/mae/sourcetargetmae_34f_seed42.json": "11572f26fb47464190274f36ef7ee0d46291f43bf206aa189758b9bc5d149457",
+    "fold_4/fit_lock.json": "626516f7479ec311355e1149821e85d759b5cabf954b742019ddf25e08c0178d",
+    "fold_4/local/mae/local/sourcetargetmae_34f_seed42_recovery.pt": "1f37d5a40580109459d39fd2022cecb13bfefaf127d38ccb704fb6a457a3f7ba",
+    "fold_4/local/mae/local/sourcetargetmae_34f_seed42_encoder.pt": "266afe546f36a100aadad3726802e550ef8b4e90851a18c184b2a4243d67e974",
+    "fold_4/local/mae/sourcetargetmae_34f_seed42.json": "721d3de568d058eede8f7b36106dba6a499d7ebbbb457686aa495a309355cc68"
+  },
+  "code": {
+    "scripts\\run_lab_specialization.py": "7afe0e2bf53449bf9938fea4c82784b7dd096352d2de97494769e6c0930db13c",
+    "configs\\sepsis_lab_specialize_20261014.json": "ebb73140b27eb3a3930dab30818a242f9f3ee9fea0be51da78b85cf73b02f24a"
+  }
+}

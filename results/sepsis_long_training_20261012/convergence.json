@@ -1,0 +1,245 @@
+[
+  {
+    "name": "scratch_34f_lr0.0003_seed42",
+    "epochs": 100,
+    "selected_epoch": 97,
+    "hit_epoch_cap": true,
+    "optimizer_steps": 34100,
+    "first20_best_tune_ap": 0.0869766603962414,
+    "final_best_tune_ap": 0.1326409459194003
+  },
+  {
+    "name": "availability__scratch_34f_lr0.0003_seed42",
+    "epochs": 64,
+    "selected_epoch": 49,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 21824,
+    "first20_best_tune_ap": 0.07916572858296908,
+    "final_best_tune_ap": 0.09617238671379681
+  },
+  {
+    "name": "source_34f_lr0.0003_seed42",
+    "epochs": 66,
+    "selected_epoch": 51,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 22506,
+    "first20_best_tune_ap": 0.10153380790142948,
+    "final_best_tune_ap": 0.1183978676529269
+  },
+  {
+    "name": "targetmae_34f_lr0.0003_seed42",
+    "epochs": 48,
+    "selected_epoch": 33,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 16368,
+    "first20_best_tune_ap": 0.09349571700318687,
+    "final_best_tune_ap": 0.10462008428781021
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0003_seed42",
+    "epochs": 60,
+    "selected_epoch": 45,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 20460,
+    "first20_best_tune_ap": 0.10500726970569912,
+    "final_best_tune_ap": 0.12069108684798029
+  },
+  {
+    "name": "scratch_34f_lr0.0001_seed42",
+    "epochs": 92,
+    "selected_epoch": 77,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 31372,
+    "first20_best_tune_ap": 0.06947310432026693,
+    "final_best_tune_ap": 0.098685730741747
+  },
+  {
+    "name": "source_34f_lr0.0001_seed42",
+    "epochs": 37,
+    "selected_epoch": 22,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 12617,
+    "first20_best_tune_ap": 0.09727188621528049,
+    "final_best_tune_ap": 0.09787997999513716
+  },
+  {
+    "name": "targetmae_34f_lr0.0001_seed42",
+    "epochs": 90,
+    "selected_epoch": 75,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 30690,
+    "first20_best_tune_ap": 0.07403071927238672,
+    "final_best_tune_ap": 0.11696889996866582
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0001_seed42",
+    "epochs": 26,
+    "selected_epoch": 11,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 8866,
+    "first20_best_tune_ap": 0.10085951547281403,
+    "final_best_tune_ap": 0.10085951547281403
+  },
+  {
+    "name": "scratch_34f_lr0.0003_seed123",
+    "epochs": 42,
+    "selected_epoch": 27,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 14322,
+    "first20_best_tune_ap": 0.08943171903455675,
+    "final_best_tune_ap": 0.09320386537855638
+  },
+  {
+    "name": "availability__scratch_34f_lr0.0003_seed123",
+    "epochs": 42,
+    "selected_epoch": 27,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 14322,
+    "first20_best_tune_ap": 0.07924736854103404,
+    "final_best_tune_ap": 0.09369838176642542
+  },
+  {
+    "name": "source_34f_lr0.0003_seed123",
+    "epochs": 48,
+    "selected_epoch": 33,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 16368,
+    "first20_best_tune_ap": 0.10122131589339198,
+    "final_best_tune_ap": 0.11213580865060027
+  },
+  {
+    "name": "targetmae_34f_lr0.0003_seed123",
+    "epochs": 37,
+    "selected_epoch": 22,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 12617,
+    "first20_best_tune_ap": 0.08781805547950884,
+    "final_best_tune_ap": 0.10101344295779986
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0003_seed123",
+    "epochs": 64,
+    "selected_epoch": 49,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 21824,
+    "first20_best_tune_ap": 0.1023797502583957,
+    "final_best_tune_ap": 0.11419210180482388
+  },
+  {
+    "name": "scratch_34f_lr0.0001_seed123",
+    "epochs": 67,
+    "selected_epoch": 52,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 22847,
+    "first20_best_tune_ap": 0.06167226800282216,
+    "final_best_tune_ap": 0.09297341663298157
+  },
+  {
+    "name": "source_34f_lr0.0001_seed123",
+    "epochs": 41,
+    "selected_epoch": 26,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 13981,
+    "first20_best_tune_ap": 0.10140610400356392,
+    "final_best_tune_ap": 0.10833756283450352
+  },
+  {
+    "name": "targetmae_34f_lr0.0001_seed123",
+    "epochs": 71,
+    "selected_epoch": 56,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 24211,
+    "first20_best_tune_ap": 0.0707826239200288,
+    "final_best_tune_ap": 0.09114188212967542
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0001_seed123",
+    "epochs": 36,
+    "selected_epoch": 21,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 12276,
+    "first20_best_tune_ap": 0.10241909666943519,
+    "final_best_tune_ap": 0.1057911935374421
+  },
+  {
+    "name": "scratch_34f_lr0.0003_seed456",
+    "epochs": 69,
+    "selected_epoch": 54,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 23529,
+    "first20_best_tune_ap": 0.08152475483336563,
+    "final_best_tune_ap": 0.09446133427105675
+  },
+  {
+    "name": "availability__scratch_34f_lr0.0003_seed456",
+    "epochs": 100,
+    "selected_epoch": 85,
+    "hit_epoch_cap": true,
+    "optimizer_steps": 34100,
+    "first20_best_tune_ap": 0.07333162993237968,
+    "final_best_tune_ap": 0.10328345157426592
+  },
+  {
+    "name": "source_34f_lr0.0003_seed456",
+    "epochs": 43,
+    "selected_epoch": 28,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 14663,
+    "first20_best_tune_ap": 0.09174045580406151,
+    "final_best_tune_ap": 0.09883288711720425
+  },
+  {
+    "name": "targetmae_34f_lr0.0003_seed456",
+    "epochs": 52,
+    "selected_epoch": 37,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 17732,
+    "first20_best_tune_ap": 0.07987764513445614,
+    "final_best_tune_ap": 0.09352733854517709
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0003_seed456",
+    "epochs": 28,
+    "selected_epoch": 13,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 9548,
+    "first20_best_tune_ap": 0.09589368099999149,
+    "final_best_tune_ap": 0.09589368099999149
+  },
+  {
+    "name": "scratch_34f_lr0.0001_seed456",
+    "epochs": 77,
+    "selected_epoch": 62,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 26257,
+    "first20_best_tune_ap": 0.06988403322534553,
+    "final_best_tune_ap": 0.0894650256496231
+  },
+  {
+    "name": "source_34f_lr0.0001_seed456",
+    "epochs": 28,
+    "selected_epoch": 13,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 9548,
+    "first20_best_tune_ap": 0.09590409418133364,
+    "final_best_tune_ap": 0.09590409418133364
+  },
+  {
+    "name": "targetmae_34f_lr0.0001_seed456",
+    "epochs": 75,
+    "selected_epoch": 60,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 25575,
+    "first20_best_tune_ap": 0.06666852269524809,
+    "final_best_tune_ap": 0.0907415929434591
+  },
+  {
+    "name": "sourcetargetmae_34f_lr0.0001_seed456",
+    "epochs": 28,
+    "selected_epoch": 13,
+    "hit_epoch_cap": false,
+    "optimizer_steps": 9548,
+    "first20_best_tune_ap": 0.1007762326388003,
+    "final_best_tune_ap": 0.1007762326388003
+  }
+]

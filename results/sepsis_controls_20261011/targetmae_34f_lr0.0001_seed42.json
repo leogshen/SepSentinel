@@ -1,0 +1,49 @@
+{
+  "name": "targetmae_34f_lr0.0001_seed42",
+  "kind": "neural",
+  "features": 34,
+  "seed": 42,
+  "lr": 0.0001,
+  "initialization": "targetmae",
+  "complete": true,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.9888672635090316,
+      "tune_ap": 0.05599728545139316
+    },
+    {
+      "epoch": 2,
+      "loss": 0.9959415364737385,
+      "tune_ap": 0.06128843279607493
+    },
+    {
+      "epoch": 3,
+      "loss": 0.9977247984397096,
+      "tune_ap": 0.05920609877718403
+    },
+    {
+      "epoch": 4,
+      "loss": 1.036977602283626,
+      "tune_ap": 0.05825448888870274
+    },
+    {
+      "epoch": 5,
+      "loss": 0.9934102298358668,
+      "tune_ap": 0.059371718607639595
+    },
+    {
+      "epoch": 6,
+      "loss": 0.9976425570301996,
+      "tune_ap": 0.05734849311036199
+    }
+  ],
+  "adaptation": {
+    "steps": 1000,
+    "last100_loss": 0.3245242688059807,
+    "active_channels": 34
+  },
+  "best_tune_ap": 0.06128843279607493,
+  "test_opened": false,
+  "elapsed_minutes": 2.3868881026903788
+}

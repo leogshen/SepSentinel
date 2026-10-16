@@ -1,0 +1,12 @@
+{
+  "rich_scratch.json": "5d1256d8ed05d63bd4eea6ee64de265e0d95816679887e72df6029377d76838f",
+  "local\\rich_scratch.pt": "f94cc4f4729b3208a356448ba3a3a1607aa1df6fd8fd10d52dbb8f4a608d6e2a",
+  "rich_supervised.json": "dbe28608b55e7cfdd120550fdea9e68d34cf289fcc1909d7af81517b2dc43a4e",
+  "local\\rich_supervised.pt": "016770a2fca7a0a1163c72fbf5f50b715039108d5cc43a684bdb127b4df56162",
+  "rich_mae.json": "577740dd124c3cc838e7408027498e8acd7c087173be32a1cf331a379fada440",
+  "local\\rich_mae.pt": "bee9ea8ca51a3e9b9f5a18f09edd484c887c0925081b102ec96e15b2decb50d6",
+  "broad_scratch.json": "a3ec2313bed1c5b672ec8eea7cd1466e4c3aface537618ee187a751c894c3a1e",
+  "local\\broad_scratch.pt": "68e56860567266428c7205d8ab87d37fec50264dfc4dc06eb7723d2c11580889",
+  "broad_xgb.json": "0b119583ad90da34abef2b713980c4dc6a5a708dc3a9a044fc58596758a239da",
+  "local\\broad_xgb.pkl": "915bd5f19881e7fc43872c46fa34f6c644bbdc86fa7aefa53da75116821342d2"
+}
